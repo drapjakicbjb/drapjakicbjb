@@ -716,8 +716,6 @@ ul { list-style: none; }
   box-shadow: var(--shadow-green);
 }
 
-.about-content {}
-
 .about-content h3 {
   font-size: 1.6rem;
   font-weight: 700;
