@@ -186,20 +186,111 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => slide(0));
   }
 
-  /* ─── 9. CONTACT FORM ────────────────────────────── */
+  /* ─── 9. CONTACT FORM (EmailJS) ──────────────────── */
+
+  // ╔══════════════════════════════════════════════════╗
+  // ║   EMAILJS CONFIG — paste your 3 values below    ║
+  // ╚══════════════════════════════════════════════════╝
+  const EMAILJS_PUBLIC_KEY  = '6DYmieZwBu3lhi_FR';   // Account → API Keys
+  const EMAILJS_SERVICE_ID  = 'service_tarunk435';   // Email Services → Service ID
+  const EMAILJS_TEMPLATE_ID = 'template_tarunk435';  // Email Templates → Template ID
+
+  // Initialise EmailJS once
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
   const contactForm = document.getElementById('contactForm');
+
+  // ── Helper: show an inline banner above the form ──
+  function showFormBanner(type, message) {
+    const existing = contactForm.querySelector('.form-banner');
+    if (existing) existing.remove();
+
+    const banner = document.createElement('div');
+    banner.className = 'form-banner';
+    const isSuccess = type === 'success';
+    banner.style.cssText = `
+      display:flex;align-items:center;gap:10px;
+      padding:14px 20px;border-radius:12px;margin-bottom:20px;
+      font-size:0.9rem;font-weight:600;
+      background:${isSuccess ? '#e8f5e9' : '#fdecea'};
+      color:${isSuccess ? '#2E7D32' : '#c62828'};
+      border:1px solid ${isSuccess ? '#a5d6a7' : '#ef9a9a'};
+      animation:fadeIn .3s ease;
+    `;
+    banner.innerHTML = `
+      <i class="fas fa-${isSuccess ? 'check-circle' : 'exclamation-circle'}" style="font-size:1.1rem"></i>
+      <span>${message}</span>
+    `;
+    contactForm.prepend(banner);
+    if (isSuccess) {
+      setTimeout(() => banner.remove(), 6000);
+    }
+  }
+
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Config guard — warn if keys are still placeholders
+      if (EMAILJS_PUBLIC_KEY === '6DYmieZwBu3lhi_FR') {
+        showFormBanner('error',
+          'Email service not configured yet. Please add your EmailJS keys to js/main.js.'
+        );
+        return;
+      }
+
       const btn = contactForm.querySelector('.btn-submit');
-      const original = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.background = 'linear-gradient(135deg, #2E7D32, #4CAF50)';
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = '';
+      const originalHTML = btn.innerHTML;
+
+      // ── Loading state ──
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+      btn.style.opacity = '0.8';
+
+      const params = {
+        from_name : contactForm.fname.value.trim() + ' ' + contactForm.lname.value.trim(),
+        from_email: contactForm.email.value.trim(),
+        phone     : contactForm.phone.value.trim() || 'Not provided',
+        subject   : contactForm.subject.value || 'General Enquiry',
+        message   : contactForm.message.value.trim(),
+        to_name   : 'Dr. A.P.J. Abdul Kalam Inter College',
+      };
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+
+        // ── Success ──
+        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        btn.style.background = 'linear-gradient(135deg, #2E7D32, #4CAF50)';
+        btn.style.opacity = '1';
+        showFormBanner('success',
+          'Thank you! Your message has been received. We will get back to you within 1–2 working days.'
+        );
         contactForm.reset();
-      }, 3000);
+
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+
+      } catch (err) {
+        // ── Error ──
+        btn.innerHTML = '<i class="fas fa-times"></i> Failed — Try Again';
+        btn.style.background = 'linear-gradient(135deg, #c62828, #e53935)';
+        btn.style.opacity = '1';
+        showFormBanner('error',
+          'Something went wrong. Please try again, or call us on +91 9839252505.'
+        );
+
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      }
     });
   }
 
