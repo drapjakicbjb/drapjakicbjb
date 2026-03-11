@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       // Config guard — warn if keys are still placeholders
-      if (EMAILJS_PUBLIC_KEY === '6DYmieZwBu3lhi_FR') {
+      if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
         showFormBanner('error',
           'Email service not configured yet. Please add your EmailJS keys to js/main.js.'
         );
