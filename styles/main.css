@@ -1869,3 +1869,11 @@ footer {
 .lang-btn .lang-name { font-size: 1.1rem; font-weight: 600; color: var(--navy); }
 @media (max-width: 480px) { .lang-modal-content { padding: 30px 20px; } .lang-modal-header h2 { font-size: 1.5rem; } }
 
+
+/* ─── NAV LANGUAGE TOGGLE ─── */
+.lang-toggle { font-weight: 600 !important; color: var(--navy) !important; background: rgba(0,0,0,0.05); padding: 8px 15px !important; border-radius: 50px; margin-right: 10px; transition: all 0.3s ease; }
+.lang-toggle i { margin-right: 6px; color: var(--saffron); }
+.lang-toggle:hover { background: var(--saffron) !important; color: white !important; }
+.lang-toggle:hover i { color: white !important; }
+@media (max-width: 1024px) { .lang-toggle { margin: 10px 0; width: fit-content; } }
+

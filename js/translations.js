@@ -8,6 +8,7 @@ const translations = {
     'nav-admissions': 'Admissions',
     'nav-gallery': 'Gallery',
     'nav-contact': 'Contact Us',
+    'nav-language': 'Language',
     'nav-school-name': 'Dr. A.P.J. Abdul Kalam Inter College',
     'nav-school-location': 'Belwariya Jungle, Basti, U.P.',
 
@@ -87,7 +88,7 @@ const translations = {
     'adm-timings-desc': 'Mon–Sat, 9:00 AM – 3:00 PM.',
     'adm-helpline': 'Helpline:',
     'adm-enquire-btn': 'Enquire Now',
-    'adm-prospectus-btn': 'Download Prospectus',
+    'adm-prospectus-btn': 'Fill online Admission Form',
 
     // Gallery
     'gal-label': 'Gallery',
@@ -159,6 +160,7 @@ const translations = {
     'nav-admissions': 'प्रवेश',
     'nav-gallery': 'गैलरी',
     'nav-contact': 'संपर्क करें',
+    'nav-language': 'भाषा',
     'nav-school-name': 'डॉ. ए.पी.जे. अब्दुल कलाम इंटर कॉलेज',
     'nav-school-location': 'बेलवरिया जंगल, बस्ती, उ.प्र.',
 
@@ -238,7 +240,7 @@ const translations = {
     'adm-timings-desc': 'सोम-शनि, सुबह 9:00 बजे - दोपहर 3:00 बजे।',
     'adm-helpline': 'हेल्पलाइन:',
     'adm-enquire-btn': 'अभी पूछताछ करें',
-    'adm-prospectus-btn': 'प्रोस्पेक्टस डाउनलोड करें',
+    'adm-prospectus-btn': 'ऑनलाइन प्रवेश फॉर्म भरें',
 
     // Gallery
     'gal-label': 'गैलरी',

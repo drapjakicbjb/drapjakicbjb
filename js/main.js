@@ -400,4 +400,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      langModal.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
 });
