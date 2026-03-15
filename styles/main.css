@@ -1853,3 +1853,19 @@ footer {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--dark-blue); }
 ::-webkit-scrollbar-thumb { background: var(--saffron); border-radius: 10px; }
+
+/* ─── LANGUAGE MODAL ─── */
+.lang-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 10001; display: none; align-items: center; justify-content: center; animation: fadeIn 0.4s ease; }
+.lang-modal.visible { display: flex; }
+.lang-modal-content { background: white; width: 90%; max-width: 450px; padding: 40px; border-radius: 24px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); transform: translateY(20px); transition: transform 0.4s ease; }
+.lang-modal.visible .lang-modal-content { transform: translateY(0); }
+.lang-modal-header img { width: 80px; margin-bottom: 20px; }
+.lang-modal-header h2 { font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.lang-modal-header p { color: #666; font-size: 1rem; margin-bottom: 30px; }
+.lang-options { display: grid; gap: 16px; }
+.lang-btn { display: flex; align-items: center; gap: 15px; padding: 18px 25px; border: 2px solid #eee; border-radius: 16px; background: white; cursor: pointer; transition: all 0.3s ease; text-align: left; }
+.lang-btn:hover { border-color: var(--saffron); background: #fffaf0; transform: scale(1.02); }
+.lang-btn .lang-icon { font-size: 1.5rem; }
+.lang-btn .lang-name { font-size: 1.1rem; font-weight: 600; color: var(--navy); }
+@media (max-width: 480px) { .lang-modal-content { padding: 30px 20px; } .lang-modal-header h2 { font-size: 1.5rem; } }
+

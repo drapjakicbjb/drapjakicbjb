@@ -245,8 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalHTML = btn.innerHTML;
 
       // ── Loading state ──
+      const currentLang = localStorage.getItem('preferredLanguage') || 'en';
       btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentLang]['form-sending'] || 'Sending…'}`;
       btn.style.opacity = '0.8';
 
       const params = {
@@ -262,11 +263,11 @@ document.addEventListener('DOMContentLoaded', () => {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
 
         // ── Success ──
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        btn.innerHTML = `<i class="fas fa-check"></i> ${translations[currentLang]['form-sent'] || 'Message Sent!'}`;
         btn.style.background = 'linear-gradient(135deg, #2E7D32, #4CAF50)';
         btn.style.opacity = '1';
         showFormBanner('success',
-          'Thank you! Your message has been received. We will get back to you within 1–2 working days.'
+          translations[currentLang]['form-success'] || 'Thank you! Your message has been received.'
         );
         contactForm.reset();
 
@@ -278,11 +279,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       } catch (err) {
         // ── Error ──
-        btn.innerHTML = '<i class="fas fa-times"></i> Failed — Try Again';
+        btn.innerHTML = `<i class="fas fa-times"></i> ${translations[currentLang]['form-failed'] || 'Failed — Try Again'}`;
         btn.style.background = 'linear-gradient(135deg, #c62828, #e53935)';
         btn.style.opacity = '1';
         showFormBanner('error',
-          'Something went wrong. Please try again, or call us on +91 9839252505.'
+          translations[currentLang]['form-error'] || 'Something went wrong. Please try again.'
         );
 
         setTimeout(() => {
@@ -334,6 +335,68 @@ document.addEventListener('DOMContentLoaded', () => {
         const top    = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       }
+    });
+  });
+
+  /* ─── 12. INTERNATIONALIZATION (i18n) ────────── */
+  const langModal = document.getElementById('languageModal');
+  const langButtons = document.querySelectorAll('.lang-btn');
+
+  function updateContent(lang) {
+    if (!translations[lang]) return;
+
+    // Update text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        // Use innerHTML only if needed, otherwise textContent
+        if (translations[lang][key].includes('<br>') || translations[lang][key].includes('<span') || translations[lang][key].includes('<i')) {
+          el.innerHTML = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      }
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (translations[lang][key]) {
+        el.placeholder = translations[lang][key];
+      }
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem('preferredLanguage', lang);
+    updateContent(lang);
+    langModal.classList.remove('visible');
+    // Ensure scroll is enabled back
+    document.body.style.overflow = '';
+  }
+
+  // Initial Check
+  const savedLang = localStorage.getItem('preferredLanguage');
+  if (savedLang) {
+    updateContent(savedLang);
+    langModal.classList.remove('visible');
+  } else {
+    // Show modal after a small delay or after loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        langModal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }, 2500); // Slightly after loader disappears
+    });
+  }
+
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      setLanguage(lang);
     });
   });
 

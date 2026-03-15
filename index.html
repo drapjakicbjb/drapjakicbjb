@@ -29,6 +29,7 @@
 
   gtag('config', 'G-3BGTP145WK');
 </script>
+<script src="js/translations.js"></script>
 
 <body>
 
@@ -40,24 +41,44 @@
     </div>
   </div>
 
+  <div id="languageModal" class="lang-modal">
+    <div class="lang-modal-content">
+      <div class="lang-modal-header">
+        <img src="assets/images/logo.png" alt="School Logo" />
+        <h2 data-i18n="lang-modal-title">Select Language / भाषा चुनें</h2>
+        <p data-i18n="lang-modal-desc">Please select your preferred language to continue.</p>
+      </div>
+      <div class="lang-options">
+        <button class="lang-btn" data-lang="en">
+          <span class="lang-icon">🇺🇸</span>
+          <span class="lang-name" data-i18n="lang-en">English</span>
+        </button>
+        <button class="lang-btn" data-lang="hi">
+          <span class="lang-icon">🇮🇳</span>
+          <span class="lang-name" data-i18n="lang-hi">हिंदी (Hindi)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="navOverlay" class="nav-overlay"></div>
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="#hero" class="nav-logo" aria-label="School home">
         <img src="assets/images/logo.png" alt="Dr. A.P.J. Abdul Kalam Inter College Logo" />
         <div class="nav-logo-text">
-          <span>Dr. A.P.J. Abdul Kalam Inter College</span>
-          <span>Belwariya Jungle, Basti, U.P.</span>
+          <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
+          <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
         </div>
       </a>
       <ul class="nav-menu" id="navMenu" role="list">
-        <li><a class="nav-link active" href="#hero">Home</a></li>
-        <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#academics">Academics</a></li>
-        <li><a class="nav-link" href="#facilities">Facilities</a></li>
-        <li><a class="nav-link" href="#admissions">Admissions</a></li>
-        <li><a class="nav-link" href="#gallery">Gallery</a></li>
-        <li><a class="nav-link nav-cta" href="#contact">Contact Us</a></li>
+        <li><a class="nav-link active" href="#hero" data-i18n="nav-home">Home</a></li>
+        <li><a class="nav-link" href="#about" data-i18n="nav-about">About</a></li>
+        <li><a class="nav-link" href="#academics" data-i18n="nav-academics">Academics</a></li>
+        <li><a class="nav-link" href="#facilities" data-i18n="nav-facilities">Facilities</a></li>
+        <li><a class="nav-link" href="#admissions" data-i18n="nav-admissions">Admissions</a></li>
+        <li><a class="nav-link" href="#gallery" data-i18n="nav-gallery">Gallery</a></li>
+        <li><a class="nav-link nav-cta" href="#contact" data-i18n="nav-contact">Contact Us</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -80,54 +101,46 @@
         <div class="hero-logo-ring"></div>
       </div>
 
-      <span class="hero-tagline">🎓 Excellence in Education Since Inception</span>
+      <span class="hero-tagline" data-i18n="hero-tagline">🎓 Excellence in Education Since Inception</span>
       <h1 class="hero-title">
-        Welcome to<br />
-        <span>Dr. A.P.J. Abdul Kalam Inter College</span>
+        <span data-i18n="hero-welcome">Welcome to</span><br />
+        <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
       </h1>
-      <p class="hero-subtitle">Inspiring Knowledge, Building Future Leaders</p>
+      <p class="hero-subtitle" data-i18n="hero-subtitle">Inspiring Knowledge, Building Future Leaders</p>
 
       <div class="hero-buttons">
         <a href="#admissions" class="btn-primary">
-          <i class="fas fa-graduation-cap" style="margin-right:8px"></i>Apply for Admission
+          <i class="fas fa-graduation-cap" style="margin-right:8px"></i><span data-i18n="hero-btn-apply">Apply for Admission</span>
         </a>
         <a href="#gallery" class="btn-secondary">
-          <i class="fas fa-images" style="margin-right:8px"></i>Explore Campus
+          <i class="fas fa-images" style="margin-right:8px"></i><span data-i18n="hero-btn-explore">Explore Campus</span>
         </a>
       </div>
 
       <div class="hero-stats">
-        <!-- <div class="hero-stat">
-        <span class="hero-stat-num counter" data-count="600" data-suffix="+">0+</span>
-        <span class="hero-stat-label">Students Enrolled</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num counter" data-count="20" data-suffix="+">0+</span>
-        <span class="hero-stat-label">Expert Faculty</span>
-      </div> -->
         <div class="hero-stat">
           <span class="hero-stat-num counter" data-count="15" data-suffix="+">0+</span>
-          <span class="hero-stat-label">Years of Excellence</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-years">Years of Excellence</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-num counter" data-count="99.9" data-suffix="%">0%</span>
-          <span class="hero-stat-label">Pass Rate</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-pass">Pass Rate</span>
         </div>
       </div>
     </div>
 
     <div class="hero-scroll">
       <i class="fas fa-chevron-down"></i>
-      <span>Scroll</span>
+      <span data-i18n="hero-scroll">Scroll</span>
     </div>
   </section>
 
   <section id="about" class="section">
     <div class="container">
       <div class="section-title fade-up">
-        <span class="label">About Us</span>
-        <h2>Nurturing Minds, Shaping Futures</h2>
-        <p>Founded with a vision to provide quality education, our school is committed to holistic development and
+        <span class="label" data-i18n="about-label">About Us</span>
+        <h2 data-i18n="about-title">Nurturing Minds, Shaping Futures</h2>
+        <p data-i18n="about-desc">Founded with a vision to provide quality education, our school is committed to holistic development and
           academic excellence for every child.</p>
         <div class="title-line"></div>
       </div>
@@ -137,31 +150,31 @@
           <img class="about-image" src="assets/images/about.png" alt="School Building" />
           <div class="about-badge">
             <span class="num">15+</span>
-            <span class="txt">Years of<br>Excellence</span>
+            <span class="txt" data-i18n="about-badge-text">Years of<br>Excellence</span>
           </div>
         </div>
 
         <div class="about-content fade-right">
-          <h3>A Legacy of Learning &amp; Leadership</h3>
-          <p>
+          <h3 data-i18n="about-grid-title">A Legacy of Learning &amp; Leadership</h3>
+          <p data-i18n="about-p1">
             Dr. A.P.J. Abdul Kalam Inter College, Belwariya Jungle, Basti, Uttar Pradesh was established with the
             inspired belief that quality education transforms lives. Named after India's beloved "Missile Man" and
             former President, our school embodies his values of discipline, innovation, and lifelong learning.
           </p>
-          <p>
+          <p data-i18n="about-p2">
             We provide a safe, nurturing, and stimulating environment where students from Primary to Higher Secondary
             level receive a well-rounded education that blends strong academics with co-curricular achievement.
           </p>
 
           <div class="mv-grid">
             <div class="mv-card">
-              <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
-              <p>To empower every student with knowledge, values, and skills to become responsible citizens and leaders
+              <h4 data-i18n="about-mission-title"><i class="fas fa-bullseye"></i> Our Mission</h4>
+              <p data-i18n="about-mission-desc">To empower every student with knowledge, values, and skills to become responsible citizens and leaders
                 of tomorrow's India.</p>
             </div>
             <div class="mv-card">
-              <h4><i class="fas fa-eye"></i> Our Vision</h4>
-              <p>To be the most trusted educational institution in Basti, recognized for academic excellence, character
+              <h4 data-i18n="about-vision-title"><i class="fas fa-eye"></i> Our Vision</h4>
+              <p data-i18n="about-vision-desc">To be the most trusted educational institution in Basti, recognized for academic excellence, character
                 development, and innovation.</p>
             </div>
           </div>
@@ -173,8 +186,8 @@
   <div class="principal-section">
     <div class="container">
       <div class="section-title fade-up" style="margin-bottom:40px;">
-        <span class="label" style="background:rgba(255,107,0,0.2);color:var(--saffron)">Leadership</span>
-        <h2 style="color:white">Message from the Manager</h2>
+        <span class="label" style="background:rgba(255,107,0,0.2);color:var(--saffron)" data-i18n="leader-label">Leadership</span>
+        <h2 style="color:white" data-i18n="leader-title">Message from the Manager</h2>
         <div class="title-line"></div>
       </div>
       <div class="principal-grid fade-up">
@@ -182,15 +195,15 @@
           <img class="principal-img" src="assets/images/Manager.png" alt="School Manager" />
         </div>
         <div>
-          <p class="principal-quote">
+          <p class="principal-quote" data-i18n="leader-quote">
             At Dr. A.P.J. Abdul Kalam Inter College, we believe that every child is unique and has immense potential.
             Our dedicated faculty works tirelessly to unlock this potential, providing personalised attention and a
             curriculum that balances rigorous academics with creative, physical, and moral development. We are proud to
             carry forward the legacy of Dr. Kalam — a man who dreamed big and inspired a billion. We invite you to join
             our family and embark on a journey of excellence.
           </p>
-          <p class="principal-name">Mr. Ram Sanware Yadav</p>
-          <p class="principal-title-text">Manager — Dr. A.P.J. Abdul Kalam Inter College</p>
+          <p class="principal-name" data-i18n="leader-name">Mr. Ram Sanware Yadav</p>
+          <p class="principal-title-text" data-i18n="leader-role">Manager — Dr. A.P.J. Abdul Kalam Inter College</p>
         </div>
       </div>
     </div>
@@ -199,9 +212,9 @@
   <section id="academics" class="section section-bg">
     <div class="container">
       <div class="section-title fade-up">
-        <span class="label">Academics</span>
-        <h2>Our Academic Programmes</h2>
-        <p>Comprehensive education from primary to higher secondary, designed to ignite curiosity and build strong
+        <span class="label" data-i18n="acad-label">Academics</span>
+        <h2 data-i18n="acad-title">Our Academic Programmes</h2>
+        <p data-i18n="acad-desc">Comprehensive education from primary to higher secondary, designed to ignite curiosity and build strong
           foundations.</p>
         <div class="title-line"></div>
       </div>
@@ -209,32 +222,32 @@
       <div class="academics-grid">
         <div class="academic-card fade-up delay-1">
           <div class="academic-icon"><i class="fas fa-child"></i></div>
-          <h3>Primary School</h3>
-          <p>Classes Pre K.G.–V. A nurturing foundation using activity-based, playful learning approaches to build
+          <h3 data-i18n="acad-primary-title">Primary School</h3>
+          <p data-i18n="acad-primary-desc">Classes Pre K.G.–V. A nurturing foundation using activity-based, playful learning approaches to build
             literacy, numeracy, and curiosity.</p>
         </div>
         <div class="academic-card fade-up delay-2">
           <div class="academic-icon"><i class="fas fa-book-open"></i></div>
-          <h3>Middle School</h3>
-          <p>Classes VI–VIII. Bridging foundational learning with structured subjects across languages, science,
+          <h3 data-i18n="acad-middle-title">Middle School</h3>
+          <p data-i18n="acad-middle-desc">Classes VI–VIII. Bridging foundational learning with structured subjects across languages, science,
             mathematics and social sciences.</p>
         </div>
         <div class="academic-card fade-up delay-3">
           <div class="academic-icon"><i class="fas fa-microscope"></i></div>
-          <h3>Secondary School</h3>
-          <p>Classes IX–X (UP Board). Rigorous curriculum with lab-based science, comprehensive mathematics and language
+          <h3 data-i18n="acad-secondary-title">Secondary School</h3>
+          <p data-i18n="acad-secondary-desc">Classes IX–X (UP Board). Rigorous curriculum with lab-based science, comprehensive mathematics and language
             proficiency.</p>
         </div>
         <div class="academic-card fade-up delay-4">
           <div class="academic-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Higher School</h3>
-          <p>Classes XI–XII (UP Board). Streams: Science (PCM / PCB) and Arts. Expert guidance for board exams and
+          <h3 data-i18n="acad-higher-title">Higher School</h3>
+          <p data-i18n="acad-higher-desc">Classes XI–XII (UP Board). Streams: Science (PCM / PCB) and Arts. Expert guidance for board exams and
             competitive entrances.</p>
         </div>
         <div class="academic-card fade-up delay-5">
           <div class="academic-icon"><i class="fas fa-palette"></i></div>
-          <h3>Co-curricular Activities</h3>
-          <p>Art, debate, sports and cultural programmes nurture talent beyond textbooks for all-round student
+          <h3 data-i18n="acad-co-curr-title">Co-curricular Activities</h3>
+          <p data-i18n="acad-co-curr-desc">Art, debate, sports and cultural programmes nurture talent beyond textbooks for all-round student
             development.</p>
         </div>
       </div>
@@ -244,22 +257,22 @@
   <section id="facilities" class="section section-dark">
     <div class="container">
       <div class="section-title fade-up">
-        <span class="label">Facilities</span>
-        <h2>Infrastructure</h2>
-        <p>Modern facilities designed to support learning, creativity and physical development of every student.</p>
+        <span class="label" data-i18n="fac-label">Facilities</span>
+        <h2 data-i18n="fac-title">Infrastructure</h2>
+        <p data-i18n="fac-desc">Modern facilities designed to support learning, creativity and physical development of every student.</p>
         <div class="title-line"></div>
       </div>
 
       <div class="facilities-grid">
         <div class="facility-card fade-up delay-1">
           <span class="facility-icon">🔬</span>
-          <h3>Science Laboratory</h3>
-          <p>Fully equipped physics, chemistry and biology labs for hands-on experimental learning.</p>
+          <h3 data-i18n="fac-sci-lab-title">Science Laboratory</h3>
+          <p data-i18n="fac-sci-lab-desc">Fully equipped physics, chemistry and biology labs for hands-on experimental learning.</p>
         </div>
         <div class="facility-card fade-up delay-2">
           <span class="facility-icon">🏏</span>
-          <h3>Sports Ground</h3>
-          <p>Large multi-purpose ground for cricket, football, athletics and annual sports events.</p>
+          <h3 data-i18n="fac-sports-title">Sports Ground</h3>
+          <p data-i18n="fac-sports-desc">Large multi-purpose ground for cricket, football, athletics and annual sports events.</p>
         </div>
       </div>
     </div>
@@ -268,9 +281,9 @@
   <section id="admissions" class="section">
     <div class="container">
       <div class="section-title fade-up">
-        <span class="label">Admissions</span>
-        <h2>Join Our School Family</h2>
-        <p>We welcome students who are eager to learn, grow, and make a difference. Admissions are open for 2026–27
+        <span class="label" data-i18n="adm-label">Admissions</span>
+        <h2 data-i18n="adm-title">Join Our School Family</h2>
+        <p data-i18n="adm-desc">We welcome students who are eager to learn, grow, and make a difference. Admissions are open for 2026–27
           academic year.</p>
         <div class="title-line"></div>
       </div>
@@ -280,62 +293,62 @@
           <div class="admission-step fade-left delay-1">
             <div class="step-num">1</div>
             <div class="step-content">
-              <h4>Collect Application Form</h4>
-              <p>Visit the school office or download the form from our website. Fill in all the required details
+              <h4 data-i18n="adm-step1-title">Collect Application Form</h4>
+              <p data-i18n="adm-step1-desc">Visit the school office or download the form from our website. Fill in all the required details
                 carefully.</p>
             </div>
           </div>
           <div class="admission-step fade-left delay-2">
             <div class="step-num">2</div>
             <div class="step-content">
-              <h4>Submit Required Documents</h4>
-              <p>Submit the filled form along with transfer certificate, previous marksheets, Aadhaar card, and two
+              <h4 data-i18n="adm-step2-title">Submit Required Documents</h4>
+              <p data-i18n="adm-step2-desc">Submit the filled form along with transfer certificate, previous marksheets, Aadhaar card, and two
                 passport-size photos.</p>
             </div>
           </div>
           <div class="admission-step fade-left delay-3">
             <div class="step-num">3</div>
             <div class="step-content">
-              <h4>Entrance Assessment</h4>
-              <p>Students seeking admission to Class III or above will appear for a simple written test in Hindi,
+              <h4 data-i18n="adm-step3-title">Entrance Assessment</h4>
+              <p data-i18n="adm-step3-desc">Students seeking admission to Class III or above will appear for a simple written test in Hindi,
                 English, Mathematics etc.</p>
             </div>
           </div>
           <div class="admission-step fade-left delay-4">
             <div class="step-num">4</div>
             <div class="step-content">
-              <h4>Fee Payment &amp; Enrolment</h4>
-              <p>Upon selection, pay the admission fee at the office to confirm enrolment and receive your admission
+              <h4 data-i18n="adm-step4-title">Fee Payment &amp; Enrolment</h4>
+              <p data-i18n="adm-step4-desc">Upon selection, pay the admission fee at the office to confirm enrolment and receive your admission
                 kit.</p>
             </div>
           </div>
           <div class="admission-step fade-left delay-5">
             <div class="step-num">5</div>
             <div class="step-content">
-              <h4>Welcome to the School!</h4>
-              <p>Collect your uniform, ID card and books, and begin your journey at our school.</p>
+              <h4 data-i18n="adm-step5-title">Welcome to the School!</h4>
+              <p data-i18n="adm-step5-desc">Collect your uniform, ID card and books, and begin your journey at our school.</p>
             </div>
           </div>
         </div>
 
         <div class="admission-info fade-right">
-          <h3>🎓 Admissions Open 2026–27</h3>
-          <p>
+          <h3 data-i18n="adm-open-title">🎓 Admissions Open 2026–27</h3>
+          <p data-i18n="adm-open-desc">
             Enrolment is open for classes Nursery to Class XII. We encourage early application to secure your child's
             place in our school.
           </p>
           <p>
-            <strong style="color:white">Age Criteria:</strong> As per UP Board norms.<br />
-            <strong style="color:white">Timings:</strong> Mon–Sat, 9:00 AM – 3:00 PM.<br />
-            <strong style="color:white">Helpline:</strong> +91 9839252505
+            <strong style="color:white" data-i18n="adm-age-criteria">Age Criteria:</strong> <span data-i18n="adm-age-desc">As per UP Board norms.</span><br />
+            <strong style="color:white" data-i18n="adm-timings">Timings:</strong> <span data-i18n="adm-timings-desc">Mon–Sat, 9:00 AM – 3:00 PM.</span><br />
+            <strong style="color:white" data-i18n="adm-helpline">Helpline:</strong> +91 9839252505
           </p>
           <div class="admission-btns">
             <a href="#contact" class="btn-admission btn-admission-primary">
-              <i class="fas fa-paper-plane"></i> Enquire Now
+              <i class="fas fa-paper-plane"></i> <span data-i18n="adm-enquire-btn">Enquire Now</span>
             </a>
             <a href="#" class="btn-admission btn-admission-outline"
               onclick="alert('Prospectus download will be available soon.');">
-              <i class="fas fa-download"></i> Download Prospectus
+              <i class="fas fa-download"></i> <span data-i18n="adm-prospectus-btn">Download Prospectus</span>
             </a>
           </div>
         </div>
@@ -346,9 +359,9 @@
   <section id="gallery" class="section section-bg">
     <div class="container">
       <div class="section-title fade-up">
-        <span class="label">Gallery</span>
-        <h2>Life at Our School</h2>
-        <p>A glimpse into the vibrant, activity-filled campus life that makes our school truly special.</p>
+        <span class="label" data-i18n="gal-label">Gallery</span>
+        <h2 data-i18n="gal-title">Life at Our School</h2>
+        <p data-i18n="gal-desc">A glimpse into the vibrant, activity-filled campus life that makes our school truly special.</p>
         <div class="title-line"></div>
       </div>
 
@@ -357,21 +370,21 @@
           <img src="assets/images/gallery-1.jpg" alt="Classroom Learning" />
           <div class="gallery-overlay">
             <i class="fas fa-search-plus"></i>
-            <span>Classroom Learning</span>
+            <span data-i18n="gal-item1">Classroom Learning</span>
           </div>
         </div>
         <div class="gallery-item fade-up delay-2">
           <img src="assets/images/campus.png" alt="Play Ground" />
           <div class="gallery-overlay">
             <i class="fas fa-search-plus"></i>
-            <span>Play Ground</span>
+            <span data-i18n="gal-item2">Play Ground</span>
           </div>
         </div>
         <div class="gallery-item fade-up delay-3">
           <img src="assets/images/gallery-3.jpg" alt="Science Laboratory" />
           <div class="gallery-overlay">
             <i class="fas fa-search-plus"></i>
-            <span>Science Lab</span>
+            <span data-i18n="gal-item3">Science Lab</span>
           </div>
         <!-- </div>
         <div class="gallery-item fade-up delay-1">
@@ -395,9 +408,9 @@
   <section id="contact" class="section">
     <div class="container">
       <div class="section-title fade-up">
-        <span class="label">Contact Us</span>
-        <h2>Get in Touch with Us</h2>
-        <p>We'd love to hear from you. Reach out for admissions, enquiries, or any other information.</p>
+        <span class="label" data-i18n="con-label">Contact Us</span>
+        <h2 data-i18n="con-title">Get in Touch with Us</h2>
+        <p data-i18n="con-desc">We'd love to hear from you. Reach out for admissions, enquiries, or any other information.</p>
         <div class="title-line"></div>
       </div>
 
@@ -407,29 +420,29 @@
             <div class="contact-card">
               <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div class="contact-detail">
-                <h4>School Address</h4>
-                <p>Dr. A.P.J. Abdul Kalam Inter College<br />Belwariya Jungle, Basti<br />Uttar Pradesh — 272161</p>
+                <h4 data-i18n="con-addr-title">School Address</h4>
+                <p data-i18n="con-addr-desc">Dr. A.P.J. Abdul Kalam Inter College<br />Belwariya Jungle, Basti<br />Uttar Pradesh — 272161</p>
               </div>
             </div>
             <div class="contact-card">
               <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
               <div class="contact-detail">
-                <h4>Phone Numbers</h4>
+                <h4 data-i18n="con-phone-title">Phone Numbers</h4>
                 <a href="tel:+919839252505">+91 9839252505</a>
               </div>
             </div>
             <div class="contact-card">
               <div class="contact-icon"><i class="fas fa-envelope"></i></div>
               <div class="contact-detail">
-                <h4>Email Address</h4>
+                <h4 data-i18n="con-email-title">Email Address</h4>
                 <a href="mailto:drapjakicbjb@gmail.com">drapjakicbjb@gmail.com</a>
               </div>
             </div>
             <div class="contact-card">
               <div class="contact-icon"><i class="fas fa-clock"></i></div>
               <div class="contact-detail">
-                <h4>School Hours</h4>
-                <p>Monday – Saturday: 9:30 AM – 3:30 PM<br />Office: 9:00 AM – 4:00 PM</p>
+                <h4 data-i18n="con-hours-title">School Hours</h4>
+                <p data-i18n="con-hours-desc">Monday – Saturday: 9:30 AM – 3:30 PM<br />Office: 9:00 AM – 4:00 PM</p>
               </div>
             </div>
           </div>
@@ -437,51 +450,51 @@
           <a href="https://maps.app.goo.gl/3wFSUWLJuKrUiKST8" target="_blank" rel="noopener noreferrer">
             <div class="map-embed">
               <i class="fas fa-map-marked-alt"></i>
-              <strong>Belwariya Jungle, Basti, Uttar Pradesh</strong>
-              <p style="font-size:0.8rem;color:#888;text-align:center">Google Maps — Belwariya Jungle, Basti, U.P.</p>
+              <strong data-i18n="con-map-text">Belwariya Jungle, Basti, Uttar Pradesh</strong>
+              <p style="font-size:0.8rem;color:#888;text-align:center" data-i18n="con-map-sub">Google Maps — Belwariya Jungle, Basti, U.P.</p>
             </div>
           </a>
         </div>
 
         <div class="fade-right">
           <div class="contact-form">
-            <h3>Send Us a Message</h3>
+            <h3 data-i18n="con-form-title">Send Us a Message</h3>
             <form id="contactForm" novalidate>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="fname">First Name *</label>
-                  <input type="text" id="fname" name="fname" placeholder="Your first name" required />
+                  <label for="fname" data-i18n="con-form-fname">First Name *</label>
+                  <input type="text" id="fname" name="fname" placeholder="Your first name" data-i18n-ph="con-form-fname-ph" required />
                 </div>
                 <div class="form-group">
-                  <label for="lname">Last Name</label>
-                  <input type="text" id="lname" name="lname" placeholder="Your last name" />
+                  <label for="lname" data-i18n="con-form-lname">Last Name</label>
+                  <input type="text" id="lname" name="lname" placeholder="Your last name" data-i18n-ph="con-form-lname-ph" />
                 </div>
               </div>
               <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+                <label for="email" data-i18n="con-form-email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" data-i18n-ph="con-form-email-ph" required />
               </div>
               <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+                <label for="phone" data-i18n="con-form-phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" data-i18n-ph="con-form-phone-ph" />
               </div>
               <div class="form-group">
-                <label for="subject">Subject</label>
+                <label for="subject" data-i18n="con-form-subject">Subject</label>
                 <select id="subject" name="subject">
-                  <option value="">— Select a topic —</option>
-                  <option>Admission Enquiry</option>
-                  <option>Fee Information</option>
-                  <option>Academic Query</option>
-                  <option>Transport Information</option>
-                  <option>Other</option>
+                  <option value="" data-i18n="con-form-subj-default">— Select a topic —</option>
+                  <option data-i18n="con-form-subj-adm">Admission Enquiry</option>
+                  <option data-i18n="con-form-subj-fee">Fee Information</option>
+                  <option data-i18n="con-form-subj-acad">Academic Query</option>
+                  <option data-i18n="con-form-subj-trans">Transport Information</option>
+                  <option data-i18n="con-form-subj-other">Other</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="message">Your Message *</label>
-                <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
+                <label for="message" data-i18n="con-form-msg">Your Message *</label>
+                <textarea id="message" name="message" placeholder="Write your message here…" data-i18n-ph="con-form-msg-ph" required></textarea>
               </div>
               <button type="submit" class="btn-submit">
-                <i class="fas fa-paper-plane"></i> Send Message
+                <i class="fas fa-paper-plane"></i> <span data-i18n="con-form-btn">Send Message</span>
               </button>
             </form>
           </div>
@@ -497,13 +510,13 @@
           <div class="footer-logo">
             <img src="assets/images/logo.png" alt="School Logo" />
             <div class="footer-logo-text">
-              <span>Dr. A.P.J. Abdul Kalam Inter College</span>
-              <span>Belwariya Jungle, Basti, U.P.</span>
+              <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
+              <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
             </div>
           </div>
-          <p>Inspiring young minds with quality education rooted in Indian values and modern knowledge, building leaders
+          <p data-i18n="foot-desc">Inspiring young minds with quality education rooted in Indian values and modern knowledge, building leaders
             for a better tomorrow.</p>
-          <div class="footer-motto">श्रद्धावान लभते ज्ञानम्</div>
+          <div class="footer-motto" data-i18n="foot-motto">श्रद्धावान लभते ज्ञानम्</div>
           <div class="social-links">
             <a class="social-link" target="_blank" href="https://www.facebook.com/profile.php?id=100090759948402"
               aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -519,35 +532,35 @@
         </div>
 
         <div class="footer-col">
-          <h4>Quick Links</h4>
+          <h4 data-i18n="foot-quick-links">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About School</a></li>
-            <li><a href="#academics">Academics</a></li>
-            <li><a href="#admissions">Admissions</a></li>
-            <li><a href="#facilities">Facilities</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#hero" data-i18n="nav-home">Home</a></li>
+            <li><a href="#about" data-i18n="nav-about">About School</a></li>
+            <li><a href="#academics" data-i18n="nav-academics">Academics</a></li>
+            <li><a href="#admissions" data-i18n="nav-admissions">Admissions</a></li>
+            <li><a href="#facilities" data-i18n="nav-facilities">Facilities</a></li>
+            <li><a href="#gallery" data-i18n="nav-gallery">Gallery</a></li>
+            <li><a href="#contact" data-i18n="nav-contact">Contact Us</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Programmes</h4>
+          <h4 data-i18n="foot-programmes">Programmes</h4>
           <ul class="footer-links">
-            <li><a href="#academics">Primary School (Pre KG–V)</a></li>
-            <li><a href="#academics">Middle School (VI–VIII)</a></li>
-            <li><a href="#academics">Secondary (IX–X)</a></li>
-            <li><a href="#academics">Higher School (XI–XII)</a></li>
-            <li><a href="#academics">Co-curricular</a></li>
-            <li><a href="#admissions">Admission Process</a></li>
+            <li><a href="#academics" data-i18n="acad-primary-title">Primary School (Pre KG–V)</a></li>
+            <li><a href="#academics" data-i18n="acad-middle-title">Middle School (VI–VIII)</a></li>
+            <li><a href="#academics" data-i18n="acad-secondary-title">Secondary (IX–X)</a></li>
+            <li><a href="#academics" data-i18n="acad-higher-title">Higher School (XI–XII)</a></li>
+            <li><a href="#academics" data-i18n="acad-co-curr-title">Co-curricular</a></li>
+            <li><a href="#admissions" data-i18n="adm-label">Admission Process</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Contact Info</h4>
+          <h4 data-i18n="foot-contact-info">Contact Info</h4>
           <div class="footer-contact-item">
             <i class="fas fa-map-marker-alt"></i>
-            <span>Belwariya Jungle, Basti, Uttar Pradesh — 272161</span>
+            <span data-i18n="con-addr-desc">Belwariya Jungle, Basti, Uttar Pradesh — 272161</span>
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-phone-alt"></i>
@@ -559,13 +572,13 @@
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-clock"></i>
-            <span>Mon–Sat: 9:00 AM – 3:30 PM</span>
+            <span data-i18n="con-hours-desc">Mon–Sat: 9:00 AM – 3:30 PM</span>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2025 Dr. A.P.J. Abdul Kalam Inter College, Belwariya Jungle, Basti, U.P. All rights reserved.</p>
+        <p data-i18n="foot-rights">&copy; 2025 Dr. A.P.J. Abdul Kalam Inter College, Belwariya Jungle, Basti, U.P. All rights reserved.</p>
       </div>
     </div>
   </footer>
