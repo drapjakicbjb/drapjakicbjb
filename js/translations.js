@@ -145,6 +145,9 @@ const translations = {
     'form-sent': 'Message Sent!',
     'form-failed': 'Failed — Try Again',
 
+    // Testing Banner
+    'testing-banner': '⚠️ This is a testing version of the website. Some features may be under development.',
+
     // Language Modal
     'lang-modal-title': 'Select Language / भाषा चुनें',
     'lang-modal-desc': 'Please select your preferred language to continue.',
@@ -296,6 +299,9 @@ const translations = {
     'form-sending': 'भेज रहे हैं...',
     'form-sent': 'संदेश भेज दिया गया!',
     'form-failed': 'विफल — पुन: प्रयास करें',
+
+    // Testing Banner
+    'testing-banner': '⚠️ यह वेबसाइट का टेस्टिंग वर्जन है। कुछ फीचर्स अभी विकसित किए जा रहे हैं।',
 
     // Language Modal
     'lang-modal-title': 'Select Language / भाषा चुनें',
