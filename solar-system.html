@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dr. A.P.J. Abdul Kalam Inter College - Explore the Solar System with our interactive 3D module." />
+  <title>Solar System | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    /* Specific styles for Solar System */
+    body {
+      background: var(--dark-blue); /* Space background */
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .solar-header {
+      padding: 120px 24px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .solar-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .solar-header p {
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 10px auto;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 120px;
+      left: 24px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .back-btn:hover {
+      background: var(--saffron);
+    }
+
+    .solar-viewer {
+      position: relative;
+      width: 100vw;
+      height: 800px; /* Space for orbits */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #solar-system-container {
+      position: relative;
+      width: 0;
+      height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Rotate slightly for 3D effect */
+      transform: rotateX(60deg);
+      transform-style: preserve-3d;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .orbit-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform-style: preserve-3d;
+      animation: spin linear infinite;
+    }
+
+    .celestial-body {
+      position: absolute;
+      border-radius: 50%;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%) rotateX(-60deg); /* Counter rotate to face camera */
+      cursor: pointer;
+      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .celestial-body:hover {
+        transform: translate(-50%, -50%) rotateX(-60deg) scale(1.2);
+        z-index: 100;
+        box-shadow: 0 0 15px rgba(255,255,255,0.8), inset -5px -5px 10px rgba(0,0,0,0.5);
+    }
+
+    .sun {
+        transform: translate(-50%, -50%) rotateX(-60deg) !important;
+        box-shadow: 0 0 50px #ffcc00, 0 0 100px #ff6600 !important;
+        cursor: pointer;
+    }
+
+    /* Saturn's Rings */
+    .saturn-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 180%;
+        height: 180%;
+        border: 4px solid rgba(210, 180, 140, 0.6);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotateX(75deg);
+        pointer-events: none;
+    }
+
+    @keyframes spin {
+      100% { transform: translate(-50%, -50%) rotateZ(360deg); }
+    }
+
+    /* Details Panel */
+    .planet-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100vh;
+      background: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      z-index: 10000;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 40px 24px;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      overflow-y: auto;
+    }
+
+    .planet-panel.active {
+      right: 0;
+    }
+
+    .close-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+    }
+
+    .close-panel:hover {
+      color: var(--saffron);
+    }
+
+    .details-header h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .details-info {
+      margin-top: 20px;
+    }
+
+    .details-info p {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 8px;
+    }
+
+    .details-info strong {
+      color: var(--saffron);
+    }
+
+    .details-desc {
+      margin-top: 24px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="testing-banner">
+    <p data-i18n="testing-banner">⚠️ This is a testing version of the website. Some features may be under development.</p>
+  </div>
+
+  <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <div id="languageModal" class="lang-modal">
+    <div class="lang-modal-content">
+      <div class="lang-modal-header">
+        <img src="assets/images/logo.png" alt="School Logo" />
+        <h2 data-i18n="lang-modal-title">Select Language / भाषा चुनें</h2>
+        <p data-i18n="lang-modal-desc">Please select your preferred language to continue.</p>
+      </div>
+      <div class="lang-options">
+        <button class="lang-btn" data-lang="en">
+          <span class="lang-icon">🇺🇸</span>
+          <span class="lang-name" data-i18n="lang-en">English</span>
+        </button>
+        <button class="lang-btn" data-lang="hi">
+          <span class="lang-icon">🇮🇳</span>
+          <span class="lang-name" data-i18n="lang-hi">हिंदी (Hindi)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html#hero" class="nav-logo" aria-label="School home">
+        <img src="assets/images/logo.png" alt="Dr. A.P.J. Abdul Kalam Inter College Logo" />
+        <div class="nav-logo-text">
+          <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
+          <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="index.html#hero" data-i18n="nav-home">Home</a></li>
+        <li><a class="nav-link" href="index.html#about" data-i18n="nav-about">About</a></li>
+        <li><a class="nav-link" href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
+        <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
+        <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
+        <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
+        <li><a class="nav-link lang-toggle" id="langToggle" href="javascript:void(0)" aria-label="Change Language"><i class="fas fa-globe"></i></a></li>
+        <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="solar-header">
+    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="back-study">Back to Study Hub</span></a>
+    <h1 data-i18n="study-solar-title">Solar System</h1>
+    <p data-i18n="solar-intro">Click on any celestial body to discover more information about it.</p>
+  </section>
+
+  <div class="solar-viewer">
+    <div id="solar-system-container">
+        <!-- Sun and Planets injected via JS -->
+    </div>
+  </div>
+
+  <!-- Planet Details Sidebar -->
+  <div id="planet-details" class="planet-panel">
+    <button id="close-details" class="close-panel"><i class="fas fa-times"></i></button>
+    <div id="details-content">
+        <!-- Content injected via JS -->
+    </div>
+  </div>
+
+  <button id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/solar-system.js"></script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dr. A.P.J. Abdul Kalam Inter College - Explore the periodic table." />
+  <title>Periodic Table | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    /* Specific styles for Periodic Table - Chemistry Theme */
+    body {
+      background-color: #0a0f1c; /* Deep space/lab dark */
+      background-image: 
+        linear-gradient(rgba(77, 208, 225, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77, 208, 225, 0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      color: #e2e8f0;
+    }
+
+    .pt-header {
+      padding: 140px 24px 40px;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(to bottom, #060b14, transparent);
+      color: white;
+    }
+
+    .pt-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #4DD0E1;
+      text-shadow: 0 0 15px rgba(77, 208, 225, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .pt-header p {
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 10px auto;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 120px;
+      left: 24px;
+      background: rgba(77, 208, 225, 0.1);
+      border: 1px solid rgba(77, 208, 225, 0.3);
+      color: #4DD0E1;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .back-btn:hover {
+      background: rgba(77, 208, 225, 0.2);
+      box-shadow: 0 0 15px rgba(77, 208, 225, 0.5);
+      color: white;
+    }
+
+    .pt-container {
+      max-width: 1400px;
+      margin: 20px auto 60px;
+      padding: 0 24px;
+      overflow-x: auto; 
+    }
+
+    /* CSS Grid Layout */
+    .periodic-table {
+      display: grid;
+      grid-template-columns: repeat(18, minmax(65px, 1fr));
+      grid-template-rows: repeat(10, auto);
+      gap: 6px;
+      min-width: 1150px; 
+    }
+
+    .element {
+      position: relative;
+      background: rgba(10, 15, 28, 0.8);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 5px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+      aspect-ratio: 1; 
+      overflow: hidden;
+    }
+
+    .element:hover {
+      transform: scale(1.15);
+      z-index: 10;
+    }
+
+    .element.dimmed {
+      opacity: 0.1;
+      filter: grayscale(100%);
+      transform: none !important;
+      box-shadow: none !important;
+      z-index: 1 !important;
+    }
+
+    .el-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0.9;
+      font-family: inherit;
+      align-self: flex-start;
+    }
+
+    .el-sym {
+      font-size: 1.6rem;
+      font-weight: 800;
+      align-self: center;
+      margin: auto 0;
+      text-shadow: 0 0 8px currentColor;
+    }
+
+    .el-name {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 1;
+      letter-spacing: 0.5px;
+    }
+
+    /* Element Categories Colors (Dark Neon Theme) */
+    .element.nonmetal { border-color: #4DD0E1; color: #4DD0E1; background: rgba(77, 208, 225, 0.05); }
+    .element.nonmetal:hover { box-shadow: 0 0 15px rgba(77, 208, 225, 0.5), inset 0 0 10px rgba(77, 208, 225, 0.2); }
+
+    .element.noble { border-color: #FFF176; color: #FFF176; background: rgba(255, 241, 118, 0.05); }
+    .element.noble:hover { box-shadow: 0 0 15px rgba(255, 241, 118, 0.5), inset 0 0 10px rgba(255, 241, 118, 0.2); }
+
+    .element.alkali { border-color: #FF8A65; color: #FF8A65; background: rgba(255, 138, 101, 0.05); }
+    .element.alkali:hover { box-shadow: 0 0 15px rgba(255, 138, 101, 0.5), inset 0 0 10px rgba(255, 138, 101, 0.2); }
+
+    .element.alkaline { border-color: #FFB74D; color: #FFB74D; background: rgba(255, 183, 77, 0.05); }
+    .element.alkaline:hover { box-shadow: 0 0 15px rgba(255, 183, 77, 0.5), inset 0 0 10px rgba(255, 183, 77, 0.2); }
+
+    .element.metalloid { border-color: #DCE775; color: #DCE775; background: rgba(220, 231, 117, 0.05); }
+    .element.metalloid:hover { box-shadow: 0 0 15px rgba(220, 231, 117, 0.5), inset 0 0 10px rgba(220, 231, 117, 0.2); }
+
+    .element.halogen { border-color: #BA68C8; color: #BA68C8; background: rgba(186, 104, 200, 0.05); }
+    .element.halogen:hover { box-shadow: 0 0 15px rgba(186, 104, 200, 0.5), inset 0 0 10px rgba(186, 104, 200, 0.2); }
+
+    .element.transition { border-color: #E57373; color: #E57373; background: rgba(229, 115, 115, 0.05); }
+    .element.transition:hover { box-shadow: 0 0 15px rgba(229, 115, 115, 0.5), inset 0 0 10px rgba(229, 115, 115, 0.2); }
+
+    .element.post-transition { border-color: #81C784; color: #81C784; background: rgba(129, 199, 132, 0.05); }
+    .element.post-transition:hover { box-shadow: 0 0 15px rgba(129, 199, 132, 0.5), inset 0 0 10px rgba(129, 199, 132, 0.2); }
+
+    .element.lanthanide { border-color: #9575CD; color: #9575CD; background: rgba(149, 117, 205, 0.05); }
+    .element.lanthanide:hover { box-shadow: 0 0 15px rgba(149, 117, 205, 0.5), inset 0 0 10px rgba(149, 117, 205, 0.2); }
+
+    .element.actinide { border-color: #F06292; color: #F06292; background: rgba(240, 98, 146, 0.05); }
+    .element.actinide:hover { box-shadow: 0 0 15px rgba(240, 98, 146, 0.5), inset 0 0 10px rgba(240, 98, 146, 0.2); }
+
+    /* Legend */
+    .pt-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 auto 30px;
+      max-width: 1100px;
+      justify-content: center;
+    }
+
+    .legend-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 5px;
+      background: rgba(10, 15, 28, 0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #94a3b8;
+      font-family: inherit;
+    }
+
+    .legend-btn:hover, .legend-btn.active {
+      color: white;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .legend-box {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px currentColor;
+    }
+
+    .nonmetal .legend-box { background: #4DD0E1; color: #4DD0E1; }
+    .nonmetal.active, .nonmetal:hover { border-color: #4DD0E1; box-shadow: 0 0 15px rgba(77,208,225,0.5); }
+
+    .noble .legend-box { background: #FFF176; color: #FFF176; }
+    .noble.active, .noble:hover { border-color: #FFF176; box-shadow: 0 0 15px rgba(255,241,118,0.5); }
+
+    .alkali .legend-box { background: #FF8A65; color: #FF8A65; }
+    .alkali.active, .alkali:hover { border-color: #FF8A65; box-shadow: 0 0 15px rgba(255,138,101,0.5); }
+
+    .alkaline .legend-box { background: #FFB74D; color: #FFB74D; }
+    .alkaline.active, .alkaline:hover { border-color: #FFB74D; box-shadow: 0 0 15px rgba(255,183,77,0.5); }
+
+    .metalloid .legend-box { background: #DCE775; color: #DCE775; }
+    .metalloid.active, .metalloid:hover { border-color: #DCE775; box-shadow: 0 0 15px rgba(220,231,117,0.5); }
+
+    .halogen .legend-box { background: #BA68C8; color: #BA68C8; }
+    .halogen.active, .halogen:hover { border-color: #BA68C8; box-shadow: 0 0 15px rgba(186,104,200,0.5); }
+
+    .transition .legend-box { background: #E57373; color: #E57373; }
+    .transition.active, .transition:hover { border-color: #E57373; box-shadow: 0 0 15px rgba(229,115,115,0.5); }
+
+    .post-transition .legend-box { background: #81C784; color: #81C784; }
+    .post-transition.active, .post-transition:hover { border-color: #81C784; box-shadow: 0 0 15px rgba(129,199,132,0.5); }
+
+    .lanthanide .legend-box { background: #9575CD; color: #9575CD; }
+    .lanthanide.active, .lanthanide:hover { border-color: #9575CD; box-shadow: 0 0 15px rgba(149,117,205,0.5); }
+
+    .actinide .legend-box { background: #F06292; color: #F06292; }
+    .actinide.active, .actinide:hover { border-color: #F06292; box-shadow: 0 0 15px rgba(240,98,146,0.5); }
+
+    /* Modal Pop-up */
+    .element-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .element-panel.active { 
+      opacity: 1;
+      pointer-events: all; 
+    }
+
+    .element-popup-content {
+      background: #0d1326;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.8), 0 0 30px rgba(77, 208, 225, 0.1);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      color: #e2e8f0;
+    }
+
+    .element-panel.active .element-popup-content {
+      transform: translateY(0);
+    }
+
+    .el-modal-header {
+      padding: 0;
+      height: 6px;
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .el-modal-header.nonmetal { background: #4DD0E1; box-shadow: 0 0 10px #4DD0E1; }
+    .el-modal-header.noble { background: #FFF176; box-shadow: 0 0 10px #FFF176; }
+    .el-modal-header.alkali { background: #FF8A65; box-shadow: 0 0 10px #FF8A65; }
+    .el-modal-header.alkaline { background: #FFB74D; box-shadow: 0 0 10px #FFB74D; }
+    .el-modal-header.metalloid { background: #DCE775; box-shadow: 0 0 10px #DCE775; }
+    .el-modal-header.halogen { background: #BA68C8; box-shadow: 0 0 10px #BA68C8; }
+    .el-modal-header.transition { background: #E57373; box-shadow: 0 0 10px #E57373; }
+    .el-modal-header.post-transition { background: #81C784; box-shadow: 0 0 10px #81C784; }
+    .el-modal-header.lanthanide { background: #9575CD; box-shadow: 0 0 10px #9575CD; }
+    .el-modal-header.actinide { background: #F06292; box-shadow: 0 0 10px #F06292; }
+
+    .close-panel-dark {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.3s;
+      z-index: 20;
+    }
+
+    .close-panel-dark:hover { color: #fff; text-shadow: 0 0 10px white; }
+
+    .el-modal-info { 
+      padding: 30px 24px; 
+      background: rgba(0,0,0,0.3);
+      border-radius: 0 0 12px 12px;
+    }
+    
+    .el-modal-info p {
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .el-modal-info strong { color: #4DD0E1; font-weight: 600; }
+
+    /* Atom Visualization */
+    .atom-container {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nucleus {
+      width: 40px;
+      height: 40px;
+      background: var(--saffron);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .electron-orbit {
+      position: absolute;
+      border: 1px dashed rgba(0,0,0,0.15);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin linear infinite;
+    }
+
+    .electron-wrapper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .electron {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--navy);
+      border-radius: 50%;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 5px rgba(13, 27, 42, 0.5);
+    }
+
+    @keyframes spin {
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="testing-banner">
+    <p data-i18n="testing-banner">⚠️ This is a testing version of the website. Some features may be under development.</p>
+  </div>
+
+  <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <div id="languageModal" class="lang-modal">
+    <div class="lang-modal-content">
+      <div class="lang-modal-header">
+        <img src="assets/images/logo.png" alt="School Logo" />
+        <h2 data-i18n="lang-modal-title">Select Language / भाषा चुनें</h2>
+        <p data-i18n="lang-modal-desc">Please select your preferred language to continue.</p>
+      </div>
+      <div class="lang-options">
+        <button class="lang-btn" data-lang="en">
+          <span class="lang-icon">🇺🇸</span>
+          <span class="lang-name" data-i18n="lang-en">English</span>
+        </button>
+        <button class="lang-btn" data-lang="hi">
+          <span class="lang-icon">🇮🇳</span>
+          <span class="lang-name" data-i18n="lang-hi">हिंदी (Hindi)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html#hero" class="nav-logo" aria-label="School home">
+        <img src="assets/images/logo.png" alt="Dr. A.P.J. Abdul Kalam Inter College Logo" />
+        <div class="nav-logo-text">
+          <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
+          <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="index.html#hero" data-i18n="nav-home">Home</a></li>
+        <li><a class="nav-link" href="index.html#about" data-i18n="nav-about">About</a></li>
+        <li><a class="nav-link" href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
+        <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
+        <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
+        <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
+        <li><a class="nav-link lang-toggle" id="langToggle" href="javascript:void(0)" aria-label="Change Language"><i class="fas fa-globe"></i></a></li>
+        <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="pt-header">
+    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="back-study">Back to Study Hub</span></a>
+    <h1><i class="fas fa-flask"></i> <span data-i18n="study-periodic-title">Periodic Table</span></h1>
+    <p data-i18n="pt-intro">Click an element for details, or select a category below to highlight elements.</p>
+  </section>
+
+  <div class="pt-container">
+    <div class="pt-legend">
+        <button class="legend-btn nonmetal" data-type="nonmetal"><div class="legend-box"></div> <span data-i18n="cat-nonmetal">Reactive Nonmetal</span></button>
+        <button class="legend-btn noble" data-type="noble"><div class="legend-box"></div> <span data-i18n="cat-noble">Noble Gas</span></button>
+        <button class="legend-btn alkali" data-type="alkali"><div class="legend-box"></div> <span data-i18n="cat-alkali">Alkali Metal</span></button>
+        <button class="legend-btn alkaline" data-type="alkaline"><div class="legend-box"></div> <span data-i18n="cat-alkaline">Alkaline Earth Metal</span></button>
+        <button class="legend-btn metalloid" data-type="metalloid"><div class="legend-box"></div> <span data-i18n="cat-metalloid">Metalloid</span></button>
+        <button class="legend-btn halogen" data-type="halogen"><div class="legend-box"></div> <span data-i18n="cat-halogen">Halogen</span></button>
+        <button class="legend-btn transition" data-type="transition"><div class="legend-box"></div> <span data-i18n="cat-transition">Transition Metal</span></button>
+        <button class="legend-btn post-transition" data-type="post-transition"><div class="legend-box"></div> <span data-i18n="cat-post-transition">Post-transition Metal</span></button>
+        <button class="legend-btn lanthanide" data-type="lanthanide"><div class="legend-box"></div> <span data-i18n="cat-lanthanide">Lanthanide</span></button>
+        <button class="legend-btn actinide" data-type="actinide"><div class="legend-box"></div> <span data-i18n="cat-actinide">Actinide</span></button>
+    </div>
+
+    <div class="periodic-table" id="periodic-table">
+        <!-- Spacer for Row 8 to separate main table from inner transition metals -->
+        <div style="grid-column: 1 / -1; grid-row: 8; height: 20px;"></div>
+        <!-- Elements injected via JS -->
+    </div>
+  </div>
+
+  <!-- Element Details Modal -->
+  <div id="element-details" class="element-panel">
+    <div class="element-popup-content">
+      <button id="close-element-details" class="close-panel-dark"><i class="fas fa-times"></i></button>
+      <div id="element-details-content">
+          <!-- Content injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <button id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/periodic-table.js"></script>
+</body>
+</html>

@@ -32,22 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const scrollTopBtn = document.getElementById('scrollTop');
 
+  // Sticky nav
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
 
-    // Sticky nav
-    navbar.classList.toggle('scrolled', scrollY > 60);
+    if (navbar) {
+      navbar.classList.toggle('scrolled', scrollY > 60);
+    }
 
-    // Scroll-top button
-    scrollTopBtn.classList.toggle('visible', scrollY > 500);
+    if (scrollTopBtn) {
+      scrollTopBtn.classList.toggle('visible', scrollY > 500);
+    }
 
-    // Active nav link highlight
     updateActiveNavLink();
   }, { passive: true });
 
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   /* ─── 4. MOBILE HAMBURGER ────────────────────────── */
   const hamburger = document.getElementById('hamburger');
@@ -61,18 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.toggle('open');
-    navMenu.classList.toggle('open', isOpen);
-    navOverlay.classList.toggle('visible', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
+  if (hamburger && navMenu && navOverlay) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open', isOpen);
+      navOverlay.classList.toggle('visible', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
 
-  navOverlay.addEventListener('click', closeMenu);
+    navOverlay.addEventListener('click', closeMenu);
 
-  navMenu.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
 
   /* ─── 5. ACTIVE NAV LINK ON SCROLL ──────────────── */
   const sections = document.querySelectorAll('section[id]');

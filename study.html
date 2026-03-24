@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dr. A.P.J. Abdul Kalam Inter College - Study Hub. Explore the Solar System and Periodic Table." />
+  <meta name="keywords" content="Study, Solar System, Periodic Table, Interactive Learning" />
+  <title>Study Hub | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    /* Academic Knowledge Hub Theme */
+    body {
+      background-color: #f8fbff;
+    }
+
+    .study-hub-section {
+      padding: 160px 24px 100px;
+      min-height: calc(100vh - 400px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle academic background pattern */
+    .study-hub-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(var(--navy) 0.5px, transparent 0.5px),
+        radial-gradient(var(--navy) 0.5px, #f8fbff 0.5px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    .study-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .study-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(13, 27, 42, 0.05);
+      border: 1px solid rgba(13, 27, 42, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .study-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(13, 27, 42, 0.1);
+      border-color: var(--saffron-light);
+    }
+
+    .card-img {
+      height: 220px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .solar-img {
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+    }
+
+    .periodic-img {
+      background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+    }
+
+    .card-img i {
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+    }
+
+    .card-content {
+      padding: 35px 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+
+    .card-content h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .card-content p {
+      color: var(--text-medium);
+      margin-bottom: 30px;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .btn-study {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--navy);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 2px solid var(--navy);
+    }
+
+    .btn-study:hover {
+      background: white;
+      color: var(--navy);
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(13, 27, 42, 0.1);
+    }
+
+    .periodic-img+.card-content .btn-study {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .periodic-img+.card-content .btn-study:hover {
+      background: white;
+      color: var(--green);
+    }
+
+    /* Learning Badge */
+    .learning-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(255, 107, 0, 0.1);
+      color: var(--saffron);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+    /* Floating Graphics */
+    .study-bg-graphics {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .study-icon {
+      position: absolute;
+      color: var(--navy);
+      opacity: 0.12;
+      animation: floatStudyIcon linear infinite;
+    }
+
+    .s-icon-1 { font-size: 8rem; top: 10%; left: 5%; animation-duration: 35s; }
+    .s-icon-2 { font-size: 12rem; bottom: 15%; left: 10%; animation-duration: 45s; animation-direction: reverse; color: var(--green); opacity: 0.1; }
+    .s-icon-3 { font-size: 18rem; top: -5%; left: 40%; animation-duration: 60s; opacity: 0.08; }
+    .s-icon-4 { font-size: 10rem; top: 30%; right: 5%; animation-duration: 40s; animation-direction: reverse; color: var(--saffron); opacity: 0.12; }
+    .s-icon-5 { font-size: 14rem; bottom: 5%; right: 15%; animation-duration: 55s; opacity: 0.1; }
+    .s-icon-6 { font-size: 6rem; top: 25%; left: 25%; animation-duration: 30s; animation-delay: 2s; }
+    .s-icon-7 { font-size: 15rem; top: -10%; right: 20%; animation-duration: 70s; opacity: 0.08; }
+    .s-icon-8 { font-size: 7rem; bottom: 10%; left: 45%; animation-duration: 35s; animation-direction: reverse; }
+
+    @keyframes floatStudyIcon {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(40px, -60px) rotate(15deg); }
+      66% { transform: translate(-30px, 30px) rotate(-10deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* Fix Nav Visibility against Light Background */
+    #navbar {
+      background: var(--navy) !important;
+      top: 0 !important;
+      padding: 10px 0 !important;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="testing-banner">
+    <p data-i18n="testing-banner">⚠️ This is a testing version of the website. Some features may be under development.
+    </p>
+  </div>
+
+  <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <div id="languageModal" class="lang-modal">
+    <div class="lang-modal-content">
+      <div class="lang-modal-header">
+        <img src="assets/images/logo.png" alt="School Logo" />
+        <h2 data-i18n="lang-modal-title">Select Language / भाषा चुनें</h2>
+        <p data-i18n="lang-modal-desc">Please select your preferred language to continue.</p>
+      </div>
+      <div class="lang-options">
+        <button class="lang-btn" data-lang="en">
+          <span class="lang-icon">🇺🇸</span>
+          <span class="lang-name" data-i18n="lang-en">English</span>
+        </button>
+        <button class="lang-btn" data-lang="hi">
+          <span class="lang-icon">🇮🇳</span>
+          <span class="lang-name" data-i18n="lang-hi">हिंदी (Hindi)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html#hero" class="nav-logo" aria-label="School home">
+        <img src="assets/images/logo.png" alt="Dr. A.P.J. Abdul Kalam Inter College Logo" />
+        <div class="nav-logo-text">
+          <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
+          <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
+        </div>
+      </a>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="index.html#hero" data-i18n="nav-home">Home</a></li>
+        <li><a class="nav-link" href="index.html#about" data-i18n="nav-about">About</a></li>
+        <li><a class="nav-link" href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
+        <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
+        <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
+        <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
+        <li><a class="nav-link lang-toggle" id="langToggle" href="javascript:void(0)" aria-label="Change Language"><i
+              class="fas fa-globe"></i></a></li>
+        <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="study-hub-section">
+    <!-- Floating Background Educational Icons -->
+    <div class="study-bg-graphics" aria-hidden="true">
+      <i class="fas fa-book-open study-icon s-icon-1"></i>
+      <i class="fas fa-flask study-icon s-icon-2"></i>
+      <i class="fas fa-atom study-icon s-icon-3"></i>
+      <i class="fas fa-telescope study-icon s-icon-4"></i>
+      <i class="fas fa-graduation-cap study-icon s-icon-5"></i>
+      <i class="fas fa-microscope study-icon s-icon-6"></i>
+      <i class="fas fa-globe-asia study-icon s-icon-7"></i>
+      <i class="fas fa-square-root-variable study-icon s-icon-8"></i>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 5;">
+      <div class="section-title fade-up">
+        <span class="label" data-i18n="study-label">Explore</span>
+        <h2 data-i18n="study-title">Interactive Study Hub</h2>
+        <div class="title-line"></div>
+        <p data-i18n="study-desc">Discover the wonders of the universe and the building blocks of matter through our
+          interactive learning modules.</p>
+      </div>
+
+      <div class="study-grid fade-up">
+        <!-- Solar System Card -->
+        <div class="study-card">
+          <div class="card-img solar-img">
+            <i class="fas fa-planet-ringed"></i> 🪐
+          </div>
+          <div class="card-content">
+            <span class="learning-badge" data-i18n="tag-astronomy">Astronomy</span>
+            <h3 data-i18n="study-solar-title">Solar System</h3>
+            <p data-i18n="study-solar-desc">Take a journey through space and explore the planets of our solar system
+              with interactive 3D visualizations and detailed facts.</p>
+            <a href="solar-system.html" class="btn-study" data-i18n="study-solar-btn">Launch Explorer <i
+                class="fas fa-rocket"></i></a>
+          </div>
+        </div>
+
+        <!-- Periodic Table Card -->
+        <div class="study-card">
+          <div class="card-img periodic-img">
+            <i class="fas fa-vial-circle-check"></i> ⚛️
+          </div>
+          <div class="card-content">
+            <span class="learning-badge" style="background:rgba(46,125,50,0.1);color:var(--green);"
+              data-i18n="tag-chemistry">Chemistry</span>
+            <h3 data-i18n="study-periodic-title">Periodic Table</h3>
+            <p data-i18n="study-periodic-desc">Dive into chemistry with a fully interactive periodic table. Discover
+              element properties, highlight categories, and learn atomic structures.</p>
+            <a href="periodic-table.html" class="btn-study" data-i18n="study-periodic-btn">Launch Table <i
+                class="fas fa-flask"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="School Logo" />
+            <div class="footer-logo-text">
+              <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
+              <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
+            </div>
+          </div>
+          <p data-i18n="foot-desc">Inspiring young minds with quality education rooted in Indian values and modern
+            knowledge, building leaders
+            for a better tomorrow.</p>
+          <div class="footer-motto" data-i18n="foot-motto">श्रद्धावान लभते ज्ञानम्</div>
+          <div class="social-links">
+            <a class="social-link" target="_blank" href="https://www.facebook.com/profile.php?id=100090759948402"
+              aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a class="social-link" target="_blank" href="https://www.youtube.com/@drapjakicbjb" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+            <a class="social-link" target="_blank" href="https://wa.me/919454242284" aria-label="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+            <a class="social-link" target="_blank" href="https://www.instagram.com/drapjakicbjb"
+              aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a class="social-link" target="_blank" href="https://x.com/drapjakicbjb" aria-label="Twitter/X"><i
+                class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="foot-quick-links">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#hero" data-i18n="nav-home">Home</a></li>
+            <li><a href="index.html#about" data-i18n="nav-about">About School</a></li>
+            <li><a href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
+            <li><a href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
+            <li><a href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
+            <li><a href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
+            <li><a href="study.html" data-i18n="nav-study">Study Hub</a></li>
+            <li><a href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="foot-programmes">Programmes</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#academics" data-i18n="acad-primary-title">Primary School (Pre KG–V)</a></li>
+            <li><a href="index.html#academics" data-i18n="acad-middle-title">Middle School (VI–VIII)</a></li>
+            <li><a href="index.html#academics" data-i18n="acad-secondary-title">Secondary (IX–X)</a></li>
+            <li><a href="index.html#academics" data-i18n="acad-higher-title">Higher School (XI–XII)</a></li>
+            <li><a href="index.html#academics" data-i18n="acad-co-curr-title">Co-curricular</a></li>
+            <li><a href="index.html#admissions" data-i18n="adm-label">Admission Process</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="foot-contact-info">Contact Info</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span data-i18n="con-addr-desc">Belwariya Jungle, Basti, Uttar Pradesh — 272161</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 9839252505</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>drapjakicbjb@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-clock"></i>
+            <span data-i18n="con-hours-desc">Mon–Sat: 9:00 AM – 3:30 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p data-i18n="foot-rights">&copy; 2026 Dr. A.P.J. Abdul Kalam Inter College, Belwariya Jungle, Basti, U.P. All
+          rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
