@@ -7,7 +7,7 @@
   <meta name="description"
     content="Dr. A.P.J. Abdul Kalam Inter College - Study Hub. Explore the Solar System and Periodic Table." />
   <meta name="keywords" content="Study, Solar System, Periodic Table, Interactive Learning" />
-  <title>Study Hub | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <title data-i18n="study-page-title">Study Hub | Dr. A.P.J. Abdul Kalam Inter College</title>
   <link rel="icon" type="image/png" href="assets/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -210,6 +210,28 @@
       padding: 10px 0 !important;
       box-shadow: 0 4px 30px rgba(0,0,0,0.05);
     }
+
+    .subject-section {
+      margin-bottom: 60px;
+    }
+    
+    .subject-title {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(13, 27, 42, 0.08);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    
+    .subject-title i {
+      color: var(--saffron);
+      font-size: 1.6rem;
+    }
   </style>
 </head>
 
@@ -264,8 +286,7 @@
         <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
         <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
         <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
-        <li><a class="nav-link lang-toggle" id="langToggle" href="javascript:void(0)" aria-label="Change Language"><i
-              class="fas fa-globe"></i></a></li>
+
         <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -296,38 +317,98 @@
           interactive learning modules.</p>
       </div>
 
-      <div class="study-grid fade-up">
-        <!-- Solar System Card -->
-        <div class="study-card">
-          <div class="card-img solar-img">
-            <i class="fas fa-planet-ringed"></i> 🪐
-          </div>
-          <div class="card-content">
-            <span class="learning-badge" data-i18n="tag-astronomy">Astronomy</span>
-            <h3 data-i18n="study-solar-title">Solar System</h3>
-            <p data-i18n="study-solar-desc">Take a journey through space and explore the planets of our solar system
-              with interactive 3D visualizations and detailed facts.</p>
-            <a href="solar-system.html" class="btn-study" data-i18n="study-solar-btn">Launch Explorer <i
-                class="fas fa-rocket"></i></a>
-          </div>
-        </div>
-
-        <!-- Periodic Table Card -->
-        <div class="study-card">
-          <div class="card-img periodic-img">
-            <i class="fas fa-vial-circle-check"></i> ⚛️
-          </div>
-          <div class="card-content">
-            <span class="learning-badge" style="background:rgba(46,125,50,0.1);color:var(--green);"
-              data-i18n="tag-chemistry">Chemistry</span>
-            <h3 data-i18n="study-periodic-title">Periodic Table</h3>
-            <p data-i18n="study-periodic-desc">Dive into chemistry with a fully interactive periodic table. Discover
-              element properties, highlight categories, and learn atomic structures.</p>
-            <a href="periodic-table.html" class="btn-study" data-i18n="study-periodic-btn">Launch Table <i
-                class="fas fa-flask"></i></a>
+      <div class="subject-section fade-up">
+        <h3 class="subject-title">
+          <i class="fas fa-telescope"></i> 
+          <span data-i18n="subj-astronomy">Astronomy & Space</span>
+        </h3>
+        <div class="study-grid">
+          <!-- Solar System Card -->
+          <div class="study-card">
+            <div class="card-img solar-img">
+              <i class="fas fa-planet-ringed"></i> 🪐
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" data-i18n="tag-astronomy">Astronomy</span>
+              <h3 data-i18n="study-solar-title">Solar System</h3>
+              <p data-i18n="study-solar-desc">Take a journey through space and explore the planets of our solar system
+                with interactive visualizations and detailed facts.</p>
+              <a href="solar-system.html" class="btn-study" data-i18n="study-solar-btn">Launch Explorer <i
+                  class="fas fa-rocket"></i></a>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="subject-section fade-up" style="animation-delay: 0.2s">
+        <h3 class="subject-title">
+          <i class="fas fa-flask"></i> 
+          <span data-i18n="subj-chemistry">Chemistry & Elements</span>
+        </h3>
+        <div class="study-grid">
+          <!-- Periodic Table Card -->
+          <div class="study-card">
+            <div class="card-img periodic-img">
+              <i class="fas fa-vial-circle-check"></i> ⚛️
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(46,125,50,0.1);color:var(--green);"
+                data-i18n="tag-chemistry">Chemistry</span>
+              <h3 data-i18n="study-periodic-title">Periodic Table</h3>
+              <p data-i18n="study-periodic-desc">Dive into chemistry with a fully interactive periodic table. Discover
+                element properties, highlight categories, and learn atomic structures.</p>
+              <a href="periodic-table.html" class="btn-study" data-i18n="study-periodic-btn">Launch Table <i
+                  class="fas fa-flask"></i></a>
+            </div>
+          </div>
+      </div>
+      
+      <div class="subject-section fade-up" style="animation-delay: 0.4s">
+        <h3 class="subject-title">
+          <i class="fas fa-magnet"></i> 
+          <span data-i18n="subj-physics">Physics & Optics</span>
+        </h3>
+        <div class="study-grid">
+          <!-- Lens Simulator Card -->
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+              <i class="fas fa-glasses" style="font-size: 3rem; color: white; opacity: 0.8;"></i> 👓
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(255,107,0,0.1);color:var(--saffron);"
+                data-i18n="tag-physics">Physics</span>
+              <h3 data-i18n="study-optics-title">Lens Simulator</h3>
+              <p data-i18n="study-optics-desc">Explore the behavior of light with an interactive lens simulator. Understand focal points, real/virtual images, and magnification.</p>
+              <a href="optics-simulator.html" class="btn-study" data-i18n="study-optics-btn">Launch Lens <i
+                  class="fas fa-eye"></i></a>
+            </div>
+          </div>
+
+          <!-- Mirror Simulator Card -->
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #4b134f 0%, #c94b4b 100%);">
+              <i class="fas fa-magic" style="font-size: 3rem; color: white; opacity: 0.8;"></i> 🪞
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(255,107,0,0.1);color:var(--saffron);"
+                data-i18n="tag-physics">Physics</span>
+              <h3 data-i18n="mirror-title">Mirror Simulator</h3>
+              <p data-i18n="mirror-desc">Explore light reflection with an interactive mirror simulator. Understand focal points and virtual images.</p>
+              <a href="mirror-simulator.html" class="btn-study" data-i18n="study-mirror-btn">Launch Mirror <i
+                  class="fas fa-magic"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="coming-soon-banner fade-up" style="animation-delay: 0.6s; text-align: center; margin-top: 50px; padding: 25px; background: rgba(255, 255, 255, 0.7); border-radius: 12px; border: 2px dashed rgba(13, 27, 42, 0.15);">
+        <p style="color: var(--navy); font-weight: 600; font-size: 1.1rem; margin: 0;">
+          <i class="fas fa-rocket" style="color: var(--saffron); margin-right: 10px; font-size: 1.2rem;"></i>
+          More interactive simulations will be added soon!<br>
+          <span style="font-size: 0.95em; margin-top: 8px; display: inline-block;">जल्द ही और अधिक इंटरैक्टिव सिमुलेशन जोड़े जाएंगे!</span>
+        </p>
+      </div>
+
     </div>
   </section>
 

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dr. A.P.J. Abdul Kalam Inter College - Optics Lens Simulator. Learn physics with our interactive ray tracing tool." />
+  <title>Mirror Simulator | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    body {
+      background: #f8fbff;
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    .optics-header {
+      padding: 120px 24px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: var(--navy);
+      color: white;
+    }
+
+    .optics-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .optics-header p {
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 10px auto;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 120px;
+      left: 24px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .back-btn:hover { background: var(--saffron); color: white; }
+
+    .optics-app-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .optics-viewer {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: auto;
+      background: #fafcff;
+      border: 1px solid #e0e6ed;
+      border-radius: var(--radius-md);
+    }
+
+    .optics-panel {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 25px;
+    }
+
+    .optics-panel h3 {
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid rgba(13,27,42,0.1);
+      padding-bottom: 10px;
+    }
+
+    .optics-panel h3 i {
+      color: var(--saffron);
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .control-group label span.value {
+      color: var(--saffron);
+    }
+
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--saffron);
+    }
+
+    .toggle-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #e0e6ed;
+      background: #f8fbff;
+      color: var(--text-medium);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .toggle-btn.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+      box-shadow: 0 4px 10px rgba(13,27,42,0.2);
+    }
+
+    .readout-box {
+      background: #f1f5fa;
+      border-radius: var(--radius-md);
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .readout-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      border-bottom: 1px dashed rgba(0,0,0,0.1);
+      padding-bottom: 5px;
+    }
+    
+    .readout-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .readout-item strong { color: var(--navy); }
+    .readout-item span { font-family: monospace; font-size: 1rem; color: #E65100; font-weight: 600;}
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .optics-app-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="testing-banner">
+    <p data-i18n="testing-banner">⚠️ This is a testing version of the website. Some features may be under development.</p>
+  </div>
+
+  <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <div id="languageModal" class="lang-modal">
+    <div class="lang-modal-content">
+      <!-- ... -->
+      <div class="lang-options">
+        <button class="lang-btn" data-lang="en"><span class="lang-icon">🇺🇸</span><span class="lang-name">English</span></button>
+        <button class="lang-btn" data-lang="hi"><span class="lang-icon">🇮🇳</span><span class="lang-name">हिंदी (Hindi)</span></button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <header class="optics-header">
+    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="back-study">Back to Study Hub</span></a>
+    <h1 data-i18n="mirror-title">Mirror Simulator</h1>
+    <p data-i18n="mirror-desc">Explore light reflection, real and virtual images, and focal points using interactive ray tracing.</p>
+  </header>
+
+  <section class="optics-app-container">
+    <div class="optics-viewer">
+      <canvas id="optics-canvas" width="800" height="500"></canvas>
+    </div>
+
+    <div class="optics-panel">
+      <h3 data-i18n="optics-controls-title"><i class="fas fa-sliders"></i> Simulation Controls</h3>
+      
+
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="btn-convex" data-i18n="optics-type-convex">Convex</button>
+        <button class="toggle-btn" id="btn-concave" data-i18n="optics-type-concave">Concave</button>
+      </div>
+
+      <div class="control-group">
+        <label><span data-i18n="optics-focal">Focal Length (f)</span> <span><span class="value" id="val-focal">100</span> cm</span></label>
+        <input type="range" id="range-focal" min="40" max="250" value="100" step="1">
+      </div>
+
+      <div class="control-group">
+        <label><span data-i18n="optics-obj-dist">Object Distance (u)</span> <span><span class="value" id="val-dist">150</span> cm</span></label>
+        <input type="range" id="range-dist" min="20" max="400" value="150" step="1">
+      </div>
+
+      <div class="control-group">
+        <label><span data-i18n="optics-obj-height">Object Height (h)</span> <span><span class="value" id="val-height">50</span> cm</span></label>
+        <input type="range" id="range-height" min="10" max="150" value="50" step="1">
+      </div>
+
+      <div class="readout-box">
+        <h3 data-i18n="optics-results-title" style="border-bottom:none; margin-bottom:10px; font-size:1.1rem;"><i class="fas fa-calculator"></i> Results</h3>
+        <div class="readout-item"><span data-i18n="optics-img-dist">Image Distance (v)</span> <span><span id="res-v">0</span> cm</span></div>
+        <div class="readout-item"><span data-i18n="optics-magnification">Magnification (m)</span> <span id="res-m">0</span></div>
+        <div class="readout-item"><span data-i18n="optics-img-height">Image Height (h')</span> <span><span id="res-h">0</span> cm</span></div>
+        <div class="readout-item"><span data-i18n="optics-nature">Nature</span> <strong id="res-nature">Real</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/mirror-simulator.js"></script>
+</body>
+</html>
