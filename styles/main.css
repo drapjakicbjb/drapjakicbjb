@@ -2214,7 +2214,26 @@ footer {
   }
 
   .nav-logo-text {
-    display: none;
+    display: flex;
+  }
+
+  .nav-logo-text span:first-child {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .nav-logo-text span:last-child {
+    font-size: 0.65rem;
+  }
+
+  .nav-logo img {
+    width: 45px;
+    height: 45px;
+    transform: translateY(0);
+  }
+
+  .nav-logo {
+    gap: 8px;
   }
 
   .contact-form {

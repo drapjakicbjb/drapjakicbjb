@@ -1,7 +1,7 @@
 const NOTICES = [
   {
     id: 10,
-    title: "UP Board Registration for Classes Class 9 and 11 (Session 2026-27)",
+    title: "UP Board Registration for Class 9 and 11 (Session 2026-27)",
     date: "July 09, 2026",
     category: "admission",
     isImportant: true,
@@ -14,7 +14,7 @@ const NOTICES = [
     date: "March 10, 2026",
     category: "admission",
     isImportant: true,
-    fileUrl: "#",
+    fileUrl: "",
     content: "Registrations for new admissions from Nursery to Class 11 for the academic year 2026-27 have commenced. Registration forms can be collected from the school counter or downloaded online."
   },
 ];
