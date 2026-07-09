@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Link Hub | Connecting Students Digitally</title>
+    <meta name="description" content="Access all important school platform links from one place including Google Classroom, Youtube, and more.">
+    <!-- Google Fonts: Manrope & Be Vietnam Pro defined in Stitch MCP Design System -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="new_logo.png">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H66T5B8YBZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H66T5B8YBZ');
+</script>
+<body>
+    <!-- Top Government Banner -->
+    <div class="top-gov-banner-wrapper">
+      <div class="top-gov-banner">
+        <div class="banner-left">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="Flag of India">
+          <span>An official website of the Dr. A.P.J. Abdul Kalam Inter College</span>
+        </div>
+        <button class="banner-toggle" id="govBannerToggle" aria-expanded="false">
+          Here's how you know <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+      
+      <div class="banner-dropdown" id="govBannerDropdown">
+        <div class="dropdown-content">
+          <div class="dropdown-col">
+            <div class="col-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <div class="col-text">
+              <h6>Official websites use .ac.in or .gov.in</h6>
+              <p>The <strong>.ac.in</strong> (academic) or <strong>.gov.in</strong> domain name belongs to recognized academic institutions or government organizations in India. For example, our school domain is <strong>drapjakicbjb.ac.in</strong>, which officially confirms its relation to verified education and academics.</p>
+            </div>
+          </div>
+          <div class="dropdown-col">
+            <div class="col-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="col-text">
+              <h6>Secure connection (HTTPS)</h6>
+              <p>The <strong>https://</strong> at the start of the address indicates a secure connection. Any data sent is encrypted and protected against interception.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-image-group" id="nav-logo-group">
+                    <img src="rsy_logo.png" alt="RSY Logo" class="nav-logo-img">
+                    <img src="new_logo.png" alt="School Hub Logo" class="nav-logo-img">
+                    <img src="dal_sringari_logo-removebg-preview.png" alt="Dal Sringari Logo" class="nav-logo-img">
+                </span>
+                School Link Hub
+            </a>
+            <a href="../linkhub.html" onclick="if(document.referrer) { history.back(); return false; }" class="nav-back-link"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content fade-in">
+                <h1>Connecting Students Digitally</h1>
+                <p>Welcome to your central digital atrium. Access all your learning platforms, communication channels, and important resources in one unified hub.</p>
+                <div class="hero-buttons">
+                    <a href="#platforms" class="btn btn-primary">Explore Platforms <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Added some floating shape decorations based on the design system -->
+            <div class="hero-decor shape-1"></div>
+            <div class="hero-decor shape-2"></div>
+        </section>
+
+        <!-- Platforms Section -->
+        <section class="platforms" id="platforms">
+            <div class="section-header fade-in">
+                <h2>Digital Platforms</h2>
+                <p>Quick access to all essential school services</p>
+            </div>
+            
+            <div class="search-container fade-in">
+                <div class="search-box">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="text" id="platform-search" placeholder="Search platforms... (e.g. Google Classroom)">
+                </div>
+            </div>
+
+            <div class="grid" id="platform-grid">
+                <!-- Platform Cards will be injected by JavaScript -->
+            </div>
+        </section>        <!-- Location Section -->
+        <section class="location-section fade-in" id="location">
+            <div class="section-header">
+                <h2>Visit Our Campus</h2>
+                <p>Located in the heart of Belwariya Jungle, Gaur Basti. Find us easily using the map below.</p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3555.7094684117587!2d82.58243408078687!3d26.976098316298515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3990cb99a6ad1123%3A0x3ddb2f6435fa3670!2sDr.A.P.J.Abdul%20Kalam%20Inter%20College%20Belwariya%20Jungle%20Gaur%20Basti!5e0!3m2!1sen!2sin!4v1775527882573!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <span class="logo-image-group" id="footer-logo-group">
+                        <img src="rsy_logo.png" alt="RSY Logo" class="nav-logo-img">
+                        <img src="dal_sringari_logo-removebg-preview.png" alt="Dal Sringari Logo" class="nav-logo-img">
+                        <img src="new_logo.png" alt="School Hub Logo" class="nav-logo-img">
+                    </span>
+                    School Link Hub
+                </a>
+                <p>Empowering the next generation through connected digital learning.</p>
+            </div>
+            
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100090759948402" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://twitter.com/drapjakicbjb" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://instagram.com/drapjakicbjb" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com/drapjakicbjb" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 School Link Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Logos for Scroll Animation -->
+    <div id="floating-logos" style="position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transform-origin: center center; will-change: transform, opacity;">
+        <img src="rsy_logo.png" alt="RSY Logo" class="nav-logo-img">
+        <img src="new_logo.png" alt="School Hub Logo" class="nav-logo-img">
+        <img src="dal_sringari_logo-removebg-preview.png" alt="Dal Sringari Logo" class="nav-logo-img">
+    </div>
+
+    <!-- Floating Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle floating-theme-btn" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
