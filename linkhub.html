@@ -33,6 +33,41 @@
       position: relative;
     }
 
+    .interactive-cta-container {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .btn-interactive-hub {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--saffron) 0%, #ff8c42 100%);
+      color: white !important;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-interactive-hub:hover {
+      background: white !important;
+      color: var(--navy) !important;
+      box-shadow: 0 15px 30px rgba(255, 107, 0, 0.4);
+      transform: translateY(-3px);
+      border-color: var(--saffron);
+    }
+    
+    .btn-interactive-hub i {
+      font-size: 0.95rem;
+    }
+
     .link-hub-grid {
       max-width: 1200px;
       margin: -60px auto 100px;
@@ -111,19 +146,24 @@
 
 <body>
 
-  <div id="loader">
+  <!-- <div id="loader">
     <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
     <p class="loader-text">Loading&hellip;</p>
     <div class="loader-bar">
       <div class="loader-bar-fill"></div>
     </div>
-  </div>
+  </div> -->
 
   <div id="header-placeholder"></div>
 
   <header class="link-hub-hero">
-    <h1 data-i18n="nav-links">Link Hub</h1>
+    <h1>Link Hub</h1>
     <p>Central Access to All School Portals & Digital Resources</p>
+    <div class="interactive-cta-container">
+      <a href="linktree/linktree.html" class="btn-interactive-hub">
+        <i class="fas fa-external-link-alt"></i> Try our Interactive Link Hub Portal
+      </a>
+    </div>
   </header>
 
   <main class="link-hub-grid">
@@ -148,17 +188,16 @@
     <div class="link-category">
       <h2><i class="fas fa-bullhorn"></i> Important Links</h2>
       <ul class="link-list">
-        <li class="link-item"><a href="#">Latest Notice Board <i class="fas fa-chevron-right"></i></a></li>
-        <li class="link-item"><a href="#">Holiday Calendar <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="noticeboard.html">Latest Notice Board <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="holidays.html">Holiday Calendar <i class="fas fa-chevron-right"></i></a></li>
         <li class="link-item"><a href="#">Fee Payment Portal <i class="fas fa-chevron-right"></i></a></li>
       </ul>
     </div>
   </main>
 
   <div id="footer-placeholder"></div>
-
-  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 
 </html>
+

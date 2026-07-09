@@ -191,19 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
         tableContainer.appendChild(item);
     });
 
-    // Handle initial language for names
-    updateElementNames();
+
 
     function showElementDetails(el) {
-        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
-        const data = el[currentLang];
+        const data = el.en;
         
-        const labels = {
-            en: { num: 'Atomic Number', mass: 'Atomic Mass', cat: 'Category', elec: 'Electrons' },
-            hi: { num: 'परमाणु क्रमांक', mass: 'परमाणु द्रव्यमान', cat: 'श्रेणी', elec: 'इलेक्ट्रॉन' }
-        };
-        const l = labels[currentLang];
-        const categoryName = categoryLabels[el.type] ? categoryLabels[el.type][currentLang] : el.type;
+        const labels = { num: 'Atomic Number', mass: 'Atomic Mass', cat: 'Category', elec: 'Electrons' };
+        const categoryName = categoryLabels[el.type] ? categoryLabels[el.type].en : el.type;
 
         const shells = electronShells[el.num - 1] || [];
         let atomHtml = `<div class="atom-container"><div class="nucleus">${el.sym}</div>`;
@@ -232,10 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ${atomHtml}
             <div class="el-modal-info">
                 <h3 style="text-align: center; color: white; margin-bottom: 20px; font-size: 1.5rem; letter-spacing: 1px; border-bottom: 1px dashed rgba(255,255,255,0.15); padding-bottom: 15px;">${data.name}</h3>
-                <p><strong>${l.num}:</strong> ${el.num}</p>
-                <p><strong>${l.mass}:</strong> ${el.mass} u</p>
-                <p><strong>${l.cat}:</strong> ${categoryName}</p>
-                <p><strong>${l.elec}:</strong> ${shells.join(', ')}</p>
+                <p><strong>${labels.num}:</strong> ${el.num}</p>
+                <p><strong>${labels.mass}:</strong> ${el.mass} u</p>
+                <p><strong>${labels.cat}:</strong> ${categoryName}</p>
+                <p><strong>${labels.elec}:</strong> ${shells.join(', ')}</p>
             </div>
         `;
         
@@ -286,23 +280,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    function updateElementNames() {
-        const lang = localStorage.getItem('preferredLanguage') || 'en';
-        document.querySelectorAll('.el-name').forEach(nameSpan => {
-            nameSpan.textContent = nameSpan.getAttribute(`data-${lang}`);
-        });
-        
-        // Update details panel if open
-        if (detailsPanel.classList.contains('active')) {
-            detailsPanel.classList.remove('active'); // Simply close it to avoid stale data
-        }
-    }
-
-    // Listen to main navigation language toggles
-    const langBtns = document.querySelectorAll('.lang-btn');
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setTimeout(updateElementNames, 100);
-        });
-    });
 });

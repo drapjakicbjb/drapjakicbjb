@@ -194,9 +194,9 @@
 
 
   <header class="optics-header">
-    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="back-study">Back to Study Hub</span></a>
-    <h1 data-i18n="optics-title">Optics Simulator</h1>
-    <p data-i18n="optics-desc">Explore light refraction, real and virtual images, and focal points using interactive ray tracing.</p>
+    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <h1>Optics Simulator</h1>
+    <p>Explore light refraction, real and virtual images, and focal points using interactive ray tracing.</p>
   </header>
 
   <section class="optics-app-container">
@@ -205,45 +205,42 @@
     </div>
 
     <div class="optics-panel">
-      <h3 data-i18n="optics-controls-title"><i class="fas fa-sliders"></i> Simulation Controls</h3>
+      <h3><i class="fas fa-sliders"></i> Simulation Controls</h3>
       
 
       <div class="toggle-group">
-        <button class="toggle-btn active" id="btn-convex" data-i18n="optics-type-convex">Convex</button>
-        <button class="toggle-btn" id="btn-concave" data-i18n="optics-type-concave">Concave</button>
+        <button class="toggle-btn active" id="btn-convex">Convex</button>
+        <button class="toggle-btn" id="btn-concave">Concave</button>
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="optics-focal">Focal Length (f)</span> <span><span class="value" id="val-focal">100</span> cm</span></label>
+        <label><span>Focal Length (f)</span> <span><span class="value" id="val-focal">100</span> cm</span></label>
         <input type="range" id="range-focal" min="40" max="250" value="100" step="1">
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="optics-obj-dist">Object Distance (u)</span> <span><span class="value" id="val-dist">150</span> cm</span></label>
+        <label><span>Object Distance (u)</span> <span><span class="value" id="val-dist">150</span> cm</span></label>
         <input type="range" id="range-dist" min="20" max="400" value="150" step="1">
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="optics-obj-height">Object Height (h)</span> <span><span class="value" id="val-height">50</span> cm</span></label>
+        <label><span>Object Height (h)</span> <span><span class="value" id="val-height">50</span> cm</span></label>
         <input type="range" id="range-height" min="10" max="150" value="50" step="1">
       </div>
 
       <div class="readout-box">
-        <h3 data-i18n="optics-results-title" style="border-bottom:none; margin-bottom:10px; font-size:1.1rem;"><i class="fas fa-calculator"></i> Results</h3>
-        <div class="readout-item"><span data-i18n="optics-img-dist">Image Distance (v)</span> <span><span id="res-v">0</span> cm</span></div>
-        <div class="readout-item"><span data-i18n="optics-magnification">Magnification (m)</span> <span id="res-m">0</span></div>
-        <div class="readout-item"><span data-i18n="optics-img-height">Image Height (h')</span> <span><span id="res-h">0</span> cm</span></div>
-        <div class="readout-item"><span data-i18n="optics-nature">Nature</span> <strong id="res-nature">Real</strong></div>
+        <h3 style="border-bottom:none; margin-bottom:10px; font-size:1.1rem;"><i class="fas fa-calculator"></i> Results</h3>
+        <div class="readout-item"><span>Image Distance (v)</span> <span><span id="res-v">0</span> cm</span></div>
+        <div class="readout-item"><span>Magnification (m)</span> <span id="res-m">0</span></div>
+        <div class="readout-item"><span>Image Height (h')</span> <span><span id="res-h">0</span> cm</span></div>
+        <div class="readout-item"><span>Nature</span> <strong id="res-nature">Real</strong></div>
       </div>
     </div>
   </section>
-
-  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <!-- <div id="footer-placeholder"></div> -->
-
-  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script src="js/optics-simulator.js"></script>
 </body>
 </html>
+

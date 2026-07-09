@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Calendar & Holidays 2026-27 - Dr. A.P.J. Abdul Kalam Inter College</title>
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <style>
+    :root {
+      --primary-color: #0A192F;
+      --accent-color: #FF6B00;
+      --bg-light: #F8F9FA;
+      --border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-light);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Hero Header */
+    .holiday-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #172A45 100%);
+      color: white;
+      text-align: center;
+      padding: 150px 20px 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .holiday-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .holiday-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 0 0 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .holiday-hero p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    /* Main Container */
+    .holiday-container {
+      max-width: 1100px;
+      margin: -40px auto 80px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Controls Bar */
+    .calendar-controls {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: 1rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 14px 14px 14px 48px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #f1f3f5;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #495057;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    /* Table & Cards */
+    .holiday-list {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .holiday-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .holiday-list-table th {
+      background-color: #f8f9fa;
+      color: var(--primary-color);
+      font-weight: 700;
+      padding: 20px 25px;
+      font-size: 0.95rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .holiday-list-table td {
+      padding: 22px 25px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .holiday-row:hover {
+      background-color: rgba(255, 107, 0, 0.02);
+    }
+
+    .holiday-date {
+      font-weight: 700;
+      color: var(--primary-color);
+      white-space: nowrap;
+    }
+
+    .holiday-day {
+      color: #666;
+      font-size: 0.85rem;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .holiday-name {
+      font-weight: 600;
+      color: #111;
+      font-size: 1.05rem;
+    }
+
+    .holiday-type {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .type-festival {
+      background-color: rgba(255, 107, 0, 0.1);
+      color: var(--accent-color);
+    }
+
+    .type-national {
+      background-color: rgba(10, 25, 47, 0.1);
+      color: var(--primary-color);
+    }
+
+    .type-vacation {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: #28a745;
+    }
+
+    .moon-notice {
+      font-size: 0.8rem;
+      color: #ef4444;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Info Callout */
+    .calendar-info {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .info-card h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card h3 i {
+      color: var(--accent-color);
+    }
+
+    .info-card ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .info-card li {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .no-results {
+      padding: 40px;
+      text-align: center;
+      color: #777;
+      display: none;
+    }
+
+    .no-results i {
+      font-size: 3rem;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    /* Mobile Responsive Card Layout */
+    @media (max-width: 768px) {
+      .holiday-hero h1 { font-size: 2.2rem; }
+      .holiday-list-table thead { display: none; }
+      .holiday-list-table, .holiday-list-table tbody, .holiday-list-table tr, .holiday-list-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .holiday-row {
+        border-bottom: 2px solid var(--border-color);
+        padding: 15px 5px;
+      }
+      .holiday-list-table td {
+        border: none;
+        padding: 8px 20px;
+      }
+      .holiday-list-table td:first-child {
+        padding-top: 15px;
+      }
+      .holiday-list-table td:last-child {
+        padding-bottom: 15px;
+      }
+      .holiday-day {
+        display: inline;
+        margin-left: 8px;
+      }
+      .calendar-info {
+        grid-template-columns: 1fr;
+      }
+      .calendar-controls {
+        padding: 15px;
+      }
+    }
+
+    /* Back Button styling */
+    .back-btn-container {
+      margin-top: 60px; /* Pushes it down below the sticky header */
+      margin-bottom: 20px;
+      display: flex;
+    }
+
+    .back-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 10px 20px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(5px);
+    }
+
+    .back-link-btn:hover {
+      color: white;
+      border-color: var(--accent-color);
+      background: var(--accent-color);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    }
+
+    /* Calendar Notice */
+    .calendar-notice {
+      background: rgba(255, 107, 0, 0.05);
+      border-left: 4px solid var(--accent-color);
+      padding: 15px 25px;
+      border-radius: 0 16px 16px 0;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .calendar-notice i {
+      color: var(--accent-color);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .calendar-notice p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Loading Animation Overlay -->
+  <!-- <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div> -->
+
+  <!-- Header Placeholder (Injected via main.js) -->
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Header -->
+  <header class="holiday-hero">
+    <div class="back-btn-container">
+      <a href="linkhub.html" onclick="if(document.referrer) { history.back(); return false; }" class="back-link-btn"><i class="fas fa-arrow-left"></i> Back</a>
+    </div>
+    <h1>Academic Leaves &amp; Holidays</h1>
+    <p>Holiday list and seasonal break calendar for the academic session 2026-27. Plan your studies and activities ahead.</p>
+  </header>
+
+  <!-- Main Holiday Calendar -->
+  <main class="holiday-container">
+    
+    <div class="calendar-notice">
+      <i class="fas fa-info-circle"></i>
+      <p><strong>Note:</strong> The holiday dates published here are subject to official UPMSP guidelines and local district administration orders. Actual school leaves announced for students may differ due to local conditions, severe weather, or administrative notifications.</p>
+    </div>
+    
+    <!-- Controls (Search & Filter) -->
+    <div class="calendar-controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="holidaySearch" placeholder="Search holidays (e.g., Holi, Diwali, Summer)...">
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterHolidays('all')">All Leaves</button>
+        <button class="filter-btn" onclick="filterHolidays('festival')">Festivals</button>
+        <button class="filter-btn" onclick="filterHolidays('national')">National</button>
+        <button class="filter-btn" onclick="filterHolidays('vacation')">Vacations</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="holiday-list">
+      <table class="holiday-list-table" id="holidayTable">
+        <thead>
+          <tr>
+            <th style="width: 25%">Date</th>
+            <th style="width: 45%">Occasion</th>
+            <th style="width: 30%">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 2026 Holidays -->
+          <tr class="holiday-row" data-type="national">
+            <td>
+              <span class="holiday-date">Aug 15, 2026</span>
+              <span class="holiday-day">Saturday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Independence Day</span>
+            </td>
+            <td>
+              <span class="holiday-type type-national">National Holiday</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Aug 28, 2026</span>
+              <span class="holiday-day">Friday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Raksha Bandhan</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Sep 04, 2026</span>
+              <span class="holiday-day">Friday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Maha Janmashtami</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="national">
+            <td>
+              <span class="holiday-date">Oct 02, 2026</span>
+              <span class="holiday-day">Friday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Mahatma Gandhi Jayanti</span>
+            </td>
+            <td>
+              <span class="holiday-type type-national">National Holiday</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Oct 19 - 20, 2026</span>
+              <span class="holiday-day">Mon - Tue</span>
+            </td>
+            <td>
+              <span class="holiday-name">Dussehra Break (Maha Navami &amp; Vijayadashami)</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival Break</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Nov 08 - 11, 2026</span>
+              <span class="holiday-day">Sun - Wed</span>
+            </td>
+            <td>
+              <span class="holiday-name">Diwali Vacation Break (Deepawali, Govardhan Puja &amp; Bhaiya Dooj)</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival Break</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Nov 15, 2026</span>
+              <span class="holiday-day">Sunday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Chhath Puja</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Nov 24, 2026</span>
+              <span class="holiday-day">Tuesday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Guru Nanak Jayanti</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Dec 25, 2026</span>
+              <span class="holiday-day">Friday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Christmas Day</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="vacation">
+            <td>
+              <span class="holiday-date">Dec 26, 2026 - Jan 05, 2027</span>
+              <span class="holiday-day">Sat - Tue</span>
+            </td>
+            <td>
+              <span class="holiday-name">Winter Break Vacation</span>
+            </td>
+            <td>
+              <span class="holiday-type type-vacation">Seasonal Break</span>
+            </td>
+          </tr>
+          <!-- 2027 Holidays -->
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Jan 14, 2027</span>
+              <span class="holiday-day">Thursday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Makar Sankranti</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Jan 22, 2027</span>
+              <span class="holiday-day">Friday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Hazrat Ali Jayanti</span>
+              <span class="moon-notice"><i class="fas fa-moon"></i> Subject to moon sighting</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="national">
+            <td>
+              <span class="holiday-date">Jan 26, 2027</span>
+              <span class="holiday-day">Tuesday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Republic Day</span>
+            </td>
+            <td>
+              <span class="holiday-type type-national">National Holiday</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Feb 11, 2027</span>
+              <span class="holiday-day">Thursday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Basant Panchami</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Mar 06, 2027</span>
+              <span class="holiday-day">Saturday</span>
+            </td>
+            <td>
+              <span class="holiday-name">Maha Shivaratri</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="festival">
+            <td>
+              <span class="holiday-date">Mar 22 - 24, 2027</span>
+              <span class="holiday-day">Mon - Wed</span>
+            </td>
+            <td>
+              <span class="holiday-name">Holi Break (Holika Dahan &amp; Holi)</span>
+            </td>
+            <td>
+              <span class="holiday-type type-festival">Festival Break</span>
+            </td>
+          </tr>
+          <tr class="holiday-row" data-type="vacation">
+            <td>
+              <span class="holiday-date">May 21 - Jun 30, 2027</span>
+              <span class="holiday-day">Fri - Wed</span>
+            </td>
+            <td>
+              <span class="holiday-name">Summer Vacation Break (Academic Session 2027-28)</span>
+            </td>
+            <td>
+              <span class="holiday-type type-vacation">Seasonal Break</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- No Results Callout -->
+      <div class="no-results" id="noResults">
+        <i class="fas fa-calendar-times"></i>
+        <h3>No Holidays Found</h3>
+        <p>Try searching for another holiday or occasion.</p>
+      </div>
+    </div>
+
+    <!-- Supplementary Details Cards -->
+    <div class="calendar-info">
+      <div class="info-card">
+        <h3><i class="fas fa-info-circle"></i> Holiday Declarations Policy</h3>
+        <ul>
+          <li><strong>Board Affiliation:</strong> Holidays conform strictly to the directives of the Board of High School and Intermediate Education, Uttar Pradesh (UPMSP) and state government mandates.</li>
+          <li><strong>Moon Sighting:</strong> Islamic holidays marked with an asterisk (<i class="fas fa-moon"></i>) are tentative and depend entirely on the visibility of the new moon. Official confirmations will be communicated via notice board.</li>
+          <li><strong>Emergency Closures:</strong> Extreme weather (cold wave, heat wave) or government-directed administrative leaves will be notified directly through our official <a href="https://whatsapp.com/channel/0029ValVXTv5q08k3bcxT10R" target="_blank" style="color: var(--accent-color); font-weight: 600; text-decoration: underline;">WhatsApp Channel</a>.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3><i class="fas fa-sun"></i> Major Vacation Breaks</h3>
+        <ul>
+          <li><strong>Summer Break:</strong><br>May 21, 2026 to June 30, 2026</li>
+          <li><strong>Dussehra Break:</strong><br>October 19 to 20, 2026</li>
+          <li><strong>Diwali Break:</strong><br>November 08 to 11, 2026</li>
+          <li><strong>Winter Break:</strong><br>December 26, 2026 to January 05, 2027</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Scroll-triggered Scroll-To-Top Button Placeholder -->
+  <div id="scrollbar-placeholder"></div>
+
+  <!-- Footer Placeholder (Injected via main.js) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Client-Side Search & Filter Handler -->
+  <script>
+    const searchInput = document.getElementById('holidaySearch');
+    const tableRows = document.querySelectorAll('.holiday-row');
+    const noResults = document.getElementById('noResults');
+    let currentFilter = 'all';
+
+    searchInput.addEventListener('input', filterTable);
+
+    function filterHolidays(filterType) {
+      // Toggle button active state
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      currentFilter = filterType;
+      filterTable();
+    }
+
+    function filterTable() {
+      const query = searchInput.value.toLowerCase();
+      let matches = 0;
+
+      tableRows.forEach(row => {
+        const name = row.querySelector('.holiday-name').textContent.toLowerCase();
+        const date = row.querySelector('.holiday-date').textContent.toLowerCase();
+        const day = row.querySelector('.holiday-day').textContent.toLowerCase();
+        const rowType = row.getAttribute('data-type');
+
+        const queryMatch = name.includes(query) || date.includes(query) || day.includes(query);
+        const filterMatch = (currentFilter === 'all' || rowType === currentFilter);
+
+        if (queryMatch && filterMatch) {
+          row.style.display = '';
+          matches++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      // Show/Hide table header and no-results alert
+      const tableHeader = document.querySelector('.holiday-list-table thead');
+      if (matches === 0) {
+        if (tableHeader) tableHeader.style.display = 'none';
+        noResults.style.display = 'block';
+      } else {
+        if (tableHeader && window.innerWidth > 768) tableHeader.style.display = '';
+        noResults.style.display = 'none';
+      }
+    }
+  </script>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

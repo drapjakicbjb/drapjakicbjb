@@ -36,17 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const icon = btnPlayPause.querySelector('i');
             if (isPaused) {
                 icon.className = 'fas fa-play';
-                textPlayPause.setAttribute('data-i18n', 'pen-play');
                 textPlayPause.textContent = 'Play Simulation';
                 btnPlayPause.style.background = '#2e7d32';
             } else {
                 icon.className = 'fas fa-pause';
-                textPlayPause.setAttribute('data-i18n', 'pen-pause');
                 textPlayPause.textContent = 'Pause Simulation';
                 btnPlayPause.style.background = '#bf360c';
-            }
-            if (typeof window.updatePageTranslations === 'function') {
-                window.updatePageTranslations();
             }
         });
     }

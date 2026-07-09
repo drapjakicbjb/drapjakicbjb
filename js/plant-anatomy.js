@@ -208,22 +208,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
+    const tissueTranslations = {
+        'pa-xylem': { title: 'Xylem', desc: 'Transports water and dissolved minerals upwards from the roots to the rest of the plant. Made of dead cells.' },
+        'pa-phloem': { title: 'Phloem', desc: 'Transports sugars and other organic nutrients downwards from the leaves to the roots and growing parts.' },
+        'pa-epidermis': { title: 'Epidermis', desc: 'The outer protective layer of cells covering the stem, often covered with a waxy cuticle to prevent water loss.' },
+        'pa-cortex': { title: 'Cortex', desc: 'A layer of unspecialized cells between the epidermis and vascular tissue, used for storage and support.' },
+        'pa-pith': { title: 'Pith', desc: 'The spongy tissue in the center of the stem, used for storing and transporting nutrients.' },
+        'pa-cambium': { title: 'Vascular Cambium', desc: 'A thin layer of actively dividing cells between xylem and phloem responsible for secondary growth.' }
+    };
+
     function updateInfo(body) {
-        if (body) {
-            infoTitle.setAttribute('data-i18n', body.keyTitle);
-            infoDesc.setAttribute('data-i18n', body.keyDesc);
-            infoTitle.textContent = body.id; // temporary fallback
-            infoDesc.textContent = "...";
+        if (body && tissueTranslations[body.keyTitle]) {
+            infoTitle.textContent = tissueTranslations[body.keyTitle].title;
+            infoDesc.textContent = tissueTranslations[body.keyDesc] ? tissueTranslations[body.keyDesc].desc : tissueTranslations[body.keyTitle].desc;
         } else {
-            infoTitle.setAttribute('data-i18n', 'pa-select');
-            infoDesc.setAttribute('data-i18n', 'pa-select-desc');
-            const lTitle = document.querySelector(`[data-i18n="pa-select"]`);
-            const lDesc = document.querySelector(`[data-i18n="pa-select-desc"]`);
-            if (lTitle && lTitle.dataset.lasttext) infoTitle.textContent = lTitle.dataset.lasttext;
-            if (lDesc && lDesc.dataset.lasttext) infoDesc.textContent = lDesc.dataset.lasttext;
-        }
-        if (typeof window.updatePageTranslations === 'function') {
-            window.updatePageTranslations();
+            infoTitle.textContent = 'Select a Tissue';
+            infoDesc.textContent = 'Click or hover on the stem diagram to view details.';
         }
     }
 

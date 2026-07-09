@@ -1,20 +1,36 @@
 <div id="navOverlay" class="nav-overlay"></div>
-<div id="languageModal" class="lang-modal">
-  <div class="lang-modal-content">
-    <div class="lang-modal-header">
-      <img src="assets/images/logo.png" alt="School Logo" />
-      <h2 data-i18n="lang-modal-title">Select Language / भाषा चुनें</h2>
-      <p data-i18n="lang-modal-desc">Please select your preferred language to continue.</p>
+
+<div class="top-gov-banner-wrapper">
+  <div class="top-gov-banner">
+    <div class="banner-left">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="Flag of India">
+      <span>An official website of the Dr. A.P.J. Abdul Kalam Inter College</span>
     </div>
-    <div class="lang-options">
-      <button class="lang-btn" data-lang="en">
-        <span class="lang-icon">🇺🇸</span>
-        <span class="lang-name" data-i18n="lang-en">English</span>
-      </button>
-      <button class="lang-btn" data-lang="hi">
-        <span class="lang-icon">🇮🇳</span>
-        <span class="lang-name" data-i18n="lang-hi">हिंदी (Hindi)</span>
-      </button>
+    <button class="banner-toggle" id="govBannerToggle" aria-expanded="false">
+      Here's how you know <i class="fas fa-chevron-down"></i>
+    </button>
+  </div>
+  
+  <div class="banner-dropdown" id="govBannerDropdown">
+    <div class="dropdown-content">
+      <div class="dropdown-col">
+        <div class="col-icon">
+          <i class="fas fa-university"></i>
+        </div>
+        <div class="col-text">
+          <h6>Official websites use .ac.in or .gov.in</h6>
+          <p>The <strong>.ac.in</strong> (academic) or <strong>.gov.in</strong> domain name belongs to recognized academic institutions or government organizations in India. For example, our school domain is <strong>drapjakicbjb.ac.in</strong>, which officially confirms its relation to verified education and academics.</p>
+        </div>
+      </div>
+      <div class="dropdown-col">
+        <div class="col-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="col-text">
+          <h6>Secure connection (HTTPS)</h6>
+          <p>The <strong>https://</strong> at the start of the address indicates a secure connection. Any data sent is encrypted and protected against interception.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

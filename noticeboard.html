@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official Notice Board of Dr. A.P.J. Abdul Kalam Inter College. Get all academic announcements, exam schedules, and circulars here.">
+  <title>Official Notice Board | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    :root {
+      --primary-color: #0b192c;
+      --accent-color: #ff6b00;
+      --accent-hover: #ff8c42;
+      --text-dark: #1e293b;
+      --text-medium: #475569;
+      --text-light: #94a3b8;
+      --border-color: #e2e8f0;
+      --bg-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .notice-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #172A45 100%);
+      color: white;
+      text-align: center;
+      padding: 150px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notice-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .notice-hero p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .notice-container {
+      max-width: 1200px;
+      margin: -40px auto 80px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 30px;
+    }
+
+    /* Notice Board Left side */
+    .notices-list-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .notice-card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      padding: 25px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notice-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border-color: rgba(255, 107, 0, 0.2);
+    }
+
+    .notice-card.important {
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .notice-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .notice-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .notice-date {
+      font-size: 0.82rem;
+      color: var(--text-medium);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notice-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-admission { background: rgba(46, 125, 50, 0.08); color: #2e7d32; }
+    .badge-examination { background: rgba(13, 71, 161, 0.08); color: #0d47a1; }
+    .badge-holiday { background: rgba(255, 107, 0, 0.08); color: var(--accent-color); }
+    .badge-general { background: rgba(100, 116, 139, 0.08); color: #64748b; }
+
+    .important-badge {
+      background: #ef4444;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      animation: pulseRed 2s infinite;
+    }
+
+    @keyframes pulseRed {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .notice-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      line-height: 1.4;
+      margin: 0;
+      text-align: left;
+    }
+
+    .notice-card p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-medium);
+      margin: 0;
+      text-align: left;
+    }
+
+    .notice-action {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .btn-download-notice {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(255, 107, 0, 0.05);
+    }
+
+    .btn-download-notice:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    /* Right Sidebar */
+    .notice-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .sidebar-widget {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .sidebar-widget h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 0 0 15px 0;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px 12px 40px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);
+    }
+
+    .category-filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .filter-item-btn {
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-medium);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .filter-item-btn:hover {
+      background: var(--bg-light);
+      color: var(--primary-color);
+    }
+
+    .filter-item-btn.active {
+      background: rgba(255, 107, 0, 0.08);
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .filter-count {
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.05);
+      padding: 2px 8px;
+      border-radius: 20px;
+      color: var(--text-medium);
+    }
+
+    .filter-item-btn.active .filter-count {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .whatsapp-widget {
+      background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+      color: white;
+      border: none;
+    }
+
+    .whatsapp-widget h3 {
+      color: white;
+      border-bottom-color: rgba(255,255,255,0.15);
+    }
+
+    .whatsapp-widget p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+      color: rgba(255,255,255,0.9);
+      text-align: left;
+    }
+
+    .btn-wa-subscribe {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: white;
+      color: #075e54;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-wa-subscribe:hover {
+      background: #f0fdf4;
+      transform: translateY(-2px);
+    }
+
+    .no-notices {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 50px 30px;
+      text-align: center;
+      display: none;
+    }
+
+    .no-notices i {
+      font-size: 3rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+    }
+
+    .no-notices h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      margin: 0 0 8px 0;
+      color: var(--primary-color);
+    }
+
+    .no-notices p {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      margin: 0;
+    }
+
+    /* Back Button styling */
+    .back-btn-container {
+      margin-top: 60px;
+      margin-bottom: 20px;
+      display: flex;
+    }
+
+    .back-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 10px 20px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(5px);
+    }
+
+    .back-link-btn:hover {
+      color: white;
+      border-color: var(--accent-color);
+      background: var(--accent-color);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    }
+
+    @media (max-width: 992px) {
+      .notice-container {
+        grid-template-columns: 1fr;
+      }
+      .notice-sidebar {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Animation Overlay -->
+  <!-- <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div> -->
+
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Section -->
+  <header class="notice-hero">
+    <div class="back-btn-container">
+      <a href="linkhub.html" onclick="if(document.referrer) { history.back(); return false; }" class="back-link-btn"><i class="fas fa-arrow-left"></i> Back</a>
+    </div>
+    <h1>Official Notice Board</h1>
+    <p>Stay updated with the latest academic circulars, exam notifications, and announcements from Dr. A.P.J. Abdul Kalam Inter College.</p>
+  </header>
+
+  <!-- Notice Content -->
+  <main class="notice-container">
+    
+    <div class="notices-list-wrap" id="noticesListContainer">
+      <div class="skeleton-notice-card">
+        <div class="skeleton-meta"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-text"></div>
+        <div class="skeleton-text short"></div>
+      </div>
+      <div class="skeleton-notice-card">
+        <div class="skeleton-meta"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-text"></div>
+        <div class="skeleton-text short"></div>
+      </div>
+      <div class="skeleton-notice-card">
+        <div class="skeleton-meta"></div>
+        <div class="skeleton-title"></div>
+        <div class="skeleton-text"></div>
+        <div class="skeleton-text short"></div>
+      </div>
+    </div>
+
+    <!-- No Results Callout -->
+    <div class="no-notices" id="noNotices">
+      <i class="fas fa-search-minus"></i>
+      <h4>No Notices Found</h4>
+      <p>Try searching for a different keyword or category.</p>
+    </div>
+
+    <!-- Sidebar Dashboard -->
+    <aside class="notice-sidebar">
+      
+      <!-- Search Widget -->
+      <div class="sidebar-widget">
+        <h3><i class="fas fa-search"></i> Search Notice</h3>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="noticeSearchInput" placeholder="Type keywords here...">
+        </div>
+      </div>
+
+      <!-- Categories Filter Widget -->
+      <div class="sidebar-widget">
+        <h3><i class="fas fa-filter"></i> Categories</h3>
+        <div class="category-filter-list">
+          <button class="filter-item-btn active" onclick="filterNotices('all')">
+            <span>All Announcements</span>
+            <span class="filter-count" id="count-all">0</span>
+          </button>
+          <button class="filter-item-btn" onclick="filterNotices('admission')">
+            <span>Admissions</span>
+            <span class="filter-count" id="count-admission">0</span>
+          </button>
+          <button class="filter-item-btn" onclick="filterNotices('examination')">
+            <span>Examinations</span>
+            <span class="filter-count" id="count-examination">0</span>
+          </button>
+          <button class="filter-item-btn" onclick="filterNotices('holiday')">
+            <span>Holidays</span>
+            <span class="filter-count" id="count-holiday">0</span>
+          </button>
+          <button class="filter-item-btn" onclick="filterNotices('general')">
+            <span>General</span>
+            <span class="filter-count" id="count-general">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- WhatsApp Channel Widget -->
+      <div class="sidebar-widget whatsapp-widget">
+        <h3><i class="fab fa-whatsapp"></i> Real-time Alerts</h3>
+        <p>Subscribe to our official school WhatsApp channel to receive urgent notifications, weather announcements, and results directly on your phone.</p>
+        <a href="https://whatsapp.com/channel/0029ValVXTv5q08k3bcxT10R" target="_blank" rel="noopener noreferrer" class="btn-wa-subscribe">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp Channel
+        </a>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- JavaScript logic to fetch and display notices dynamically -->
+  <script src="js/notices.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function initNoticeCounts() {
+      document.getElementById('count-all').innerText = NOTICES.length;
+      document.getElementById('count-admission').innerText = NOTICES.filter(n => n.category === 'admission').length;
+      document.getElementById('count-examination').innerText = NOTICES.filter(n => n.category === 'examination').length;
+      document.getElementById('count-holiday').innerText = NOTICES.filter(n => n.category === 'holiday').length;
+      document.getElementById('count-general').innerText = NOTICES.filter(n => n.category === 'general').length;
+    }
+
+    function renderNotices() {
+      const container = document.getElementById('noticesListContainer');
+      const noNotices = document.getElementById('noNotices');
+      container.innerHTML = '';
+
+      const filtered = NOTICES.filter(n => {
+        const matchesCategory = activeCategory === 'all' || n.category === activeCategory;
+        const matchesSearch = n.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                              n.content.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        noNotices.style.display = 'block';
+        return;
+      } else {
+        noNotices.style.display = 'none';
+      }
+
+      filtered.forEach(n => {
+        const card = document.createElement('div');
+        card.className = `notice-card ${n.isImportant ? 'important' : ''}`;
+        
+        card.innerHTML = `
+          <div class="notice-card-header">
+            <div class="notice-meta">
+              <span class="notice-date"><i class="far fa-calendar-alt"></i> ${n.date}</span>
+              <span class="notice-badge badge-${n.category}">${n.category}</span>
+              ${n.isImportant ? '<span class="important-badge">Important</span>' : ''}
+            </div>
+          </div>
+          <h3>${n.title}</h3>
+          <p>${n.content}</p>
+          ${n.fileUrl ? `
+            <div class="notice-action">
+              <a href="${n.fileUrl}" class="btn-download-notice" target="_blank">
+                <i class="fas fa-file-pdf"></i> Download Circular
+              </a>
+            </div>
+          ` : ''}
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterNotices(category) {
+      activeCategory = category;
+      document.querySelectorAll('.filter-item-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Find the button with onclick containing the category
+      const targetBtn = Array.from(document.querySelectorAll('.filter-item-btn')).find(btn => 
+        btn.getAttribute('onclick').includes(`'${category}'`)
+      );
+      if (targetBtn) targetBtn.classList.add('active');
+
+      renderNotices();
+    }
+
+    document.getElementById('noticeSearchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderNotices();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initNoticeCounts();
+      renderNotices();
+    });
+  </script>
+</body>
+</html>

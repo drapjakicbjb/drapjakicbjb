@@ -521,22 +521,35 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
+    const organelleTranslations = {
+        'bio-wall': { title: 'Cell Wall', desc: 'A rigid outer layer present in plant cells that provides structural support and protection.' },
+        'bio-membrane': { title: 'Cell Membrane', desc: 'A semi-permeable lipid bilayer that surrounds the cell and regulates what enters and exits.' },
+        'bio-cyto': { title: 'Cytoplasm & Membrane', desc: 'The cytoplasm is a jelly-like substance filling the cell. The cell membrane is the outer boundary controlling what enters and exits.' },
+        'bio-cyto-skel': { title: 'Cytoskeleton', desc: 'A network of protein filaments and tubules that gives the cell its shape and organizes its parts.' },
+        'bio-vacuole-plant': { title: 'Central Vacuole', desc: 'A massive sac taking up most of the plant cell volume, maintaining turgor pressure and storing water.' },
+        'bio-nucleus': { title: 'Nucleus', desc: 'The "brain" or control center of the cell, which contains the genetic material (DNA).' },
+        'bio-chromatin': { title: 'Chromatin', desc: 'A mass of genetic material composed of DNA and proteins that condense to form chromosomes.' },
+        'bio-envelope': { title: 'Nuclear Envelope', desc: 'A double membrane that encloses the nucleus, featuring pores that regulate the passage of molecules.' },
+        'bio-nucleolus': { title: 'Nucleolus', desc: 'A dense structure inside the nucleus responsible for producing and assembling ribosomes.' },
+        'bio-rough-er': { title: 'Rough ER', desc: 'Studded with ribosomes, it is involved in the synthesis and folding of proteins.' },
+        'bio-smooth-er': { title: 'Smooth ER', desc: 'Lacks ribosomes and is involved in lipid synthesis, metabolism, and detoxification.' },
+        'bio-golgi': { title: 'Golgi Apparatus', desc: 'Modifies, sorts, and packages proteins and lipids for transport within or outside the cell.' },
+        'bio-mito': { title: 'Mitochondria', desc: 'The "powerhouse" of the cell. It generates most of the chemical energy needed to power the cell\'s biochemical reactions.' },
+        'bio-lysosome': { title: 'Lysosome', desc: 'Contains digestive enzymes to break down waste materials and cellular debris.' },
+        'bio-peroxi': { title: 'Peroxisomes', desc: 'Small organelles that contain enzymes to oxidize fatty acids and neutralize hydrogen peroxide.' },
+        'bio-ribosome': { title: 'Ribosomes', desc: 'Tiny complexes freely floating or attached to the ER that synthesize proteins.' },
+        'bio-chloro': { title: 'Chloroplast', desc: 'The site of photosynthesis in plant cells, converting light energy into chemical energy.' },
+        'bio-vacuole': { title: 'Vacuole', desc: 'Storage bubbles found in cells. They are much larger in plant cells but help store waste and nutrients in animal cells.' },
+        'bio-centriole': { title: 'Centrioles', desc: 'Paired barrel-shaped structures in animal cells that organize microtubules during cell division.' }
+    };
+
     function updateInfo(body) {
-        if (body) {
-            infoTitle.setAttribute('data-i18n', body.keyTitle);
-            infoDesc.setAttribute('data-i18n', body.keyDesc);
-            infoTitle.textContent = body.id;
-            infoDesc.textContent = "...";
+        if (body && organelleTranslations[body.keyTitle]) {
+            infoTitle.textContent = organelleTranslations[body.keyTitle].title;
+            infoDesc.textContent = organelleTranslations[body.keyDesc] ? organelleTranslations[body.keyDesc].desc : organelleTranslations[body.keyTitle].desc;
         } else {
-            infoTitle.setAttribute('data-i18n', 'bio-select');
-            infoDesc.setAttribute('data-i18n', 'bio-select-desc');
-            const lTitle = document.querySelector(`[data-i18n="bio-select"]`);
-            const lDesc = document.querySelector(`[data-i18n="bio-select-desc"]`);
-            if (lTitle && lTitle.dataset.lasttext) infoTitle.textContent = lTitle.dataset.lasttext;
-            if (lDesc && lDesc.dataset.lasttext) infoDesc.textContent = lDesc.dataset.lasttext;
-        }
-        if (typeof window.updatePageTranslations === 'function') {
-            window.updatePageTranslations();
+            infoTitle.textContent = 'Select an Organelle';
+            infoDesc.textContent = 'Click on parts of the cell diagram to view details here.';
         }
     }
 

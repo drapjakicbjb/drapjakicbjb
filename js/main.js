@@ -5,10 +5,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
   /* ─── 0. COMPONENT LOADER ────────────────────────── */
-  /**
-   * Loads shared HTML components (header/footer) into placeholders.
-   * This is essential for maintaining a DRY codebase.
-   */
   async function loadComponents() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     const footerPlaceholder = document.getElementById('footer-placeholder');
@@ -71,13 +67,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   /* ─── 1. LOADER ─────────────────────────────────── */
   const loader = document.getElementById('loader');
-  window.addEventListener('load', () => {
-    setTimeout(() => {
+  let loaderHidden = false;
+  
+  function hideLoader() {
+    if (loader && !loaderHidden) {
+      loaderHidden = true;
       loader.classList.add('hidden');
       document.body.style.overflow = '';
-    }, 2200);
-  });
-  document.body.style.overflow = 'hidden';
+    }
+  }
+
+  if (loader) {
+    // Hide loader when the page has fully loaded
+    window.addEventListener('load', () => {
+      setTimeout(hideLoader, 2200);
+    });
+
+    // Safety fallback: Hide loader after a maximum of 3 seconds anyway,
+    // preventing the loading screen from getting stuck due to large image downloads.
+    setTimeout(hideLoader, 3000);
+
+    document.body.style.overflow = 'hidden';
+  }
 
   /* ─── 2. HERO PARTICLES ──────────────────────────── */
   const particlesContainer = document.getElementById('heroParticles');
@@ -100,18 +111,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   function initComponents() {
     const navbar = document.getElementById('navbar');
     const scrollTopBtn = document.getElementById('scrollTop');
-    const langToggleFloat = document.getElementById('langToggleFloat');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     const navOverlay = document.getElementById('navOverlay');
-    const langModal = document.getElementById('languageModal');
-    const langButtons = document.querySelectorAll('.lang-btn');
 
     // Sticky nav and Floating buttons scroll effect
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       if (navbar) navbar.classList.toggle('scrolled', scrollY > 60);
-      if (langToggleFloat) langToggleFloat.classList.toggle('minimized', scrollY > 100);
       if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', scrollY > 500);
       updateActiveNavLink();
     }, { passive: true });
@@ -119,6 +126,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (scrollTopBtn) {
       scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+
+
+    // Samarth-style Gov Banner Toggle
+    const govBannerToggle = document.getElementById('govBannerToggle');
+    const govBannerDropdown = document.getElementById('govBannerDropdown');
+    if (govBannerToggle && govBannerDropdown) {
+      govBannerToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = govBannerDropdown.classList.toggle('open');
+        govBannerToggle.setAttribute('aria-expanded', isOpen);
+        
+        // Update arrow icon
+        const icon = govBannerToggle.querySelector('i');
+        if (icon) {
+          if (isOpen) {
+            icon.className = 'fas fa-chevron-up';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+          }
+        }
+      });
+      
+      // Close dropdown if user clicks anywhere else
+      document.addEventListener('click', () => {
+        if (govBannerDropdown.classList.contains('open')) {
+          govBannerDropdown.classList.remove('open');
+          govBannerToggle.setAttribute('aria-expanded', 'false');
+          const icon = govBannerToggle.querySelector('i');
+          if (icon) icon.className = 'fas fa-chevron-down';
+        }
       });
     }
 
@@ -145,29 +185,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    // Translation logic within components
-    if (langButtons) {
-      langButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-lang');
-          setLanguage(lang);
-          if (langModal) langModal.classList.remove('visible');
-        });
-      });
-    }
-
-    const langToggleTrigger = document.getElementById('langToggleFloat');
-    if (langToggleTrigger && langModal) {
-      langToggleTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        langModal.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-      });
-    }
-
-    // Trigger initial translation for injected content
-    const activeLang = localStorage.getItem('preferredLanguage') || 'en';
-    updateContent(activeLang);
     updateActiveNavLink();
     
     // Smooth scroll for nav links (including those just injected)
@@ -440,9 +457,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const btn = contactForm.querySelector('.btn-submit');
       const originalHTML = btn.innerHTML;
-      const currentLang = localStorage.getItem('preferredLanguage') || 'en';
       btn.disabled = true;
-      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentLang]['form-sending'] || 'Sending…'}`;
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending…`;
       btn.style.opacity = '0.8';
 
       const params = {
@@ -456,9 +472,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       try {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-        btn.innerHTML = `<i class="fas fa-check"></i> ${translations[currentLang]['form-sent'] || 'Message Sent!'}`;
+        btn.innerHTML = `<i class="fas fa-check"></i> Message Sent!`;
         btn.style.background = 'linear-gradient(135deg, #2E7D32, #4CAF50)';
-        showFormBanner('success', translations[currentLang]['form-success'] || 'Thank you! Received.');
+        showFormBanner('success', 'Thank you! Your message has been received. We will get back to you within 1–2 working days.');
         contactForm.reset();
         setTimeout(() => {
           btn.innerHTML = originalHTML;
@@ -466,9 +482,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           btn.disabled = false;
         }, 4000);
       } catch (err) {
-        btn.innerHTML = `<i class="fas fa-times"></i> ${translations[currentLang]['form-failed'] || 'Failed'}`;
+        btn.innerHTML = `<i class="fas fa-times"></i> Failed`;
         btn.style.background = 'linear-gradient(135deg, #c62828, #e53935)';
-        showFormBanner('error', translations[currentLang]['form-error'] || 'Error.');
+        showFormBanner('error', 'Something went wrong. Please try again later.');
         setTimeout(() => {
           btn.innerHTML = originalHTML;
           btn.style.background = '';
@@ -501,63 +517,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  /* ─── 10. INTERNATIONALIZATION (i18n) ────────── */
-  function updateContent(lang) {
-    if (!translations[lang]) return;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[lang][key]) {
-        let content = translations[lang][key];
-        
-        // Dynamic placeholders
-        if (content.includes('{{year}}')) {
-          content = content.replace('{{year}}', new Date().getFullYear());
-        }
 
-        if (content.includes('<br>') || content.includes('<span') || content.includes('<i')) {
-          el.innerHTML = content;
-        } else {
-          el.textContent = content;
-        }
-      }
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-      const key = el.getAttribute('data-i18n-ph');
-      if (translations[lang][key]) el.placeholder = translations[lang][key];
-    });
-    document.documentElement.lang = lang;
-  }
-
-  function setLanguage(lang) {
-    localStorage.setItem('preferredLanguage', lang);
-    updateContent(lang);
-    document.body.style.overflow = '';
-  }
-
-  // Initial Check
-  const savedLang = localStorage.getItem('preferredLanguage');
-  if (savedLang) {
-    updateContent(savedLang);
-  }
 
   // Kick off component loading
   await loadComponents();
-
-  // If no language set, show modal after components load
-  if (!savedLang) {
-    setTimeout(() => {
-      const langModal = document.getElementById('languageModal');
-      if (langModal) {
-        langModal.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-      }
-    }, 500);
-  }
-
-  // Public translation trigger
-  window.updatePageTranslations = function() {
-    const activeLang = localStorage.getItem('preferredLanguage') || 'en';
-    updateContent(activeLang);
-  };
 });
+
+// Global copy to clipboard function
+window.copyToClipboard = function(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const icon = btn.querySelector('i');
+    if (icon) {
+      icon.className = 'fas fa-check';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        icon.className = 'far fa-copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    }
+  }).catch(err => {
+    console.error('Could not copy text: ', err);
+  });
+};
 

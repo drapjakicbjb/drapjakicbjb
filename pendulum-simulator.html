@@ -43,53 +43,53 @@
   <!-- <div id="header-placeholder"></div> -->
 
   <header class="sim-header">
-    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="back-study">Back to Study Hub</span></a>
-    <h1 data-i18n="pendulum-title">Pendulum Energy Lab</h1>
-    <p data-i18n="pendulum-desc">Adjust parameters and watch the conservation of energy in action.</p>
+    <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <h1>Pendulum Energy Lab</h1>
+    <p>Adjust parameters and watch the conservation of energy in action.</p>
   </header>
 
   <section class="sim-app-container">
     <div class="sim-viewer">
       <canvas id="pen-canvas" width="600" height="500"></canvas>
       <div class="legend">
-        <span class="leg-pe" data-i18n="pen-pe">Potential Energy (PE)</span>
-        <span class="leg-ke" data-i18n="pen-ke">Kinetic Energy (KE)</span>
+        <span class="leg-pe">Potential Energy (PE)</span>
+        <span class="leg-ke">Kinetic Energy (KE)</span>
       </div>
     </div>
 
     <div class="sim-panel">
-      <h3 data-i18n="pen-controls"><i class="fas fa-sliders"></i> Physics Parameters</h3>
+      <h3><i class="fas fa-sliders"></i> Physics Parameters</h3>
       
       <div class="control-group" style="text-align: center; margin-bottom: 25px;">
         <button id="btn-play-pause" style="width: 100%; padding: 12px; background: #bf360c; color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-          <i class="fas fa-pause"></i> <span id="text-play-pause" data-i18n="pen-pause">Pause Simulation</span>
+          <i class="fas fa-pause"></i> <span id="text-play-pause">Pause Simulation</span>
         </button>
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="pen-gravity">Gravity (g)</span> <span><span class="value" id="val-g">9.8</span> m/s²</span></label>
+        <label><span>Gravity (g)</span> <span><span class="value" id="val-g">9.8</span> m/s²</span></label>
         <input type="range" id="range-g" min="1" max="25" value="9.8" step="0.1">
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="pen-length">String Length (L)</span> <span><span class="value" id="val-l">10</span> m</span></label>
+        <label><span>String Length (L)</span> <span><span class="value" id="val-l">10</span> m</span></label>
         <input type="range" id="range-l" min="5" max="20" value="10" step="1">
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="pen-mass">Mass (m)</span> <span><span class="value" id="val-m">10</span> kg</span></label>
+        <label><span>Mass (m)</span> <span><span class="value" id="val-m">10</span> kg</span></label>
         <input type="range" id="range-m" min="1" max="50" value="10" step="1">
       </div>
 
       <div class="control-group">
-        <label><span data-i18n="pen-angle">Initial Angle (θ)</span> <span><span class="value" id="val-theta">45</span>°</span></label>
+        <label><span>Initial Angle (θ)</span> <span><span class="value" id="val-theta">45</span>°</span></label>
         <input type="range" id="range-theta" min="5" max="80" value="45" step="1">
       </div>
 
       <div class="readout-box">
-        <h3 data-i18n="pen-energy" style="border-bottom:none; margin-bottom:10px;"><i class="fas fa-bolt"></i> Energy Readouts</h3>
-        <div class="readout-item"><span data-i18n="pen-pe">PE</span> <span class="res-val"><span id="res-pe">0</span> J</span></div>
-        <div class="readout-item"><span data-i18n="pen-ke">KE</span> <span class="res-val"><span id="res-ke">0</span> J</span></div>
+        <h3 style="border-bottom:none; margin-bottom:10px;"><i class="fas fa-bolt"></i> Energy Readouts</h3>
+        <div class="readout-item"><span>PE</span> <span class="res-val"><span id="res-pe">0</span> J</span></div>
+        <div class="readout-item"><span>KE</span> <span class="res-val"><span id="res-ke">0</span> J</span></div>
         <div class="energy-bar-container">
           <div class="energy-pe" id="bar-pe" style="width: 50%;"></div>
           <div class="energy-ke" id="bar-ke" style="width: 50%;"></div>
@@ -99,8 +99,8 @@
   </section>
 
   <!-- <div id="footer-placeholder"></div> -->
-  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script src="js/pendulum-simulator.js"></script>
 </body>
 </html>
+

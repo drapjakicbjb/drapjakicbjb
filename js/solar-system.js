@@ -339,15 +339,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle details panel
   function showDetails(celestial) {
-    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
-    const data = celestial[currentLang] || celestial['en'];
+    const data = celestial.en;
     
     // Get translations for labels
-    const labels = {
-        en: { type: 'Type', mass: 'Mass', radius: 'Radius', distance: 'Distance from Sun', rotation: 'Rotation Period', revolution: 'Orbital Period', moons: 'Moons' },
-        hi: { type: 'प्रकार', mass: 'द्रव्यमान', radius: 'त्रिज्या', distance: 'सूर्य से दूरी', rotation: 'घूर्णन अवधि', revolution: 'परिक्रमण काल', moons: 'चंद्रमा' }
-    };
-    const l = labels[currentLang];
+    const l = { type: 'Type', mass: 'Mass', radius: 'Radius', distance: 'Distance from Sun', rotation: 'Rotation Period', revolution: 'Orbital Period', moons: 'Moons' };
     // Real planetary images
     const realImages = {
       sun: 'https://upload.wikimedia.org/wikipedia/commons/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg',
@@ -391,14 +386,4 @@ document.addEventListener('DOMContentLoaded', () => {
       detailsPanel.classList.remove('active');
     });
   }
-  
-  // Custom language switcher logic for study pages since they dynamically render content
-  const langButtons = document.querySelectorAll('.lang-btn');
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Hide details panel on language switch to prevent stale data
-        if(detailsPanel) detailsPanel.classList.remove('active');
-    });
-  });
-
 });
