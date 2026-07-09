@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="sitemap-title">Sitemap | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    .page-header {
+      padding: 180px 24px 60px;
+      background: var(--dark-blue);
+      text-align: center;
+      color: white;
+    }
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: var(--saffron);
+    }
+    .content-section {
+      padding: 80px 24px;
+      background: #f8fbff;
+      min-height: 50vh;
+    }
+    .sitemap-container {
+      background: white;
+      border-radius: 20px;
+      padding: 50px;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 10px 40px rgba(13, 27, 42, 0.05);
+      border: 1px solid rgba(13, 27, 42, 0.05);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    .sitemap-category h3 {
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(13, 27, 42, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sitemap-category h3 i {
+      color: var(--saffron);
+    }
+    .sitemap-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sitemap-list li {
+      margin-bottom: 12px;
+    }
+    .sitemap-list a {
+      color: var(--text-medium);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .sitemap-list a::before {
+      content: '→';
+      color: var(--saffron);
+      margin-right: 10px;
+      font-size: 0.9em;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+    .sitemap-list a:hover {
+      color: var(--saffron);
+      transform: translateX(5px);
+    }
+    .sitemap-list a:hover::before {
+      opacity: 1;
+    }
+    
+    #navbar {
+      background: var(--navy) !important;
+      top: 0 !important;
+      padding: 10px 0 !important;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .sitemap-container {
+        padding: 30px 20px;
+        grid-template-columns: 1fr;
+      }
+      .page-header {
+        padding-top: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+  <div id="header-placeholder"></div>
+
+  <header class="page-header">
+    <h1 data-i18n="sitemap-title">Site Map</h1>
+    <p data-i18n="sitemap-desc">Overview of all pages on our website</p>
+  </header>
+
+  <section class="content-section">
+    <div class="sitemap-container fade-up">
+      <div class="sitemap-category">
+        <h3><i class="fas fa-home"></i> Main Navigation</h3>
+        <ul class="sitemap-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About School</a></li>
+          <li><a href="index.html#academics">Academics</a></li>
+          <li><a href="index.html#admissions">Admissions</a></li>
+          <li><a href="index.html#facilities">Facilities</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="linkhub.html">Link Hub</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-category">
+        <h3><i class="fas fa-flask"></i> Interactive Study Hub</h3>
+        <ul class="sitemap-list">
+          <li><a href="study.html">Study Hub Home</a></li>
+          <li><a href="fractions-simulator.html">Fractions Visualizer</a></li>
+          <li><a href="solar-system.html">Solar System Explorer</a></li>
+          <li><a href="biology-cell.html">Interactive Animal Cell</a></li>
+          <li><a href="heart-simulator.html">3D Heart Simulator</a></li>
+          <li><a href="periodic-table.html">Periodic Table</a></li>
+          <li><a href="optics-simulator.html">Lens Simulator</a></li>
+          <li><a href="mirror-simulator.html">Mirror Simulator</a></li>
+          <li><a href="pendulum-simulator.html">Pendulum Energy Lab</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-category">
+        <h3><i class="fas fa-file-contract"></i> Legal & Information</h3>
+        <ul class="sitemap-list">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

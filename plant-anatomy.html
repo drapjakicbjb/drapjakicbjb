@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Anatomy - Xylem & Phloem | Dr. A. P. J. Abdul Kalam Inter College</title>
+    <meta name="description" content="Interactive cross-section of a plant stem showing xylem, phloem, and other tissues.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Global CSS -->
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <link rel="stylesheet" href="styles/plant-anatomy.css">
+</head>
+<body>
+    <!-- <div id="header-placeholder"></div> -->
+    <div id="zoom-controls-placeholder"></div>
+    <div id="scrollbar-placeholder"></div>
+
+    <header class="sim-header">
+        <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span data-i18n="back-study">Back to Study Hub</span></a>
+        <h1 data-i18n="pa-title">Plant Anatomy: Xylem & Phloem</h1>
+        <p data-i18n="pa-desc">Hover over the cross-section of the plant stem to learn about its specialized tissues.</p>
+    </header>
+
+    <section class="sim-app-container">
+        <div class="sim-viewer">
+            <canvas id="pa-canvas" width="800" height="600"></canvas>
+        </div>
+        
+        <div class="sim-panel">
+            <h3 data-i18n="pa-tissue-info"><i class="fa-solid fa-leaf"></i> Tissue Information</h3>
+            <div class="info-box">
+                <div class="info-title" id="info-title" data-i18n="pa-select">Select a Tissue</div>
+                <div class="info-desc" id="info-desc" data-i18n="pa-select-desc">Click or hover on the stem diagram to view details.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div id="footer-placeholder"></div> -->
+
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/plant-anatomy.js"></script>
+</body>
+</html>

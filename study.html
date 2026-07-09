@@ -236,10 +236,6 @@
 </head>
 
 <body>
-  <div class="testing-banner">
-    <p data-i18n="testing-banner">⚠️ This is a testing version of the website. Some features may be under development.
-    </p>
-  </div>
 
   <div id="loader">
     <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
@@ -248,52 +244,7 @@
       <div class="loader-bar-fill"></div>
     </div>
   </div>
-
-  <div id="languageModal" class="lang-modal">
-    <div class="lang-modal-content">
-      <div class="lang-modal-header">
-        <img src="assets/images/logo.png" alt="School Logo" />
-        <h2 data-i18n="lang-modal-title">Select Language / भाषा चुनें</h2>
-        <p data-i18n="lang-modal-desc">Please select your preferred language to continue.</p>
-      </div>
-      <div class="lang-options">
-        <button class="lang-btn" data-lang="en">
-          <span class="lang-icon">🇺🇸</span>
-          <span class="lang-name" data-i18n="lang-en">English</span>
-        </button>
-        <button class="lang-btn" data-lang="hi">
-          <span class="lang-icon">🇮🇳</span>
-          <span class="lang-name" data-i18n="lang-hi">हिंदी (Hindi)</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div id="navOverlay" class="nav-overlay"></div>
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="index.html#hero" class="nav-logo" aria-label="School home">
-        <img src="assets/images/logo.png" alt="Dr. A.P.J. Abdul Kalam Inter College Logo" />
-        <div class="nav-logo-text">
-          <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
-          <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
-        </div>
-      </a>
-      <ul class="nav-menu" id="navMenu" role="list">
-        <li><a class="nav-link" href="index.html#hero" data-i18n="nav-home">Home</a></li>
-        <li><a class="nav-link" href="index.html#about" data-i18n="nav-about">About</a></li>
-        <li><a class="nav-link" href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
-        <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
-        <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
-        <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
-
-        <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+  <div id="header-placeholder"></div>
 
   <section class="study-hub-section">
     <!-- Floating Background Educational Icons -->
@@ -319,6 +270,29 @@
 
       <div class="subject-section fade-up">
         <h3 class="subject-title">
+          <i class="fas fa-square-root-variable"></i>
+          <span data-i18n="subj-math">Mathematics</span>
+        </h3>
+        <div class="study-grid">
+          <!-- Fractions Visualizer Card -->
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+              <i class="fas fa-chart-pie" style="font-size: 3rem; color: white; opacity: 0.8;"></i> 🍕
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(255,107,0,0.1);color:var(--saffron);"
+                data-i18n="tag-math">Math</span>
+              <h3 data-i18n="study-fractions-title">Fractions Visualizer</h3>
+              <p data-i18n="study-fractions-desc">Interactive tool to visually understand fractions, decimals, and percentages.</p>
+              <a href="fractions-simulator.html" class="btn-study" data-i18n="study-fractions-btn">Launch Visualizer <i
+                  class="fas fa-chart-pie"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subject-section fade-up" style="animation-delay: 0.1s">
+        <h3 class="subject-title">
           <i class="fas fa-telescope"></i> 
           <span data-i18n="subj-astronomy">Astronomy & Space</span>
         </h3>
@@ -341,6 +315,52 @@
       </div>
 
       <div class="subject-section fade-up" style="animation-delay: 0.2s">
+        <h3 class="subject-title">
+          <i class="fas fa-leaf"></i>
+          <span data-i18n="subj-biology">Biology & Life</span>
+        </h3>
+        <div class="study-grid">
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #43a047 0%, #1b5e20 100%);">
+              <i class="fas fa-microscope" style="font-size: 3rem; color: white; opacity: 0.8;"></i> 🔬
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(76,175,80,0.1);color:#2e7d32;" data-i18n="tag-biology">Biology</span>
+              <h3 data-i18n="study-cell-title">Interactive Animal Cell</h3>
+              <p data-i18n="study-cell-desc">Explore the microscopic world of biology. Learn about organelles, cell membrane, and the nucleus in this interactive diagram.</p>
+              <a href="biology-cell.html" class="btn-study" data-i18n="study-cell-btn">Launch Diagram <i class="fas fa-dna"></i></a>
+            </div>
+          </div>
+
+          <!-- Heart Simulator Card -->
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #aa0000 0%, #330000 100%);">
+              <i class="fas fa-heartbeat" style="font-size: 3rem; color: white; opacity: 0.8;"></i> 🫀
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(255,0,0,0.1);color:#d32f2f;" data-i18n="tag-biology">Biology</span>
+              <h3 data-i18n="study-heart-title">3D Heart Simulator</h3>
+              <p data-i18n="study-heart-desc">Explore cardiac rhythms, view a real-time beating 3D human heart, and understand ECG waveforms in this advanced medical simulation.</p>
+              <a href="heart-simulator.html" class="btn-study" data-i18n="study-heart-btn">Launch Simulator <i class="fas fa-stethoscope"></i></a>
+            </div>
+          </div>
+
+          <!-- Plant Anatomy Card -->
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);">
+              <i class="fas fa-leaf" style="font-size: 3rem; color: white; opacity: 0.8;"></i> 🌿
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(76,175,80,0.1);color:#2e7d32;" data-i18n="tag-biology">Biology</span>
+              <h3 data-i18n="study-plant-title">Plant Vascular System</h3>
+              <p data-i18n="study-plant-desc">Interactive cross-section of a plant stem. Explore how Xylem and Phloem transport water and nutrients.</p>
+              <a href="plant-anatomy.html" class="btn-study" data-i18n="study-plant-btn">Launch Anatomy <i class="fas fa-microscope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subject-section fade-up" style="animation-delay: 0.3s">
         <h3 class="subject-title">
           <i class="fas fa-flask"></i> 
           <span data-i18n="subj-chemistry">Chemistry & Elements</span>
@@ -398,6 +418,21 @@
                   class="fas fa-magic"></i></a>
             </div>
           </div>
+
+          <!-- Pendulum Energy Lab Card -->
+          <div class="study-card">
+            <div class="card-img solar-img" style="background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);">
+              <i class="fas fa-arrows-down-to-people" style="font-size: 3rem; color: white; opacity: 0.8;"></i> ⚙️
+            </div>
+            <div class="card-content">
+              <span class="learning-badge" style="background:rgba(255,107,0,0.1);color:var(--saffron);"
+                data-i18n="tag-physics">Physics</span>
+              <h3 data-i18n="study-pendulum-title">Pendulum Energy Lab</h3>
+              <p data-i18n="study-pendulum-desc">Interactive physics engine. Explore kinetic and potential energy conservation in a swinging mass.</p>
+              <a href="pendulum-simulator.html" class="btn-study" data-i18n="study-pendulum-btn">Launch Lab <i
+                  class="fas fa-flask"></i></a>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -408,95 +443,9 @@
           <span style="font-size: 0.95em; margin-top: 8px; display: inline-block;">जल्द ही और अधिक इंटरैक्टिव सिमुलेशन जोड़े जाएंगे!</span>
         </p>
       </div>
+  <div id="footer-placeholder"></div>
 
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/images/logo.png" alt="School Logo" />
-            <div class="footer-logo-text">
-              <span data-i18n="nav-school-name">Dr. A.P.J. Abdul Kalam Inter College</span>
-              <span data-i18n="nav-school-location">Belwariya Jungle, Basti, U.P.</span>
-            </div>
-          </div>
-          <p data-i18n="foot-desc">Inspiring young minds with quality education rooted in Indian values and modern
-            knowledge, building leaders
-            for a better tomorrow.</p>
-          <div class="footer-motto" data-i18n="foot-motto">श्रद्धावान लभते ज्ञानम्</div>
-          <div class="social-links">
-            <a class="social-link" target="_blank" href="https://www.facebook.com/profile.php?id=100090759948402"
-              aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a class="social-link" target="_blank" href="https://www.youtube.com/@drapjakicbjb" aria-label="YouTube"><i
-                class="fab fa-youtube"></i></a>
-            <a class="social-link" target="_blank" href="https://wa.me/919454242284" aria-label="WhatsApp"><i
-                class="fab fa-whatsapp"></i></a>
-            <a class="social-link" target="_blank" href="https://www.instagram.com/drapjakicbjb"
-              aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a class="social-link" target="_blank" href="https://x.com/drapjakicbjb" aria-label="Twitter/X"><i
-                class="fab fa-x-twitter"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="foot-quick-links">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html#hero" data-i18n="nav-home">Home</a></li>
-            <li><a href="index.html#about" data-i18n="nav-about">About School</a></li>
-            <li><a href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
-            <li><a href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
-            <li><a href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
-            <li><a href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
-            <li><a href="study.html" data-i18n="nav-study">Study Hub</a></li>
-            <li><a href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="foot-programmes">Programmes</h4>
-          <ul class="footer-links">
-            <li><a href="index.html#academics" data-i18n="acad-primary-title">Primary School (Pre KG–V)</a></li>
-            <li><a href="index.html#academics" data-i18n="acad-middle-title">Middle School (VI–VIII)</a></li>
-            <li><a href="index.html#academics" data-i18n="acad-secondary-title">Secondary (IX–X)</a></li>
-            <li><a href="index.html#academics" data-i18n="acad-higher-title">Higher School (XI–XII)</a></li>
-            <li><a href="index.html#academics" data-i18n="acad-co-curr-title">Co-curricular</a></li>
-            <li><a href="index.html#admissions" data-i18n="adm-label">Admission Process</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 data-i18n="foot-contact-info">Contact Info</h4>
-          <div class="footer-contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span data-i18n="con-addr-desc">Belwariya Jungle, Basti, Uttar Pradesh — 272161</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>+91 9839252505</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>drapjakicbjb@gmail.com</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fas fa-clock"></i>
-            <span data-i18n="con-hours-desc">Mon–Sat: 9:00 AM – 3:30 PM</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p data-i18n="foot-rights">&copy; 2026 Dr. A.P.J. Abdul Kalam Inter College, Belwariya Jungle, Basti, U.P. All
-          rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <button id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
-
+  <script src="js/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 

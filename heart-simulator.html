@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Human Heart Cross-Section Simulator - blood flow, valve dynamics, and cardiac anatomy.">
+  <title>Heart Cross-Section Simulator | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" href="assets/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#04070f;color:#dde8ff;font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;overflow-y:auto}
+    .sim-header{background:linear-gradient(180deg,#08010e,#040710);border-bottom:1px solid rgba(100,80,200,0.15);padding:60px 24px 16px;text-align:center;position:relative}
+    .sim-header h1{font-size:2.1rem;font-weight:800;background:linear-gradient(135deg,#ff6060,#cc2020);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .sim-header p{color:rgba(200,215,255,0.6);font-size:0.9rem;margin-top:5px}
+    .back-btn{position:absolute;top:88px;left:20px;background:rgba(255,255,255,0.05);color:#aab;padding:8px 16px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,0.1);font-size:0.85rem;transition:all .3s}
+    .back-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+    .sim-wrap{max-width:1420px;margin:20px auto;padding:0 20px;display:grid;grid-template-columns:1fr 330px;gap:18px;align-items:start}
+    .canvas-card{background:#050a14;border-radius:16px;border:1px solid rgba(80,100,200,0.12);box-shadow:0 0 80px rgba(0,0,40,0.4) inset,0 8px 40px rgba(0,0,0,0.6);overflow:hidden;position:relative;min-height:480px}
+    #heart-canvas{display:block;width:100%;height:auto;max-height:680px}
+    .ctrl-col{display:flex;flex-direction:column;gap:14px; overflow:auto;}
+    .card{background:#080d1a;border:1px solid rgba(80,100,200,0.1);border-radius:14px;padding:16px}
+    .card-title{font-size:.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(150,180,255,0.6);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(80,100,200,0.12)}
+    .bpm-num{font-family:'JetBrains Mono',monospace;font-size:3rem;font-weight:700;color:#ff4f4f;text-shadow:0 0 20px rgba(255,80,80,0.5);line-height:1}
+    .bpm-sub{font-size:.75rem;color:rgba(200,210,255,0.45);margin-top:3px}
+    input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:rgba(255,255,255,0.08);border-radius:3px;outline:none;margin-top:10px}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#ff4f4f;cursor:pointer;border:2px solid rgba(255,255,255,0.8);box-shadow:0 0 10px rgba(255,80,80,0.5)}
+    .slider-labels{display:flex;justify-content:space-between;font-size:.7rem;color:rgba(180,190,255,0.35);margin-top:4px}
+    .phase-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+    #phase-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;transition:background .3s}
+    #phase-name{font-size:1rem;font-weight:600;color:#fff}
+    #phase-desc{font-size:.78rem;color:rgba(180,200,255,0.55);line-height:1.4}
+    .ecg-wrap{margin-top:10px;background:#020408;border-radius:8px;border:1px solid rgba(0,200,80,0.1);height:56px;overflow:hidden}
+    #ecg-mini{display:block;width:100%;height:100%}
+    .valve-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(80,100,200,0.07);font-size:.8rem;color:rgba(190,210,255,0.75)}
+    .valve-row:last-child{border-bottom:none}
+    .vdot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+    .vstatus{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.5px}
+    .toggle-row{display:flex;flex-direction:column;gap:9px}
+    .tog{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.02);cursor:pointer;transition:all .25s;user-select:none}
+    .tog span{font-size:.85rem;color:#bbc}
+    .sw{width:36px;height:19px;border-radius:9px;background:rgba(255,255,255,0.1);position:relative;transition:background .3s;flex-shrink:0}
+    .sw::after{content:'';position:absolute;width:13px;height:13px;border-radius:50%;background:#fff;top:3px;left:3px;transition:left .25s}
+    .tog.on .sw{background:#22c55e}
+    .tog.on .sw::after{left:20px}
+    .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .mbtn{padding:10px 6px;border-radius:9px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);color:rgba(195,215,255,0.75);font-family:'Poppins',sans-serif;font-size:.8rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px}
+    .mbtn i{font-size:1rem}
+    .mbtn.active{background:rgba(80,130,255,0.12);border-color:rgba(80,130,255,0.4);color:#7baeff}
+    .leg-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(80,100,200,0.07);font-size:.8rem;color:rgba(190,210,255,0.7)}
+    .leg-row:last-child{border-bottom:none}
+    .leg-color{width:28px;height:13px;border-radius:4px;flex-shrink:0}
+    @media(max-width:1020px){.sim-wrap{grid-template-columns:1fr}}
+    @media(max-width:600px){.sim-header h1{font-size:1.5rem}.bpm-num{font-size:2.2rem}}
+  </style>
+</head>
+<body>
+
+  <!-- <div id="header-placeholder"></div> -->
+
+<header class="sim-header">
+  <a href="study.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Study Hub</a>
+  <h1>Human Heart Cross-Section Simulator</h1>
+  <p>Coronal cross-section · Blood flow · Valve dynamics · Cardiac anatomy</p>
+</header>
+
+<div class="sim-wrap">
+  <!-- Canvas -->
+  <div class="canvas-card">
+    <canvas id="heart-canvas" width="1000" height="700"></canvas>
+  </div>
+
+  <!-- Controls -->
+  <div class="ctrl-col">
+
+    <!-- BPM -->
+    <div class="card">
+      <div class="card-title">Heart Rate</div>
+      <div class="bpm-num" id="bpm-display">72</div>
+      <div class="bpm-sub">Beats Per Minute</div>
+      <input type="range" id="bpm-slider" min="40" max="180" value="72">
+      <div class="slider-labels"><span>40</span><span>180 BPM</span></div>
+    </div>
+
+    <!-- Phase -->
+    <div class="card">
+      <div class="card-title">Cardiac Phase</div>
+      <div class="phase-row">
+        <div id="phase-dot" style="background:#22c55e"></div>
+        <div id="phase-name">Diastole</div>
+      </div>
+      <div id="phase-desc">All chambers relaxed — filling with blood</div>
+      <div class="ecg-wrap"><canvas id="ecg-mini" width="290" height="56"></canvas></div>
+    </div>
+
+    <!-- Valves -->
+    <div class="card">
+      <div class="card-title">Valve Status</div>
+      <div class="valve-row"><div class="vdot" id="vd-tri"></div><span>Tricuspid (RA→RV)</span><span class="vstatus" id="vs-tri">CLOSED</span></div>
+      <div class="valve-row"><div class="vdot" id="vd-pul"></div><span>Pulmonary (RV→PA)</span><span class="vstatus" id="vs-pul">CLOSED</span></div>
+      <div class="valve-row"><div class="vdot" id="vd-mit"></div><span>Mitral (LA→LV)</span><span class="vstatus" id="vs-mit">CLOSED</span></div>
+      <div class="valve-row"><div class="vdot" id="vd-aor"></div><span>Aortic (LV→Ao)</span><span class="vstatus" id="vs-aor">CLOSED</span></div>
+    </div>
+
+    <!-- Toggles -->
+    <div class="card">
+      <div class="card-title">Display Options</div>
+      <div class="toggle-row">
+        <div class="tog on" id="tog-blood"><span><i class="fas fa-tint"></i> Show Blood Flow</span><div class="sw"></div></div>
+        <div class="tog on" id="tog-labels"><span><i class="fas fa-tag"></i> Show Labels</span><div class="sw"></div></div>
+        <div class="tog on" id="tog-valves"><span><i class="fas fa-circle-nodes"></i> Highlight Valves</span><div class="sw"></div></div>
+      </div>
+    </div>
+
+    <!-- Mode -->
+    <div class="card">
+      <div class="card-title">Simulation Mode</div>
+      <div class="mode-grid">
+        <button class="mbtn active" data-mode="rest"><i class="fas fa-bed"></i>Resting</button>
+        <button class="mbtn" data-mode="exercise"><i class="fas fa-running"></i>Exercise</button>
+        <button class="mbtn" data-mode="stress"><i class="fas fa-bolt"></i>Stress</button>
+        <button class="mbtn" data-mode="pause"><i class="fas fa-pause"></i>Pause</button>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="card">
+      <div class="card-title">Anatomy Key</div>
+      <div class="leg-row"><div class="leg-color" style="background:linear-gradient(90deg,#1a2f99,#2e4ec2)"></div>Deoxygenated blood (Right heart)</div>
+      <div class="leg-row"><div class="leg-color" style="background:linear-gradient(90deg,#bb1818,#e83333)"></div>Oxygenated blood (Left heart)</div>
+      <div class="leg-row"><div class="leg-color" style="background:linear-gradient(90deg,#6b1010,#8b1e1e)"></div>Myocardium (heart muscle)</div>
+      <div class="leg-row"><div class="leg-color" style="background:linear-gradient(90deg,#8b7000,#c4a200)"></div>Valve leaflets</div>
+      <div class="leg-row" style="border:none"><div class="leg-color" style="background:linear-gradient(90deg,#2a2a5a,#3a3a7a)"></div>Pericardium (outer sac)</div>
+    </div>
+
+  </div>
+</div>
+
+  <!-- <div id="footer-placeholder"></div> -->
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/heart-simulator.js"></script>
+  <div id="zoom-controls-placeholder"></div>
+</body>
+</html>

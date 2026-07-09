@@ -2,7 +2,72 @@
    DR. A.P.J. ABDUL KALAM SCHOOL — Main JavaScript
    =================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+
+  /* ─── 0. COMPONENT LOADER ────────────────────────── */
+  /**
+   * Loads shared HTML components (header/footer) into placeholders.
+   * This is essential for maintaining a DRY codebase.
+   */
+  async function loadComponents() {
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+
+    const loadTask = [];
+
+    if (headerPlaceholder) {
+      loadTask.push(
+        fetch('components/header.html')
+          .then(response => response.text())
+          .then(data => {
+            headerPlaceholder.innerHTML = data;
+          })
+      );
+    }
+
+    if (footerPlaceholder) {
+      loadTask.push(
+        fetch('components/footer.html')
+          .then(response => response.text())
+          .then(data => {
+            footerPlaceholder.innerHTML = data;
+          })
+      );
+    }
+    
+    const zoomControlsPlaceholder = document.getElementById('zoom-controls-placeholder');
+    if (zoomControlsPlaceholder) {
+      loadTask.push(
+        fetch('components/zoom-controls.html')
+          .then(response => response.text())
+          .then(data => {
+            zoomControlsPlaceholder.innerHTML = data;
+          })
+      );
+    }
+
+    let scrollbarPlaceholder = document.getElementById('scrollbar-placeholder');
+    if (!scrollbarPlaceholder) {
+      scrollbarPlaceholder = document.createElement('div');
+      scrollbarPlaceholder.id = 'scrollbar-placeholder';
+      document.body.appendChild(scrollbarPlaceholder);
+    }
+    
+    loadTask.push(
+      fetch('components/scrollbar.html')
+        .then(response => response.text())
+        .then(data => {
+          scrollbarPlaceholder.innerHTML = data;
+        })
+    );
+
+    try {
+      await Promise.all(loadTask);
+      initComponents();
+    } catch (err) {
+      console.error('Error loading school components:', err);
+    }
+  }
 
   /* ─── 1. LOADER ─────────────────────────────────── */
   const loader = document.getElementById('loader');
@@ -28,74 +93,211 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ─── 3. NAVBAR: scroll behaviour ───────────────── */
-  const navbar = document.getElementById('navbar');
-  const scrollTopBtn = document.getElementById('scrollTop');
+  /* ─── 3. COMPONENT INITIALIZATION ────────────────── */
+  /**
+   * Binds event listeners to header/footer elements after they are injected.
+   */
+  function initComponents() {
+    const navbar = document.getElementById('navbar');
+    const scrollTopBtn = document.getElementById('scrollTop');
+    const langToggleFloat = document.getElementById('langToggleFloat');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+    const langModal = document.getElementById('languageModal');
+    const langButtons = document.querySelectorAll('.lang-btn');
 
-  // Sticky nav
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    if (navbar) {
-      navbar.classList.toggle('scrolled', scrollY > 60);
-    }
+    // Sticky nav and Floating buttons scroll effect
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (navbar) navbar.classList.toggle('scrolled', scrollY > 60);
+      if (langToggleFloat) langToggleFloat.classList.toggle('minimized', scrollY > 100);
+      if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', scrollY > 500);
+      updateActiveNavLink();
+    }, { passive: true });
 
     if (scrollTopBtn) {
-      scrollTopBtn.classList.toggle('visible', scrollY > 500);
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
 
+    // Mobile Hamburger Logic
+    function closeMenu() {
+      if (!hamburger) return;
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+      navOverlay.classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    if (hamburger && navMenu && navOverlay) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open', isOpen);
+        navOverlay.classList.toggle('visible', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+
+      navOverlay.addEventListener('click', closeMenu);
+      navMenu.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    }
+
+    // Translation logic within components
+    if (langButtons) {
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          setLanguage(lang);
+          if (langModal) langModal.classList.remove('visible');
+        });
+      });
+    }
+
+    const langToggleTrigger = document.getElementById('langToggleFloat');
+    if (langToggleTrigger && langModal) {
+      langToggleTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        langModal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // Trigger initial translation for injected content
+    const activeLang = localStorage.getItem('preferredLanguage') || 'en';
+    updateContent(activeLang);
     updateActiveNavLink();
-  }, { passive: true });
-
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Smooth scroll for nav links (including those just injected)
+    document.querySelectorAll('a[href^="#"], a[href*="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const offset = (navbar ? navbar.offsetHeight : 0) + 10;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        } else if (href.includes('#') && href.startsWith('index.html')) {
+           // If on index.html already, handle as smooth scroll
+           if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+             const targetId = href.split('#')[1];
+             const target = document.getElementById(targetId);
+             if (target) {
+               e.preventDefault();
+               const offset = (navbar ? navbar.offsetHeight : 0) + 10;
+               const top = target.getBoundingClientRect().top + window.scrollY - offset;
+               window.scrollTo({ top, behavior: 'smooth' });
+             }
+           }
+        }
+      });
     });
+    
+    // Initialize zoom controls if they exist on the page
+    initZoomControls();
   }
 
-  /* ─── 4. MOBILE HAMBURGER ────────────────────────── */
-  const hamburger = document.getElementById('hamburger');
-  const navMenu   = document.getElementById('navMenu');
-  const navOverlay = document.getElementById('navOverlay');
+  /* ─── 4. ZOOM CONTROLS LOGIC ───────────────────── */
+  function initZoomControls() {
+    const zoomInBtn = document.getElementById('zoom-in-btn');
+    const zoomOutBtn = document.getElementById('zoom-out-btn');
+    const zoomResetBtn = document.getElementById('zoom-level-text');
+    
+    if (!zoomInBtn || !zoomOutBtn || !zoomResetBtn) return;
 
-  function closeMenu() {
-    hamburger.classList.remove('open');
-    navMenu.classList.remove('open');
-    navOverlay.classList.remove('visible');
-    document.body.style.overflow = '';
-  }
+    let currentZoom = 1;
+    const step = 0.1;
+    const maxZoom = 2.0;
+    const minZoom = 0.5;
+    
+    function getZoomTarget() {
+      return document.querySelector('.solar-viewer') || 
+             document.querySelector('.sim-app-container') ||
+             document.querySelector('.content-section') ||
+             document.querySelector('.pt-container') ||
+             document.querySelector('main') ||
+             document.body;
+    }
+    
+    function applyZoom() {
+      const target = getZoomTarget();
+      if(target) {
+        target.style.zoom = currentZoom;
+      }
+      zoomResetBtn.innerText = Math.round(currentZoom * 100) + '%';
+      
+      // Auto-enable scrolling if zoomed in or out so hidden elements become reachable
+      if (currentZoom !== 1) {
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
+      } else {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
+    }
 
-  if (hamburger && navMenu && navOverlay) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
-      navMenu.classList.toggle('open', isOpen);
-      navOverlay.classList.toggle('visible', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-
-    navOverlay.addEventListener('click', closeMenu);
-
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-  }
-
-  /* ─── 5. ACTIVE NAV LINK ON SCROLL ──────────────── */
-  const sections = document.querySelectorAll('section[id]');
-  function updateActiveNavLink() {
-    const scrollY = window.scrollY + 120;
-    sections.forEach(section => {
-      const top    = section.offsetTop;
-      const height = section.offsetHeight;
-      const id     = section.getAttribute('id');
-      const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
-      if (navLink) {
-        navLink.classList.toggle('active', scrollY >= top && scrollY < top + height);
+    zoomInBtn.addEventListener('click', () => {
+      if(currentZoom < maxZoom) {
+        currentZoom += step;
+        currentZoom = Math.round(currentZoom * 10) / 10;
+        applyZoom();
       }
     });
+
+    zoomOutBtn.addEventListener('click', () => {
+      if(currentZoom > minZoom) {
+        currentZoom -= step;
+        currentZoom = Math.round(currentZoom * 10) / 10;
+        applyZoom();
+      }
+    });
+
+    zoomResetBtn.addEventListener('click', () => {
+      currentZoom = 1;
+      applyZoom();
+    });
+    
+    applyZoom();
   }
 
-  /* ─── 6. SCROLL REVEAL ANIMATIONS ───────────────── */
+  /* ─── 5. ACTIVE NAV LINK LOGIC ─────────────────── */
+  const sections = document.querySelectorAll('section[id]');
+  function updateActiveNavLink() {
+    const scrollY = window.scrollY + 150;
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+    // 1. Handle page-based active (Study Hub, Link Hub)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      link.classList.remove('active');
+      
+      if (href === currentPath) {
+        link.classList.add('active');
+      }
+    });
+
+    // 2. Handle hash-based active for homepage
+    if (currentPath === 'index.html' || currentPath === '') {
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-link[href="index.html#${id}"], .nav-link[href="#${id}"]`);
+        
+        if (navLink && scrollY >= top && scrollY < top + height) {
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          navLink.classList.add('active');
+        }
+      });
+    }
+  }
+
+  /* ─── 5. SCROLL REVEAL ANIMATIONS ───────────────── */
   const animatedEls = document.querySelectorAll('.fade-up, .fade-left, .fade-right');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -108,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   animatedEls.forEach(el => revealObserver.observe(el));
 
-  /* ─── 7. COUNTER ANIMATION ───────────────────────── */
+  /* ─── 6. COUNTER ANIMATION ───────────────────────── */
   const counters = document.querySelectorAll('[data-count]');
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -138,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 16);
   }
 
-  /* ─── 8. TESTIMONIALS CAROUSEL ───────────────────── */
+  /* ─── 7. TESTIMONIALS CAROUSEL ───────────────────── */
   const wrapper       = document.getElementById('testimonialsWrapper');
   const prevBtn       = document.getElementById('tPrev');
   const nextBtn       = document.getElementById('tNext');
@@ -149,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards       = wrapper.querySelectorAll('.testimonial-card');
     const totalSlides = cards.length;
 
-    // How many visible depends on viewport
     function getVisible() {
       if (window.innerWidth < 768) return 1;
       if (window.innerWidth < 1024) return 2;
@@ -162,9 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function slide(index) {
       currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
-      const cardWidth = cards[0].offsetWidth + 24; // gap = 24px
+      const cardWidth = cards[0].offsetWidth + 24; 
       wrapper.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-      updateDots();
+      if (dots.length) updateDots();
     }
 
     function updateDots() {
@@ -175,7 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
     prevBtn.addEventListener('click', () => slide(currentIndex - 1));
     dots.forEach((d, i) => d.addEventListener('click', () => slide(i)));
 
-    // Auto-slide
     let autoSlide = setInterval(() => {
       const maxIdx = getMaxIndex();
       slide(currentIndex >= maxIdx ? 0 : currentIndex + 1);
@@ -192,24 +392,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => slide(0));
   }
 
-  /* ─── 9. CONTACT FORM (EmailJS) ──────────────────── */
+  /* ─── 8. CONTACT FORM (EmailJS) ──────────────────── */
+  const EMAILJS_PUBLIC_KEY  = '6DYmieZwBu3lhi_FR';
+  const EMAILJS_SERVICE_ID  = 'service_tarunk435';
+  const EMAILJS_TEMPLATE_ID = 'template_tarunk435';
 
-  // ╔══════════════════════════════════════════════════╗
-  // ║   EMAILJS CONFIG — paste your 3 values below    ║
-  // ╚══════════════════════════════════════════════════╝
-  const EMAILJS_PUBLIC_KEY  = '6DYmieZwBu3lhi_FR';   // Account → API Keys
-  const EMAILJS_SERVICE_ID  = 'service_tarunk435';   // Email Services → Service ID
-  const EMAILJS_TEMPLATE_ID = 'template_tarunk435';  // Email Templates → Template ID
-
-  // Initialise EmailJS once
   if (typeof emailjs !== 'undefined') {
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
   }
 
   const contactForm = document.getElementById('contactForm');
 
-  // ── Helper: show an inline banner above the form ──
   function showFormBanner(type, message) {
+    if (!contactForm) return;
     const existing = contactForm.querySelector('.form-banner');
     if (existing) existing.remove();
 
@@ -238,19 +433,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-
-      // Config guard — warn if keys are still placeholders
       if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-        showFormBanner('error',
-          'Email service not configured yet. Please add your EmailJS keys to js/main.js.'
-        );
+        showFormBanner('error', 'Email service not configured yet.');
         return;
       }
 
       const btn = contactForm.querySelector('.btn-submit');
       const originalHTML = btn.innerHTML;
-
-      // ── Loading state ──
       const currentLang = localStorage.getItem('preferredLanguage') || 'en';
       btn.disabled = true;
       btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentLang]['form-sending'] || 'Sending…'}`;
@@ -267,31 +456,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-
-        // ── Success ──
         btn.innerHTML = `<i class="fas fa-check"></i> ${translations[currentLang]['form-sent'] || 'Message Sent!'}`;
         btn.style.background = 'linear-gradient(135deg, #2E7D32, #4CAF50)';
-        btn.style.opacity = '1';
-        showFormBanner('success',
-          translations[currentLang]['form-success'] || 'Thank you! Your message has been received.'
-        );
+        showFormBanner('success', translations[currentLang]['form-success'] || 'Thank you! Received.');
         contactForm.reset();
-
         setTimeout(() => {
           btn.innerHTML = originalHTML;
           btn.style.background = '';
           btn.disabled = false;
         }, 4000);
-
       } catch (err) {
-        // ── Error ──
-        btn.innerHTML = `<i class="fas fa-times"></i> ${translations[currentLang]['form-failed'] || 'Failed — Try Again'}`;
+        btn.innerHTML = `<i class="fas fa-times"></i> ${translations[currentLang]['form-failed'] || 'Failed'}`;
         btn.style.background = 'linear-gradient(135deg, #c62828, #e53935)';
-        btn.style.opacity = '1';
-        showFormBanner('error',
-          translations[currentLang]['form-error'] || 'Something went wrong. Please try again.'
-        );
-
+        showFormBanner('error', translations[currentLang]['form-error'] || 'Error.');
         setTimeout(() => {
           btn.innerHTML = originalHTML;
           btn.style.background = '';
@@ -301,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ─── 10. GALLERY LIGHTBOX ───────────────────────── */
+  /* ─── 9. GALLERY LIGHTBOX ───────────────────────── */
   const galleryItems = document.querySelectorAll('.gallery-item');
   galleryItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -317,70 +494,43 @@ document.addEventListener('DOMContentLoaded', () => {
       document.head.appendChild(style);
       const image = document.createElement('img');
       image.src = img.src;
-      image.style.cssText = `
-        max-width:90vw;max-height:90vh;border-radius:12px;
-        box-shadow:0 30px 80px rgba(0,0,0,0.8);
-        animation:fadeIn 0.3s ease;
-      `;
+      image.style.cssText = `max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.8);animation:fadeIn 0.3s ease;`;
       overlay.appendChild(image);
       document.body.appendChild(overlay);
-      overlay.addEventListener('click', () => {
-        overlay.remove();
-        style.remove();
-      });
+      overlay.addEventListener('click', () => { overlay.remove(); style.remove(); });
     });
   });
 
-  /* ─── 11. SMOOTH LINK SCROLLING ─────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        const offset = navbar.offsetHeight + 10;
-        const top    = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-
-  /* ─── 12. INTERNATIONALIZATION (i18n) ────────── */
-  const langModal = document.getElementById('languageModal');
-  const langButtons = document.querySelectorAll('.lang-btn');
-
+  /* ─── 10. INTERNATIONALIZATION (i18n) ────────── */
   function updateContent(lang) {
     if (!translations[lang]) return;
-
-    // Update text content
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[lang][key]) {
-        // Use innerHTML only if needed, otherwise textContent
-        if (translations[lang][key].includes('<br>') || translations[lang][key].includes('<span') || translations[lang][key].includes('<i')) {
-          el.innerHTML = translations[lang][key];
+        let content = translations[lang][key];
+        
+        // Dynamic placeholders
+        if (content.includes('{{year}}')) {
+          content = content.replace('{{year}}', new Date().getFullYear());
+        }
+
+        if (content.includes('<br>') || content.includes('<span') || content.includes('<i')) {
+          el.innerHTML = content;
         } else {
-          el.textContent = translations[lang][key];
+          el.textContent = content;
         }
       }
     });
-
-    // Update placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
       const key = el.getAttribute('data-i18n-ph');
-      if (translations[lang][key]) {
-        el.placeholder = translations[lang][key];
-      }
+      if (translations[lang][key]) el.placeholder = translations[lang][key];
     });
-
-    // Update HTML lang attribute
     document.documentElement.lang = lang;
   }
 
   function setLanguage(lang) {
     localStorage.setItem('preferredLanguage', lang);
     updateContent(lang);
-    langModal.classList.remove('visible');
-    // Ensure scroll is enabled back
     document.body.style.overflow = '';
   }
 
@@ -388,31 +538,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('preferredLanguage');
   if (savedLang) {
     updateContent(savedLang);
-    langModal.classList.remove('visible');
-  } else {
-    // Show modal after a small delay or after loader
-    window.addEventListener('load', () => {
-      setTimeout(() => {
+  }
+
+  // Kick off component loading
+  await loadComponents();
+
+  // If no language set, show modal after components load
+  if (!savedLang) {
+    setTimeout(() => {
+      const langModal = document.getElementById('languageModal');
+      if (langModal) {
         langModal.classList.add('visible');
         document.body.style.overflow = 'hidden';
-      }, 2500); // Slightly after loader disappears
-    });
+      }
+    }, 500);
   }
 
-  langButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.getAttribute('data-lang');
-      setLanguage(lang);
-    });
-  });
-
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      langModal.classList.add('visible');
-      document.body.style.overflow = 'hidden';
-    });
-  }
-
+  // Public translation trigger
+  window.updatePageTranslations = function() {
+    const activeLang = localStorage.getItem('preferredLanguage') || 'en';
+    updateContent(activeLang);
+  };
 });
+

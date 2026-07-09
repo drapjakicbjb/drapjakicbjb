@@ -1,0 +1,64 @@
+<style>
+  .zoom-controls-wrapper {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    background: rgba(13, 27, 42, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 8px;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  
+  .zoom-action-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  
+  .zoom-action-btn:hover {
+    background: var(--saffron, #ff9933);
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  #zoom-level-text {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 45px;
+    text-align: center;
+    user-select: none;
+  }
+  
+  @media (max-width: 768px) {
+    .zoom-controls-wrapper {
+      bottom: 85px; /* Sit above whatsapp button on mobile */
+      right: 25px;
+    }
+  }
+</style>
+
+<div class="zoom-controls-wrapper">
+  <button id="zoom-out-btn" class="zoom-action-btn" aria-label="Zoom Out" title="Zoom Out">
+    <i class="fas fa-minus"></i>
+  </button>
+  <span id="zoom-level-text" title="Reset Zoom" style="cursor:pointer;">100%</span>
+  <button id="zoom-in-btn" class="zoom-action-btn" aria-label="Zoom In" title="Zoom In">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+

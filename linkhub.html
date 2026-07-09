@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dr. A.P.J. Abdul Kalam Inter College - Link Hub. Access important school resources, results, and digital portals." />
+  <title>Link Hub | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    /* Specific styles for Link Hub */
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+
+    header{
+      padding: 0%;
+    }
+
+    .link-hub-hero {
+      padding: 200px 24px 100px;
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a5a 100%);
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .link-hub-grid {
+      max-width: 1200px;
+      margin: -60px auto 100px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .link-category {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .link-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .link-category h2 {
+      color: var(--navy);
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .link-category h2 i {
+      color: var(--saffron);
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .link-item {
+      margin-bottom: 15px;
+    }
+
+    .link-item a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .link-item a:hover {
+      background: var(--navy);
+      color: white;
+      padding-left: 25px;
+    }
+
+    .link-item a i {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
+    .link-item a:hover i {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="loader">
+    <img class="loader-logo" src="assets/images/logo.png" alt="School Logo" />
+    <p class="loader-text">Loading&hellip;</p>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <div id="header-placeholder"></div>
+
+  <header class="link-hub-hero">
+    <h1 data-i18n="nav-links">Link Hub</h1>
+    <p>Central Access to All School Portals & Digital Resources</p>
+  </header>
+
+  <main class="link-hub-grid">
+    <div class="link-category">
+      <h2><i class="fas fa-user-graduate"></i> Student Portals</h2>
+      <ul class="link-list">
+        <li class="link-item"><a href="#" onclick="alert('We are still working on this link.')">Online Result Portal <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="#" onclick="alert('We are still working on this link.')">Student Attendance <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="#" onclick="alert('Contact your subject teacher for your assignments.')">Digital Assignments <i class="fas fa-chevron-right"></i></a></li>
+      </ul>
+    </div>
+
+    <div class="link-category">
+      <h2><i class="fas fa-book-open"></i> Academic Resources</h2>
+      <ul class="link-list">
+        <li class="link-item"><a target="_blank" href="https://upmsp.edu.in/Board_Syllabus.aspx" onclick="alert('This link will redirect you to the official UP Board website.')">UP Board Syllabus <small> (Class: 9-12)</small><i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a target="_blank" href="https://dlib.inflibnet.ac.in/" onclick="alert('This link will redirect you to the official National Digital Library website.')">E-Library Access <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="study.html">Interactive Simulators <i class="fas fa-chevron-right"></i></a></li>
+      </ul>
+    </div>
+
+    <div class="link-category">
+      <h2><i class="fas fa-bullhorn"></i> Important Links</h2>
+      <ul class="link-list">
+        <li class="link-item"><a href="#">Latest Notice Board <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="#">Holiday Calendar <i class="fas fa-chevron-right"></i></a></li>
+        <li class="link-item"><a href="#">Fee Payment Portal <i class="fas fa-chevron-right"></i></a></li>
+      </ul>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
