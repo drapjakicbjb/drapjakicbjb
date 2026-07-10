@@ -71,8 +71,8 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 .desktop-banner-text{display:inline}.mobile-banner-text{display:none}
 @media(max-width:768px){.top-gov-banner{padding:8px 15px 5px;height:40px;position:relative;width:100%}.desktop-banner-text{display:none}.mobile-banner-text{display:inline}#navbar{top:40px;padding-top:10px}}
 </style>
-  <link rel="stylesheet" href="styles/main.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="styles/main.min.css" /></noscript>
+  <link rel="preload" href="styles/main.min.css" as="style" />
+  <link rel="stylesheet" href="styles/main.min.css" />
 
   <!-- JSON-LD Structured Data for Search Engine Optimization (SEO) -->
   <script type="application/ld+json">
@@ -205,7 +205,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       <div class="about-grid">
         <div class="about-left-column fade-left">
           <div class="about-image-wrapper">
-            <img class="about-image" src="assets/images/about.webp" alt="School Building" />
+            <img class="about-image" src="assets/images/about.webp" alt="School Building" width="1200" height="554" />
             <div class="about-badge">
               <span class="num">15+</span>
               <span class="txt">Years of<br>Excellence</span>
