@@ -2,8 +2,9 @@
    DR. A.P.J. ABDUL KALAM SCHOOL - Main Stylesheet
    =================================================== */
 
-/* Google Fonts */
+/* Google Fonts - Loaded directly in HTML to prevent render-blocking nested imports
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*/
 
 /* ===== CSS CUSTOM PROPERTIES (Design Tokens) ===== */
 :root {

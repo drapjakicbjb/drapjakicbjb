@@ -2,6 +2,24 @@
    DR. A.P.J. ABDUL KALAM SCHOOL — Main JavaScript
    =================================================== */
 
+  // Register Service Worker for client-side caching and offline support
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      let pathPrefix = '';
+      const scriptEl = document.querySelector('script[src*="js/main.js"]');
+      if (scriptEl) {
+        const src = scriptEl.getAttribute('src');
+        const idx = src.indexOf('js/main.js');
+        if (idx > 0) {
+          pathPrefix = src.substring(0, idx);
+        }
+      }
+      navigator.serviceWorker.register(pathPrefix + 'sw.js')
+        .then(reg => console.log('[Service Worker] Scope:', reg.scope))
+        .catch(err => console.error('[Service Worker] Registration failed:', err));
+    });
+  }
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   /* ─── 0. COMPONENT LOADER ────────────────────────── */
@@ -91,12 +109,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (loader) {
     // Hide loader when the page has fully loaded
     window.addEventListener('load', () => {
-      setTimeout(hideLoader, 2200);
+      setTimeout(hideLoader, 200);
     });
 
-    // Safety fallback: Hide loader after a maximum of 3 seconds anyway,
-    // preventing the loading screen from getting stuck due to large image downloads.
-    setTimeout(hideLoader, 3000);
+    // Safety fallback: Hide loader after a maximum of 1.5 seconds anyway,
+    // preventing the loading screen from getting stuck.
+    setTimeout(hideLoader, 1500);
 
     document.body.style.overflow = 'hidden';
   }
