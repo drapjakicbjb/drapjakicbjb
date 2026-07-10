@@ -733,7 +733,7 @@ ul {
 
 .btn-primary {
   background: white;
-  color: var(--saffron);
+  color: var(--navy);
   padding: 14px 32px;
   border-radius: 50px;
   font-weight: 700;
@@ -997,7 +997,7 @@ ul {
   box-shadow: var(--shadow-md);
 }
 
-.mv-card h4 {
+.mv-card h3 {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-dark);
@@ -1007,11 +1007,11 @@ ul {
   gap: 8px;
 }
 
-.mv-card h4 i {
+.mv-card h3 i {
   color: var(--saffron);
 }
 
-.mv-card:nth-child(2) h4 i {
+.mv-card:nth-child(2) h3 i {
   color: var(--green);
 }
 
@@ -1263,7 +1263,7 @@ ul {
   box-shadow: var(--shadow-orange);
 }
 
-.step-content h4 {
+.step-content h3 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-dark);
@@ -1327,6 +1327,7 @@ ul {
   border-radius: 50px;
   font-weight: 600;
   font-size: 0.9rem;
+  font-family: inherit;
   transition: var(--transition);
   cursor: pointer;
   border: none;
@@ -1672,8 +1673,8 @@ ul {
   flex-shrink: 0;
 }
 
-.contact-detail h4 {
-  font-size: 0.9rem;
+.contact-detail h3 {
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 4px;
@@ -1997,7 +1998,7 @@ footer {
 
 .footer-bottom p {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-bottom a {
@@ -2011,7 +2012,7 @@ footer {
 
 .footer-bottom-links a {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   transition: var(--transition);
 }
 
@@ -2812,7 +2813,7 @@ footer {
   margin-bottom: 6px;
 }
 
-.wing-header h5 {
+.wing-header h4 {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--navy);
@@ -3003,7 +3004,7 @@ footer {
   text-transform: uppercase;
 }
 
-.notice-list-item h4 {
+.notice-list-item h3 {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;

@@ -2,19 +2,21 @@ const CACHE_NAME = 'apj-school-cache-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/styles/main.css',
+  '/styles/main.min.css',
+  '/styles/fontawesome.min.css',
   '/js/main.js',
+  '/js/email.min.js',
   '/assets/images/logo.webp',
   '/assets/images/new_logo.webp',
   '/assets/images/Manager.webp',
   '/assets/images/about.webp',
-  '/assets/images/campus.webp'
+  '/assets/images/campus.webp',
+  '/assets/images/Flag_of_India.svg'
 ];
 
 // Third-party CDN URLs to cache
 const CDN_URLS = [
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
   'https://fonts.gstatic.com/'
 ];
 

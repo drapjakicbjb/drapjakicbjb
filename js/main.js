@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const banner = document.createElement('div');
     banner.className = 'form-banner';
     const isSuccess = type === 'success';
-    banner.style.cssText = `
+    banner.style.min.cssText = `
       display:flex;align-items:center;gap:10px;
       padding:14px 20px;border-radius:12px;margin-bottom:20px;
       font-size:0.9rem;font-weight:600;
@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
       const overlay = document.createElement('div');
-      overlay.style.cssText = `
+      overlay.style.min.cssText = `
         position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;
         display:flex;align-items:center;justify-content:center;
         cursor:pointer;padding:20px;animation:fadeIn 0.3s ease;
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.head.appendChild(style);
       const image = document.createElement('img');
       image.src = img.src;
-      image.style.cssText = `max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.8);animation:fadeIn 0.3s ease;`;
+      image.style.min.cssText = `max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.8);animation:fadeIn 0.3s ease;`;
       overlay.appendChild(image);
       document.body.appendChild(overlay);
       overlay.addEventListener('click', () => { overlay.remove(); style.remove(); });

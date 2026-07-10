@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KG06S74784"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KG06S74784');
-</script>
+    <!-- Google tag (gtag.js) - Delayed Load for Performance -->
+  <script>
+    (function() {
+      function loadGtag() {
+        if (window.gtagLoaded) return;
+        window.gtagLoaded = true;
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG06S74784';
+        script.async = true;
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-KG06S74784');
+      }
+      var timer = setTimeout(loadGtag, 3500);
+      var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
+      triggerEvents.forEach(function(event) {
+        window.addEventListener(event, function() {
+          clearTimeout(timer);
+          loadGtag();
+        }, { once: true, passive: true });
+      });
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Interactive Human Heart Cross-Section Simulator - blood flow, valve dynamics, and cardiac anatomy.">
@@ -17,9 +34,13 @@
   <link rel="icon" type="image/webp" href="../assets/images/logo.webp">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="preload" href="../styles/fontawesome.min.css" as="style" />
+  <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="preload" href="../styles/fontawesome.min.css" as="style" />
+  <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="../styles/fontawesome.min.css" /></noscript></noscript>
+  <link rel="preload" href="../styles/main.min.css" as="style" />
+  <link rel="stylesheet" href="../styles/main.min.css">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{background:#04070f;color:#dde8ff;font-family:'Poppins',sans-serif;min-height:100vh;overflow-x:hidden;overflow-y:auto}
@@ -151,8 +172,8 @@
 </div>
 
   <!-- <div id="footer-placeholder"></div> -->
-  <script src="../js/main.js"></script>
-  <script src="../js/heart-simulator.js"></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/heart-simulator.js" defer></script>
   <div id="zoom-controls-placeholder"></div>
 </body>
 </html>

@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KG06S74784"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KG06S74784');
-</script>
+    <!-- Google tag (gtag.js) - Delayed Load for Performance -->
+  <script>
+    (function() {
+      function loadGtag() {
+        if (window.gtagLoaded) return;
+        window.gtagLoaded = true;
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG06S74784';
+        script.async = true;
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-KG06S74784');
+      }
+      var timer = setTimeout(loadGtag, 3500);
+      var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
+      triggerEvents.forEach(function(event) {
+        window.addEventListener(event, function() {
+          clearTimeout(timer);
+          loadGtag();
+        }, { once: true, passive: true });
+      });
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Official Notice Board of Dr. A.P.J. Abdul Kalam Inter College, R.S.Y. Convent School, and Late Dal Sringari Balika Junior High School in Basti, U.P. Get all academic announcements here.">
@@ -20,9 +37,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" /></noscript>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="preload" href="styles/fontawesome.min.css" as="style" />
+  <link rel="stylesheet" href="styles/fontawesome.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="preload" href="styles/fontawesome.min.css" as="style" />
+  <link rel="stylesheet" href="styles/fontawesome.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="preload" href="styles/fontawesome.min.css" as="style" />
+  <link rel="stylesheet" href="styles/fontawesome.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="styles/fontawesome.min.css" /></noscript></noscript></noscript>
+  <link rel="preload" href="styles/main.min.css" as="style" />
+  <link rel="stylesheet" href="styles/main.min.css" />
   <style>
     :root {
       --primary-color: #0b192c;
@@ -163,7 +186,7 @@
       50% { opacity: 0.7; }
     }
 
-    .notice-card h3 {
+    .notice-card h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
@@ -222,7 +245,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     }
 
-    .sidebar-widget h3 {
+    .sidebar-widget h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
@@ -321,7 +344,7 @@
       border: none;
     }
 
-    .whatsapp-widget h3 {
+    .whatsapp-widget h2 {
       color: white;
       border-bottom-color: rgba(255,255,255,0.15);
     }
@@ -370,7 +393,7 @@
       margin-bottom: 15px;
     }
 
-    .no-notices h4 {
+    .no-notices h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.2rem;
       margin: 0 0 8px 0;
@@ -474,7 +497,7 @@
     <!-- No Results Callout -->
     <div class="no-notices" id="noNotices">
       <i class="fas fa-search-minus"></i>
-      <h4>No Notices Found</h4>
+      <h2>No Notices Found</h2>
       <p>Try searching for a different keyword or category.</p>
     </div>
 
@@ -483,7 +506,7 @@
       
       <!-- Search Widget -->
       <div class="sidebar-widget">
-        <h3><i class="fas fa-search"></i> Search Notice</h3>
+        <h2><i class="fas fa-search"></i> Search Notice</h2>
         <div class="search-box">
           <i class="fas fa-search"></i>
           <input type="text" id="noticeSearchInput" placeholder="Type keywords here...">
@@ -492,7 +515,7 @@
 
       <!-- Categories Filter Widget -->
       <div class="sidebar-widget">
-        <h3><i class="fas fa-filter"></i> Categories</h3>
+        <h2><i class="fas fa-filter"></i> Categories</h2>
         <div class="category-filter-list">
           <button class="filter-item-btn active" onclick="filterNotices('all')">
             <span>All Announcements</span>
@@ -519,7 +542,7 @@
 
       <!-- WhatsApp Channel Widget -->
       <div class="sidebar-widget whatsapp-widget">
-        <h3><i class="fab fa-whatsapp"></i> Real-time Alerts</h3>
+        <h2><i class="fab fa-whatsapp"></i> Real-time Alerts</h2>
         <p>Subscribe to our official school WhatsApp channel to receive urgent notifications, weather announcements, and results directly on your phone.</p>
         <a href="https://whatsapp.com/channel/0029ValVXTv5q08k3bcxT10R" target="_blank" rel="noopener noreferrer" class="btn-wa-subscribe">
           <i class="fab fa-whatsapp"></i> Join WhatsApp Channel
@@ -533,8 +556,8 @@
   <div id="footer-placeholder"></div>
 
   <!-- JavaScript logic to fetch and display notices dynamically -->
-  <script src="js/notices.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/notices.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script>
     let activeCategory = 'all';
     let searchQuery = '';
@@ -578,7 +601,7 @@
               ${n.isImportant ? '<span class="important-badge">Important</span>' : ''}
             </div>
           </div>
-          <h3>${n.title}</h3>
+          <h2>${n.title}</h2>
           <p>${n.content}</p>
           ${n.fileUrl ? `
             <div class="notice-action">
