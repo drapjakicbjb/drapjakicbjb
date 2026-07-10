@@ -36,57 +36,64 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://drapjakicbjb.ac.in/fees.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Interactive Study Hub Simulators -->
   <url>
-    <loc>https://drapjakicbjb.ac.in/solar-system.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/solar-system.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/periodic-table.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/periodic-table.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/biology-cell.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/biology-cell.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/plant-anatomy.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/plant-anatomy.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/heart-simulator.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/heart-simulator.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/fractions-simulator.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/fractions-simulator.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/optics-simulator.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/optics-simulator.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/mirror-simulator.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/mirror-simulator.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://drapjakicbjb.ac.in/pendulum-simulator.html</loc>
+    <loc>https://drapjakicbjb.ac.in/interactive-study-hub/pendulum-simulator.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

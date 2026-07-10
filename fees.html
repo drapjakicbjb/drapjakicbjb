@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Official Fee Structure for the 2026-27 academic session at Dr. A.P.J. Abdul Kalam Inter College, R.S.Y. Convent School, and Late Dal Sringari Balika School in Belwariya Jungle, Basti, U.P." />
+  <meta name="keywords"
+    content="School Fees, Dr. A.P.J. Abdul Kalam Inter College, R.S.Y. Convent School, Late Dal Sringari Balika Junior High School, Fee Structure 2026-27, School Admission Fees, Basti" />
+  <title>Fee Structure 2026-27 | Dr.A.P.J. Abdul Kalam School | RSY Convent | Dal Sringari Balika</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <style>
+    :root {
+      --primary-color: #0b192c;
+      --accent-color: #ff6b00;
+      --accent-hover: #ff8c42;
+      --text-dark: #1e293b;
+      --text-medium: #475569;
+      --text-light: #94a3b8;
+      --border-color: #e2e8f0;
+      --bg-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .fees-hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #172A45 100%);
+      color: white;
+      text-align: center;
+      padding: 150px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fees-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .fees-hero p {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .fees-container {
+      max-width: 1200px;
+      margin: -40px auto 80px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 992px) {
+      .fees-container {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+      }
+    }
+
+    /* Mobile Responsive Optimizations for Fees Page */
+    @media (max-width: 768px) {
+      .fees-hero {
+        padding: 120px 15px 50px;
+      }
+
+      .fees-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .fees-card {
+        padding: 20px 15px;
+        border-radius: 12px;
+      }
+
+      table {
+        min-width: 850px; /* Forces table width to activate horizontal scrollbar */
+      }
+
+      th, td {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        white-space: nowrap; /* Avoid wrapping cell contents to keep row height aligned */
+      }
+
+      /* Make Class column sticky on mobile so it stays visible while scrolling */
+      table td:first-child:not([colspan]),
+      thead tr:first-child th:first-child {
+        position: sticky;
+        left: 0;
+        background-color: white;
+        z-index: 5;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+        font-weight: 600;
+        border-right: 1px solid var(--border-color);
+      }
+
+      thead tr:first-child th:first-child {
+        background-color: var(--primary-color);
+        color: white;
+        z-index: 6;
+      }
+
+      tr:hover td:first-child {
+        background-color: #f8fafc;
+      }
+
+      .scroll-indicator {
+        display: flex !important;
+      }
+    }
+
+    .fees-card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      padding: 30px;
+      transition: all 0.3s ease;
+      min-width: 0; /* Prevents grid item from expanding beyond viewport */
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .fees-table-wrap {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    th.center, td.center {
+      text-align: center;
+    }
+
+    tr.section-header-row td {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 0.95rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 12px;
+    }
+
+    tr:hover {
+      background-color: #f8fafc;
+    }
+
+    /* Highlights for current year fee columns */
+    .highlight-fee {
+      background-color: rgba(255, 107, 0, 0.03);
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    tr:hover .highlight-fee {
+      background-color: rgba(255, 107, 0, 0.06);
+    }
+
+    .fees-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-widget {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .sidebar-widget h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-widget ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text-medium);
+    }
+
+    .sidebar-widget ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-action-primary {
+      background: var(--accent-color);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
+    }
+
+    .btn-action-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-action-secondary {
+      background: var(--primary-color);
+      color: white;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.2);
+    }
+
+    .btn-action-secondary:hover {
+      background: #172a45;
+      transform: translateY(-2px);
+    }
+
+    .currency-symbol::before {
+      content: '₹';
+      margin-right: 2px;
+    }
+
+    .badge-medium {
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 6px;
+    }
+
+    .badge-hm {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .badge-em {
+      background-color: #f0fdf4;
+      color: #15803d;
+    }
+
+    .fee-disclaimer {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    /* Print Specific Styles - Prints only the fees card */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      
+      /* Hide non-printable elements */
+      #header-placeholder,
+      #footer-placeholder,
+      .fees-hero,
+      .fees-sidebar,
+      #scrollTop,
+      #scrollbar-placeholder,
+      .floating-controls,
+      .top-gov-banner-wrapper,
+      #navbar,
+      footer {
+        display: none !important;
+      }
+
+      /* Reset container layout */
+      .fees-container {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      /* Format the printable card for full page print */
+      .fees-card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+
+      /* Hide the print button inside the card */
+      .fees-card .btn-action {
+        display: none !important;
+      }
+
+      /* Table formatting for print */
+      .fees-table-wrap {
+        border: 1px solid #bbb !important;
+        border-radius: 4px !important;
+        overflow: visible !important;
+        margin-top: 15px !important;
+      }
+
+      table {
+        width: 100% !important;
+      }
+
+      th, td {
+        padding: 8px 10px !important;
+        border-bottom: 1px solid #bbb !important;
+        font-size: 9.5pt !important;
+      }
+
+      th {
+        background-color: #f1f5f9 !important;
+        color: #000 !important;
+        border-bottom: 2px solid #666 !important;
+      }
+
+      tr.section-header-row td {
+        background-color: #e2e8f0 !important;
+        color: #000 !important;
+        font-weight: 700 !important;
+        border-left: 4px solid var(--accent-color) !important;
+      }
+
+      .highlight-fee {
+        background-color: transparent !important;
+        color: #000 !important;
+        font-weight: 600 !important;
+      }
+    }
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KG06S74784"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KG06S74784');
+</script>
+<body>
+  <!-- Header Placeholder (Loaded Dynamically) -->
+  <div id="header-placeholder"></div>
+
+  <!-- Hero Section -->
+  <section class="fees-hero">
+    <div class="container">
+      <h1>School Fee Structure</h1>
+      <p>Session 2026-2027 — Transparent and structured educational charges for all academic wings and media options.</p>
+    </div>
+  </section>
+
+  <!-- Fees Container -->
+  <div class="fees-container">
+    <!-- Fees Main Table Card -->
+    <div class="fees-card fade-up">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; border-bottom:1.5px solid var(--border-color); padding-bottom:15px;">
+        <div>
+          <h2 style="font-size:1.4rem; color:var(--primary-color); font-weight:700;">Academic Fee Details 2026-27</h2>
+          <p style="font-size:0.85rem; color:var(--text-medium); margin-top:2px;">Compare monthly tuition fees, admission/exam tests, and annual charges.</p>
+        </div>
+        <button class="btn-action btn-action-primary" style="width:auto; padding:8px 18px; font-size:0.8rem;" onclick="window.print()">
+          <i class="fas fa-print"></i> Print Fee Card
+        </button>
+      </div>
+
+      <!-- Swipe/Scroll Indicator for Mobile -->
+      <div class="scroll-indicator" style="display: none; align-items: center; justify-content: center; gap: 8px; font-size: 0.75rem; color: var(--text-medium); margin: 15px 0 -5px 0; background: rgba(255, 107, 0, 0.05); padding: 8px; border-radius: 6px; border: 1px dashed rgba(255, 107, 0, 0.25);">
+        <i class="fas fa-arrows-alt-h" style="color: var(--accent-color);"></i>
+        <span>Swipe horizontally to see full table (Monthly &amp; Annual Fees)</span>
+      </div>
+
+      <div class="fees-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">Class</th>
+              <th rowspan="2" class="center">Fee 2025-26<br>(Monthly)</th>
+              <th colspan="2" class="center" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Fee 2026-27 (Monthly)</th>
+              <th rowspan="2" class="center">Test Fee</th>
+              <th rowspan="2" class="center">Half/Annual<br>Charges</th>
+              <th colspan="2" class="center" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Total Annual Fee</th>
+            </tr>
+            <tr>
+              <th class="center">Boys</th>
+              <th class="center">Girls</th>
+              <th class="center">Boys</th>
+              <th class="center">Girls</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- R.S.Y. Convent School Primary Wing -->
+            <tr class="section-header-row">
+              <td colspan="8">R.S.Y. Convent School (Nursery to Class 5)</td>
+            </tr>
+            <tr>
+              <td>NUR</td>
+              <td class="center currency-symbol">485</td>
+              <td class="center highlight-fee currency-symbol">485</td>
+              <td class="center highlight-fee currency-symbol">460</td>
+              <td class="center currency-symbol">100</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center highlight-fee currency-symbol">6420</td>
+              <td class="center highlight-fee currency-symbol">6120</td>
+            </tr>
+            <tr>
+              <td>LKG</td>
+              <td class="center currency-symbol">485</td>
+              <td class="center highlight-fee currency-symbol">485</td>
+              <td class="center highlight-fee currency-symbol">460</td>
+              <td class="center currency-symbol">100</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center highlight-fee currency-symbol">6420</td>
+              <td class="center highlight-fee currency-symbol">6120</td>
+            </tr>
+            <tr>
+              <td>UKG</td>
+              <td class="center currency-symbol">485</td>
+              <td class="center highlight-fee currency-symbol">485</td>
+              <td class="center highlight-fee currency-symbol">460</td>
+              <td class="center currency-symbol">100</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center highlight-fee currency-symbol">6420</td>
+              <td class="center highlight-fee currency-symbol">6120</td>
+            </tr>
+            <tr>
+              <td>Class 1</td>
+              <td class="center currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">500</td>
+              <td class="center currency-symbol">150</td>
+              <td class="center currency-symbol">250</td>
+              <td class="center highlight-fee currency-symbol">7160</td>
+              <td class="center highlight-fee currency-symbol">6800</td>
+            </tr>
+            <tr>
+              <td>Class 2</td>
+              <td class="center currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">500</td>
+              <td class="center currency-symbol">150</td>
+              <td class="center currency-symbol">250</td>
+              <td class="center highlight-fee currency-symbol">7160</td>
+              <td class="center highlight-fee currency-symbol">6800</td>
+            </tr>
+            <tr>
+              <td>Class 3</td>
+              <td class="center currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">500</td>
+              <td class="center currency-symbol">150</td>
+              <td class="center currency-symbol">250</td>
+              <td class="center highlight-fee currency-symbol">7160</td>
+              <td class="center highlight-fee currency-symbol">6800</td>
+            </tr>
+            <tr>
+              <td>Class 4</td>
+              <td class="center currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">500</td>
+              <td class="center currency-symbol">150</td>
+              <td class="center currency-symbol">250</td>
+              <td class="center highlight-fee currency-symbol">7160</td>
+              <td class="center highlight-fee currency-symbol">6800</td>
+            </tr>
+            <tr>
+              <td>Class 5</td>
+              <td class="center currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">530</td>
+              <td class="center highlight-fee currency-symbol">500</td>
+              <td class="center currency-symbol">150</td>
+              <td class="center currency-symbol">250</td>
+              <td class="center highlight-fee currency-symbol">7160</td>
+              <td class="center highlight-fee currency-symbol">6800</td>
+            </tr>
+
+            <!-- Late Dal Sringari Balika Junior High School Wing -->
+            <tr class="section-header-row">
+              <td colspan="8">Late Dal Sringari Balika Junior High School (Class 6 to 8 — Hindi Medium)</td>
+            </tr>
+            <tr>
+              <td>Class 6 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">545</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">7900</td>
+              <td class="center highlight-fee currency-symbol">7540</td>
+            </tr>
+            <tr>
+              <td>Class 7 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">545</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">7900</td>
+              <td class="center highlight-fee currency-symbol">7540</td>
+            </tr>
+            <tr>
+              <td>Class 8 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">545</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">7900</td>
+              <td class="center highlight-fee currency-symbol">7540</td>
+            </tr>
+
+            <!-- Dr. A.P.J. Abdul Kalam Inter College Wing -->
+            <tr class="section-header-row">
+              <td colspan="8">Dr. A.P.J. Abdul Kalam Inter College (Class 9 to 12 HM & All English Medium Classes)</td>
+            </tr>
+            <tr>
+              <td>Class 6 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">545</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">7900</td>
+              <td class="center highlight-fee currency-symbol">7540</td>
+            </tr>
+            
+            <tr>
+              <td>Class 7 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">575</td>
+              <td class="center highlight-fee currency-symbol">545</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">7900</td>
+              <td class="center highlight-fee currency-symbol">7540</td>
+            </tr>
+            <tr>
+              <td>Class 8 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">620</td>
+              <td class="center highlight-fee currency-symbol">620</td>
+              <td class="center highlight-fee currency-symbol">590</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">8440</td>
+              <td class="center highlight-fee currency-symbol">8080</td>
+            </tr>
+            <tr>
+              <td>Class 9 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">700</td>
+              <td class="center highlight-fee currency-symbol">700</td>
+              <td class="center highlight-fee currency-symbol">665</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">9400</td>
+              <td class="center highlight-fee currency-symbol">8980</td>
+            </tr>
+            <tr>
+              <td>Class 9 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">800</td>
+              <td class="center highlight-fee currency-symbol">800</td>
+              <td class="center highlight-fee currency-symbol">760</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">10600</td>
+              <td class="center highlight-fee currency-symbol">10120</td>
+            </tr>
+            <tr>
+              <td>Class 10 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">800</td>
+              <td class="center highlight-fee currency-symbol">800</td>
+              <td class="center highlight-fee currency-symbol">760</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">10600</td>
+              <td class="center highlight-fee currency-symbol">10120</td>
+            </tr>
+            <tr>
+              <td>Class 10 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">880</td>
+              <td class="center highlight-fee currency-symbol">880</td>
+              <td class="center highlight-fee currency-symbol">835</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">11560</td>
+              <td class="center highlight-fee currency-symbol">11020</td>
+            </tr>
+            <tr>
+              <td>Class 11 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">880</td>
+              <td class="center highlight-fee currency-symbol">880</td>
+              <td class="center highlight-fee currency-symbol">835</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">11560</td>
+              <td class="center highlight-fee currency-symbol">11020</td>
+            </tr>
+            <tr>
+              <td>Class 11 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">880</td>
+              <td class="center highlight-fee currency-symbol">880</td>
+              <td class="center highlight-fee currency-symbol">835</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">11560</td>
+              <td class="center highlight-fee currency-symbol">11020</td>
+            </tr>
+            <tr>
+              <td>Class 12 <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">1050</td>
+              <td class="center highlight-fee currency-symbol">1050</td>
+              <td class="center highlight-fee currency-symbol">1000</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">13600</td>
+              <td class="center highlight-fee currency-symbol">13000</td>
+            </tr>
+            <tr>
+              <td>Class 12 Art <span class="badge-medium badge-hm">HM</span></td>
+              <td class="center currency-symbol">700</td>
+              <td class="center highlight-fee currency-symbol">700</td>
+              <td class="center highlight-fee currency-symbol">665</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">9400</td>
+              <td class="center highlight-fee currency-symbol">8980</td>
+            </tr>
+            <tr>
+              <td>Class 12 <span class="badge-medium badge-em">EM</span></td>
+              <td class="center currency-symbol">1050</td>
+              <td class="center highlight-fee currency-symbol">1050</td>
+              <td class="center highlight-fee currency-symbol">1000</td>
+              <td class="center currency-symbol">200</td>
+              <td class="center currency-symbol">300</td>
+              <td class="center highlight-fee currency-symbol">13600</td>
+              <td class="center highlight-fee currency-symbol">13000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="fee-disclaimer">
+        * <strong>Note:</strong> All monthly fees are payable before the 10th of every month. Boys and Girls monthly tuition fee differences are in accordance with educational discount norms. The Total Annual Fee is calculated as: (12 &times; Monthly Tuition Fee) + (2 &times; Test Fee) + (2 &times; Half/Annual Charges) to account for 2 tests, 1 half-yearly exam, and 1 yearly exam.
+      </p>
+    </div>
+
+    <!-- Fees Sidebar Widgets -->
+    <div class="fees-sidebar">
+      <div class="sidebar-widget fade-right">
+        <h3><i class="fas fa-info-circle"></i> Payment Guidelines</h3>
+        <ul>
+          <li><strong>Due Date:</strong> Fees must be deposited at the school counter by the 10th of every month.</li>
+          <li><strong>Admission / Registration:</strong> New admission registration forms require a one-time processing charge separate from the monthly tuition fee.</li>
+          <li><strong>Test Fees:</strong> Collected in advance prior to term examinations and assessments.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget fade-right delay-1">
+        <h3><i class="fas fa-shield-alt"></i> Official School Codes</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding-left:20px; margin-bottom:12px; font-size:0.82rem; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <strong>Dr. A.P.J. Abdul Kalam Inter College</strong><br>
+            School Code: 1434 <br> UDISE: 09550504609
+          </li>
+          <li style="padding-left:20px; margin-bottom:12px; font-size:0.82rem; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <strong>R.S.Y. Convent School</strong><br>
+            UDISE: 09550504608
+          </li>
+          <li style="padding-left:20px; font-size:0.82rem;">
+            <strong>Late Dal Sringari Balika J.H.S</strong><br>
+            UDISE: 09550504607
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget fade-right delay-2">
+        <h3><i class="fas fa-question-circle"></i> Have Questions?</h3>
+        <p style="font-size:0.85rem; color:var(--text-medium); margin-bottom:15px; line-height:1.5;">
+          For fee concessions, sibling discounts, or general admissions inquiries, contact our administrative desk.
+        </p>
+        <a href="index.html#contact" class="btn-action btn-action-primary" style="margin-bottom:10px;">
+          <i class="fas fa-paper-plane"></i> Contact Us
+        </a>
+        <a href="tel:+919839252505" class="btn-action btn-action-secondary">
+          <i class="fas fa-phone-alt"></i> Call Helpline
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Placeholder (Loaded Dynamically) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scroll to Top / Scrollbar component -->
+  <div id="scrollbar-placeholder"></div>
+
+  <!-- Core Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/notices.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

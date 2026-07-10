@@ -9,11 +9,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const headerPlaceholder = document.getElementById('header-placeholder');
     const footerPlaceholder = document.getElementById('footer-placeholder');
 
+    // Dynamically detect script path prefix for subdirectories (e.g. simulators/)
+    let pathPrefix = '';
+    const scriptEl = document.querySelector('script[src*="js/main.js"]');
+    if (scriptEl) {
+      const src = scriptEl.getAttribute('src');
+      const idx = src.indexOf('js/main.js');
+      if (idx > 0) {
+        pathPrefix = src.substring(0, idx);
+      }
+    }
+
     const loadTask = [];
 
     if (headerPlaceholder) {
       loadTask.push(
-        fetch('components/header.html')
+        fetch(pathPrefix + 'components/header.html')
           .then(response => response.text())
           .then(data => {
             headerPlaceholder.innerHTML = data;
@@ -23,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (footerPlaceholder) {
       loadTask.push(
-        fetch('components/footer.html')
+        fetch(pathPrefix + 'components/footer.html')
           .then(response => response.text())
           .then(data => {
             footerPlaceholder.innerHTML = data;
@@ -34,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const zoomControlsPlaceholder = document.getElementById('zoom-controls-placeholder');
     if (zoomControlsPlaceholder) {
       loadTask.push(
-        fetch('components/zoom-controls.html')
+        fetch(pathPrefix + 'components/zoom-controls.html')
           .then(response => response.text())
           .then(data => {
             zoomControlsPlaceholder.innerHTML = data;
@@ -168,6 +179,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       hamburger.classList.remove('open');
       navMenu.classList.remove('open');
       navOverlay.classList.remove('visible');
+      if (navbar) navbar.classList.remove('menu-open');
       document.body.style.overflow = '';
     }
 
@@ -176,10 +188,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         const isOpen = hamburger.classList.toggle('open');
         navMenu.classList.toggle('open', isOpen);
         navOverlay.classList.toggle('visible', isOpen);
+        if (navbar) navbar.classList.toggle('menu-open', isOpen);
         document.body.style.overflow = isOpen ? 'hidden' : '';
       });
 
       navOverlay.addEventListener('click', closeMenu);
+      
+      const mobileMenuClose = document.getElementById('mobileMenuClose');
+      if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMenu);
+      }
+
       navMenu.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', closeMenu);
       });

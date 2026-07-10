@@ -4,7 +4,8 @@
   <div class="top-gov-banner">
     <div class="banner-left">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="Flag of India">
-      <span>An official website of the Dr. A.P.J. Abdul Kalam Inter College</span>
+      <span class="desktop-banner-text">An official website of the Dr. A.P.J. Abdul Kalam Inter College</span>
+      <span class="mobile-banner-text">Official School Website</span>
     </div>
     <button class="banner-toggle" id="govBannerToggle" aria-expanded="false">
       Here's how you know <i class="fas fa-chevron-down"></i>
@@ -45,18 +46,41 @@
       </div>
     </a>
     <ul class="nav-menu" id="navMenu" role="list">
-      <li><a class="nav-link" href="index.html#hero" data-i18n="nav-home">Home</a></li>
-      <li><a class="nav-link" href="index.html#about" data-i18n="nav-about">About</a></li>
-      <li><a class="nav-link" href="index.html#academics" data-i18n="nav-academics">Academics</a></li>
-      <li><a class="nav-link" href="#study-hub-preview" data-i18n="nav-study">Interactive Learning</a></li>
-      <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities">Facilities</a></li>
-      <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions">Admissions</a></li>
-      <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery">Gallery</a></li>
-      <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact">Contact Us</a></li>
-      <li><a class="nav-link nav-cta" href="linkhub.html" data-i18n="nav-links">Link Hub</a></li>
+      <li class="mobile-menu-header">
+        <span class="mobile-menu-title">Navigation</span>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close Menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </li>
+      <li><a class="nav-link" href="index.html#hero" data-i18n="nav-home"><i class="fas fa-home nav-icon"></i>Home</a></li>
+      <li><a class="nav-link" href="index.html#about" data-i18n="nav-about"><i class="fas fa-info-circle nav-icon"></i>About</a></li>
+      <li><a class="nav-link" href="index.html#academics" data-i18n="nav-academics"><i class="fas fa-graduation-cap nav-icon"></i>Academics</a></li>
+      <li><a class="nav-link" href="#study-hub-preview" data-i18n="nav-study"><i class="fas fa-laptop-code nav-icon"></i>Interactive Study Hub</a></li>
+      <li><a class="nav-link" href="index.html#facilities" data-i18n="nav-facilities"><i class="fas fa-building nav-icon"></i>Facilities</a></li>
+      <li><a class="nav-link" href="index.html#admissions" data-i18n="nav-admissions"><i class="fas fa-user-plus nav-icon"></i>Admissions</a></li>
+      <li><a class="nav-link" href="index.html#gallery" data-i18n="nav-gallery"><i class="fas fa-images nav-icon"></i>Gallery</a></li>
+      <li><a class="nav-link nav-cta" href="index.html#contact" data-i18n="nav-contact"><i class="fas fa-envelope nav-icon"></i>Contact Us</a></li>
+      <li><a class="nav-link nav-cta" href="linkhub.html" data-i18n="nav-links"><i class="fas fa-link nav-icon"></i>Link Hub</a></li>
+      <li class="mobile-menu-footer">
+        <div class="menu-contact-info">
+          <h5>Contact school</h5>
+          <a href="tel:+919839252505"><i class="fas fa-phone-alt"></i> +91 9839252505</a>
+          <a href="mailto:drapjakicbjb@gmail.com"><i class="fas fa-envelope"></i> drapjakicbjb@gmail.com</a>
+        </div>
+        <div class="menu-social-links">
+          <a href="https://www.facebook.com/profile.php?id=100090759948402" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@drapjakicbjb" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/919454242284" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+    
+    <button class="nav-toggle-btn" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="toggle-text">Menu</span>
+      <span class="menu-icon-wrap">
+        <i class="fas fa-bars icon-bars"></i>
+        <i class="fas fa-times icon-close"></i>
+      </span>
     </button>
   </div>
 </nav>
