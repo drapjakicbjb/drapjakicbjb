@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
     <!-- Google tag (gtag.js) - Delayed Load for Performance -->
   <script>
     (function() {
@@ -27,22 +28,40 @@
       });
     })();
   </script>
-  <meta charset="UTF-8" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Dr. A.P.J. Abdul Kalam Inter College - Interactive Animal Cell. Learn biology interactively." />
   <title>Interactive Animal Cell | Dr. A.P.J. Abdul Kalam Inter College</title>
   <link rel="icon" type="image/webp" href="../assets/images/logo.webp" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" /></noscript>
-  <link rel="preload" href="../styles/fontawesome.min.css" as="style" />
   <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="preload" href="../styles/fontawesome.min.css" as="style" />
-  <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="preload" href="../styles/fontawesome.min.css" as="style" />
-  <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="../styles/fontawesome.min.css" /></noscript></noscript></noscript>
-  <link rel="preload" href="../styles/main.min.css" as="style" />
-  <link rel="stylesheet" href="../styles/main.min.css" />
+  <noscript><link rel="stylesheet" href="../styles/fontawesome.min.css" /></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--saffron:#FF6B00;--saffron-light:#FF8C42;--green:#2E7D32;--dark-blue:#0D1B2A;--navy:#1A2744;--white:#FFF;--off-white:#F8FAFF;--text-dark:#1A202C;--gradient-hero:linear-gradient(135deg,#FF6B00 0%,#FF8C42 30%,#7CB342 70%,#2E7D32 100%);--gradient-saffron:linear-gradient(135deg,#FF6B00,#FF8C42);--shadow-sm:0 2px 8px rgba(0,0,0,.08);--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--transition:all .3s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;width:100%}
+body{font-family:'Poppins',sans-serif;color:var(--text-dark);background:var(--white);line-height:1.6;overflow-x:hidden;width:100%;position:relative}
+img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
+#loader{position:fixed;inset:0;background:var(--dark-blue);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;transition:opacity .6s ease,visibility .6s ease}
+#loader.hidden{opacity:0;visibility:hidden}
+.loader-logo{width:130px;height:130px;border-radius:50%;object-fit:cover;animation:loaderPulse 1.5s ease-in-out infinite;box-shadow:0 0 40px rgba(255,107,0,.5)}
+.loader-text{color:#fff;font-size:.85rem;letter-spacing:3px;margin-top:20px;text-transform:uppercase;opacity:.8}
+.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin-top:16px;overflow:hidden}
+.loader-bar-fill{height:100%;background:var(--gradient-saffron);border-radius:10px;animation:loaderBar 2s ease-in-out forwards}
+@keyframes loaderPulse{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(255,107,0,.5)}50%{transform:scale(1.05);box-shadow:0 0 60px rgba(255,107,0,.8)}}
+@keyframes loaderBar{0%{width:0}100%{width:100%}}
+.top-gov-banner-wrapper{position:fixed;top:0;left:0;right:0;z-index:1050}
+.top-gov-banner{height:28px;background:#020717;display:flex;justify-content:space-between;align-items:center;padding:0 5%;font-size:.72rem;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08)}
+.banner-left{display:flex;align-items:center;gap:8px}
+.banner-left img{height:12px;width:auto;border-radius:1px}
+#navbar{position:fixed;top:25px;left:0;right:0;z-index:1000;background:transparent;transition:var(--transition)}
+#hero{min-height:100vh;background:var(--gradient-hero);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:180px 24px 80px}
+.desktop-banner-text{display:inline}.mobile-banner-text{display:none}
+@media(max-width:768px){.top-gov-banner{padding:8px 15px 5px;height:40px;position:relative;width:100%}.desktop-banner-text{display:none}.mobile-banner-text{display:inline}#navbar{top:40px;padding-top:10px}}
+</style>
+  <link rel="stylesheet" href="../styles/main.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="../styles/main.min.css" /></noscript>
   <style>
     body { background: #e8f5e9; color: var(--navy); overflow-x: hidden; }
     .sim-header { padding: 30px 24px 40px; text-align: center; position: relative; z-index: 10; background: #2e7d32; color: white; }
@@ -78,6 +97,8 @@
     <p>Hover over and click organelles to learn about their functions.</p>
   </header>
 
+  <main>
+
   <section class="sim-app-container">
     <div class="sim-viewer">
       <canvas id="bio-canvas" width="600" height="600"></canvas>
@@ -98,6 +119,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- <div id="footer-placeholder"></div> -->
   <script src="../js/main.js" defer></script>

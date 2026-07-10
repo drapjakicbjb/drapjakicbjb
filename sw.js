@@ -89,7 +89,8 @@ self.addEventListener('fetch', (event) => {
     url.pathname.endsWith('.css') ||
     url.pathname.includes('font-awesome') ||
     url.hostname.includes('fonts.gstatic.com') ||
-    url.hostname.includes('fonts.googleapis.com')
+    url.hostname.includes('fonts.googleapis.com') ||
+    url.hostname.includes('cloudflareinsights.com')
   ) {
     event.respondWith(
       caches.match(event.request).then((cachedResponse) => {

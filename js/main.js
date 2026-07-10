@@ -122,15 +122,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   /* ─── 2. HERO PARTICLES ──────────────────────────── */
   const particlesContainer = document.getElementById('heroParticles');
   if (particlesContainer) {
+    const frag = document.createDocumentFragment();
     for (let i = 0; i < 30; i++) {
       const dot = document.createElement('span');
-      dot.style.left = Math.random() * 100 + '%';
-      dot.style.animationDuration = (6 + Math.random() * 10) + 's';
-      dot.style.animationDelay = (Math.random() * 10) + 's';
-      dot.style.width = dot.style.height = (2 + Math.random() * 4) + 'px';
-      dot.style.opacity = (0.3 + Math.random() * 0.5);
-      particlesContainer.appendChild(dot);
+      dot.style.cssText = `left:${Math.random() * 100}%;animation-duration:${6 + Math.random() * 10}s;animation-delay:${Math.random() * 10}s;width:${2 + Math.random() * 4}px;height:${2 + Math.random() * 4}px;opacity:${0.3 + Math.random() * 0.5}`;
+      frag.appendChild(dot);
     }
+    particlesContainer.appendChild(frag);
   }
 
   /* ─── 3. COMPONENT INITIALIZATION ────────────────── */
@@ -145,11 +143,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const navOverlay = document.getElementById('navOverlay');
 
     // Sticky nav and Floating buttons scroll effect
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (navbar) navbar.classList.toggle('scrolled', scrollY > 60);
-      if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', scrollY > 500);
-      updateActiveNavLink();
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          if (navbar) navbar.classList.toggle('scrolled', scrollY > 60);
+          if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', scrollY > 500);
+          updateActiveNavLink();
+          scrollTicking = false;
+        });
+      }
     }, { passive: true });
 
     if (scrollTopBtn) {
@@ -321,6 +326,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   /* ─── 5. ACTIVE NAV LINK LOGIC ─────────────────── */
   const sections = document.querySelectorAll('section[id]');
+  let sectionCache = [];
+
+  function cacheSectionPositions() {
+    sectionCache = Array.from(sections).map(section => ({
+      id: section.getAttribute('id'),
+      top: section.offsetTop,
+      height: section.offsetHeight
+    }));
+  }
+
+  // Rebuild cache on resize (debounced) and after components load
+  let resizeCacheTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeCacheTimer);
+    resizeCacheTimer = setTimeout(cacheSectionPositions, 200);
+  }, { passive: true });
+
   function updateActiveNavLink() {
     const scrollY = window.scrollY + 150;
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
@@ -335,19 +357,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    // 2. Handle hash-based active for homepage
+    // 2. Handle hash-based active for homepage (uses cached positions — no forced reflow)
     if (currentPath === 'index.html' || currentPath === '') {
-      sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-link[href="index.html#${id}"], .nav-link[href="#${id}"]`);
-        
-        if (navLink && scrollY >= top && scrollY < top + height) {
+      for (const sec of sectionCache) {
+        const navLink = document.querySelector(`.nav-link[href="index.html#${sec.id}"], .nav-link[href="#${sec.id}"]`);
+        if (navLink && scrollY >= sec.top && scrollY < sec.top + sec.height) {
           document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
           navLink.classList.add('active');
         }
-      });
+      }
     }
   }
 
@@ -404,6 +422,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentIndex  = 0;
     const cards       = wrapper.querySelectorAll('.testimonial-card');
     const totalSlides = cards.length;
+    let cachedCardWidth = 0;
+
+    function cacheCardWidth() {
+      if (cards.length) cachedCardWidth = cards[0].offsetWidth + 24;
+    }
 
     function getVisible() {
       if (window.innerWidth < 768) return 1;
@@ -417,8 +440,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function slide(index) {
       currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
-      const cardWidth = cards[0].offsetWidth + 24; 
-      wrapper.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      wrapper.style.transform = `translateX(-${currentIndex * cachedCardWidth}px)`;
       if (dots.length) updateDots();
     }
 
@@ -443,7 +465,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       }, 5000);
     });
 
-    window.addEventListener('resize', () => slide(0));
+    window.addEventListener('resize', () => { cacheCardWidth(); slide(0); });
+    cacheCardWidth();
   }
 
   /* ─── 8. CONTACT FORM (EmailJS) ──────────────────── */
@@ -558,6 +581,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Kick off component loading
   await loadComponents();
+  // Cache section positions after components are loaded and layout is stable
+  requestAnimationFrame(cacheSectionPositions);
 });
 
 // Global copy to clipboard function
