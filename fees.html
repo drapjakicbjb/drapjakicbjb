@@ -3,14 +3,14 @@
 
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KG06S74784"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KG06S74784"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-KG06S74784');
-</script>
+    gtag('config', 'G-KG06S74784');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
@@ -102,13 +102,16 @@
       }
 
       table {
-        min-width: 850px; /* Forces table width to activate horizontal scrollbar */
+        min-width: 850px;
+        /* Forces table width to activate horizontal scrollbar */
       }
 
-      th, td {
+      th,
+      td {
         padding: 8px 10px;
         font-size: 0.8rem;
-        white-space: nowrap; /* Avoid wrapping cell contents to keep row height aligned */
+        white-space: nowrap;
+        /* Avoid wrapping cell contents to keep row height aligned */
       }
 
       /* Make Class column sticky on mobile so it stays visible while scrolling */
@@ -145,7 +148,8 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
       padding: 30px;
       transition: all 0.3s ease;
-      min-width: 0; /* Prevents grid item from expanding beyond viewport */
+      min-width: 0;
+      /* Prevents grid item from expanding beyond viewport */
       width: 100%;
       box-sizing: border-box;
     }
@@ -154,7 +158,8 @@
       width: 100%;
       max-width: 100%;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
+      -webkit-overflow-scrolling: touch;
+      /* Smooth iOS momentum scrolling */
       border-radius: 8px;
       border: 1px solid var(--border-color);
       margin-top: 20px;
@@ -167,7 +172,8 @@
       font-size: 0.9rem;
     }
 
-    th, td {
+    th,
+    td {
       padding: 12px 16px;
       border-bottom: 1px solid var(--border-color);
     }
@@ -181,7 +187,8 @@
       letter-spacing: 0.5px;
     }
 
-    th.center, td.center {
+    th.center,
+    td.center {
       text-align: center;
     }
 
@@ -334,7 +341,7 @@
         background: white !important;
         color: black !important;
       }
-      
+
       /* Hide non-printable elements */
       #header-placeholder,
       #footer-placeholder,
@@ -384,7 +391,8 @@
         width: 100% !important;
       }
 
-      th, td {
+      th,
+      td {
         padding: 8px 10px !important;
         border-bottom: 1px solid #bbb !important;
         font-size: 9.5pt !important;
@@ -420,7 +428,8 @@
   <section class="fees-hero">
     <div class="container">
       <h1>School Fee Structure</h1>
-      <p>Session 2026-2027 — Transparent and structured educational charges for all academic wings and media options.</p>
+      <p>Session 2026-2027 — Transparent and structured educational charges for all academic wings and media options.
+      </p>
     </div>
   </section>
 
@@ -428,18 +437,22 @@
   <div class="fees-container">
     <!-- Fees Main Table Card -->
     <div class="fees-card fade-up">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; border-bottom:1.5px solid var(--border-color); padding-bottom:15px;">
+      <div
+        style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; border-bottom:1.5px solid var(--border-color); padding-bottom:15px;">
         <div>
           <h2 style="font-size:1.4rem; color:var(--primary-color); font-weight:700;">Academic Fee Details 2026-27</h2>
-          <p style="font-size:0.85rem; color:var(--text-medium); margin-top:2px;">Compare monthly tuition fees, admission/exam tests, and annual charges.</p>
+          <p style="font-size:0.85rem; color:var(--text-medium); margin-top:2px;">Compare monthly tuition fees,
+            admission/exam tests, and annual charges.</p>
         </div>
-        <button class="btn-action btn-action-primary" style="width:auto; padding:8px 18px; font-size:0.8rem;" onclick="window.print()">
+        <button class="btn-action btn-action-primary" style="width:auto; padding:8px 18px; font-size:0.8rem;"
+          onclick="window.print()">
           <i class="fas fa-print"></i> Print Fee Card
         </button>
       </div>
 
       <!-- Swipe/Scroll Indicator for Mobile -->
-      <div class="scroll-indicator" style="display: none; align-items: center; justify-content: center; gap: 8px; font-size: 0.75rem; color: var(--text-medium); margin: 15px 0 -5px 0; background: rgba(255, 107, 0, 0.05); padding: 8px; border-radius: 6px; border: 1px dashed rgba(255, 107, 0, 0.25);">
+      <div class="scroll-indicator"
+        style="display: none; align-items: center; justify-content: center; gap: 8px; font-size: 0.75rem; color: var(--text-medium); margin: 15px 0 -5px 0; background: rgba(255, 107, 0, 0.05); padding: 8px; border-radius: 6px; border: 1px dashed rgba(255, 107, 0, 0.25);">
         <i class="fas fa-arrows-alt-h" style="color: var(--accent-color);"></i>
         <span>Swipe horizontally to see full table (Monthly &amp; Annual Fees)</span>
       </div>
@@ -450,10 +463,12 @@
             <tr>
               <th rowspan="2">Class</th>
               <th rowspan="2" class="center">Fee 2025-26<br>(Monthly)</th>
-              <th colspan="2" class="center" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Fee 2026-27 (Monthly)</th>
+              <th colspan="2" class="center" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Fee 2026-27
+                (Monthly)</th>
               <th rowspan="2" class="center">Test Fee</th>
               <th rowspan="2" class="center">Half/Annual<br>Charges</th>
-              <th colspan="2" class="center" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Total Annual Fee</th>
+              <th colspan="2" class="center" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Total Annual Fee
+              </th>
             </tr>
             <tr>
               <th class="center">Boys</th>
@@ -597,7 +612,7 @@
               <td class="center highlight-fee currency-symbol">7900</td>
               <td class="center highlight-fee currency-symbol">7540</td>
             </tr>
-            
+
             <tr>
               <td>Class 7 <span class="badge-medium badge-em">EM</span></td>
               <td class="center currency-symbol">575</td>
@@ -711,9 +726,12 @@
           </tbody>
         </table>
       </div>
-      
+
       <p class="fee-disclaimer">
-        * <strong>Note:</strong> All monthly fees are payable before the 10th of every month. Boys and Girls monthly tuition fee differences are in accordance with educational discount norms. The Total Annual Fee is calculated as: (12 &times; Monthly Tuition Fee) + (2 &times; Test Fee) + (2 &times; Half/Annual Charges) to account for 2 tests, 1 half-yearly exam, and 1 yearly exam.
+        * <strong>Note:</strong> All monthly fees are payable before the 10th of every month. Boys and Girls monthly
+        tuition fee differences are in accordance with educational discount norms. The Total Annual Fee is calculated
+        as: (12 &times; Monthly Tuition Fee) + (2 &times; Test Fee) + (2 &times; Half/Annual Charges) to account for 2
+        tests, 1 half-yearly exam, and 1 yearly exam.
       </p>
     </div>
 
@@ -723,7 +741,8 @@
         <h3><i class="fas fa-info-circle"></i> Payment Guidelines</h3>
         <ul>
           <li><strong>Due Date:</strong> Fees must be deposited at the school counter by the 10th of every month.</li>
-          <li><strong>Admission / Registration:</strong> New admission registration forms require a one-time processing charge separate from the monthly tuition fee.</li>
+          <li><strong>Admission / Registration:</strong> New admission registration forms require a one-time processing
+            charge separate from the monthly tuition fee.</li>
           <li><strong>Test Fees:</strong> Collected in advance prior to term examinations and assessments.</li>
         </ul>
       </div>
@@ -731,11 +750,13 @@
       <div class="sidebar-widget fade-right delay-1">
         <h3><i class="fas fa-shield-alt"></i> Official School Codes</h3>
         <ul style="list-style:none; padding:0;">
-          <li style="padding-left:20px; margin-bottom:12px; font-size:0.82rem; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+          <li
+            style="padding-left:20px; margin-bottom:12px; font-size:0.82rem; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
             <strong>Dr. A.P.J. Abdul Kalam Inter College</strong><br>
             School Code: 1434 <br> UDISE: 09550504609
           </li>
-          <li style="padding-left:20px; margin-bottom:12px; font-size:0.82rem; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+          <li
+            style="padding-left:20px; margin-bottom:12px; font-size:0.82rem; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
             <strong>R.S.Y. Convent School</strong><br>
             UDISE: 09550504608
           </li>
@@ -754,7 +775,7 @@
         <a href="index.html#contact" class="btn-action btn-action-primary" style="margin-bottom:10px;">
           <i class="fas fa-paper-plane"></i> Contact Us
         </a>
-        <a href="tel:+919839252505" class="btn-action btn-action-secondary">
+        <a href="tel:+919648904085" class="btn-action btn-action-secondary">
           <i class="fas fa-phone-alt"></i> Call Helpline
         </a>
       </div>
