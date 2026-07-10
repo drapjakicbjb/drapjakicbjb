@@ -1909,6 +1909,23 @@ footer {
   margin-bottom: 10px;
 }
 
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 15px;
+}
+
+.quick-links-grid li {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 480px) {
+  .quick-links-grid {
+    grid-template-columns: 1fr;
+    gap: 8px 0;
+  }
+}
+
 .footer-links a {
   color: rgba(255, 255, 255, 0.55);
   font-size: 0.875rem;
@@ -1953,6 +1970,18 @@ footer {
   font-size: 0.82rem;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.5;
+}
+
+.footer-contact-item a {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-contact-item a:hover {
+  color: var(--saffron);
 }
 
 .footer-bottom {

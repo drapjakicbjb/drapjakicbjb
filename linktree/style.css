@@ -851,54 +851,13 @@ footer {
 
 }
 
-/* ===== TOP GOVERNMENT BANNER ===== */
-.top-gov-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 25px;
-  background: #020717; /* Darkest Navy */
-  z-index: 1001; /* Stays above navbar always */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  font-family: var(--font-body);
-  letter-spacing: 0.3px;
-}
-
-.top-gov-banner img {
-  height: 12px;
-  width: auto;
-  border-radius: 1px;
-}
-
-.top-gov-banner span strong {
-  color: #ff9100; /* Saffron match for Link Tree palette */
-}
-
-@media (max-width: 600px) {
-  .top-gov-banner span {
-    font-size: 0.65rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 10px;
-  }
-}
-
 /* ===== SAMARTH-STYLE OFFICIAL TOP BANNER ===== */
 .top-gov-banner-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1050;
-  /* Ensure it stays above everything, including navbar */
+  z-index: 10000; /* Stays above the floating logos (z-index 9999) */
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -926,6 +885,14 @@ footer {
   height: 12px;
   width: auto;
   border-radius: 1px;
+}
+
+.desktop-banner-text {
+  display: inline;
+}
+
+.mobile-banner-text {
+  display: none;
 }
 
 .banner-toggle {
@@ -1017,5 +984,13 @@ footer {
 
   .top-gov-banner {
     padding: 0 15px;
+  }
+
+  .desktop-banner-text {
+    display: none;
+  }
+
+  .mobile-banner-text {
+    display: inline;
   }
 }

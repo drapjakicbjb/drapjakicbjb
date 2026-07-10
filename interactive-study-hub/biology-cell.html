@@ -48,7 +48,7 @@
   <!-- <div id="header-placeholder"></div> -->
 
   <header class="sim-header">
-    <a href="../study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <a href="../study.html" onclick="if(document.referrer && document.referrer.includes('study.html')) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
     <h1>Interactive Animal Cell</h1>
     <p>Hover over and click organelles to learn about their functions.</p>
   </header>

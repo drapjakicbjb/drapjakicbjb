@@ -51,7 +51,7 @@
   <!-- <div id="header-placeholder"></div> -->
 
   <header class="sim-header">
-    <a href="../study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <a href="../study.html" onclick="if(document.referrer && document.referrer.includes('study.html')) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
     <h1>Fractions Visualizer</h1>
     <p>Interactive tool to visually understand fractions, decimals, and percentages.</p>
   </header>

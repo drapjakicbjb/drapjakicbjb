@@ -301,7 +301,7 @@
 
 
   <section class="solar-header">
-    <a href="../study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <a href="../study.html" onclick="if(document.referrer && document.referrer.includes('study.html')) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
     <h1>Solar System</h1>
     <p>Click on any celestial body to discover more information about it.</p>
   </section>

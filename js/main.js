@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     loadTask.push(
-      fetch('components/scrollbar.html')
+      fetch(pathPrefix + 'components/scrollbar.html')
         .then(response => response.text())
         .then(data => {
           scrollbarPlaceholder.innerHTML = data;

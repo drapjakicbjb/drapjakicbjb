@@ -185,118 +185,122 @@ document.addEventListener('DOMContentLoaded', () => {
         drawArrow(ctx, objBase.cx, objBase.cy, objTop.cx, objTop.cy, '#2e7d32');
 
         // Draw Image
-        if (isFinite(v) && Math.abs(v) < 10000 && Math.abs(u + (state.isMirror ? -f : f)) > 0.001) {
+        const showImage = isFinite(v) && Math.abs(v) < 10000 && Math.abs(u + (state.isMirror ? -f : f)) > 0.001;
+        const isReal = state.isMirror ? (v < 0) : (v > 0);
+
+        if (showImage) {
             const imgBase = toCanvas(v, 0);
             const imgTop = toCanvas(v, h_prime);
-            
-            // For lens, v>0 is real. For mirror, v<0 is real (same side as object)
-            const isReal = state.isMirror ? (v < 0) : (v > 0);
             
             ctx.setLineDash(isReal ? [] : [4, 4]);
             drawArrow(ctx, imgBase.cx, imgBase.cy, imgTop.cx, imgTop.cy, isReal ? '#c62828' : '#e65100');
             ctx.setLineDash([]);
+        }
 
-            // Draw Rays
-            ctx.lineWidth = 1.5;
-            
-            if (state.isMirror) {
-                // MIRROR RAYS
-                // 1. Ray parallel to principal axis
-                drawArrow(ctx, objTop.cx, objTop.cy, cx, objTop.cy, '#4a90e2');
-                if (state.isConvex) {
-                    // Convex mirror: reflects as if from F (f > 0, F is on right)
-                    const rayAngle = Math.atan2(objTop.cy - fC.cy, cx - fC.cx);
-                    const ex = cx + 1000 * Math.cos(rayAngle);
-                    const ey = objTop.cy + 1000 * Math.sin(rayAngle);
-                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
-                    
-                    // Virtual extension
-                    if (!isReal) {
-                        ctx.setLineDash([3,3]);
-                        ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(fC.cx, fC.cy); ctx.stroke();
-                        ctx.setLineDash([]);
-                    }
-                } else {
-                    // Concave mirror: reflects through F (f < 0, F is on left)
-                    const rayAngle = Math.atan2(fC2.cy - objTop.cy, fC2.cx - cx);
-                    const ex = cx + 1000 * Math.cos(rayAngle);
-                    const ey = objTop.cy + 1000 * Math.sin(rayAngle);
-                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
-                    
-                    // Virtual extension for virtual object (rare) or virtual image
-                    if (!isReal) {
-                        ctx.setLineDash([3,3]);
-                        const vex = cx - 1000 * Math.cos(rayAngle);
-                        const vey = objTop.cy - 1000 * Math.sin(rayAngle);
-                        ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(vex, vey); ctx.stroke();
-                        ctx.setLineDash([]);
-                    }
-                }
-
-                // 2. Ray incident at the pole
-                drawArrow(ctx, objTop.cx, objTop.cy, cx, cy, '#9c27b0');
-                const incidentAngle = Math.atan2(cy - objTop.cy, cx - objTop.cx);
-                // Reflect across x-axis: angle is negated
-                const reflectAngle = -incidentAngle;
-                const rEx = cx - 1000 * Math.cos(reflectAngle);
-                const rEy = cy + 1000 * Math.sin(reflectAngle);
-                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(rEx, rEy); ctx.strokeStyle = '#9c27b0'; ctx.stroke();
-
-                if (!isReal) {
-                    ctx.setLineDash([3,3]);
-                    const vrex = cx + 1000 * Math.cos(reflectAngle);
-                    const vrey = cy - 1000 * Math.sin(reflectAngle);
-                    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(vrex, vrey); ctx.stroke();
-                    ctx.setLineDash([]);
-                }
-
-            } else {
-                // LENS RAYS
-                // 1. Parallel to principal axis
-                drawArrow(ctx, objTop.cx, objTop.cy, cx, objTop.cy, '#4a90e2');
-                if (state.isConvex) {
-                    // Refract through F2
-                    const rayAngle = Math.atan2(fC.cy - objTop.cy, fC.cx - cx);
-                    const ex = cx + 1000 * Math.cos(rayAngle);
-                    const ey = objTop.cy + 1000 * Math.sin(rayAngle);
-                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
-                    
-                    if (!isReal) {
-                        ctx.setLineDash([3,3]);
-                        const vex = cx - 1000 * Math.cos(rayAngle);
-                        const vey = objTop.cy - 1000 * Math.sin(rayAngle);
-                        ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(vex, vey); ctx.stroke();
-                        ctx.setLineDash([]);
-                    }
-                } else {
-                    // Diverge as if from F1
-                    const rayAngle = Math.atan2(objTop.cy - fC.cy, cx - fC.cx);
-                    const ex = cx + 1000 * Math.cos(rayAngle);
-                    const ey = objTop.cy + 1000 * Math.sin(rayAngle);
-                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
-                    
+        // Draw Rays (Always draw them!)
+        ctx.lineWidth = 1.5;
+        
+        if (state.isMirror) {
+            // MIRROR RAYS
+            // 1. Ray parallel to principal axis
+            drawArrow(ctx, objTop.cx, objTop.cy, cx, objTop.cy, '#4a90e2');
+            if (state.isConvex) {
+                // Convex mirror: reflects as if from F (f > 0, F is on right)
+                const rayAngle = Math.atan2(objTop.cy - fC.cy, cx - fC.cx);
+                const ex = cx + 1000 * Math.cos(rayAngle);
+                const ey = objTop.cy + 1000 * Math.sin(rayAngle);
+                ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
+                
+                // Virtual extension
+                if (showImage && !isReal) {
                     ctx.setLineDash([3,3]);
                     ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(fC.cx, fC.cy); ctx.stroke();
                     ctx.setLineDash([]);
                 }
-
-                // 2. Ray through optical center
-                drawArrow(ctx, objTop.cx, objTop.cy, cx, cy, '#9c27b0');
-                const centerAngle = Math.atan2(cy - objTop.cy, cx - objTop.cx);
-                const cex = cx + 1000 * Math.cos(centerAngle);
-                const cey = cy + 1000 * Math.sin(centerAngle);
-                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cex, cey); ctx.strokeStyle = '#9c27b0'; ctx.stroke();
+            } else {
+                // Concave mirror: reflects through F (f < 0, F is on left)
+                const rayAngle = Math.atan2(fC2.cy - objTop.cy, fC2.cx - cx);
+                const ex = cx + 1000 * Math.cos(rayAngle);
+                const ey = objTop.cy + 1000 * Math.sin(rayAngle);
+                ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
                 
-                if (!isReal) {
+                // Virtual extension
+                if (showImage && !isReal) {
                     ctx.setLineDash([3,3]);
-                    const vcex = cx - 1000 * Math.cos(centerAngle);
-                    const vcey = cy - 1000 * Math.sin(centerAngle);
-                    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(vcex, vcey); ctx.stroke();
+                    const vex = cx - 1000 * Math.cos(rayAngle);
+                    const vey = objTop.cy - 1000 * Math.sin(rayAngle);
+                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(vex, vey); ctx.stroke();
                     ctx.setLineDash([]);
                 }
             }
 
-            // Update Text Readouts
+            // 2. Ray incident at the pole
+            drawArrow(ctx, objTop.cx, objTop.cy, cx, cy, '#9c27b0');
+            const incidentAngle = Math.atan2(cy - objTop.cy, cx - objTop.cx);
+            // Reflect across x-axis: angle is negated
+            const reflectAngle = -incidentAngle;
+            const rEx = cx - 1000 * Math.cos(reflectAngle);
+            const rEy = cy + 1000 * Math.sin(reflectAngle);
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(rEx, rEy); ctx.strokeStyle = '#9c27b0'; ctx.stroke();
+
+            if (showImage && !isReal) {
+                ctx.setLineDash([3,3]);
+                const vrex = cx + 1000 * Math.cos(reflectAngle);
+                const vrey = cy - 1000 * Math.sin(reflectAngle);
+                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(vrex, vrey); ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+        } else {
+            // LENS RAYS
+            // 1. Parallel to principal axis
+            drawArrow(ctx, objTop.cx, objTop.cy, cx, objTop.cy, '#4a90e2');
+            if (state.isConvex) {
+                // Refract through F2
+                const rayAngle = Math.atan2(fC.cy - objTop.cy, fC.cx - cx);
+                const ex = cx + 1000 * Math.cos(rayAngle);
+                const ey = objTop.cy + 1000 * Math.sin(rayAngle);
+                ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
+                
+                if (showImage && !isReal) {
+                    ctx.setLineDash([3,3]);
+                    const vex = cx - 1000 * Math.cos(rayAngle);
+                    const vey = objTop.cy - 1000 * Math.sin(rayAngle);
+                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(vex, vey); ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+            } else {
+                // Diverge as if from F1
+                const rayAngle = Math.atan2(objTop.cy - fC.cy, cx - fC.cx);
+                const ex = cx + 1000 * Math.cos(rayAngle);
+                const ey = objTop.cy + 1000 * Math.sin(rayAngle);
+                ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(ex, ey); ctx.strokeStyle = '#4a90e2'; ctx.stroke();
+                
+                if (showImage && !isReal) {
+                    ctx.setLineDash([3,3]);
+                    ctx.beginPath(); ctx.moveTo(cx, objTop.cy); ctx.lineTo(fC.cx, fC.cy); ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+            }
+
+            // 2. Ray through optical center
+            drawArrow(ctx, objTop.cx, objTop.cy, cx, cy, '#9c27b0');
+            const centerAngle = Math.atan2(cy - objTop.cy, cx - objTop.cx);
+            const cex = cx + 1000 * Math.cos(centerAngle);
+            const cey = cy + 1000 * Math.sin(centerAngle);
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cex, cey); ctx.strokeStyle = '#9c27b0'; ctx.stroke();
+            
+            if (showImage && !isReal) {
+                ctx.setLineDash([3,3]);
+                const vcex = cx - 1000 * Math.cos(centerAngle);
+                const vcey = cy - 1000 * Math.sin(centerAngle);
+                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(vcex, vcey); ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        }
+
+        // Update Text Readouts
+        if (showImage) {
             resV.textContent = v.toFixed(1);
             resM.textContent = m.toFixed(2);
             resH.textContent = h_prime.toFixed(1);

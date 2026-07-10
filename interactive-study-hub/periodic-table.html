@@ -420,7 +420,7 @@
 
 
   <section class="pt-header">
-    <a href="../study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <a href="../study.html" onclick="if(document.referrer && document.referrer.includes('study.html')) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
     <h1><i class="fas fa-flask"></i> <span>Periodic Table</span></h1>
     <p>Click an element for details, or select a category below to highlight elements.</p>
   </section>

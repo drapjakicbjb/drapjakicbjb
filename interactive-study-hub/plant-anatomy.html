@@ -25,7 +25,7 @@
     <!-- <link rel="stylesheet" href="index.css"> -->
     <link rel="stylesheet" href="../styles/main.css">
     
-    <link rel="stylesheet" href="styles/plant-anatomy.css">
+    <link rel="stylesheet" href="/styles/plant-anatomy.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
     <div id="scrollbar-placeholder"></div>
 
     <header class="sim-header">
-        <a href="../study.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+        <a href="../study.html" onclick="if(document.referrer && document.referrer.includes('study.html')) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
         <h1>Plant Anatomy: Xylem & Phloem</h1>
         <p>Hover over the cross-section of the plant stem to learn about its specialized tissues.</p>
     </header>
