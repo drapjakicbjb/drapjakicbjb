@@ -44,4 +44,16 @@
   <FilesMatch "\.(html|xml)$">
     Header set Cache-Control "max-age=0, must-revalidate, public"
   </FilesMatch>
+
+  # Link headers for agent discovery on the homepage (RFC 8288)
+  <Files "index.html">
+    Header add Link "</.well-known/api-catalog>; rel=\"api-catalog\""
+    Header add Link "</.well-known/agent-skills/index.json>; rel=\"agent-skills\""
+  </Files>
 </IfModule>
+
+# Force correct MIME type for API Catalog
+<Files "api-catalog">
+  ForceType application/linkset+json
+</Files>
+
