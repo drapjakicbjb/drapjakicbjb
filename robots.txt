@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drapjakicbjb.ac.in/sitemap.xml
