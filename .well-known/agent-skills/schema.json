@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Skills Discovery Index",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Unique identifier for the skill"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["skill-md", "archive", "instructions"],
+            "description": "The format of the skill"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief summary of what the skill does"
+          },
+          "url": {
+            "type": "string",
+            "description": "The location of the skill content relative to this file or an absolute URL"
+          },
+          "digest": {
+            "type": "string",
+            "description": "A SHA-256 hash of the artifact for integrity verification"
+          }
+        },
+        "required": ["name", "type", "description", "url"]
+      }
+    }
+  },
+  "required": ["skills"]
+}
