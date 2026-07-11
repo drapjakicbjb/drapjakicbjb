@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apj-school-cache-v3';
+const CACHE_NAME = 'apj-school-cache-v4';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -11,7 +11,10 @@ const STATIC_ASSETS = [
   '/assets/images/Manager.webp',
   '/assets/images/about.webp',
   '/assets/images/campus.webp',
-  '/assets/images/Flag_of_India.svg'
+  '/assets/images/Flag_of_India.svg',
+  '/linktree/rsy_logo.webp',
+  '/linktree/new_logo.webp',
+  '/linktree/dal_sringari_logo-removebg-preview.webp'
 ];
 
 // Third-party CDN URLs to cache

@@ -74,6 +74,10 @@ img {
   display: block;
 }
 
+picture {
+  display: contents;
+}
+
 a {
   text-decoration: none;
   color: inherit;
