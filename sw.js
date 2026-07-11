@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apj-school-cache-v1';
+const CACHE_NAME = 'apj-school-cache-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -97,7 +97,14 @@ self.addEventListener('fetch', (event) => {
         if (cachedResponse) {
           // Serve from cache, then fetch in the background to keep cache updated (stale-while-revalidate style)
           fetch(event.request).then((networkResponse) => {
-            if (networkResponse.status === 200) {
+            if (
+              networkResponse.status === 200 || 
+              (networkResponse.status === 0 && (
+                url.hostname.includes('cloudflareinsights.com') || 
+                url.hostname.includes('fonts.gstatic.com') || 
+                url.hostname.includes('fonts.googleapis.com')
+              ))
+            ) {
               caches.open(CACHE_NAME).then((cache) => {
                 cache.put(event.request, networkResponse);
               });
@@ -109,7 +116,14 @@ self.addEventListener('fetch', (event) => {
 
         // Cache miss: fetch from network and cache
         return fetch(event.request).then((networkResponse) => {
-          if (networkResponse.status === 200) {
+          if (
+            networkResponse.status === 200 || 
+            (networkResponse.status === 0 && (
+              url.hostname.includes('cloudflareinsights.com') || 
+              url.hostname.includes('fonts.gstatic.com') || 
+              url.hostname.includes('fonts.googleapis.com')
+            ))
+          ) {
             const responseClone = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
               cache.put(event.request, responseClone);
