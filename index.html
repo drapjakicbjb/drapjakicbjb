@@ -298,7 +298,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
             </div>
           </div>
           <div style="margin-top: 25px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-            <a href="fees.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+            <a href="/fees" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
               <i class="fas fa-file-invoice-dollar"></i>
               <span>View Fee Structure 2026-27</span>
             </a>
@@ -393,17 +393,17 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       </div>
 
       <div class="hub-grid">
-        <a href="interactive-study-hub/solar-system.html" class="hub-card fade-up delay-1">
+        <a href="interactive-study-hub/solar-system" class="hub-card fade-up delay-1">
           <i class="fas fa-sun"></i>
           <h3>Solar System 3D</h3>
           <p>Take a journey through space and explore the planets of our solar system.</p>
         </a>
-        <a href="interactive-study-hub/heart-simulator.html" class="hub-card fade-up delay-2">
+        <a href="interactive-study-hub/heart-simulator" class="hub-card fade-up delay-2">
           <i class="fas fa-heartbeat"></i>
           <h3>Heart Simulator</h3>
           <p>Explore cardiac rhythms and view a real-time beating 3D human heart.</p>
         </a>
-        <a href="interactive-study-hub/periodic-table.html" class="hub-card fade-up delay-3">
+        <a href="interactive-study-hub/periodic-table" class="hub-card fade-up delay-3">
           <i class="fas fa-flask"></i>
           <h3>Periodic Table</h3>
           <p>Dive into chemistry with a fully interactive periodic table.</p>
@@ -411,7 +411,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       </div>
 
       <div class="hub-cta-container fade-up">
-        <a href="study.html" class="hub-cta-btn">Explore All Modules</a>
+        <a href="study" class="hub-cta-btn">Explore All Modules</a>
       </div>
     </div>
   </section>
@@ -584,7 +584,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
               <span class="label">Updates</span>
               <h2>Important Notices</h2>
             </div>
-            <a href="noticeboard.html" class="view-all-btn">View All Notices <i class="fas fa-arrow-right"></i></a>
+            <a href="/noticeboard" class="view-all-btn">View All Notices <i class="fas fa-arrow-right"></i></a>
           </div>
 
           <div class="notice-scroll-wrap" id="homeNoticeList">
@@ -754,7 +754,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
         container.innerHTML = '';
         recentNotices.forEach(n => {
           const item = document.createElement('a');
-          item.href = 'noticeboard.html';
+          item.href = '/noticeboard';
           item.className = 'notice-list-item';
           if (n.isImportant) item.classList.add('important');
 
