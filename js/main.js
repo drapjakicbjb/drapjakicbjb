@@ -241,9 +241,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             const top = target.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top, behavior: 'smooth' });
           }
-        } else if (href.includes('#') && href.startsWith('index.html')) {
-           // If on index.html already, handle as smooth scroll
-           if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+        } else if (href.includes('#') && (href.startsWith('index.html') || href.startsWith('/#') || href.startsWith('/index.html'))) {
+           // If on homepage already, handle as smooth scroll
+           const isHome = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('index');
+           if (isHome) {
              const targetId = href.split('#')[1];
              const target = document.getElementById(targetId);
              if (target) {
@@ -253,7 +254,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                window.scrollTo({ top, behavior: 'smooth' });
              }
            }
-        }
+         }
       });
     });
     
@@ -345,22 +346,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function updateActiveNavLink() {
     const scrollY = window.scrollY + 150;
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const path = window.location.pathname;
+    const isHomepage = path === '/' || path === '' || path.endsWith('index.html') || path.endsWith('index');
 
     // 1. Handle page-based active (Study Hub, Link Hub)
     document.querySelectorAll('.nav-link').forEach(link => {
       const href = link.getAttribute('href');
+      if (!href) return;
       link.classList.remove('active');
       
-      if (href === currentPath) {
+      const cleanHref = href.replace(/^\//, '').replace(/\.html$/, '');
+      const cleanPath = path.replace(/^\//, '').replace(/\.html$/, '');
+      
+      if (cleanHref === cleanPath && cleanHref !== '') {
         link.classList.add('active');
       }
     });
 
     // 2. Handle hash-based active for homepage (uses cached positions — no forced reflow)
-    if (currentPath === 'index.html' || currentPath === '') {
+    if (isHomepage) {
       for (const sec of sectionCache) {
-        const navLink = document.querySelector(`.nav-link[href="index.html#${sec.id}"], .nav-link[href="#${sec.id}"]`);
+        const navLink = document.querySelector(`.nav-link[href="index.html#${sec.id}"], .nav-link[href="/#${sec.id}"], .nav-link[href="#${sec.id}"]`);
         if (navLink && scrollY >= sec.top && scrollY < sec.top + sec.height) {
           document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
           navLink.classList.add('active');

@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'School news, policies, and calendar of events.',
             icon: 'fa-globe',
             iconClass: 'website',
-            url: '../index.html',
+            url: '/',
             actionText: 'View Website'
         },
         {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Explore interactive educational simulations and discover immersive learning materials.',
             icon: 'fa-graduation-cap',
             iconClass: 'study-hub',
-            url: '../study.html',
+            url: '/study',
             actionText: 'Explore Simulations'
         },
         {
