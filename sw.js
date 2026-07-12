@@ -59,8 +59,10 @@ self.addEventListener('fetch', (event) => {
 
   // Strategy 1: Network-First (or Stale-While-Revalidate) for notices and dynamic/page files.
   // This ensures returning visitors get updates (like noticeboard alerts) immediately.
+  const hasNoExtension = !url.pathname.split('/').pop().includes('.');
   if (
     url.pathname.endsWith('.html') || 
+    hasNoExtension ||
     url.pathname.includes('/notices.js') || 
     url.pathname.includes('noticeboard')
   ) {
