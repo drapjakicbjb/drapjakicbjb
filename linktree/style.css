@@ -928,7 +928,7 @@ footer {
 }
 
 .banner-dropdown.open {
-  max-height: 300px;
+  max-height: 500px;
 }
 
 .dropdown-content {
@@ -976,6 +976,12 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .banner-dropdown.open {
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .dropdown-content {
     grid-template-columns: 1fr;
     padding: 15px;

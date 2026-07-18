@@ -266,7 +266,7 @@ ul {
 }
 
 .banner-dropdown.open {
-  max-height: 300px;
+  max-height: 500px;
 }
 
 .dropdown-content {
@@ -314,9 +314,15 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .banner-dropdown.open {
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .dropdown-content {
     grid-template-columns: 1fr;
-    padding: 48px;
+    padding: 15px;
     gap: 15px;
   }
 
