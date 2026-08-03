@@ -57,20 +57,26 @@
   ForceType application/linkset+json
 </Files>
 
-# Clean URLs configuration
+# Clean URLs & SSL configuration
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # 1. Redirect index.html to the root directory
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+  # 1. Enforce HTTPS (redirect unencrypted http:// to https://)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # 2. Redirect direct external requests for index.html to root /
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\s [NC]
   RewriteRule ^index\.html$ / [R=301,L]
 
-  # 2. Redirect external requests for any page.html to clean URL /page
+  # 3. Redirect direct external requests for page.html to clean URL /page (301 Permanent)
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
   RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L,NE]
 
-  # 3. Internally resolve clean URLs to .html files
+  # 4. Internally resolve clean URLs (/page) to physical files (page.html)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.*)$ $1.html [L]
