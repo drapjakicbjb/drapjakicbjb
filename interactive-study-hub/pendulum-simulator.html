@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NVJV2RMB');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NVJV2RMB');</script>
   <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) - Delayed Load for Performance -->
+  <!-- Google tag (gtag.js) - Delayed Load for Performance -->
   <script>
-    (function() {
+    (function () {
       function loadGtag() {
         if (window.gtagLoaded) return;
         window.gtagLoaded = true;
@@ -19,162 +23,543 @@
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG06S74784';
         script.async = true;
         document.head.appendChild(script);
-        
+
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function() { dataLayer.push(arguments); };
+        window.gtag = function () { dataLayer.push(arguments); };
         window.gtag('js', new Date());
         window.gtag('config', 'G-KG06S74784');
       }
       var timer = setTimeout(loadGtag, 3500);
       var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
-      triggerEvents.forEach(function(event) {
-        window.addEventListener(event, function() {
+      triggerEvents.forEach(function (event) {
+        window.addEventListener(event, function () {
           clearTimeout(timer);
           loadGtag();
         }, { once: true, passive: true });
       });
     })();
   </script>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Study simple harmonic motion with our interactive pendulum simulator. Adjust string length, gravity, mass, and track oscillation periods at Dr. A.P.J. Abdul Kalam Inter College." />
-  <meta name="keywords" content="simple pendulum simulator, simple harmonic motion SHM, pendulum oscillation calculator, physics mechanics simulator, virtual physics lab, pendulum period formula, kinetic potential energy lab" />
+  <meta name="description"
+    content="Study simple harmonic motion with our interactive pendulum simulator. Adjust string length, gravity, mass, and track oscillation periods at Dr. A.P.J. Abdul Kalam Inter College." />
+  <meta name="keywords"
+    content="simple pendulum simulator, simple harmonic motion SHM, pendulum oscillation calculator, physics mechanics simulator, virtual physics lab, pendulum period formula, kinetic potential energy lab" />
   <title>Simple Pendulum Physics Simulator | Interactive Study Hub</title>
   <meta property="og:title" content="Simple Pendulum Physics Simulator | Interactive Study Hub" />
-  <meta property="og:description" content="Study simple harmonic motion with our interactive pendulum simulator. Adjust string length, gravity, mass, and track oscillation periods at Dr. A.P.J. Abdul Kalam Inter College." />
+  <meta property="og:description"
+    content="Study simple harmonic motion with our interactive pendulum simulator. Adjust string length, gravity, mass, and track oscillation periods at Dr. A.P.J. Abdul Kalam Inter College." />
   <meta property="og:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
   <meta property="og:url" content="https://drapjakicbjb.ac.in/interactive-study-hub/pendulum-simulator" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Simple Pendulum Physics Simulator | Interactive Study Hub" />
-  <meta name="twitter:description" content="Study simple harmonic motion with our interactive pendulum simulator. Adjust string length, gravity, mass, and track oscillation periods at Dr. A.P.J. Abdul Kalam Inter College." />
+  <meta name="twitter:description"
+    content="Study simple harmonic motion with our interactive pendulum simulator. Adjust string length, gravity, mass, and track oscillation periods at Dr. A.P.J. Abdul Kalam Inter College." />
   <meta name="twitter:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
   <link rel="icon" type="image/x-icon" href="../assets/images/logo.ico" />
   <link rel="canonical" href="https://drapjakicbjb.ac.in/interactive-study-hub/pendulum-simulator" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="../styles/fontawesome.min.css" /></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--saffron:#FF6B00;--saffron-light:#FF8C42;--green:#2E7D32;--dark-blue:#0D1B2A;--navy:#1A2744;--white:#FFF;--off-white:#F8FAFF;--text-dark:#1A202C;--gradient-hero:linear-gradient(135deg,#FF6B00 0%,#FF8C42 30%,#7CB342 70%,#2E7D32 100%);--gradient-saffron:linear-gradient(135deg,#FF6B00,#FF8C42);--shadow-sm:0 2px 8px rgba(0,0,0,.08);--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--transition:all .3s cubic-bezier(.4,0,.2,1)}
-html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;width:100%;overflow-anchor:none}
-body{font-family:'Poppins',sans-serif;color:var(--text-dark);background:var(--white);line-height:1.6;overflow-x:hidden;width:100%;position:relative}
-img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
-#loader{position:fixed;inset:0;background:var(--dark-blue);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;transition:opacity .6s ease,visibility .6s ease}
-#loader.hidden{opacity:0;visibility:hidden}
-.loader-logo{width:130px;height:130px;border-radius:50%;object-fit:cover;animation:loaderPulse 1.5s ease-in-out infinite;box-shadow:0 0 40px rgba(255,107,0,.5)}
-.loader-text{color:#fff;font-size:.85rem;letter-spacing:3px;margin-top:20px;text-transform:uppercase;opacity:.8}
-.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin-top:16px;overflow:hidden}
-.loader-bar-fill{height:100%;background:var(--gradient-saffron);border-radius:10px;animation:loaderBar 2s ease-in-out forwards}
-@keyframes loaderPulse{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(255,107,0,.5)}50%{transform:scale(1.05);box-shadow:0 0 60px rgba(255,107,0,.8)}}
-@keyframes loaderBar{0%{width:0}100%{width:100%}}
-.top-gov-banner-wrapper{position:fixed;top:0;left:0;right:0;z-index:1050}
-.top-gov-banner{height:28px;background:#020717;display:flex;justify-content:space-between;align-items:center;padding:0 5%;font-size:.72rem;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08)}
-.banner-left{display:flex;align-items:center;gap:8px}
-.banner-left img{height:12px;width:auto;border-radius:1px}
-#navbar{position:fixed;top:25px;left:0;right:0;z-index:1000;background:transparent;transition:var(--transition)}
-#hero{min-height:100vh;background:var(--gradient-hero);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:180px 24px 80px}
-.desktop-banner-text{display:inline}.mobile-banner-text{display:none}
-@media(max-width:768px){.top-gov-banner{padding:8px 15px 5px;height:40px;position:relative;width:100%}.desktop-banner-text{display:none}.mobile-banner-text{display:inline}#navbar{top:40px;padding-top:10px}}
-</style>
+  <noscript>
+    <link rel="stylesheet" href="../styles/fontawesome.min.css" />
+  </noscript>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --saffron: #FF6B00;
+      --saffron-light: #FF8C42;
+      --green: #2E7D32;
+      --dark-blue: #0D1B2A;
+      --navy: #1A2744;
+      --white: #FFF;
+      --off-white: #F8FAFF;
+      --text-dark: #1A202C;
+      --gradient-hero: linear-gradient(135deg, #FF6B00 0%, #FF8C42 30%, #7CB342 70%, #2E7D32 100%);
+      --gradient-saffron: linear-gradient(135deg, #FF6B00, #FF8C42);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, .08);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all .3s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+      width: 100%;
+      overflow-anchor: none
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    ul {
+      list-style: none
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--dark-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: opacity .6s ease, visibility .6s ease
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden
+    }
+
+    .loader-logo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: loaderPulse 1.5s ease-in-out infinite;
+      box-shadow: 0 0 40px rgba(255, 107, 0, .5)
+    }
+
+    .loader-text {
+      color: #fff;
+      font-size: .85rem;
+      letter-spacing: 3px;
+      margin-top: 20px;
+      text-transform: uppercase;
+      opacity: .8
+    }
+
+    .loader-bar {
+      width: 200px;
+      height: 3px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow: hidden
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      background: var(--gradient-saffron);
+      border-radius: 10px;
+      animation: loaderBar 2s ease-in-out forwards
+    }
+
+    @keyframes loaderPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(255, 107, 0, .5)
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 60px rgba(255, 107, 0, .8)
+      }
+    }
+
+    @keyframes loaderBar {
+      0% {
+        width: 0
+      }
+
+      100% {
+        width: 100%
+      }
+    }
+
+    .top-gov-banner-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1050
+    }
+
+    .top-gov-banner {
+      height: 28px;
+      background: #020717;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .85);
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .banner-left {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .banner-left img {
+      height: 12px;
+      width: auto;
+      border-radius: 1px
+    }
+
+    #navbar {
+      position: fixed;
+      top: 25px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: var(--transition)
+    }
+
+    #hero {
+      min-height: 100vh;
+      background: var(--gradient-hero);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 180px 24px 80px
+    }
+
+    .desktop-banner-text {
+      display: inline
+    }
+
+    .mobile-banner-text {
+      display: none
+    }
+
+    @media(max-width:768px) {
+      .top-gov-banner {
+        padding: 8px 15px 5px;
+        height: 40px;
+        position: relative;
+        width: 100%
+      }
+
+      .desktop-banner-text {
+        display: none
+      }
+
+      .mobile-banner-text {
+        display: inline
+      }
+
+      #navbar {
+        top: 40px;
+        padding-top: 10px
+      }
+    }
+  </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
   <style>
-    body { background: #fdfbf7; color: var(--navy); overflow-x: hidden; }
-    .sim-header { padding: 40px 24px 20px; text-align: center; position: relative; z-index: 10; background: #bf360c; color: white; }
-    .sim-header h1 { font-size: 2.5rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-    .sim-header p { color: rgba(255,255,255,0.9); max-width: 600px; margin: 10px auto; }
-    .back-btn { position: absolute; top: 80px; left: 24px; background: rgba(255,255,255,0.1); color: white; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); }
-    .back-btn:hover { background: white; color: #bf360c; }
-    .sim-app-container { max-width: 1200px; margin: 40px auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 350px; gap: 30px; align-items: start; }
-    .sim-viewer { background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 20px; text-align: center; }
-    canvas { width: 100%; max-width: 600px; height: auto; background: #fffcf9; border-radius: var(--radius-md); border: 1px solid #efebe9; }
-    .sim-panel { background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 25px; }
-    .sim-panel h3 { font-size: 1.25rem; color: #bf360c; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid rgba(191,54,12,0.1); padding-bottom: 10px; }
-    .control-group { margin-bottom: 20px; }
-    .control-group label { display: flex; justify-content: space-between; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
-    .control-group label span.value { color: #d84315; font-size: 1.1rem; }
-    .control-group input[type="range"] { width: 100%; accent-color: #d84315; }
-    .readout-box { background: #fbe9e7; border-radius: var(--radius-md); padding: 15px; margin-top: 30px; }
-    .readout-item { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 8px; font-weight: 600; }
-    .readout-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .readout-item span.res-val { font-family: monospace; font-size: 1.2rem; }
-    .energy-bar-container { width: 100%; height: 20px; background: #e0e0e0; border-radius: 10px; overflow: hidden; display: flex; margin-top: 10px; }
-    .energy-pe { background: #1976d2; height: 100%; transition: width 0.1s linear; }
-    .energy-ke { background: #d32f2f; height: 100%; transition: width 0.1s linear; }
-    .legend { display: flex; justify-content: center; gap: 15px; margin-top: 10px; font-size: 0.85rem; font-weight: 600; }
-    .legend span::before { content: ''; display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
-    .leg-pe::before { background: #1976d2; } .leg-ke::before { background: #d32f2f; }
-    @media (max-width: 900px) { .sim-app-container { grid-template-columns: 1fr; } }
+    body {
+      background: #fdfbf7;
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    .sim-header {
+      padding: 40px 24px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      background: #bf360c;
+      color: white;
+    }
+
+    .sim-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .sim-header p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 10px auto;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 80px;
+      left: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .back-btn:hover {
+      background: white;
+      color: #bf360c;
+    }
+
+    .sim-app-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .sim-viewer {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 20px;
+      text-align: center;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      background: #fffcf9;
+      border-radius: var(--radius-md);
+      border: 1px solid #efebe9;
+    }
+
+    .sim-panel {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 25px;
+    }
+
+    .sim-panel h3 {
+      font-size: 1.25rem;
+      color: #bf360c;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid rgba(191, 54, 12, 0.1);
+      padding-bottom: 10px;
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .control-group label span.value {
+      color: #d84315;
+      font-size: 1.1rem;
+    }
+
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: #d84315;
+    }
+
+    .readout-box {
+      background: #fbe9e7;
+      border-radius: var(--radius-md);
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .readout-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      padding-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .readout-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .readout-item span.res-val {
+      font-family: monospace;
+      font-size: 1.2rem;
+    }
+
+    .energy-bar-container {
+      width: 100%;
+      height: 20px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .energy-pe {
+      background: #1976d2;
+      height: 100%;
+      transition: width 0.1s linear;
+    }
+
+    .energy-ke {
+      background: #d32f2f;
+      height: 100%;
+      transition: width 0.1s linear;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .legend span::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    .leg-pe::before {
+      background: #1976d2;
+    }
+
+    .leg-ke::before {
+      background: #d32f2f;
+    }
+
+    @media (max-width: 900px) {
+      .sim-app-container {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- <div id="header-placeholder"></div> -->
 
   <header class="sim-header">
-    <a href="/study" onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <a href="/study"
+      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
+      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
     <h1>Pendulum Energy Lab</h1>
     <p>Adjust parameters and watch the conservation of energy in action.</p>
   </header>
 
   <main>
 
-  <section class="sim-app-container">
-    <div class="sim-viewer">
-      <canvas id="pen-canvas" width="600" height="500"></canvas>
-      <div class="legend">
-        <span class="leg-pe">Potential Energy (PE)</span>
-        <span class="leg-ke">Kinetic Energy (KE)</span>
-      </div>
-    </div>
-
-    <div class="sim-panel">
-      <h3><i class="fas fa-sliders"></i> Physics Parameters</h3>
-      
-      <div class="control-group" style="text-align: center; margin-bottom: 25px;">
-        <button id="btn-play-pause" style="width: 100%; padding: 12px; background: #bf360c; color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-          <i class="fas fa-pause"></i> <span id="text-play-pause">Pause Simulation</span>
-        </button>
-      </div>
-
-      <div class="control-group">
-        <label><span>Gravity (g)</span> <span><span class="value" id="val-g">9.8</span> m/s²</span></label>
-        <input type="range" id="range-g" min="1" max="25" value="9.8" step="0.1">
-      </div>
-
-      <div class="control-group">
-        <label><span>String Length (L)</span> <span><span class="value" id="val-l">10</span> m</span></label>
-        <input type="range" id="range-l" min="5" max="20" value="10" step="1">
-      </div>
-
-      <div class="control-group">
-        <label><span>Mass (m)</span> <span><span class="value" id="val-m">10</span> kg</span></label>
-        <input type="range" id="range-m" min="1" max="50" value="10" step="1">
-      </div>
-
-      <div class="control-group">
-        <label><span>Initial Angle (θ)</span> <span><span class="value" id="val-theta">45</span>°</span></label>
-        <input type="range" id="range-theta" min="5" max="80" value="45" step="1">
-      </div>
-
-      <div class="readout-box">
-        <h3 style="border-bottom:none; margin-bottom:10px;"><i class="fas fa-bolt"></i> Energy Readouts</h3>
-        <div class="readout-item"><span>PE</span> <span class="res-val"><span id="res-pe">0</span> J</span></div>
-        <div class="readout-item"><span>KE</span> <span class="res-val"><span id="res-ke">0</span> J</span></div>
-        <div class="energy-bar-container">
-          <div class="energy-pe" id="bar-pe" style="width: 50%;"></div>
-          <div class="energy-ke" id="bar-ke" style="width: 50%;"></div>
+    <section class="sim-app-container">
+      <div class="sim-viewer">
+        <canvas id="pen-canvas" width="600" height="500"></canvas>
+        <div class="legend">
+          <span class="leg-pe">Potential Energy (PE)</span>
+          <span class="leg-ke">Kinetic Energy (KE)</span>
         </div>
       </div>
-    </div>
-  </section>
+
+      <div class="sim-panel">
+        <h3><i class="fas fa-sliders"></i> Physics Parameters</h3>
+
+        <div class="control-group" style="text-align: center; margin-bottom: 25px;">
+          <button id="btn-play-pause"
+            style="width: 100%; padding: 12px; background: #bf360c; color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <i class="fas fa-pause"></i> <span id="text-play-pause">Pause Simulation</span>
+          </button>
+        </div>
+
+        <div class="control-group">
+          <label><span>Gravity (g)</span> <span><span class="value" id="val-g">9.8</span> m/s²</span></label>
+          <input type="range" id="range-g" min="1" max="25" value="9.8" step="0.1">
+        </div>
+
+        <div class="control-group">
+          <label><span>String Length (L)</span> <span><span class="value" id="val-l">10</span> m</span></label>
+          <input type="range" id="range-l" min="5" max="20" value="10" step="1">
+        </div>
+
+        <div class="control-group">
+          <label><span>Mass (m)</span> <span><span class="value" id="val-m">10</span> kg</span></label>
+          <input type="range" id="range-m" min="1" max="50" value="10" step="1">
+        </div>
+
+        <div class="control-group">
+          <label><span>Initial Angle (θ)</span> <span><span class="value" id="val-theta">45</span>°</span></label>
+          <input type="range" id="range-theta" min="5" max="80" value="45" step="1">
+        </div>
+
+        <div class="readout-box">
+          <h3 style="border-bottom:none; margin-bottom:10px;"><i class="fas fa-bolt"></i> Energy Readouts</h3>
+          <div class="readout-item"><span>PE</span> <span class="res-val"><span id="res-pe">0</span> J</span></div>
+          <div class="readout-item"><span>KE</span> <span class="res-val"><span id="res-ke">0</span> J</span></div>
+          <div class="energy-bar-container">
+            <div class="energy-pe" id="bar-pe" style="width: 50%;"></div>
+            <div class="energy-ke" id="bar-ke" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -182,5 +567,5 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
   <script src="../js/main.js" defer></script>
   <script src="../js/pendulum-simulator.js" defer></script>
 </body>
-</html>
 
+</html>

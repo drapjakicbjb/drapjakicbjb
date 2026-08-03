@@ -4,15 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NVJV2RMB');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NVJV2RMB');</script>
   <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) - Delayed Load for Performance -->
+  <!-- Google tag (gtag.js) - Delayed Load for Performance -->
   <script>
-    (function() {
+    (function () {
       function loadGtag() {
         if (window.gtagLoaded) return;
         window.gtagLoaded = true;
@@ -20,67 +23,274 @@
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG06S74784';
         script.async = true;
         document.head.appendChild(script);
-        
+
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function() { dataLayer.push(arguments); };
+        window.gtag = function () { dataLayer.push(arguments); };
         window.gtag('js', new Date());
         window.gtag('config', 'G-KG06S74784');
       }
       var timer = setTimeout(loadGtag, 3500);
       var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
-      triggerEvents.forEach(function(event) {
-        window.addEventListener(event, function() {
+      triggerEvents.forEach(function (event) {
+        window.addEventListener(event, function () {
           clearTimeout(timer);
           loadGtag();
         }, { once: true, passive: true });
       });
     })();
   </script>
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Simulate light ray reflection on concave and convex mirrors. Change focal length, object position, and observe image formation at Dr. A.P.J. Abdul Kalam Inter College Study Hub." />
-  <meta name="keywords" content="mirror reflection simulator, concave mirror ray diagram, convex mirror simulator, optics lab online, physics ray optics, reflection calculator, light reflection simulator, focal length calculator" />
+  <meta name="description"
+    content="Simulate light ray reflection on concave and convex mirrors. Change focal length, object position, and observe image formation at Dr. A.P.J. Abdul Kalam Inter College Study Hub." />
+  <meta name="keywords"
+    content="mirror reflection simulator, concave mirror ray diagram, convex mirror simulator, optics lab online, physics ray optics, reflection calculator, light reflection simulator, focal length calculator" />
   <title>Concave & Convex Mirror Reflection Simulator | Interactive Study Hub</title>
   <meta property="og:title" content="Concave & Convex Mirror Reflection Simulator | Interactive Study Hub" />
-  <meta property="og:description" content="Simulate light ray reflection on concave and convex mirrors. Change focal length, object position, and observe image formation at Dr. A.P.J. Abdul Kalam Inter College Study Hub." />
+  <meta property="og:description"
+    content="Simulate light ray reflection on concave and convex mirrors. Change focal length, object position, and observe image formation at Dr. A.P.J. Abdul Kalam Inter College Study Hub." />
   <meta property="og:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
   <meta property="og:url" content="https://drapjakicbjb.ac.in/interactive-study-hub/mirror-simulator" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Concave & Convex Mirror Reflection Simulator | Interactive Study Hub" />
-  <meta name="twitter:description" content="Simulate light ray reflection on concave and convex mirrors. Change focal length, object position, and observe image formation at Dr. A.P.J. Abdul Kalam Inter College Study Hub." />
+  <meta name="twitter:description"
+    content="Simulate light ray reflection on concave and convex mirrors. Change focal length, object position, and observe image formation at Dr. A.P.J. Abdul Kalam Inter College Study Hub." />
   <meta name="twitter:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
   <link rel="icon" type="image/x-icon" href="../assets/images/logo.ico" />
   <link rel="canonical" href="https://drapjakicbjb.ac.in/interactive-study-hub/mirror-simulator" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" media="print"
+    onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="../styles/fontawesome.min.css" /></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--saffron:#FF6B00;--saffron-light:#FF8C42;--green:#2E7D32;--dark-blue:#0D1B2A;--navy:#1A2744;--white:#FFF;--off-white:#F8FAFF;--text-dark:#1A202C;--gradient-hero:linear-gradient(135deg,#FF6B00 0%,#FF8C42 30%,#7CB342 70%,#2E7D32 100%);--gradient-saffron:linear-gradient(135deg,#FF6B00,#FF8C42);--shadow-sm:0 2px 8px rgba(0,0,0,.08);--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--transition:all .3s cubic-bezier(.4,0,.2,1)}
-html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;width:100%;overflow-anchor:none}
-body{font-family:'Poppins',sans-serif;color:var(--text-dark);background:var(--white);line-height:1.6;overflow-x:hidden;width:100%;position:relative}
-img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
-#loader{position:fixed;inset:0;background:var(--dark-blue);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;transition:opacity .6s ease,visibility .6s ease}
-#loader.hidden{opacity:0;visibility:hidden}
-.loader-logo{width:130px;height:130px;border-radius:50%;object-fit:cover;animation:loaderPulse 1.5s ease-in-out infinite;box-shadow:0 0 40px rgba(255,107,0,.5)}
-.loader-text{color:#fff;font-size:.85rem;letter-spacing:3px;margin-top:20px;text-transform:uppercase;opacity:.8}
-.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.2);border-radius:10px;margin-top:16px;overflow:hidden}
-.loader-bar-fill{height:100%;background:var(--gradient-saffron);border-radius:10px;animation:loaderBar 2s ease-in-out forwards}
-@keyframes loaderPulse{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(255,107,0,.5)}50%{transform:scale(1.05);box-shadow:0 0 60px rgba(255,107,0,.8)}}
-@keyframes loaderBar{0%{width:0}100%{width:100%}}
-.top-gov-banner-wrapper{position:fixed;top:0;left:0;right:0;z-index:1050}
-.top-gov-banner{height:28px;background:#020717;display:flex;justify-content:space-between;align-items:center;padding:0 5%;font-size:.72rem;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.08)}
-.banner-left{display:flex;align-items:center;gap:8px}
-.banner-left img{height:12px;width:auto;border-radius:1px}
-#navbar{position:fixed;top:25px;left:0;right:0;z-index:1000;background:transparent;transition:var(--transition)}
-#hero{min-height:100vh;background:var(--gradient-hero);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:180px 24px 80px}
-.desktop-banner-text{display:inline}.mobile-banner-text{display:none}
-@media(max-width:768px){.top-gov-banner{padding:8px 15px 5px;height:40px;position:relative;width:100%}.desktop-banner-text{display:none}.mobile-banner-text{display:inline}#navbar{top:40px;padding-top:10px}}
-</style>
+  <noscript>
+    <link rel="stylesheet" href="../styles/fontawesome.min.css" />
+  </noscript>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --saffron: #FF6B00;
+      --saffron-light: #FF8C42;
+      --green: #2E7D32;
+      --dark-blue: #0D1B2A;
+      --navy: #1A2744;
+      --white: #FFF;
+      --off-white: #F8FAFF;
+      --text-dark: #1A202C;
+      --gradient-hero: linear-gradient(135deg, #FF6B00 0%, #FF8C42 30%, #7CB342 70%, #2E7D32 100%);
+      --gradient-saffron: linear-gradient(135deg, #FF6B00, #FF8C42);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, .08);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all .3s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+      width: 100%;
+      overflow-anchor: none
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    ul {
+      list-style: none
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--dark-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: opacity .6s ease, visibility .6s ease
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden
+    }
+
+    .loader-logo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: loaderPulse 1.5s ease-in-out infinite;
+      box-shadow: 0 0 40px rgba(255, 107, 0, .5)
+    }
+
+    .loader-text {
+      color: #fff;
+      font-size: .85rem;
+      letter-spacing: 3px;
+      margin-top: 20px;
+      text-transform: uppercase;
+      opacity: .8
+    }
+
+    .loader-bar {
+      width: 200px;
+      height: 3px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow: hidden
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      background: var(--gradient-saffron);
+      border-radius: 10px;
+      animation: loaderBar 2s ease-in-out forwards
+    }
+
+    @keyframes loaderPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(255, 107, 0, .5)
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 60px rgba(255, 107, 0, .8)
+      }
+    }
+
+    @keyframes loaderBar {
+      0% {
+        width: 0
+      }
+
+      100% {
+        width: 100%
+      }
+    }
+
+    .top-gov-banner-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1050
+    }
+
+    .top-gov-banner {
+      height: 28px;
+      background: #020717;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .85);
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .banner-left {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .banner-left img {
+      height: 12px;
+      width: auto;
+      border-radius: 1px
+    }
+
+    #navbar {
+      position: fixed;
+      top: 25px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: var(--transition)
+    }
+
+    #hero {
+      min-height: 100vh;
+      background: var(--gradient-hero);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 180px 24px 80px
+    }
+
+    .desktop-banner-text {
+      display: inline
+    }
+
+    .mobile-banner-text {
+      display: none
+    }
+
+    @media(max-width:768px) {
+      .top-gov-banner {
+        padding: 8px 15px 5px;
+        height: 40px;
+        position: relative;
+        width: 100%
+      }
+
+      .desktop-banner-text {
+        display: none
+      }
+
+      .mobile-banner-text {
+        display: inline
+      }
+
+      #navbar {
+        top: 40px;
+        padding-top: 10px
+      }
+    }
+  </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
   <style>
@@ -102,11 +312,11 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
     .optics-header h1 {
       font-size: 2.5rem;
       font-weight: 800;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .optics-header p {
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.8);
       max-width: 600px;
       margin: 10px auto;
     }
@@ -115,7 +325,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       position: absolute;
       top: 90px;
       left: 24px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       color: white;
       padding: 8px 16px;
       border-radius: 50px;
@@ -125,7 +335,10 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       backdrop-filter: blur(5px);
     }
 
-    .back-btn:hover { background: var(--saffron); color: white; }
+    .back-btn:hover {
+      background: var(--saffron);
+      color: white;
+    }
 
     .optics-app-container {
       max-width: 1200px;
@@ -167,7 +380,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       display: flex;
       align-items: center;
       gap: 10px;
-      border-bottom: 2px solid rgba(13,27,42,0.1);
+      border-bottom: 2px solid rgba(13, 27, 42, 0.1);
       padding-bottom: 10px;
     }
 
@@ -219,7 +432,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       background: var(--navy);
       color: white;
       border-color: var(--navy);
-      box-shadow: 0 4px 10px rgba(13,27,42,0.2);
+      box-shadow: 0 4px 10px rgba(13, 27, 42, 0.2);
     }
 
     .readout-box {
@@ -234,18 +447,26 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       justify-content: space-between;
       margin-bottom: 8px;
       font-size: 0.9rem;
-      border-bottom: 1px dashed rgba(0,0,0,0.1);
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
       padding-bottom: 5px;
     }
-    
+
     .readout-item:last-child {
       border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0;
     }
 
-    .readout-item strong { color: var(--navy); }
-    .readout-item span { font-family: monospace; font-size: 1rem; color: #E65100; font-weight: 600;}
+    .readout-item strong {
+      color: var(--navy);
+    }
+
+    .readout-item span {
+      font-family: monospace;
+      font-size: 1rem;
+      color: #E65100;
+      font-weight: 600;
+    }
 
     /* Mobile Responsive */
     @media (max-width: 900px) {
@@ -258,8 +479,8 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- <div id="header-placeholder"></div> -->
@@ -267,51 +488,54 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 
 
   <header class="optics-header">
-    <a href="/study" onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
+    <a href="/study"
+      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
+      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
     <h1>Mirror Simulator</h1>
     <p>Explore light reflection, real and virtual images, and focal points using interactive ray tracing.</p>
   </header>
 
   <main>
 
-  <section class="optics-app-container">
-    <div class="optics-viewer">
-      <canvas id="optics-canvas" width="800" height="500"></canvas>
-    </div>
-
-    <div class="optics-panel">
-      <h3><i class="fas fa-sliders"></i> Simulation Controls</h3>
-      
-
-      <div class="toggle-group">
-        <button class="toggle-btn active" id="btn-convex">Convex</button>
-        <button class="toggle-btn" id="btn-concave">Concave</button>
+    <section class="optics-app-container">
+      <div class="optics-viewer">
+        <canvas id="optics-canvas" width="800" height="500"></canvas>
       </div>
 
-      <div class="control-group">
-        <label><span>Focal Length (f)</span> <span><span class="value" id="val-focal">100</span> cm</span></label>
-        <input type="range" id="range-focal" min="40" max="250" value="100" step="1">
-      </div>
+      <div class="optics-panel">
+        <h3><i class="fas fa-sliders"></i> Simulation Controls</h3>
 
-      <div class="control-group">
-        <label><span>Object Distance (u)</span> <span><span class="value" id="val-dist">150</span> cm</span></label>
-        <input type="range" id="range-dist" min="20" max="400" value="150" step="1">
-      </div>
 
-      <div class="control-group">
-        <label><span>Object Height (h)</span> <span><span class="value" id="val-height">50</span> cm</span></label>
-        <input type="range" id="range-height" min="10" max="150" value="50" step="1">
-      </div>
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="btn-convex">Convex</button>
+          <button class="toggle-btn" id="btn-concave">Concave</button>
+        </div>
 
-      <div class="readout-box">
-        <h3 style="border-bottom:none; margin-bottom:10px; font-size:1.1rem;"><i class="fas fa-calculator"></i> Results</h3>
-        <div class="readout-item"><span>Image Distance (v)</span> <span><span id="res-v">0</span> cm</span></div>
-        <div class="readout-item"><span>Magnification (m)</span> <span id="res-m">0</span></div>
-        <div class="readout-item"><span>Image Height (h')</span> <span><span id="res-h">0</span> cm</span></div>
-        <div class="readout-item"><span>Nature</span> <strong id="res-nature">Real</strong></div>
+        <div class="control-group">
+          <label><span>Focal Length (f)</span> <span><span class="value" id="val-focal">100</span> cm</span></label>
+          <input type="range" id="range-focal" min="40" max="250" value="100" step="1">
+        </div>
+
+        <div class="control-group">
+          <label><span>Object Distance (u)</span> <span><span class="value" id="val-dist">150</span> cm</span></label>
+          <input type="range" id="range-dist" min="20" max="400" value="150" step="1">
+        </div>
+
+        <div class="control-group">
+          <label><span>Object Height (h)</span> <span><span class="value" id="val-height">50</span> cm</span></label>
+          <input type="range" id="range-height" min="10" max="150" value="50" step="1">
+        </div>
+
+        <div class="readout-box">
+          <h3 style="border-bottom:none; margin-bottom:10px; font-size:1.1rem;"><i class="fas fa-calculator"></i>
+            Results</h3>
+          <div class="readout-item"><span>Image Distance (v)</span> <span><span id="res-v">0</span> cm</span></div>
+          <div class="readout-item"><span>Magnification (m)</span> <span id="res-m">0</span></div>
+          <div class="readout-item"><span>Image Height (h')</span> <span><span id="res-h">0</span> cm</span></div>
+          <div class="readout-item"><span>Nature</span> <strong id="res-nature">Real</strong></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
 
@@ -319,5 +543,5 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
   <script src="../js/main.js" defer></script>
   <script src="../js/mirror-simulator.js" defer></script>
 </body>
-</html>
 
+</html>

@@ -2,23 +2,23 @@
    DR. A.P.J. ABDUL KALAM SCHOOL — Main JavaScript
    =================================================== */
 
-  // Register Service Worker for client-side caching and offline support
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      let pathPrefix = '';
-      const scriptEl = document.querySelector('script[src*="js/main.js"]');
-      if (scriptEl) {
-        const src = scriptEl.getAttribute('src');
-        const idx = src.indexOf('js/main.js');
-        if (idx > 0) {
-          pathPrefix = src.substring(0, idx);
-        }
+// Register Service Worker for client-side caching and offline support
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    let pathPrefix = '';
+    const scriptEl = document.querySelector('script[src*="js/main.js"]');
+    if (scriptEl) {
+      const src = scriptEl.getAttribute('src');
+      const idx = src.indexOf('js/main.js');
+      if (idx > 0) {
+        pathPrefix = src.substring(0, idx);
       }
-      navigator.serviceWorker.register(pathPrefix + 'sw.js')
-        .then(reg => console.log('[Service Worker] Scope:', reg.scope))
-        .catch(err => console.error('[Service Worker] Registration failed:', err));
-    });
-  }
+    }
+    navigator.serviceWorker.register(pathPrefix + 'sw.js')
+      .then(reg => console.log('[Service Worker] Scope:', reg.scope))
+      .catch(err => console.error('[Service Worker] Registration failed:', err));
+  });
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           })
       );
     }
-    
+
     const zoomControlsPlaceholder = document.getElementById('zoom-controls-placeholder');
     if (zoomControlsPlaceholder) {
       loadTask.push(
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       scrollbarPlaceholder.id = 'scrollbar-placeholder';
       document.body.appendChild(scrollbarPlaceholder);
     }
-    
+
     loadTask.push(
       fetch(pathPrefix + 'components/scrollbar.html')
         .then(response => response.text())
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   /* ─── 1. LOADER ─────────────────────────────────── */
   const loader = document.getElementById('loader');
   let loaderHidden = false;
-  
+
   function hideLoader() {
     if (loader && !loaderHidden) {
       loaderHidden = true;
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         e.stopPropagation();
         const isOpen = govBannerDropdown.classList.toggle('open');
         govBannerToggle.setAttribute('aria-expanded', isOpen);
-        
+
         // Update arrow icon
         const icon = govBannerToggle.querySelector('i');
         if (icon) {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
         }
       });
-      
+
       // Close dropdown if user clicks anywhere else
       document.addEventListener('click', () => {
         if (govBannerDropdown.classList.contains('open')) {
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
 
       navOverlay.addEventListener('click', closeMenu);
-      
+
       const mobileMenuClose = document.getElementById('mobileMenuClose');
       if (mobileMenuClose) {
         mobileMenuClose.addEventListener('click', closeMenu);
@@ -228,10 +228,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     updateActiveNavLink();
-    
+
     // Smooth scroll for nav links (including those just injected)
     document.querySelectorAll('a[href^="#"], a[href*="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href.startsWith('#')) {
           const target = document.querySelector(href);
@@ -242,22 +242,22 @@ document.addEventListener('DOMContentLoaded', async () => {
             window.scrollTo({ top, behavior: 'smooth' });
           }
         } else if (href.includes('#') && (href.startsWith('index.html') || href.startsWith('/#') || href.startsWith('/index.html'))) {
-           // If on homepage already, handle as smooth scroll
-           const isHome = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('index');
-           if (isHome) {
-             const targetId = href.split('#')[1];
-             const target = document.getElementById(targetId);
-             if (target) {
-               e.preventDefault();
-               const offset = (navbar ? navbar.offsetHeight : 0) + 10;
-               const top = target.getBoundingClientRect().top + window.scrollY - offset;
-               window.scrollTo({ top, behavior: 'smooth' });
-             }
-           }
-         }
+          // If on homepage already, handle as smooth scroll
+          const isHome = window.location.pathname === '/' || window.location.pathname === '' || window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('index');
+          if (isHome) {
+            const targetId = href.split('#')[1];
+            const target = document.getElementById(targetId);
+            if (target) {
+              e.preventDefault();
+              const offset = (navbar ? navbar.offsetHeight : 0) + 10;
+              const top = target.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top, behavior: 'smooth' });
+            }
+          }
+        }
       });
     });
-    
+
     // Initialize zoom controls if they exist on the page
     initZoomControls();
   }
@@ -267,30 +267,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     const zoomInBtn = document.getElementById('zoom-in-btn');
     const zoomOutBtn = document.getElementById('zoom-out-btn');
     const zoomResetBtn = document.getElementById('zoom-level-text');
-    
+
     if (!zoomInBtn || !zoomOutBtn || !zoomResetBtn) return;
 
     let currentZoom = 1;
     const step = 0.1;
     const maxZoom = 2.0;
     const minZoom = 0.5;
-    
+
     function getZoomTarget() {
-      return document.querySelector('.solar-viewer') || 
-             document.querySelector('.sim-app-container') ||
-             document.querySelector('.content-section') ||
-             document.querySelector('.pt-container') ||
-             document.querySelector('main') ||
-             document.body;
+      return document.querySelector('.solar-viewer') ||
+        document.querySelector('.sim-app-container') ||
+        document.querySelector('.content-section') ||
+        document.querySelector('.pt-container') ||
+        document.querySelector('main') ||
+        document.body;
     }
-    
+
     function applyZoom() {
       const target = getZoomTarget();
-      if(target) {
+      if (target) {
         target.style.zoom = currentZoom;
       }
       zoomResetBtn.innerText = Math.round(currentZoom * 100) + '%';
-      
+
       // Auto-enable scrolling if zoomed in or out so hidden elements become reachable
       if (currentZoom !== 1) {
         document.body.style.overflow = 'auto';
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     zoomInBtn.addEventListener('click', () => {
-      if(currentZoom < maxZoom) {
+      if (currentZoom < maxZoom) {
         currentZoom += step;
         currentZoom = Math.round(currentZoom * 10) / 10;
         applyZoom();
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     zoomOutBtn.addEventListener('click', () => {
-      if(currentZoom > minZoom) {
+      if (currentZoom > minZoom) {
         currentZoom -= step;
         currentZoom = Math.round(currentZoom * 10) / 10;
         applyZoom();
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       currentZoom = 1;
       applyZoom();
     });
-    
+
     applyZoom();
   }
 
@@ -354,10 +354,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       const href = link.getAttribute('href');
       if (!href) return;
       link.classList.remove('active');
-      
+
       const cleanHref = href.replace(/^\//, '').replace(/\.html$/, '');
       const cleanPath = path.replace(/^\//, '').replace(/\.html$/, '');
-      
+
       if (cleanHref === cleanPath && cleanHref !== '') {
         link.classList.add('active');
       }
@@ -402,11 +402,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   counters.forEach(counter => counterObserver.observe(counter));
 
   function animateCounter(el) {
-    const target   = parseInt(el.dataset.count, 10);
-    const suffix   = el.dataset.suffix || '';
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
     const duration = 2000;
-    const step     = Math.ceil(target / (duration / 16));
-    let current    = 0;
+    const step = Math.ceil(target / (duration / 16));
+    let current = 0;
 
     const timer = setInterval(() => {
       current += step;
@@ -419,14 +419,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   /* ─── 7. TESTIMONIALS CAROUSEL ───────────────────── */
-  const wrapper       = document.getElementById('testimonialsWrapper');
-  const prevBtn       = document.getElementById('tPrev');
-  const nextBtn       = document.getElementById('tNext');
-  const dots          = document.querySelectorAll('.t-dot');
+  const wrapper = document.getElementById('testimonialsWrapper');
+  const prevBtn = document.getElementById('tPrev');
+  const nextBtn = document.getElementById('tNext');
+  const dots = document.querySelectorAll('.t-dot');
 
   if (wrapper && prevBtn && nextBtn) {
-    let currentIndex  = 0;
-    const cards       = wrapper.querySelectorAll('.testimonial-card');
+    let currentIndex = 0;
+    const cards = wrapper.querySelectorAll('.testimonial-card');
     const totalSlides = cards.length;
     let cachedCardWidth = 0;
 
@@ -476,8 +476,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   /* ─── 8. CONTACT FORM (EmailJS) ──────────────────── */
-  const EMAILJS_PUBLIC_KEY  = '6DYmieZwBu3lhi_FR';
-  const EMAILJS_SERVICE_ID  = 'service_tarunk435';
+  const EMAILJS_PUBLIC_KEY = '6DYmieZwBu3lhi_FR';
+  const EMAILJS_SERVICE_ID = 'service_tarunk435';
   const EMAILJS_TEMPLATE_ID = 'template_tarunk435';
 
   if (typeof emailjs !== 'undefined') {
@@ -528,12 +528,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       btn.style.opacity = '0.8';
 
       const params = {
-        from_name : contactForm.fname.value.trim() + ' ' + contactForm.lname.value.trim(),
+        from_name: contactForm.fname.value.trim() + ' ' + contactForm.lname.value.trim(),
         from_email: contactForm.email.value.trim(),
-        phone     : contactForm.phone.value.trim() || 'Not provided',
-        subject   : contactForm.subject.value || 'General Enquiry',
-        message   : contactForm.message.value.trim(),
-        to_name   : 'Dr. A.P.J. Abdul Kalam Inter College',
+        phone: contactForm.phone.value.trim() || 'Not provided',
+        subject: contactForm.subject.value || 'General Enquiry',
+        message: contactForm.message.value.trim(),
+        to_name: 'Dr. A.P.J. Abdul Kalam Inter College',
       };
 
       try {
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // Global copy to clipboard function
-window.copyToClipboard = function(text, btn) {
+window.copyToClipboard = function (text, btn) {
   navigator.clipboard.writeText(text).then(() => {
     const icon = btn.querySelector('i');
     if (icon) {

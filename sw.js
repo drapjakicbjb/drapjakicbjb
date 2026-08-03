@@ -63,9 +63,9 @@ self.addEventListener('fetch', (event) => {
   // This ensures returning visitors get updates (like noticeboard alerts) immediately.
   const hasNoExtension = !url.pathname.split('/').pop().includes('.');
   if (
-    url.pathname.endsWith('.html') || 
+    url.pathname.endsWith('.html') ||
     hasNoExtension ||
-    url.pathname.includes('/notices.js') || 
+    url.pathname.includes('/notices.js') ||
     url.pathname.includes('noticeboard')
   ) {
     event.respondWith(
@@ -105,10 +105,10 @@ self.addEventListener('fetch', (event) => {
           // Serve from cache, then fetch in the background to keep cache updated (stale-while-revalidate style)
           fetch(event.request).then((networkResponse) => {
             if (
-              networkResponse.status === 200 || 
+              networkResponse.status === 200 ||
               (networkResponse.status === 0 && (
-                url.hostname.includes('cloudflareinsights.com') || 
-                url.hostname.includes('fonts.gstatic.com') || 
+                url.hostname.includes('cloudflareinsights.com') ||
+                url.hostname.includes('fonts.gstatic.com') ||
                 url.hostname.includes('fonts.googleapis.com')
               ))
             ) {
@@ -116,18 +116,18 @@ self.addEventListener('fetch', (event) => {
                 cache.put(event.request, networkResponse);
               });
             }
-          }).catch(() => {/* Ignore network errors for background sync */});
-          
+          }).catch(() => {/* Ignore network errors for background sync */ });
+
           return cachedResponse;
         }
 
         // Cache miss: fetch from network and cache
         return fetch(event.request).then((networkResponse) => {
           if (
-            networkResponse.status === 200 || 
+            networkResponse.status === 200 ||
             (networkResponse.status === 0 && (
-              url.hostname.includes('cloudflareinsights.com') || 
-              url.hostname.includes('fonts.gstatic.com') || 
+              url.hostname.includes('cloudflareinsights.com') ||
+              url.hostname.includes('fonts.gstatic.com') ||
               url.hostname.includes('fonts.googleapis.com')
             ))
           ) {
