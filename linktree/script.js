@@ -39,6 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
             actionText: 'View Website'
         },
         {
+            id: 'academic-streams',
+            name: 'Academic Streams',
+            description: 'Explore High School & Intermediate streams (Science PCM/PCB/PCMB, Agriculture, Commerce, Arts, Vocational, Home Science).',
+            icon: 'fa-compass',
+            iconClass: 'study-hub',
+            url: '/streams',
+            actionText: 'View Streams'
+        },
+        {
+            id: 'career-guide',
+            name: 'Career Guidance Portal',
+            description: 'Interactive dropdown guides for 120+ degree courses, entrance exams (JEE, NEET, CUET, CA, CLAT, NDA), and job profiles.',
+            icon: 'fa-briefcase',
+            iconClass: 'study-hub',
+            url: '/careers',
+            actionText: 'Explore Careers'
+        },
+        {
             id: 'study-hub',
             name: 'Study Hub',
             description: 'Explore interactive educational simulations and discover immersive learning materials.',

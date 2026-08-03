@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NVJV2RMB');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) - Delayed Load for Performance -->
+  <script>
+    (function() {
+      function loadGtag() {
+        if (window.gtagLoaded) return;
+        window.gtagLoaded = true;
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KG06S74784';
+        script.async = true;
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-KG06S74784');
+      }
+      var timer = setTimeout(loadGtag, 3500);
+      var triggerEvents = ['click', 'mousedown', 'keydown', 'touchstart', 'scroll'];
+      triggerEvents.forEach(function(event) {
+        window.addEventListener(event, function() {
+          clearTimeout(timer);
+          loadGtag();
+        }, { once: true, passive: true });
+      });
+    })();
+  </script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="All-inclusive career guidance portal for High School & Intermediate streams at Dr. A.P.J. Abdul Kalam Inter College. Interactive dropdown guides for 120+ degree courses, 45+ entrance exams, job profiles, and salary outlooks for PCM, PCB, PCMB Dual, Agriculture, Commerce, Arts, Vocational Skills, Home Science, and High School tracks." />
+  <meta name="keywords" content="career opportunities Basti, career options after 12th, PCM career options, PCB career options, PCMB careers, Agriculture careers, Commerce career options, Arts career options, Vocational NSQF careers, Home Science careers, JEE NEET CUET ICAR entrance exams, school career guidance Basti, all degrees after 12th" />
+  <title>All-Inclusive Onward Career Opportunities Portal | Dr. A.P.J. Abdul Kalam Inter College</title>
+  <meta property="og:title" content="All-Inclusive Onward Career Opportunities Portal | Dr. A.P.J. Abdul Kalam Inter College" />
+  <meta property="og:description" content="All-inclusive interactive career guidance portal. Expand dropdown guides for 120+ degree courses, competitive exams, salary prospects, and job roles across all academic & vocational streams." />
+  <meta property="og:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
+  <meta property="og:url" content="https://drapjakicbjb.ac.in/careers" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="All-Inclusive Onward Career Opportunities Portal | Dr. A.P.J. Abdul Kalam Inter College" />
+  <meta name="twitter:description" content="All-inclusive interactive career guidance portal. Expand dropdown guides for 120+ degree courses, competitive exams, salary prospects, and job roles across all academic & vocational streams." />
+  <meta name="twitter:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
+  <link rel="icon" type="image/x-icon" href="assets/images/logo.ico" />
+  <link rel="canonical" href="https://drapjakicbjb.ac.in/careers" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href="styles/fontawesome.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="styles/fontawesome.min.css" /></noscript>
+  <link rel="preload" href="styles/main.min.css" as="style" />
+  <link rel="stylesheet" href="styles/main.min.css" />
+
+  <style>
+    #navbar {
+      background: var(--navy) !important;
+      top: 28px !important;
+      padding: 10px 0 !important;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    }
+
+    .careers-hero {
+      padding: 170px 24px 60px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3c72 100%);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .careers-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .careers-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .careers-hero h1 span {
+      color: var(--saffron);
+    }
+
+    .careers-hero p {
+      max-width: 900px;
+      margin: 0 auto 25px;
+      font-size: 1.08rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+
+    /* Live Search Bar */
+    .career-search-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .career-search-input {
+      width: 100%;
+      padding: 16px 24px 16px 54px;
+      border-radius: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .career-search-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .career-search-input:focus {
+      background: white;
+      color: var(--navy);
+      border-color: var(--saffron);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .career-search-input:focus::placeholder {
+      color: #94a3b8;
+    }
+
+    .search-icon-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--saffron);
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    .careers-container {
+      padding: 45px 24px 90px;
+      background: #f8faff;
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    /* Stream Filter Tabs */
+    .stream-tabs-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+      background: white;
+      padding: 8px;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(13, 27, 42, 0.06);
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border-radius: 50px;
+      border: none;
+      background: transparent;
+      color: var(--text-medium);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .tab-btn:hover {
+      color: var(--navy);
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 4px 14px rgba(13, 27, 42, 0.25);
+    }
+
+    .tab-btn.active[data-stream="science-pcm"] { background: #1e3c72; }
+    .tab-btn.active[data-stream="science-pcb"] { background: #2e7d32; }
+    .tab-btn.active[data-stream="pcmb"] { background: #0284c7; }
+    .tab-btn.active[data-stream="agri"] { background: #15803d; }
+    .tab-btn.active[data-stream="commerce"] { background: #ff6b00; }
+    .tab-btn.active[data-stream="arts"] { background: #8e24aa; }
+    .tab-btn.active[data-stream="vocational"] { background: #d97706; }
+    .tab-btn.active[data-stream="homescience"] { background: #ec4899; }
+    .tab-btn.active[data-stream="highschool"] { background: #475569; }
+
+    /* Stream Detail Panels */
+    .stream-panel {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .stream-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stream-header-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+      border-left: 8px solid var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .stream-header-card.pcm { border-left-color: #1e3c72; }
+    .stream-header-card.pcb { border-left-color: #2e7d32; }
+    .stream-header-card.pcmb { border-left-color: #0284c7; }
+    .stream-header-card.agri { border-left-color: #15803d; }
+    .stream-header-card.commerce { border-left-color: #ff6b00; }
+    .stream-header-card.arts { border-left-color: #8e24aa; }
+    .stream-header-card.vocational { border-left-color: #d97706; }
+    .stream-header-card.homescience { border-left-color: #ec4899; }
+    .stream-header-card.highschool { border-left-color: #475569; }
+
+    .stream-header-info h2 {
+      font-size: 1.8rem;
+      color: var(--navy);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stream-header-info p {
+      color: var(--text-medium);
+      font-size: 0.98rem;
+    }
+
+    .expand-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .btn-toggle-all {
+      background: white;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-toggle-all:hover {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    /* Interactive Dropdown Accordion Cards */
+    .dropdown-container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .career-accordion {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid rgba(13, 27, 42, 0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .career-accordion[open] {
+      border-color: rgba(255, 107, 0, 0.35);
+      box-shadow: 0 10px 30px rgba(13, 27, 42, 0.08);
+    }
+
+    .accordion-summary {
+      padding: 20px 24px;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      background: white;
+      transition: background 0.2s ease;
+    }
+
+    .accordion-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion-summary:hover {
+      background: #f8fafc;
+    }
+
+    .summary-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .summary-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 107, 0, 0.1);
+      color: var(--saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .pcm .summary-icon-box { background: rgba(30, 60, 114, 0.1); color: #1e3c72; }
+    .pcb .summary-icon-box { background: rgba(46, 125, 50, 0.1); color: #2e7d32; }
+    .pcmb .summary-icon-box { background: rgba(2, 132, 199, 0.1); color: #0284c7; }
+    .agri .summary-icon-box { background: rgba(21, 128, 61, 0.1); color: #15803d; }
+    .commerce .summary-icon-box { background: rgba(255, 107, 0, 0.1); color: #ff6b00; }
+    .arts .summary-icon-box { background: rgba(142, 36, 170, 0.1); color: #8e24aa; }
+    .vocational .summary-icon-box { background: rgba(217, 119, 6, 0.1); color: #d97706; }
+    .homescience .summary-icon-box { background: rgba(236, 72, 153, 0.1); color: #ec4899; }
+    .highschool .summary-icon-box { background: rgba(71, 85, 105, 0.1); color: #475569; }
+
+    .summary-title-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .summary-subtext {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text-medium);
+      margin-top: 2px;
+    }
+
+    .summary-chevron {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    .career-accordion[open] .summary-chevron {
+      transform: rotate(180deg);
+      background: var(--saffron);
+      color: white;
+    }
+
+    .accordion-body {
+      padding: 0 24px 26px;
+      border-top: 1px solid #f1f5f9;
+      background: #fafcff;
+    }
+
+    .accordion-content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .content-box {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .content-box h4 {
+      font-size: 1.05rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .content-box h4 i {
+      color: var(--saffron);
+    }
+
+    .exhaustive-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .exhaustive-item {
+      padding: 10px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .exhaustive-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-header {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.94rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .item-details {
+      font-size: 0.86rem;
+      color: var(--text-medium);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .tag-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .tag-degree { background: #e0f2fe; color: #0369a1; }
+    .tag-exam { background: #fef3c7; color: #b45309; }
+    .tag-role { background: #dcfce7; color: #15803d; }
+    .tag-govt { background: #f3e8ff; color: #7e22ce; }
+
+    .salary-growth-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .salary-info h5 {
+      color: var(--saffron);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .salary-info p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+    }
+
+    .salary-stat {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: white;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .no-results-msg {
+      display: none;
+      text-align: center;
+      padding: 50px 20px;
+      background: white;
+      border-radius: 20px;
+      color: var(--text-medium);
+    }
+
+    .no-results-msg i {
+      font-size: 3rem;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .careers-hero h1 { font-size: 2rem; }
+      .careers-container { padding: 30px 16px 60px; }
+      .accordion-summary { padding: 16px; font-size: 1.02rem; }
+      .accordion-body { padding: 0 16px 20px; }
+      .stream-tabs-nav { border-radius: 20px; }
+      .tab-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+
+  <!-- Schema.org WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "All-Inclusive Onward Career Opportunities Portal | Dr. A.P.J. Abdul Kalam Inter College",
+    "url": "https://drapjakicbjb.ac.in/careers",
+    "description": "All-inclusive career guidance portal featuring dropdown guides for 120+ degree courses, competitive exams, salary prospects, and job roles across all academic & vocational streams."
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header Placeholder (Injected via main.js) -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Hero Header -->
+    <header class="careers-hero">
+      <h1>All-Inclusive Career <span>Opportunities & Guidance</span></h1>
+      <p>Explore every single degree program, national entrance exam, government commission, specialized trade, and global career path. Click any category dropdown below to expand exhaustive details.</p>
+
+      <!-- Live Search Bar -->
+      <div class="career-search-wrapper">
+        <i class="fas fa-search search-icon-btn"></i>
+        <input type="text" id="careerSearchInput" class="career-search-input" placeholder="Search any career, degree, exam or job (e.g. IAS, Doctor, AI, Agriculture, CA, Pilot, Law, Biotech, Robotics, Home Science, NSQF)..." />
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="careers-container">
+      
+      <!-- Stream Filter Tab Navigation -->
+      <nav class="stream-tabs-nav" aria-label="Stream Career Navigation">
+        <button class="tab-btn active" data-stream="all"><i class="fas fa-th-large"></i> All Streams</button>
+        <button class="tab-btn" data-stream="science-pcm"><i class="fas fa-atom"></i> Science (PCM)</button>
+        <button class="tab-btn" data-stream="science-pcb"><i class="fas fa-dna"></i> Science (PCB)</button>
+        <button class="tab-btn" data-stream="pcmb"><i class="fas fa-microscope"></i> PCMB Dual</button>
+        <button class="tab-btn" data-stream="agri"><i class="fas fa-seedling"></i> Agriculture</button>
+        <button class="tab-btn" data-stream="commerce"><i class="fas fa-chart-line"></i> Commerce</button>
+        <button class="tab-btn" data-stream="arts"><i class="fas fa-landmark"></i> Arts & Humanities</button>
+        <button class="tab-btn" data-stream="vocational"><i class="fas fa-tools"></i> Vocational & NSQF</button>
+        <button class="tab-btn" data-stream="homescience"><i class="fas fa-home"></i> Home Science</button>
+        <button class="tab-btn" data-stream="highschool"><i class="fas fa-book-open"></i> High School (9-10)</button>
+      </nav>
+
+      <!-- Expand/Collapse Controls -->
+      <div class="expand-controls">
+        <button class="btn-toggle-all" id="btnExpandAll"><i class="fas fa-chevron-circle-down"></i> Expand All Category Dropdowns</button>
+        <button class="btn-toggle-all" id="btnCollapseAll"><i class="fas fa-chevron-circle-up"></i> Collapse All Category Dropdowns</button>
+      </div>
+
+      <!-- No Search Results Message -->
+      <div class="no-results-msg" id="noResultsMsg">
+        <i class="fas fa-folder-open"></i>
+        <h3>No matching career pathways found</h3>
+        <p>Try searching for different keywords such as "Robotics", "NEET", "CUET", "Civil Services", "Agriculture", "Law", "Nursing", "CA", "Aviation", "NSQF", or "Polytechnic".</p>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 1: SCIENCE PCM (MATH GROUP) -->
+      <!-- ============================================================== -->
+      <div class="stream-panel active pcm" id="panel-science-pcm">
+        <div class="stream-header-card pcm">
+          <div class="stream-header-info">
+            <h2>Science Stream (PCM - Mathematics Group)</h2>
+            <p>Select any category dropdown below to view complete higher studies, engineering branches, degree courses, entrance exams, and career pathways.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <!-- Dropdown 1.1 -->
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-laptop-code"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Computer Science, Artificial Intelligence & Software Engineering</span>
+                  <span class="summary-subtext">B.Tech CSE, AI & Machine Learning, Data Science, Cybersecurity, Cloud, DevOps & Game Dev</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-graduation-cap"></i> Degree Programs</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Computer Science & Engineering (CSE)</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Core software development, data structures, algorithms, operating systems, and full-stack software architecture.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in AI & Machine Learning (AI & ML)</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Neural networks, deep learning, natural language processing (NLP), computer vision, and generative AI models.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Cyber Security & Digital Forensics</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Ethical hacking, network security, penetration testing, cryptography, and cyber defense systems.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Data Science & Big Analytics</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Statistical modeling, predictive analytics, big data processing (Hadoop/Spark), and data visualization.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>BCA + MCA (Integrated Computer Applications)</span> <span class="tag-badge tag-degree">3-5 Years</span></div>
+                      <div class="item-details">Software development, web application engineering, database administration (SQL/NoSQL), and cloud systems.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-file-alt"></i> Entrance Exams & Top Roles</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>JEE Main & JEE Advanced</span> <span class="tag-badge tag-exam">National Entrance</span></div>
+                      <div class="item-details">Mandatory entrance test for 23 IITs, 31 NITs, 26 IIITs, and Centrally Funded Technical Institutes.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>BITSAT, VITEEE, SRMJEEE, MET, WBJEE</span> <span class="tag-badge tag-exam">Top Institutes</span></div>
+                      <div class="item-details">Premier university entrance exams for BITS Pilani, VIT Vellore, SRM, Manipal, and state universities.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Software Development Engineer (SDE)</span> <span class="tag-badge tag-role">Private / Tech</span></div>
+                      <div class="item-details">Building cloud applications, mobile software, web platforms at Google, Microsoft, Amazon, TCS, Infosys.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>AI & ML Engineer / Data Scientist</span> <span class="tag-badge tag-role">High Demand</span></div>
+                      <div class="item-details">Creating AI algorithms, automated intelligence, predictive analytics models for global tech firms.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Highest initial placement packages across IT, AI startups, cybersecurity, and MNC tech giants globally.</p>
+                </div>
+                <div class="salary-stat">₹ 7 - 50+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Dropdown 1.2 -->
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-robot"></i></div>
+                <div class="summary-title-text">
+                  <span>2. Core Engineering: Robotics, Mechanical, Electrical, Electronics & Civil</span>
+                  <span class="summary-subtext">Mechatronics, EV Tech, Semiconductor VLSI, Automation, Aerospace & Infrastructure</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-microchip"></i> Specializations</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Robotics & Mechatronics</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Industrial robotics, autonomous drones, smart sensors, mechanical actuators, and automated manufacturing.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Electronics & VLSI Design (ECE)</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Semiconductor chip design, microprocessors, 5G/6G wireless networks, IoT hardware, and embedded systems.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Mechanical & Automobile (EV Tech)</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Electric vehicle design, battery tech, CAD/CAM simulation, thermal engineering, and automated plants.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Electrical & Renewable Energy</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Solar/wind power grids, high-voltage transmission, smart grid distribution, and energy storage systems.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Civil & Structural Engineering</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Mega infrastructure, high-rise buildings, bridges, smart city transport grids, and geotechnics.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Aerospace & Aeronautical Engg</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Aircraft structural dynamics, satellite systems, propulsion, rocketry, ISRO / DRDO space tech.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-cogs"></i> PSU & Govt Exams</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>GATE Examination</span> <span class="tag-badge tag-exam">National Test</span></div>
+                      <div class="item-details">Master's (M.Tech) admissions at IITs and direct entry into Gazetted PSU Officer jobs.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>PSU Engineer (ONGC, IOCL, NTPC, BHEL, ISRO, DRDO)</span> <span class="tag-badge tag-govt">Govt Officer</span></div>
+                      <div class="item-details">High-prestige engineering officer positions in Navratna PSUs and defense research labs.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Indian Engineering Services (IES / ESE via UPSC)</span> <span class="tag-badge tag-govt">UPSC Exam</span></div>
+                      <div class="item-details">Class-1 Gazetted Engineer recruitment in Indian Railways, Central Water Commission, and CPWD.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Strong growth across EV manufacturing, semiconductor plants, defense labs, and government infrastructure.</p>
+                </div>
+                <div class="salary-stat">₹ 6 - 35+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Dropdown 1.3 -->
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-plane-departure"></i></div>
+                <div class="summary-title-text">
+                  <span>3. Defense Forces, Commercial Aviation & Merchant Navy</span>
+                  <span class="summary-subtext">NDA Officers, Commercial Pilot (CPL), Flight Engineer, Merchant Navy Captain & Air Traffic Control</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-shield-alt"></i> Defense & Aviation Pathways</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>NDA (National Defence Academy) Officer Entry</span> <span class="tag-badge tag-govt">UPSC Exam</span></div>
+                      <div class="item-details">3-Year tri-service training at Khadakwasla followed by commission as Lieutenant / Flying Officer in Army, Air Force, or Navy.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>10+2 Technical Entry Scheme (TES Army/Navy)</span> <span class="tag-badge tag-govt">Direct SSB</span></div>
+                      <div class="item-details">Direct SSB interview selection based on JEE Main score for engineering commission in Army & Navy.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Commercial Pilot License (CPL) Training</span> <span class="tag-badge tag-degree">Flying Academy</span></div>
+                      <div class="item-details">DGCA Ground classes, 200 flying hours training at IGRUA or flying academies to fly commercial passenger jets.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Sc. Nautical Science (Merchant Navy)</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">Naval navigation, cargo shipping logistics, maritime safety leading to Deck Officer & Ship Captain roles.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.E. Marine Engineering</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Maintenance of propulsion engines, power plants, and mechanical systems aboard international cargo ships.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-star"></i> Exams & Key Profiles</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>IMU-CET (Indian Maritime University Test)</span> <span class="tag-badge tag-exam">Entrance</span></div>
+                      <div class="item-details">National level exam for Merchant Navy Marine Engineering and Nautical Science degree courses.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Air Traffic Controller (AAI ATC Exam)</span> <span class="tag-badge tag-govt">Airport Authority</span></div>
+                      <div class="item-details">Managing radar navigation and airspace flight safety for international and domestic airports.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Commercial Airline Captain / First Officer</span> <span class="tag-badge tag-role">Aviation</span></div>
+                      <div class="item-details">Flying domestic and international commercial flights for airlines like IndiGo, Air India, Emirates, etc.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Prestigious defense commission, tax-free international Merchant Navy salaries, and lucrative commercial aviation pay.</p>
+                </div>
+                <div class="salary-stat">₹ 8 - 60+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 3: SCIENCE PCMB (DUAL COMBINED) -->
+      <!-- ============================================================== -->
+      <div class="stream-panel pcmb" id="panel-pcmb">
+        <div class="stream-header-card pcmb">
+          <div class="stream-header-info">
+            <h2>Science Stream (PCMB - Dual Math & Biology)</h2>
+            <p>Select any category dropdown below to view interdisciplinary careers combining engineering, medicine, biophysics, and computational biology.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-dna"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Biomedical Engineering, Bioinformatics & Biophysics</span>
+                  <span class="summary-subtext">B.Tech Biomedical, Genetic Engineering, Computational Biology, Prosthetics & Bionics</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-microscope"></i> Interdisciplinary Degrees</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Biomedical Engineering</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Designing artificial organs, pacemakers, MRI machines, robotic surgery equipment, and bionic limbs.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Sc / B.Tech in Bioinformatics</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Using computer algorithms and big data analytics to decode human genome DNA sequencing and drug discovery.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech in Genetic Engineering</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">CRISPR gene editing, gene therapy, molecular cloning, and synthetic biology.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-flask"></i> Dual Entrances & Roles</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Attempt BOTH JEE Main & NEET UG</span> <span class="tag-badge tag-exam">Dual Eligibility</span></div>
+                      <div class="item-details">PCMB students have the unique advantage of qualifying for BOTH top IIT Engineering and AIIMS Medical seats!</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Medical Device Product Manager</span> <span class="tag-badge tag-role">Health Tech</span></div>
+                      <div class="item-details">Developing advanced healthcare tech products for MedTech giants like Siemens Healthineers, GE Healthcare, Philips.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Highest versatility opening doors to both medical and engineering domains globally.</p>
+                </div>
+                <div class="salary-stat">₹ 7 - 35+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 4: AGRICULTURE STREAM -->
+      <!-- ============================================================== -->
+      <div class="stream-panel agri" id="panel-agri">
+        <div class="stream-header-card agri">
+          <div class="stream-header-info">
+            <h2>Agriculture Stream</h2>
+            <p>Select any category dropdown below to explore agronomy, veterinary science, agricultural engineering, and food technology.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-seedling"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Agronomy, Agricultural Engg, Forestry & Fisheries</span>
+                  <span class="summary-subtext">B.Sc. Agriculture, B.Tech Agri Engg, B.F.Sc. Fisheries, Horticulture & Dairy Tech</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-leaf"></i> Degrees & Courses</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Sc. (Hons) Agriculture</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Soil chemistry, crop pathology, seed technology, organic farming, and agricultural economics.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech Agricultural Engineering</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Farm machinery, tractor design, drip irrigation systems, renewable energy in farming, and post-harvest tech.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.F.Sc (Fisheries) & B.Sc Forestry</span> <span class="tag-badge tag-degree">4 Years</span></div>
+                      <div class="item-details">Aquaculture, marine fish breeding, forest conservation, wildlife management, and timber tech.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-landmark"></i> Exams & Govt Banking Roles</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>ICAR AIEEA (All-India Agri Entrance)</span> <span class="tag-badge tag-exam">National</span></div>
+                      <div class="item-details">Entrance test for ICAR accredited central agricultural universities.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>IBPS AFO (Agricultural Field Officer)</span> <span class="tag-badge tag-govt">Bank Specialist</span></div>
+                      <div class="item-details">Specialist Officer recruitment in public sector banks (SBI, PNB, Bank of Baroda) managing rural credit.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>High demand in government agriculture departments, NABARD, agro-chemical MNCs, and smart farming startups.</p>
+                </div>
+                <div class="salary-stat">₹ 5 - 20+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 5: COMMERCE STREAM -->
+      <!-- ============================================================== -->
+      <div class="stream-panel commerce" id="panel-commerce">
+        <div class="stream-header-card commerce">
+          <div class="stream-header-info">
+            <h2>Commerce Stream</h2>
+            <p>Select any category dropdown below to view complete financial, managerial, auditing, and corporate career pathways.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-calculator"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Chartered Accountancy (CA), Auditing & International Accounting</span>
+                  <span class="summary-subtext">ICAI CA, Statutory Auditor, Forensic Accountant, CMA, Global ACCA & US CPA</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-award"></i> CA Course Stages (ICAI)</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>CA Foundation Level</span> <span class="tag-badge tag-exam">Stage 1</span></div>
+                      <div class="item-details">4 Papers: Accounting, Business Law, Quantitative Aptitude, and Business Economics after Class 12.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>CA Intermediate + 2-Year Articleship</span> <span class="tag-badge tag-degree">Stage 2</span></div>
+                      <div class="item-details">Advanced Accounting, Corporate Laws, Tax Laws, Auditing, and 2 years hands-on practical training under a practicing CA.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>CA Final Level</span> <span class="tag-badge tag-degree">Final Stage</span></div>
+                      <div class="item-details">Financial Reporting, Strategic Financial Management, Advanced Auditing, Risk Management, and Direct/Indirect Taxes.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-briefcase"></i> Professional Profiles & Global Certs</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Statutory Auditor / Big-4 Consultant</span> <span class="tag-badge tag-role">Audit / Tax</span></div>
+                      <div class="item-details">Conducting corporate financial audits and GST/Income Tax filings for Deloitte, PwC, EY, and KPMG.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>CMA (Cost & Management Accountant)</span> <span class="tag-badge tag-exam">ICMAI</span></div>
+                      <div class="item-details">Cost accounting, budget planning, inventory valuation, and operational efficiency control.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>ACCA / US CPA (Global CA Certifications)</span> <span class="tag-badge tag-degree">Global CA</span></div>
+                      <div class="item-details">Internationally recognized accounting credentials for practicing in UK, US, Dubai, and MNCs globally.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Prestige and immense demand in corporate finance, independent audit practice, tax consultancy, and executive CFO roles.</p>
+                </div>
+                <div class="salary-stat">₹ 8 - 45+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 6: ARTS & HUMANITIES -->
+      <!-- ============================================================== -->
+      <div class="stream-panel arts" id="panel-arts">
+        <div class="stream-header-card arts">
+          <div class="stream-header-info">
+            <h2>Arts & Humanities Stream</h2>
+            <p>Select any category dropdown below to view complete administrative, legal, civil services, creative design, and media career pathways.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-landmark"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Civil Services & Administrative Governance (UPSC CSE / State PCS / SSC CGL)</span>
+                  <span class="summary-subtext">IAS District Magistrate, IPS Police Commander, IFS Diplomat, State PCS Officers & SSC Inspectors</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-trophy"></i> UPSC Civil Services Exam (CSE)</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Prelims, Mains & Personality Test</span> <span class="tag-badge tag-govt">3 Stages</span></div>
+                      <div class="item-details">General Studies, CSAT, Essay, 2 Optional Papers (History, Pol Sci, Geography, Sociology), and Board Interview.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>IAS (Indian Administrative Service)</span> <span class="tag-badge tag-govt">District Collector</span></div>
+                      <div class="item-details">Heading district administration, formulating public policy, and serving as Departmental Secretaries.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>IPS (Indian Police Service)</span> <span class="tag-badge tag-govt">SSP / IG</span></div>
+                      <div class="item-details">Leading police administration, public order, counter-terrorism, and intelligence agencies.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-balance-scale"></i> State PCS & Allied Exams</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>UPPSC PCS (UP State Civil Services)</span> <span class="tag-badge tag-govt">State Officer</span></div>
+                      <div class="item-details">Recruitment for Deputy Collector (SDM), Deputy SP (DSP), Tehsildar, and Block Development Officer (BDO).</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Pinnacle of social prestige, administrative power, government quarters, security, and policy leadership in India.</p>
+                </div>
+                <div class="salary-stat">₹ 7 - 30+ Lakhs / Year + Govt Perks</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 7: VOCATIONAL & NSQF SKILLS -->
+      <!-- ============================================================== -->
+      <div class="stream-panel vocational" id="panel-vocational">
+        <div class="stream-header-card vocational">
+          <div class="stream-header-info">
+            <h2>Vocational & NSQF Skill Stream</h2>
+            <p>Select any category dropdown below to explore practical skill certifications, B.Voc degrees, and job-oriented technical trades.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-tools"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Bachelor of Vocation (B.Voc) & Technical Skill Certifications</span>
+                  <span class="summary-subtext">B.Voc IT, Web Dev, Financial Markets FMM, Tourism, Retail & Hardware Networking</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-graduation-cap"></i> B.Voc Degrees</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Voc in Software Development & IT</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">UGC-recognized vocational degree with 60% practical skill training in web coding, app dev, and database admin.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Voc in Financial Markets & Services</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">Stock market trading, banking operations, GST accounting, mutual fund distribution, and NSE/BSE certs.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-briefcase"></i> Job Readiness</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Direct Employment & Skill Apprenticeship</span> <span class="tag-badge tag-role">Immediate Jobs</span></div>
+                      <div class="item-details">B.Voc and NSQF level 4-7 certificates offer direct industrial placement without long general degree waits!</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Fast track employment with National Skill Development Corporation (NSDC) industry certifications.</p>
+                </div>
+                <div class="salary-stat">₹ 3.5 - 12+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 8: HOME SCIENCE & HUMAN ECOLOGY -->
+      <!-- ============================================================== -->
+      <div class="stream-panel homescience" id="panel-homescience">
+        <div class="stream-header-card homescience">
+          <div class="stream-header-info">
+            <h2>Home Science & Human Ecology Stream</h2>
+            <p>Select any category dropdown below to explore Clinical Nutrition, Food Science, Child Development, and Interior Architecture.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-home"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Clinical Nutrition, Dietetics, Child Care & Interior Design</span>
+                  <span class="summary-subtext">B.Sc. Clinical Nutrition, Registered Dietitian (RD), Child Development Specialist & Textile Designer</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-utensils"></i> Home Science Degrees</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Sc. Clinical Nutrition & Dietetics</span> <span class="tag-badge tag-degree">3/4 Years</span></div>
+                      <div class="item-details">Therapeutic nutrition, hospital diet planning, sports nutrition, metabolic health, and Registered Dietitian (RD) exam.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Sc. Child Development & Early Childhood</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">Child psychology, special education, developmental milestone counseling, and early childhood care.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Sc. Textile Design & Resource Mgmt</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">Apparel manufacturing, interior space decoration, ergonomic resource management, and craft management.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-user-md"></i> Registered Profiles</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Hospital Registered Dietitian (RD)</span> <span class="tag-badge tag-role">Healthcare</span></div>
+                      <div class="item-details">Prescribing clinical diet plans for ICU patients, diabetic care, and obesity management in top hospitals.</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>High demand in clinical health centers, sports academies, food industries, and interior design firms.</p>
+                </div>
+                <div class="salary-stat">₹ 4 - 18+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- PANEL 9: HIGH SCHOOL (CLASS 9-10) -->
+      <!-- ============================================================== -->
+      <div class="stream-panel highschool" id="panel-highschool">
+        <div class="stream-header-card highschool">
+          <div class="stream-header-info">
+            <h2>High School Foundation & Pathways (Class 9th & 10th)</h2>
+            <p>Select any category dropdown below to explore technical diplomas, vocational trades, scholarship exams, and stream decision guides.</p>
+          </div>
+          <a href="/streams" style="color:var(--saffron); font-weight:600; text-decoration:none;"><i class="fas fa-arrow-left"></i> View Streams Overview</a>
+        </div>
+
+        <div class="dropdown-container">
+          <details class="career-accordion">
+            <summary class="accordion-summary">
+              <div class="summary-left">
+                <div class="summary-icon-box"><i class="fas fa-tools"></i></div>
+                <div class="summary-title-text">
+                  <span>1. Polytechnic Engineering Diplomas (Post 10th - JEECUP)</span>
+                  <span class="summary-subtext">3-Year Diploma in Mechanical, Electrical, Civil & Computer Science with B.Tech Lateral Entry</span>
+                </div>
+              </div>
+              <div class="summary-chevron"><i class="fas fa-chevron-down"></i></div>
+            </summary>
+            <div class="accordion-body">
+              <div class="accordion-content-grid">
+                <div class="content-box">
+                  <h4><i class="fas fa-cogs"></i> Technical Diploma Trades</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Diploma in Mechanical / Automobile Engg</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">Practical training in machine shop, engines, industrial maintenance, and manufacturing plants.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>Diploma in Electrical / Electronics Engg</span> <span class="tag-badge tag-degree">3 Years</span></div>
+                      <div class="item-details">Power generation, electrical wiring, transformer maintenance, and industrial sub-stations.</div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="content-box">
+                  <h4><i class="fas fa-file-signature"></i> Entrance & B.Tech Lateral Route</h4>
+                  <ul class="exhaustive-list">
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>JEECUP (UP Polytechnic Entrance Exam)</span> <span class="tag-badge tag-exam">State Exam</span></div>
+                      <div class="item-details">State level entrance exam for admission to Govt & Aided Polytechnic Colleges across UP.</div>
+                    </li>
+                    <li class="exhaustive-item">
+                      <div class="item-header"><span>B.Tech Lateral Entry (Direct 2nd Year)</span> <span class="tag-badge tag-role">Higher Degree</span></div>
+                      <div class="item-details">Polytechnic diploma holders can join B.Tech engineering degree directly in 2nd year (3rd semester)!</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="salary-growth-card">
+                <div class="salary-info">
+                  <h5>Career Outlook & Remuneration</h5>
+                  <p>Fast track technical employment right after Class 10 with easy entry into B.Tech degree programs later.</p>
+                </div>
+                <div class="salary-stat">₹ 3 - 8+ Lakhs / Year</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Placeholder (Injected via main.js) -->
+  <div id="footer-placeholder"></div>
+
+  <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const panels = document.querySelectorAll('.stream-panel');
+      const accordions = document.querySelectorAll('.career-accordion');
+      const btnExpandAll = document.getElementById('btnExpandAll');
+      const btnCollapseAll = document.getElementById('btnCollapseAll');
+      const searchInput = document.getElementById('careerSearchInput');
+      const noResultsMsg = document.getElementById('noResultsMsg');
+
+      // 1. Tab Switching Logic
+      function switchStream(streamName) {
+        if (streamName === 'all') {
+          tabBtns.forEach(btn => btn.classList.remove('active'));
+          const allBtn = document.querySelector('.tab-btn[data-stream="all"]');
+          if (allBtn) allBtn.classList.add('active');
+
+          panels.forEach(panel => panel.classList.add('active'));
+          return;
+        }
+
+        const targetPanel = document.getElementById(`panel-${streamName}`);
+        if (!targetPanel) return;
+
+        tabBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-stream') === streamName);
+        });
+
+        panels.forEach(panel => panel.classList.remove('active'));
+        targetPanel.classList.add('active');
+      }
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const stream = btn.getAttribute('data-stream');
+          switchStream(stream);
+          if (stream !== 'all') {
+            window.location.hash = stream;
+          } else {
+            history.replaceState(null, null, ' ');
+          }
+        });
+      });
+
+      // 2. Expand All & Collapse All Controls
+      if (btnExpandAll) {
+        btnExpandAll.addEventListener('click', () => {
+          accordions.forEach(acc => acc.setAttribute('open', 'true'));
+        });
+      }
+
+      if (btnCollapseAll) {
+        btnCollapseAll.addEventListener('click', () => {
+          accordions.forEach(acc => acc.removeAttribute('open'));
+        });
+      }
+
+      // 3. Live Keyword Search Filter Across All Dropdowns
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+
+          if (query === '') {
+            if (noResultsMsg) noResultsMsg.style.display = 'none';
+            accordions.forEach(acc => {
+              acc.style.display = 'block';
+              acc.removeAttribute('open');
+            });
+            // Re-apply tab filtering
+            const activeTab = document.querySelector('.tab-btn.active');
+            if (activeTab) {
+              switchStream(activeTab.getAttribute('data-stream'));
+            }
+            return;
+          }
+
+          // Search mode: show all panels to inspect items
+          panels.forEach(p => p.classList.add('active'));
+
+          let visibleCount = 0;
+
+          accordions.forEach(acc => {
+            const textContent = acc.innerText.toLowerCase();
+            if (textContent.includes(query)) {
+              acc.style.display = 'block';
+              acc.setAttribute('open', 'true'); // Auto-expand matching dropdown!
+              visibleCount++;
+            } else {
+              acc.style.display = 'none';
+              acc.removeAttribute('open');
+            }
+          });
+
+          if (noResultsMsg) {
+            noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+          }
+        });
+      }
+
+      // 4. Initial Hash Navigation (e.g. /careers#science-pcm)
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(`panel-${hash}`)) {
+        switchStream(hash);
+      }
+    });
+  </script>
+</body>
+
+</html>
