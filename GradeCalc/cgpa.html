@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NVJV2RMB');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) - Delayed Load for Performance -->
+   <meta name="google-adsense-account" content="ca-pub-5548788893684726">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGPA Calculator | Calculate Cumulative Grade Point Average</title>
+  <meta name="description" content="Calculate your overall Cumulative Grade Point Average (CGPA) across multiple semesters using semester SGPAs and credit weightings. Free, instant, and private.">
+  <meta name="keywords" content="CGPA Calculator, Calculate CGPA, Cumulative Grade Point Average, CGPA Formula, Semester SGPAs, Degree CGPA Calculator">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="canonical" href="https://drapjakicbjb.ac.in/GradeCalc/cgpa.html">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://drapjakicbjb.ac.in/GradeCalc/cgpa.html">
+  <meta property="og:title" content="CGPA Calculator | Calculate Cumulative Grade Point Average">
+  <meta property="og:description" content="Free online CGPA calculator for university students. Calculate weighted cumulative GPA across all semesters easily.">
+  <meta property="og:site_name" content="GradeCalc">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CGPA Calculator | Calculate Cumulative Grade Point Average">
+  <meta name="twitter:description" content="Calculate overall degree CGPA across semesters with credit weightings. Instant & private.">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "GradeCalc CGPA Calculator",
+        "url": "https://drapjakicbjb.ac.in/GradeCalc/cgpa.html",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://drapjakicbjb.ac.in/GradeCalc/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "CGPA Calculator",
+            "item": "https://drapjakicbjb.ac.in/GradeCalc/cgpa.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What if all my semesters have equal credits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If every semester has the exact same credit weight, you can enter equal credit values for each. The resulting CGPA will equal the simple average of your SGPAs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many semesters can I calculate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can add as many semesters as needed for your degree program (e.g. 2, 4, 6, 8, or 10 semesters) by clicking the + Add Semester button."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Institutional Top Header Bar -->
+  <div class="institution-bar">
+    <div class="container institution-bar-content">
+      <div class="institution-bar-title">
+        <span>🏛️ Dr. A.P.J. Abdul Kalam Inter College, Basti</span>
+        <span style="opacity: 0.6;">|</span>
+        <span style="font-weight: 400; color: #cbd5e1;">Official Student Portal Calculator Tool</span>
+      </div>
+      <a href="/" class="institution-bar-link">Main Portal: drapjakicbjb.ac.in ↗</a>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="GradeCalc Homepage">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+        </svg>
+        <span>Grade<span class="highlight">Calc</span></span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sgpa.html" class="nav-link">SGPA Calculator</a></li>
+          <li><a href="cgpa.html" class="nav-link">CGPA Calculator</a></li>
+          <li><a href="sgpa-to-percentage.html" class="nav-link">SGPA → Percentage</a></li>
+          <li><a href="cgpa-to-percentage.html" class="nav-link">CGPA → Percentage</a></li>
+          <li><a href="percentage-to-cgpa.html" class="nav-link">Percentage → CGPA</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="/" class="nav-link" style="color: #fbbf24; font-weight: 600;">School Website ↗</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Page Header -->
+      <div class="page-intro">
+        <h1 class="page-title">CGPA Calculator</h1>
+        <p class="page-description">
+          CGPA (Cumulative Grade Point Average) represents the cumulative academic performance across multiple semesters of a student's degree program.
+        </p>
+      </div>
+
+      <!-- Calculator Box -->
+      <div class="calculator-box">
+        <div class="calculator-header">
+          <h2>Enter Semester SGPAs & Credits</h2>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Default: 2 Semesters</span>
+        </div>
+
+        <form id="cgpaForm" novalidate>
+          
+          <div class="calc-table-wrapper">
+            <table class="calc-table" id="semesterTable">
+              <thead>
+                <tr>
+                  <th style="width: 35%;">Semester</th>
+                  <th style="width: 30%;">SGPA Obtained</th>
+                  <th style="width: 25%;">Semester Credits</th>
+                  <th style="width: 10%; text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="semesterTableBody">
+                <!-- Dynamically populated by cgpa.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Actions Row -->
+          <div class="calc-actions">
+            <div class="calc-actions-left">
+              <button type="button" class="btn btn-outline" id="addSemesterBtn">
+                <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                <span>+ Add Semester</span>
+              </button>
+            </div>
+            
+            <div class="calc-actions-right">
+              <button type="button" class="btn btn-outline" id="resetBtn">Reset</button>
+              <button type="submit" class="btn btn-primary" id="calculateBtn">Calculate CGPA</button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Result Card -->
+        <div class="result-card" id="resultCard" aria-live="polite">
+          <div class="result-header">Calculation Complete</div>
+          <div class="result-main">
+            <span class="result-score" id="resCGPAScore">0.00</span>
+            <span class="result-subtitle">Your Cumulative CGPA</span>
+          </div>
+
+          <div class="result-breakdown">
+            <div class="breakdown-item">
+              <div class="breakdown-label">Total Credits</div>
+              <div class="breakdown-value" id="resTotalCredits">0</div>
+            </div>
+            <div class="breakdown-item">
+              <div class="breakdown-label">Weighted Grade Points</div>
+              <div class="breakdown-value" id="resWeightedPoints">0.00</div>
+            </div>
+            <div class="breakdown-item">
+              <div class="breakdown-label">Total Semesters</div>
+              <div class="breakdown-value" id="resSemesterCount">0</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Reusable Institutional Disclaimer -->
+      <div class="disclaimer-card">
+        <div class="disclaimer-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div class="disclaimer-text">
+          <strong>Important Disclaimer:</strong> Academic grading systems and credit weightings differ between universities. The CGPA result shown here is an estimate calculated using standard credit-weighted averages. Always verify with your university's official academic guidelines.
+        </div>
+      </div>
+
+      <!-- Formula & Explanation Section -->
+      <section class="content-section">
+        <h2 class="section-title">How to Calculate CGPA?</h2>
+        <div class="info-box">
+          <p>CGPA is calculated by dividing total weighted grade points earned across all semesters by total credits attempted across those semesters.</p>
+          <div class="formula-box">CGPA = Σ(SGPA × Semester Credits) / Σ(Semester Credits)</div>
+          
+          <h4 style="margin-top: 1rem; color: var(--secondary);">Sample Calculation:</h4>
+          <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            • Semester 1: SGPA 8.2 with 24 Credits → Weighted Points = 8.2 × 24 = 196.8<br>
+            • Semester 2: SGPA 8.7 with 26 Credits → Weighted Points = 8.7 × 26 = 226.2<br>
+            • Semester 3: SGPA 9.0 with 25 Credits → Weighted Points = 9.0 × 25 = 225.0<br><br>
+            Total Weighted Points = 196.8 + 226.2 + 225.0 = 648.0<br>
+            Total Credits = 24 + 26 + 25 = 75<br>
+            <strong>CGPA = 648.0 / 75 = 8.64</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq-section">
+        <h2 class="section-title">CGPA Calculator FAQs</h2>
+        <div class="faq-list">
+          
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What if all my semesters have equal credits?</span>
+              <span class="faq-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>If every semester has the exact same credit weight (e.g. 24 credits per semester), you can simply enter 24 for each, or enter 1 for each credit field. The resulting CGPA will equal the simple average of your SGPAs.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How many semesters can I calculate?</span>
+              <span class="faq-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>You can add as many semesters as needed for your degree program (e.g. 2, 4, 6, 8, or 10 semesters) by clicking the <strong>+ Add Semester</strong> button.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- New Modern Site Footer Bar -->
+  <footer class="site-footer"></footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/cgpa.js"></script>
+</body>
+</html>

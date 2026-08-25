@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://drapjakicbjb.ac.in/GradeCalc/sitemap.xml
