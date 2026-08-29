@@ -27,41 +27,42 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Immediately load AI Chatbot Widget
   loadChatbotWidget();
 
-  /* ─── 0. COMPONENT LOADER ────────────────────────── */
-  async function loadComponents() {
-    const headerPlaceholder = document.getElementById('header-placeholder');
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-
-    // Dynamically detect script path prefix for subdirectories (e.g. simulators/)
-    let pathPrefix = '';
-    const scriptEl = document.querySelector('script[src*="js/main.js"]');
+  /* ─── 0. COMPONENT & CHATBOT LOADER ──────────────── */
+  function getPathPrefix() {
+    let prefix = '';
+    const scriptEl = document.querySelector('script[src*="js/main.js"]') || document.querySelector('script[src*="main.js"]');
     if (scriptEl) {
       const src = scriptEl.getAttribute('src');
       const idx = src.indexOf('js/main.js');
       if (idx > 0) {
-        pathPrefix = src.substring(0, idx);
+        prefix = src.substring(0, idx);
       }
     }
+    return prefix;
+  }
+
+  async function loadComponents() {
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    const pathPrefix = getPathPrefix();
 
     const loadTask = [];
 
     if (headerPlaceholder) {
       loadTask.push(
         fetch(pathPrefix + 'components/header.html')
-          .then(response => response.text())
-          .then(data => {
-            headerPlaceholder.innerHTML = data;
-          })
+          .then(response => response.ok ? response.text() : '')
+          .then(data => { if (data) headerPlaceholder.innerHTML = data; })
+          .catch(err => console.warn('Header component load error:', err))
       );
     }
 
     if (footerPlaceholder) {
       loadTask.push(
         fetch(pathPrefix + 'components/footer.html')
-          .then(response => response.text())
-          .then(data => {
-            footerPlaceholder.innerHTML = data;
-          })
+          .then(response => response.ok ? response.text() : '')
+          .then(data => { if (data) footerPlaceholder.innerHTML = data; })
+          .catch(err => console.warn('Footer component load error:', err))
       );
     }
 
@@ -69,10 +70,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (zoomControlsPlaceholder) {
       loadTask.push(
         fetch(pathPrefix + 'components/zoom-controls.html')
-          .then(response => response.text())
-          .then(data => {
-            zoomControlsPlaceholder.innerHTML = data;
-          })
+          .then(response => response.ok ? response.text() : '')
+          .then(data => { if (data) zoomControlsPlaceholder.innerHTML = data; })
+          .catch(err => console.warn('Zoom controls load error:', err))
       );
     }
 
@@ -85,55 +85,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loadTask.push(
       fetch(pathPrefix + 'components/scrollbar.html')
-        .then(response => response.text())
-        .then(data => {
-          scrollbarPlaceholder.innerHTML = data;
-        })
+        .then(response => response.ok ? response.text() : '')
+        .then(data => { if (data) scrollbarPlaceholder.innerHTML = data; })
+        .catch(err => console.warn('Scrollbar component load error:', err))
     );
 
     try {
       await Promise.all(loadTask);
       initComponents();
-      loadChatbotWidget();
     } catch (err) {
-      console.error('Error loading school components:', err);
+      console.warn('School components loaded with partial warnings:', err);
+      initComponents();
     }
   }
 
   /* ─── 0.1 CHATBOT LOADER ────────────────────────── */
   function loadChatbotWidget() {
-    let pathPrefix = '';
-    const scriptEl = document.querySelector('script[src*="js/main.js"]');
-    if (scriptEl) {
-      const src = scriptEl.getAttribute('src');
-      const idx = src.indexOf('js/main.js');
-      if (idx > 0) {
-        pathPrefix = src.substring(0, idx);
-      }
-    }
+    if (window.kalamChatbotWidgetLoading) return;
+    window.kalamChatbotWidgetLoading = true;
+
+    const pathPrefix = getPathPrefix();
 
     if (!document.querySelector('link[href*="chatbot/chatbot.css"]')) {
       const cssLink = document.createElement('link');
       cssLink.rel = 'stylesheet';
       cssLink.href = pathPrefix + 'chatbot/chatbot.css';
       document.head.appendChild(cssLink);
-    }
-
-    function loadScriptSequence(urls, onComplete) {
-      if (urls.length === 0) {
-        if (onComplete) onComplete();
-        return;
-      }
-      const url = urls.shift();
-      if (document.querySelector(`script[src*="${url}"]`)) {
-        loadScriptSequence(urls, onComplete);
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = pathPrefix + url;
-      script.onload = () => loadScriptSequence(urls, onComplete);
-      script.onerror = () => loadScriptSequence(urls, onComplete);
-      document.body.appendChild(script);
     }
 
     const scriptsToLoad = [
@@ -144,11 +121,47 @@ document.addEventListener('DOMContentLoaded', async () => {
       'chatbot/chatbot.js'
     ];
 
-    loadScriptSequence(scriptsToLoad, () => {
-      if (typeof window.initKalamChatbot === 'function') {
-        window.initKalamChatbot();
+    function loadNextScript(index) {
+      if (index >= scriptsToLoad.length) {
+        if (typeof window.initKalamChatbot === 'function') {
+          window.initKalamChatbot();
+        } else {
+          console.warn('initKalamChatbot function not ready, retrying...');
+          setTimeout(() => {
+            if (typeof window.initKalamChatbot === 'function') window.initKalamChatbot();
+          }, 300);
+        }
+        return;
       }
-    });
+
+      const relPath = scriptsToLoad[index];
+      const targetSrc = pathPrefix + relPath;
+
+      if (document.querySelector(`script[src*="${relPath}"]`)) {
+        loadNextScript(index + 1);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = targetSrc;
+      script.async = false;
+      script.onload = () => loadNextScript(index + 1);
+      script.onerror = () => {
+        console.warn(`Failed to load ${targetSrc}, attempting fallback path...`);
+        const fallbackScript = document.createElement('script');
+        fallbackScript.src = './' + relPath;
+        fallbackScript.async = false;
+        fallbackScript.onload = () => loadNextScript(index + 1);
+        fallbackScript.onerror = () => {
+          console.error(`Script load error for ${relPath}`);
+          loadNextScript(index + 1);
+        };
+        document.body.appendChild(fallbackScript);
+      };
+      document.body.appendChild(script);
+    }
+
+    loadNextScript(0);
   }
 
   /* ─── 1. LOADER ─────────────────────────────────── */

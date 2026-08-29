@@ -1,22 +1,16 @@
-const CACHE_NAME = 'apj-school-cache-v5';
+const CACHE_NAME = 'apj-school-cache-v6';
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/streams',
-  '/careers',
-  '/styles/main.min.css',
-  '/styles/fontawesome.min.css',
-  '/js/main.js',
-  '/js/email.min.js',
-  '/assets/images/logo.webp',
-  '/assets/images/new_logo.webp',
-  '/assets/images/Manager.webp',
-  '/assets/images/about.webp',
-  '/assets/images/campus.webp',
-  '/assets/images/Flag_of_India.svg',
-  '/linktree/rsy_logo.webp',
-  '/linktree/new_logo.webp',
-  '/linktree/dal_sringari_logo-removebg-preview.webp'
+  './',
+  './index.html',
+  './styles/main.min.css',
+  './styles/fontawesome.min.css',
+  './js/main.js',
+  './assets/images/logo.webp',
+  './assets/images/new_logo.webp',
+  './assets/images/Manager.webp',
+  './assets/images/about.webp',
+  './assets/images/campus.webp',
+  './assets/images/Flag_of_India.svg'
 ];
 
 // Third-party CDN URLs to cache

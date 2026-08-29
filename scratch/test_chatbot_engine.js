@@ -1,39 +1,34 @@
-// Scratch test script for  BodhSakhā AI Chatbot Response Engine
 const fs = require('fs');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
 
-const dom = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
-global.window = dom.window;
-global.document = dom.window.document;
-global.localStorage = {
-  getItem: () => null,
-  setItem: () => { }
+global.window = {
+  KalamChatbotKB: {},
+  KalamAllPagesData: {},
+  initKalamChatbot: null,
+  addEventListener: () => {},
+  document: {
+    readyState: 'complete',
+    getElementById: () => null,
+    querySelector: () => null,
+    createElement: () => ({ setAttribute: () => {}, appendChild: () => {} }),
+    addEventListener: () => {}
+  }
 };
+global.document = global.window.document;
 
-// Load Knowledge Base
-require('../chatbot/knowledge_base.js');
-
-console.log("=== KNOWLEDGE BASE LOADED ===");
-console.log("School Name:", global.window.KalamChatbotKB.schoolInfo.name);
-console.log("Fee Classes count:", global.window.KalamChatbotKB.fees.structure.length);
-console.log("Streams count:", global.window.KalamChatbotKB.streams.intermediate.length);
-
-// Test queries
-const testQueries = [
-  "Class 10 fee structure kya hai?",
-  "कक्षा 11 में कौन सी स्ट्रीम हैं?",
-  "What is the admission procedure?",
-  "When are the summer holidays?",
-  "School contact number and address"
+// Load chatbot scripts sequence
+const files = [
+  'chatbot/knowledge_base.js',
+  'chatbot/api/all_pages_data.js',
+  'chatbot/api/ai.js',
+  'chatbot/api/chat.js',
+  'chatbot/chatbot.js'
 ];
 
-console.log("\n=== RUNNING QUERY NLP TESTS ===");
-// Load chatbot script code
-const chatbotCode = fs.readFileSync('chatbot/chatbot.js', 'utf8');
-eval(chatbotCode);
+files.forEach(f => {
+  const code = fs.readFileSync(f, 'utf8');
+  eval(code);
+  console.log(`Loaded ${f} successfully!`);
+});
 
-// Trigger DOMContentLoaded
-dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
-
-console.log("Chatbot initialized successfully in DOM!");
+console.log("Checking window.initKalamChatbot:", typeof global.window.initKalamChatbot);
+console.log("Checking window.BodhSakhāAIEngine:", typeof global.window.BodhSakhāAIEngine);
