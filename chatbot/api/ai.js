@@ -1,6 +1,8 @@
 /**
- * External AI API Integrator & Dynamic RAG Context Generator
- * Integrates external Gemini API + All-Page Knowledge Base Context
+ * Copyright (c) 2008-2026 Tarun Yadav / Dr. A.P.J. Abdul Kalam Inter College.
+ * ALL RIGHTS RESERVED. PROPRIETARY CODE.
+ * External AI API Integrator & Dynamic RAG Context Generator.
+ * Unauthorized copying, cloning, or distribution of this code in any format is strictly prohibited.
  */
 
 window.BodhSakhāAIEngine = (function () {

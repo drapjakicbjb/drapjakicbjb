@@ -1,6 +1,8 @@
 /* ===================================================
-   DR. A.P.J. ABDUL KALAM SCHOOL — Main JavaScript
-   =================================================== */
+ * Copyright (c) 2008-2026 Tarun Yadav / Dr. A.P.J. Abdul Kalam Inter College.
+ * ALL RIGHTS RESERVED. PROPRIETARY CODE.
+ * Unauthorized copying, cloning, distribution, or reuse of this code in any format is strictly prohibited.
+ * =================================================== */
 
 // Register Service Worker for client-side caching and offline support
 if ('serviceWorker' in navigator) {
