@@ -77,19 +77,50 @@
   right: 98px;
   background: var(--kalam-chat-navy);
   color: #FFFFFF;
-  padding: 8px 14px;
+  padding: 8px 12px 8px 14px;
   border-radius: 12px;
   font-size: 0.82rem;
   font-weight: 500;
   white-space: nowrap;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   z-index: 999990;
-  pointer-events: none;
+  pointer-events: auto;
   animation: kalamTooltipBounce 3s infinite ease-in-out;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--kalam-chat-font);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.kalam-chat-tooltip.kalam-chat-hidden {
+  display: none !important;
+}
+
+.kalam-chat-tooltip-close {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: #ffffff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  cursor: pointer;
+  margin-left: 2px;
+  transition: all 0.2s ease;
+  padding: 0;
+  flex-shrink: 0;
+  outline: none;
+  pointer-events: auto;
+}
+
+.kalam-chat-tooltip-close:hover {
+  background: var(--kalam-chat-saffron, #ff6b00);
+  color: #ffffff;
+  transform: scale(1.15);
 }
 
 .kalam-chat-tooltip::after {

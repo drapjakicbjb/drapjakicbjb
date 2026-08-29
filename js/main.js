@@ -22,6 +22,33 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Global Fail-Safe Mobile Dropdown Toggle Handler
+window.toggleMobileDropdown = function (btn, e) {
+  if (e) {
+    if (typeof e.preventDefault === 'function') e.preventDefault();
+    if (typeof e.stopPropagation === 'function') e.stopPropagation();
+  }
+  const dropdownItem = btn ? btn.closest('.nav-item-dropdown') : null;
+  if (!dropdownItem) return false;
+
+  const isOpen = dropdownItem.classList.contains('open');
+  const parentNav = dropdownItem.closest('.nav-menu') || document.getElementById('navMenu');
+
+  if (parentNav) {
+    parentNav.querySelectorAll('.nav-item-dropdown').forEach(item => {
+      if (item !== dropdownItem) {
+        item.classList.remove('open');
+        const toggleBtn = item.querySelector('.dropdown-toggle');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  dropdownItem.classList.toggle('open', !isOpen);
+  if (btn) btn.setAttribute('aria-expanded', (!isOpen).toString());
+  return false;
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   // Immediately load AI Chatbot Widget
@@ -101,6 +128,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   /* ─── 0.1 CHATBOT LOADER ────────────────────────── */
   function loadChatbotWidget() {
+    const currentPath = window.location.pathname.toLowerCase();
+    if (currentPath.includes('interactive-study-hub')) return;
+
     if (window.kalamChatbotWidgetLoading) return;
     window.kalamChatbotWidgetLoading = true;
 
@@ -292,8 +322,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         mobileMenuClose.addEventListener('click', closeMenu);
       }
 
-      navMenu.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', closeMenu);
+      // Robust Event Delegation for Mobile Menu Dropdowns and Link Clicks
+      navMenu.addEventListener('click', (e) => {
+        const dropdownToggle = e.target.closest('.dropdown-toggle');
+        if (dropdownToggle) {
+          window.toggleMobileDropdown(dropdownToggle, e);
+          return;
+        }
+
+        // Close mobile menu only when clicking actual page links (not dropdown toggles)
+        const link = e.target.closest('a');
+        if (link && !link.classList.contains('dropdown-toggle')) {
+          closeMenu();
+        }
       });
     }
 

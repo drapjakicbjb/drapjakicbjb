@@ -27,6 +27,7 @@
   }
 
   function initChatbot() {
+    if (window.location.pathname.toLowerCase().includes('interactive-study-hub')) return;
     if (document.getElementById('kalam-chat-window')) return; // Avoid duplicate init
 
     createChatDOM();
@@ -45,11 +46,18 @@
       <span class="badge-pulse"></span>
     `;
 
-    // Tooltip
+    // Tooltip with Desktop Dismiss Option
+    const isTooltipDismissed = localStorage.getItem('kalam_hide_tooltip') === 'true';
     const tooltip = document.createElement('div');
     tooltip.id = 'kalam-chat-tooltip';
-    tooltip.className = 'kalam-chat-tooltip';
-    tooltip.innerHTML = `<i class="fas fa-robot"></i> Ask  BodhSakhā AI (Hindi/Eng/Hinglish)`;
+    tooltip.className = 'kalam-chat-tooltip' + (isTooltipDismissed ? ' kalam-chat-hidden' : '');
+    tooltip.innerHTML = `
+      <i class="fas fa-robot"></i>
+      <span class="kalam-tooltip-text">Ask BodhSakhā AI (Hindi/Eng/Hinglish)</span>
+      <button id="kalam-chat-tooltip-close" class="kalam-chat-tooltip-close" title="Dismiss tooltip" aria-label="Close tooltip">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
 
     // Main Chat Window
     const chatWindow = document.createElement('div');
@@ -120,13 +128,26 @@
     const langBtns = document.querySelectorAll('.kalam-chat-lang-btn');
     const suggestionChips = document.querySelectorAll('.kalam-chip');
 
+    const tooltipClose = document.getElementById('kalam-chat-tooltip-close');
+    if (tooltipClose) {
+      tooltipClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        if (tooltip) {
+          tooltip.style.display = 'none';
+          tooltip.classList.add('kalam-chat-hidden');
+        }
+        localStorage.setItem('kalam_hide_tooltip', 'true');
+      });
+    }
+
     // Toggle Chat Window
     toggleBtn.addEventListener('click', () => {
       state.isOpen = !state.isOpen;
       const chatWindow = document.getElementById('kalam-chat-window');
       chatWindow.classList.toggle('active', state.isOpen);
       if (state.isOpen) {
-        tooltip.style.display = 'none';
+        if (tooltip) tooltip.style.display = 'none';
         inputField.focus();
       }
     });

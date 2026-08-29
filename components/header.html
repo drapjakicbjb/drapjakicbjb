@@ -51,32 +51,79 @@
     </a>
     <ul class="nav-menu" id="navMenu" role="list">
       <li class="mobile-menu-header">
-        <span class="mobile-menu-title">Navigation</span>
+        <span class="mobile-menu-title">Navigation Menu</span>
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close Menu">
           <i class="fas fa-times"></i>
         </button>
       </li>
-      <li><a class="nav-link" href="/#hero" data-i18n="nav-home"><i class="fas fa-home nav-icon"></i>Home</a>
+
+      <!-- Home & Sections Dropdown -->
+      <li class="nav-item-dropdown">
+        <button type="button" class="nav-link dropdown-toggle" onclick="toggleMobileDropdown(this, event)" aria-expanded="false" data-i18n="nav-home">
+          <i class="fas fa-home nav-icon"></i>Home <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/#hero"><i class="fas fa-arrow-up"></i> Home Banner & Top</a></li>
+          <li><a href="/#notices-section"><i class="fas fa-bullhorn"></i> Noticeboard & Updates</a></li>
+          <li><a href="/#about"><i class="fas fa-university"></i> About Us & Management</a></li>
+          <li><a href="/#academics"><i class="fas fa-graduation-cap"></i> Academic Wings</a></li>
+          <li><a href="/#facilities"><i class="fas fa-building"></i> Campus Facilities</a></li>
+          <li><a href="/#admissions"><i class="fas fa-user-check"></i> Admissions Status</a></li>
+          <li><a href="/#gallery"><i class="fas fa-images"></i> Photo & Event Gallery</a></li>
+          <li><a href="/#contact"><i class="fas fa-envelope"></i> Contact Us & Location</a></li>
+        </ul>
       </li>
-      <li><a class="nav-link" href="/#about" data-i18n="nav-about"><i
-            class="fas fa-info-circle nav-icon"></i>About</a></li>
-      <li><a class="nav-link" href="/#academics" data-i18n="nav-academics"><i
-            class="fas fa-graduation-cap nav-icon"></i>Academics</a></li>
-      <li><a class="nav-link" href="/#study-hub-preview" data-i18n="nav-study"><i
-            class="fas fa-laptop-code nav-icon"></i>Interactive Study Hub</a></li>
-      <li><a class="nav-link" href="/#facilities" data-i18n="nav-facilities"><i
-            class="fas fa-building nav-icon"></i>Facilities</a></li>
-      <li><a class="nav-link" href="/#admissions" data-i18n="nav-admissions"><i
-            class="fas fa-user-plus nav-icon"></i>Admissions</a></li>
-      <li><a class="nav-link" href="/#gallery" data-i18n="nav-gallery"><i
-            class="fas fa-images nav-icon"></i>Gallery</a></li>
-      <li><a class="nav-link" href="/#contact" data-i18n="nav-contact"><i
-            class="fas fa-envelope nav-icon"></i>Contact Us</a></li>
-      <li><a class="nav-link nav-cta" href="/linkhub" data-i18n="nav-links"><i class="fas fa-link nav-icon"></i>Link
-          Hub</a></li>
+
+      <!-- Academics & Portals Dropdown -->
+      <li class="nav-item-dropdown">
+        <button type="button" class="nav-link dropdown-toggle" onclick="toggleMobileDropdown(this, event)" aria-expanded="false">
+          <i class="fas fa-graduation-cap nav-icon"></i>Academics & Portals <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/fees"><i class="fas fa-receipt"></i> Fee Structure Table</a></li>
+          <li><a href="/streams"><i class="fas fa-book-reader"></i> Academic Streams (11th-12th)</a></li>
+          <li><a href="/noticeboard"><i class="fas fa-bullhorn"></i> Official Noticeboard & Alerts</a></li>
+          <li><a href="/holidays"><i class="fas fa-calendar-alt"></i> Holiday Calendar 2026-27</a></li>
+          <li><a href="/careers"><i class="fas fa-user-graduate"></i> Post-12th Careers & Entrance</a></li>
+        </ul>
+      </li>
+
+      <!-- STEM & Simulators Dropdown -->
+      <li class="nav-item-dropdown">
+        <button type="button" class="nav-link dropdown-toggle" onclick="toggleMobileDropdown(this, event)" aria-expanded="false">
+          <i class="fas fa-microscope nav-icon"></i>STEM & Simulators <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/study"><i class="fas fa-laptop-code"></i> Interactive Study Hub</a></li>
+          <li><a href="/interactive-study-hub/solar-system.html"><i class="fas fa-globe-asia"></i> 3D Solar System Explorer</a></li>
+          <li><a href="/interactive-study-hub/periodic-table.html"><i class="fas fa-atom"></i> Interactive Periodic Table</a></li>
+          <li><a href="/interactive-study-hub/optics-simulator.html"><i class="fas fa-lightbulb"></i> Optics & Ray Diagram Lab</a></li>
+        </ul>
+      </li>
+
+      <!-- About & Campus Dropdown -->
+      <li class="nav-item-dropdown">
+        <button type="button" class="nav-link dropdown-toggle" onclick="toggleMobileDropdown(this, event)" aria-expanded="false">
+          <i class="fas fa-university nav-icon"></i>About & Campus <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/#about"><i class="fas fa-info-circle"></i> About College & Management</a></li>
+          <li><a href="/#facilities"><i class="fas fa-building"></i> Campus Facilities</a></li>
+          <li><a href="/#admissions"><i class="fas fa-user-lock"></i> Admissions Status (Closed)</a></li>
+          <li><a href="/#gallery"><i class="fas fa-images"></i> Photo & Event Gallery</a></li>
+          <li><a href="/#contact"><i class="fas fa-envelope"></i> Contact Us & Map</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a class="nav-link nav-cta" href="/linkhub" data-i18n="nav-links">
+          <i class="fas fa-link nav-icon"></i>Link Hub
+        </a>
+      </li>
+
       <li class="mobile-menu-footer">
         <div class="menu-contact-info">
-          <h5>Contact school</h5>
+          <h5>Contact School</h5>
           <a href="tel:+919648904085"><i class="fas fa-phone-alt"></i> +91 9648904085</a>
           <a href="mailto:drapjakicbjb@gmail.com"><i class="fas fa-envelope"></i> drapjakicbjb@gmail.com</a>
         </div>
