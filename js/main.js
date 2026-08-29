@@ -22,6 +22,9 @@ if ('serviceWorker' in navigator) {
 
 document.addEventListener('DOMContentLoaded', async () => {
 
+  // Immediately load AI Chatbot Widget
+  loadChatbotWidget();
+
   /* ─── 0. COMPONENT LOADER ────────────────────────── */
   async function loadComponents() {
     const headerPlaceholder = document.getElementById('header-placeholder');
@@ -89,9 +92,61 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       await Promise.all(loadTask);
       initComponents();
+      loadChatbotWidget();
     } catch (err) {
       console.error('Error loading school components:', err);
     }
+  }
+
+  /* ─── 0.1 CHATBOT LOADER ────────────────────────── */
+  function loadChatbotWidget() {
+    let pathPrefix = '';
+    const scriptEl = document.querySelector('script[src*="js/main.js"]');
+    if (scriptEl) {
+      const src = scriptEl.getAttribute('src');
+      const idx = src.indexOf('js/main.js');
+      if (idx > 0) {
+        pathPrefix = src.substring(0, idx);
+      }
+    }
+
+    if (!document.querySelector('link[href*="chatbot/chatbot.css"]')) {
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = pathPrefix + 'chatbot/chatbot.css';
+      document.head.appendChild(cssLink);
+    }
+
+    function loadScriptSequence(urls, onComplete) {
+      if (urls.length === 0) {
+        if (onComplete) onComplete();
+        return;
+      }
+      const url = urls.shift();
+      if (document.querySelector(`script[src*="${url}"]`)) {
+        loadScriptSequence(urls, onComplete);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = pathPrefix + url;
+      script.onload = () => loadScriptSequence(urls, onComplete);
+      script.onerror = () => loadScriptSequence(urls, onComplete);
+      document.body.appendChild(script);
+    }
+
+    const scriptsToLoad = [
+      'chatbot/knowledge_base.js',
+      'chatbot/api/all_pages_data.js',
+      'chatbot/api/ai.js',
+      'chatbot/api/chat.js',
+      'chatbot/chatbot.js'
+    ];
+
+    loadScriptSequence(scriptsToLoad, () => {
+      if (typeof window.initKalamChatbot === 'function') {
+        window.initKalamChatbot();
+      }
+    });
   }
 
   /* ─── 1. LOADER ─────────────────────────────────── */

@@ -1,0 +1,522 @@
+/* ==========================================================================
+   DR. A.P.J. ABDUL KALAM INTER COLLEGE - AI CHATBOT WIDGET STYLES
+   Languages: English, Hindi, Hinglish
+   ========================================================================== */
+
+/* Root & Theme Variables */
+:root {
+  --kalam-chat-saffron: #FF6B00;
+  --kalam-chat-saffron-light: #FF8C42;
+  --kalam-chat-navy: #0D1B2A;
+  --kalam-chat-navy-light: #1A2744;
+  --kalam-chat-green: #2E7D32;
+  --kalam-chat-bg: #FFFFFF;
+  --kalam-chat-msg-bot: #F0F4F8;
+  --kalam-chat-text-dark: #1E293B;
+  --kalam-chat-text-muted: #64748B;
+  --kalam-chat-shadow: 0 12px 40px rgba(13, 27, 42, 0.22);
+  --kalam-chat-radius: 20px;
+  --kalam-chat-font: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Floating Launcher Button */
+.kalam-chat-toggle-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kalam-chat-saffron) 0%, #E65100 100%);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.45);
+  cursor: pointer;
+  z-index: 999995;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+}
+
+.kalam-chat-toggle-btn:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 0, 0.6);
+}
+
+.kalam-chat-toggle-btn .badge-pulse {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: #22C55E;
+  border: 2.5px solid #FFFFFF;
+  border-radius: 50%;
+}
+
+.kalam-chat-toggle-btn .badge-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.5);
+  animation: kalamPulseRing 2s infinite;
+}
+
+@keyframes kalamPulseRing {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.kalam-chat-tooltip {
+  position: fixed;
+  bottom: 35px;
+  right: 98px;
+  background: var(--kalam-chat-navy);
+  color: #FFFFFF;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 999990;
+  pointer-events: none;
+  animation: kalamTooltipBounce 3s infinite ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--kalam-chat-font);
+}
+
+.kalam-chat-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 7px solid var(--kalam-chat-navy);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+@keyframes kalamTooltipBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-5px); }
+}
+
+/* Chat Widget Window Container */
+.kalam-chat-window {
+  position: fixed;
+  bottom: 98px;
+  right: 25px;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  height: 600px;
+  max-height: calc(100vh - 120px);
+  background: var(--kalam-chat-bg);
+  border-radius: var(--kalam-chat-radius);
+  box-shadow: var(--kalam-chat-shadow);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--kalam-chat-font);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(13, 27, 42, 0.08);
+}
+
+.kalam-chat-window.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+}
+
+/* Header */
+.kalam-chat-header {
+  background: linear-gradient(135deg, var(--kalam-chat-navy) 0%, var(--kalam-chat-navy-light) 100%);
+  color: #FFFFFF;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--kalam-chat-saffron);
+}
+
+.kalam-chat-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kalam-chat-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--kalam-chat-saffron);
+  background: #FFF;
+}
+
+.kalam-chat-header-info h4 {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+.kalam-chat-header-info p {
+  margin: 2px 0 0 0;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.kalam-chat-online-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22C55E;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.kalam-chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kalam-chat-btn-icon {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.kalam-chat-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Language Selection Bar */
+.kalam-chat-lang-bar {
+  background: #F8FAFC;
+  padding: 8px 14px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+}
+
+.kalam-chat-lang-label {
+  color: var(--kalam-chat-text-muted);
+  font-weight: 600;
+}
+
+.kalam-chat-lang-options {
+  display: flex;
+  gap: 6px;
+}
+
+.kalam-chat-lang-btn {
+  background: #E2E8F0;
+  color: var(--kalam-chat-text-dark);
+  border: none;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kalam-chat-lang-btn.active {
+  background: var(--kalam-chat-saffron);
+  color: #FFFFFF;
+}
+
+/* Messages Body Area */
+.kalam-chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background-color: #F8FAFC;
+  scroll-behavior: smooth;
+}
+
+/* Message Bubble Items */
+.kalam-msg-row {
+  display: flex;
+  gap: 10px;
+  max-width: 88%;
+  animation: kalamMsgFade 0.3s ease forwards;
+}
+
+@keyframes kalamMsgFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kalam-msg-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.kalam-msg-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--kalam-chat-navy);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.kalam-msg-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.kalam-msg-bubble {
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  word-break: break-word;
+}
+
+.kalam-msg-row.bot .kalam-msg-bubble {
+  background: #FFFFFF;
+  color: var(--kalam-chat-text-dark);
+  border-top-left-radius: 4px;
+  border: 1px solid #E2E8F0;
+}
+
+.kalam-msg-row.user .kalam-msg-bubble {
+  background: linear-gradient(135deg, var(--kalam-chat-saffron) 0%, #E65100 100%);
+  color: #FFFFFF;
+  border-top-right-radius: 4px;
+}
+
+.kalam-msg-time {
+  font-size: 0.68rem;
+  color: var(--kalam-chat-text-muted);
+  margin-top: 4px;
+  align-self: flex-start;
+}
+
+.kalam-msg-row.user .kalam-msg-time {
+  align-self: flex-end;
+}
+
+/* Rich Card Elements in Bot Messages */
+.kalam-msg-bubble p {
+  margin: 0 0 8px 0;
+}
+.kalam-msg-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.kalam-msg-bubble ul {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+
+.kalam-msg-bubble li {
+  margin-bottom: 4px;
+}
+
+.kalam-chat-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--kalam-chat-saffron);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 8px;
+  margin-right: 6px;
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 107, 0, 0.25);
+}
+
+.kalam-chat-action-btn:hover {
+  background: var(--kalam-chat-saffron);
+  color: #FFFFFF;
+}
+
+/* Quick Suggestion Chips */
+.kalam-chat-suggestions {
+  padding: 8px 14px 12px;
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.kalam-chat-suggestions::-webkit-scrollbar {
+  height: 3px;
+}
+
+.kalam-chat-suggestions::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.kalam-chip {
+  background: #F1F5F9;
+  color: var(--kalam-chat-text-dark);
+  border: 1px solid #E2E8F0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.kalam-chip:hover {
+  background: var(--kalam-chat-navy);
+  color: #FFFFFF;
+  border-color: var(--kalam-chat-navy);
+}
+
+/* Typing Indicator */
+.kalam-typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+}
+
+.kalam-typing-dots span {
+  width: 7px;
+  height: 7px;
+  background-color: var(--kalam-chat-text-muted);
+  border-radius: 50%;
+  animation: kalamDotBlink 1.4s infinite ease-in-out both;
+}
+
+.kalam-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.kalam-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes kalamDotBlink {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Input Area */
+.kalam-chat-input-area {
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kalam-chat-input {
+  flex: 1;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.kalam-chat-input:focus {
+  border-color: var(--kalam-chat-saffron);
+}
+
+.kalam-chat-send-btn {
+  background: linear-gradient(135deg, var(--kalam-chat-saffron) 0%, #E65100 100%);
+  color: #FFFFFF;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+.kalam-chat-send-btn:hover {
+  transform: scale(1.05);
+}
+
+.kalam-chat-voice-btn {
+  background: #F1F5F9;
+  color: var(--kalam-chat-text-muted);
+  border: 1px solid #E2E8F0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.kalam-chat-voice-btn.listening {
+  background: #EF4444;
+  color: #FFFFFF;
+  animation: kalamPulseRing 1.5s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 520px) {
+  .kalam-chat-window {
+    right: 15px;
+    bottom: 85px;
+    width: calc(100vw - 30px);
+    height: calc(100vh - 110px);
+  }
+  .kalam-chat-toggle-btn {
+    bottom: 15px;
+    right: 15px;
+    width: 56px;
+    height: 56px;
+  }
+  .kalam-chat-tooltip {
+    display: none;
+  }
+}
