@@ -1,10 +1,14 @@
-const CACHE_NAME = 'apj-school-cache-v11';
+const CACHE_NAME = 'apj-school-cache-v12';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './styles/main.min.css',
   './styles/fontawesome.min.css',
   './js/main.js',
+  './games/index.html',
+  './games/games.css',
+  './games/games.js',
+  './games/game-data.js',
   './assets/images/logo.webp',
   './assets/images/new_logo.webp',
   './assets/images/Manager.webp',
