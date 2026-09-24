@@ -74,7 +74,7 @@
     }
 
     .streams-hero {
-      padding: 170px 24px 70px;
+      padding: 200px 24px 60px;
       background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 50%, #2e7d32 100%);
       color: white;
       text-align: center;
@@ -106,14 +106,151 @@
 
     .streams-hero p {
       max-width: 850px;
-      margin: 0 auto;
+      margin: 0 auto 25px;
       font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.9);
       line-height: 1.6;
     }
 
+    /* Streams Live Search & Filter Bar */
+    .streams-search-wrapper {
+      max-width: 720px;
+      margin: 0 auto 20px;
+      position: relative;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+      border-radius: 50px;
+    }
+
+    .streams-search-input {
+      width: 100%;
+      padding: 16px 52px 16px 54px;
+      font-size: 1.05rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--navy);
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .streams-search-input:focus {
+      background: #ffffff;
+      border-color: var(--saffron);
+      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #e2e8f0;
+      border: none;
+      color: #475569;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .clear-search-btn:hover {
+      background: var(--saffron);
+      color: white;
+    }
+
+    /* Quick Filter Chips */
+    .quick-search-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .quick-chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+
+    .quick-chip:hover, .quick-chip.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    }
+
+    /* Filter Category Tabs */
+    .stream-filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+      padding: 6px;
+      background: rgba(13, 27, 42, 0.4);
+      border-radius: 50px;
+      max-width: 780px;
+      margin: 0 auto 15px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .filter-tab {
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .filter-tab:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .filter-tab.active {
+      background: var(--saffron);
+      color: white;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.35);
+    }
+
+    .search-status-bar {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.9);
+      min-height: 24px;
+      font-weight: 500;
+    }
+
     .streams-container {
-      padding: 60px 24px 90px;
+      padding: 50px 24px 90px;
       background: #f8faff;
       max-width: 1240px;
       margin: 0 auto;
@@ -135,7 +272,12 @@
     }
 
     .wing-block {
-      margin-bottom: 70px;
+      margin-bottom: 60px;
+      transition: opacity 0.3s ease;
+    }
+
+    .wing-block.hidden {
+      display: none;
     }
 
     .wing-title-group {
@@ -172,6 +314,10 @@
       flex-direction: column;
       position: relative;
       overflow: hidden;
+    }
+
+    .stream-card.hidden-card {
+      display: none !important;
     }
 
     .stream-card::before {
@@ -275,6 +421,21 @@
       font-weight: 500;
       padding: 5px 12px;
       border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .subject-chip:hover {
+      background: var(--saffron);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .subject-chip.highlight {
+      background: var(--navy);
+      color: white;
+      font-weight: 600;
     }
 
     .btn-explore-career {
@@ -297,6 +458,67 @@
       background: var(--saffron);
       color: white;
       box-shadow: 0 6px 18px rgba(255, 107, 0, 0.35);
+    }
+
+    /* No Results State */
+    .no-streams-found {
+      display: none;
+      text-align: center;
+      padding: 50px 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin: 20px 0 40px;
+    }
+
+    .no-streams-found i {
+      font-size: 3.5rem;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .no-streams-found h3 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .no-streams-found p {
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    /* Back to Top Button */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      background: var(--saffron);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top-btn:hover {
+      background: var(--navy);
+      transform: translateY(-4px);
     }
 
     .career-banner-cta {
@@ -383,10 +605,51 @@
       <span class="section-heading-badge"><i class="fas fa-compass"></i> All Academic & Vocational Streams</span>
       <h1>Academic Streams & <span>Educational Pathways</span></h1>
       <p>Explore all recognized UP Board & National streams for High School (Class 9-10) and Intermediate (Class 11-12): Science (PCM/PCB/PCMB), Agriculture, Commerce, Arts, Home Science, and NSQF Vocational streams.</p>
+
+      <!-- Search Input Wrapper -->
+      <div class="streams-search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="streamSearchInput" class="streams-search-input" placeholder="Search by stream name, subject (e.g. Physics, Accountancy, Agronomy)..." autocomplete="off" />
+        <button id="clearStreamSearchBtn" class="clear-search-btn" title="Clear search (Esc)"><i class="fas fa-times"></i></button>
+      </div>
+
+      <!-- Quick Search Chips -->
+      <div class="quick-search-chips">
+        <span class="quick-chip" data-search="Physics">Physics</span>
+        <span class="quick-chip" data-search="Biology">Biology</span>
+        <span class="quick-chip" data-search="Agriculture">Agriculture</span>
+        <span class="quick-chip" data-search="Commerce">Commerce</span>
+        <span class="quick-chip" data-search="Accountancy">Accountancy</span>
+        <span class="quick-chip" data-search="IT & Computer">IT & Vocational</span>
+        <span class="quick-chip" data-search="Home Science">Home Science</span>
+      </div>
+
+      <!-- Stream Filter Tabs -->
+      <div class="stream-filter-tabs">
+        <button class="filter-tab active" data-filter="all"><i class="fas fa-layer-group"></i> All Streams</button>
+        <button class="filter-tab" data-filter="class-11-12"><i class="fas fa-user-graduate"></i> Class 11 - 12</button>
+        <button class="filter-tab" data-filter="class-9-10"><i class="fas fa-school"></i> Class 9 - 10</button>
+        <button class="filter-tab" data-filter="science"><i class="fas fa-atom"></i> Science</button>
+        <button class="filter-tab" data-filter="commerce-arts"><i class="fas fa-chart-line"></i> Commerce & Arts</button>
+        <button class="filter-tab" data-filter="vocational"><i class="fas fa-tools"></i> Skill & Agri</button>
+      </div>
+
+      <!-- Search Status Bar -->
+      <div id="streamSearchStatusBar" class="search-status-bar">Showing all 11 streams</div>
     </header>
 
     <!-- Main Content Container -->
     <div class="streams-container">
+
+      <!-- Empty Search Result Container -->
+      <div id="noStreamsResult" class="no-streams-found">
+        <i class="fas fa-search-minus"></i>
+        <h3>No Matching Academic Streams Found</h3>
+        <p>We couldn't find any stream or subject matching your search criteria. Try searching for "Physics", "Commerce", "Agriculture", or "Class 9-10".</p>
+        <button id="resetStreamSearchBtn" class="btn-banner-action" style="cursor:pointer; border:none;">
+          <i class="fas fa-redo"></i> Reset Search & Filters
+        </button>
+      </div>
       
       <!-- Intermediate Wing (Class 11th & 12th) -->
       <section class="wing-block">
@@ -665,10 +928,208 @@
     </div>
   </main>
 
+  <!-- Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top-btn" title="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Footer Placeholder (Injected via main.js) -->
   <div id="footer-placeholder"></div>
 
   <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('streamSearchInput');
+      const clearBtn = document.getElementById('clearStreamSearchBtn');
+      const statusBar = document.getElementById('streamSearchStatusBar');
+      const streamCards = document.querySelectorAll('.stream-card');
+      const wingBlocks = document.querySelectorAll('.wing-block');
+      const quickChips = document.querySelectorAll('.quick-chip');
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      const noResultsBox = document.getElementById('noStreamsResult');
+      const resetSearchBtn = document.getElementById('resetStreamSearchBtn');
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      const subjectChips = document.querySelectorAll('.subject-chip');
+
+      let currentFilter = 'all';
+
+      function performSearch() {
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        
+        // Show/hide clear button
+        if (clearBtn) {
+          clearBtn.style.display = query ? 'flex' : 'none';
+        }
+
+        let visibleCount = 0;
+        const totalCards = streamCards.length;
+
+        // Highlight or unhighlight quick chips based on exact match
+        quickChips.forEach(chip => {
+          const searchVal = (chip.dataset.search || chip.textContent).toLowerCase();
+          if (query && query === searchVal) {
+            chip.classList.add('active');
+          } else {
+            chip.classList.remove('active');
+          }
+        });
+
+        streamCards.forEach(card => {
+          const cardTitle = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+          const cardDesc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+          const cardBadge = card.querySelector('.stream-badge') ? card.querySelector('.stream-badge').textContent.toLowerCase() : '';
+          
+          const cardSubjects = Array.from(card.querySelectorAll('.subject-chip')).map(chip => chip.textContent.toLowerCase());
+          const subjectMatch = cardSubjects.some(sub => sub.includes(query));
+          
+          const matchesQuery = !query || cardTitle.includes(query) || cardDesc.includes(query) || cardBadge.includes(query) || subjectMatch;
+
+          // Check category filter tab match
+          let matchesCategory = true;
+          if (currentFilter === 'class-11-12') {
+            matchesCategory = cardBadge.includes('class 11');
+          } else if (currentFilter === 'class-9-10') {
+            matchesCategory = cardBadge.includes('class 9');
+          } else if (currentFilter === 'science') {
+            matchesCategory = card.classList.contains('pcm') || card.classList.contains('pcb') || card.classList.contains('pcmb');
+          } else if (currentFilter === 'commerce-arts') {
+            matchesCategory = card.classList.contains('commerce') || card.classList.contains('arts') || card.classList.contains('homescience');
+          } else if (currentFilter === 'vocational') {
+            matchesCategory = card.classList.contains('vocational') || card.classList.contains('agri');
+          }
+
+          // Highlight subject chips inside card if search query matches subject name
+          card.querySelectorAll('.subject-chip').forEach(chip => {
+            const chipText = chip.textContent.toLowerCase();
+            if (query && chipText.includes(query)) {
+              chip.classList.add('highlight');
+            } else {
+              chip.classList.remove('highlight');
+            }
+          });
+
+          if (matchesQuery && matchesCategory) {
+            card.classList.remove('hidden-card');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+
+        // Hide empty wing blocks if all their cards are hidden
+        wingBlocks.forEach(wing => {
+          const hasVisible = wing.querySelectorAll('.stream-card:not(.hidden-card)').length > 0;
+          if (hasVisible) {
+            wing.classList.remove('hidden');
+          } else {
+            wing.classList.add('hidden');
+          }
+        });
+
+        // Toggle Empty State UI
+        if (noResultsBox) {
+          noResultsBox.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Update status bar text
+        if (statusBar) {
+          if (visibleCount === totalCards && !query && currentFilter === 'all') {
+            statusBar.textContent = `Showing all ${totalCards} streams`;
+          } else {
+            statusBar.textContent = `Found ${visibleCount} of ${totalCards} streams`;
+          }
+        }
+      }
+
+      // Input event listener
+      if (searchInput) {
+        searchInput.addEventListener('input', performSearch);
+        
+        // Keydown Esc handler
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            searchInput.value = '';
+            performSearch();
+          }
+        });
+      }
+
+      // Clear button listener
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          if (searchInput) {
+            searchInput.value = '';
+            searchInput.focus();
+            performSearch();
+          }
+        });
+      }
+
+      // Quick chips listener
+      quickChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          const val = this.dataset.search || this.textContent.trim();
+          if (searchInput) {
+            if (searchInput.value.toLowerCase() === val.toLowerCase()) {
+              searchInput.value = '';
+            } else {
+              searchInput.value = val;
+            }
+            performSearch();
+          }
+        });
+      });
+
+      // Subject chip click inside stream cards (pre-fill search bar)
+      subjectChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          const subjectName = this.textContent.trim();
+          if (searchInput) {
+            searchInput.value = subjectName;
+            performSearch();
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Filter category tabs listener
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          filterTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          currentFilter = this.dataset.filter || 'all';
+          performSearch();
+        });
+      });
+
+      // Reset search button listener
+      if (resetSearchBtn) {
+        resetSearchBtn.addEventListener('click', function() {
+          if (searchInput) searchInput.value = '';
+          currentFilter = 'all';
+          filterTabs.forEach(t => t.classList.remove('active'));
+          const allTab = document.querySelector('.filter-tab[data-filter="all"]');
+          if (allTab) allTab.classList.add('active');
+          performSearch();
+        });
+      }
+
+      // Back to Top Scroll Logic
+      if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+          } else {
+            backToTopBtn.classList.remove('visible');
+          }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
