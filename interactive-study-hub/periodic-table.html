@@ -295,6 +295,10 @@
   </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <style>
     /* Specific styles for Periodic Table - Chemistry Theme */
     body {
@@ -308,7 +312,7 @@
     }
 
     .pt-header {
-      padding: 30px 24px 40px;
+      padding: 165px 24px 40px;
       text-align: center;
       position: relative;
       background: linear-gradient(to bottom, #060b14, transparent);
@@ -333,24 +337,40 @@
     }
 
     .back-btn {
-      position: absolute;
-      top: 80px;
-      left: 24px;
-      background: rgba(77, 208, 225, 0.1);
-      border: 1px solid rgba(77, 208, 225, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(77, 208, 225, 0.12);
+      border: 1px solid rgba(77, 208, 225, 0.35);
       color: #4DD0E1;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
       text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 500;
       transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      margin: 0 auto 16px;
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: 10;
+      white-space: nowrap;
+      touch-action: manipulation;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .pt-header { padding: 175px 16px 40px; }
     }
 
     .back-btn:hover {
-      background: rgba(77, 208, 225, 0.2);
-      box-shadow: 0 0 15px rgba(77, 208, 225, 0.5);
+      background: rgba(77, 208, 225, 0.25);
+      box-shadow: 0 0 18px rgba(77, 208, 225, 0.6);
       color: white;
+      transform: translateY(-2px);
     }
 
     .pt-container {
@@ -872,6 +892,168 @@
         transform: translate(-50%, -50%) rotate(360deg);
       }
     }
+
+    /* Responsive Non-Scrolling Fit-to-Screen Table */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+    .edu-table th, .edu-table td {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Responsive Periodic Table Fit-to-Screen Grid Styles */
+    @media (max-width: 1200px) {
+      .pt-container {
+        padding: 0 12px;
+        overflow-x: hidden;
+      }
+      .periodic-table {
+        min-width: 0;
+        width: 100%;
+        grid-template-columns: repeat(18, 1fr);
+        gap: 4px;
+      }
+      .element {
+        padding: 3px 2px;
+      }
+      .el-num {
+        font-size: 0.6rem;
+      }
+      .el-sym {
+        font-size: 1.1rem;
+      }
+      .el-name {
+        font-size: 0.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pt-header {
+        padding: 175px 12px 24px;
+      }
+      .pt-header h1 {
+        font-size: 1.6rem;
+      }
+      .pt-header p {
+        font-size: 0.85rem;
+      }
+      .pt-container {
+        padding: 0 4px;
+        margin: 10px auto 30px;
+        overflow-x: hidden;
+      }
+      .periodic-table {
+        min-width: 0;
+        width: 100%;
+        grid-template-columns: repeat(18, 1fr);
+        gap: 2px;
+      }
+      .element {
+        padding: 2px 0;
+        border-radius: 3px;
+        justify-content: center;
+        align-items: center;
+      }
+      .el-num {
+        font-size: 0.42rem;
+        line-height: 1;
+        align-self: center;
+        margin: 0;
+      }
+      .el-sym {
+        font-size: 0.65rem;
+        line-height: 1;
+        margin: 1px 0 0 0;
+        text-shadow: none;
+      }
+      .el-name {
+        display: none;
+      }
+      .pt-spacer {
+        height: 8px !important;
+      }
+      .pt-legend {
+        gap: 6px;
+        margin-bottom: 16px;
+        padding: 0 4px;
+      }
+      .legend-btn {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        gap: 4px;
+      }
+      .legend-box {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .edu-article {
+        padding: 16px 10px !important;
+        margin: 20px 4px !important;
+      }
+      .edu-table {
+        font-size: 0.76rem !important;
+      }
+      .edu-table th, .edu-table td {
+        padding: 6px 4px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pt-container {
+        padding: 0 2px;
+      }
+      .periodic-table {
+        gap: 1.5px;
+      }
+      .element {
+        padding: 1px 0;
+        border-radius: 2px;
+      }
+      .el-num {
+        font-size: 0.35rem;
+      }
+      .el-sym {
+        font-size: 0.52rem;
+      }
+      .pt-spacer {
+        height: 6px !important;
+      }
+      .legend-btn {
+        padding: 3px 6px;
+        font-size: 0.65rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .pt-container {
+        padding: 0 1px;
+      }
+      .periodic-table {
+        gap: 1px;
+      }
+      .element {
+        padding: 0;
+      }
+      .el-num {
+        font-size: 0.3rem;
+      }
+      .el-sym {
+        font-size: 0.45rem;
+      }
+      .legend-btn {
+        padding: 2px 4px;
+        font-size: 0.6rem;
+      }
+    }
   </style>
 </head>
 
@@ -893,16 +1075,21 @@
 
 
 
+  <div id="header-placeholder"></div>
+
   <header class="pt-header">
-    <a href="/study"
-      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
-      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
-    <h1><i class="fas fa-flask"></i> <span>Periodic Table</span></h1>
-    <p>Click an element for details, or select a category below to highlight elements.</p>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Periodic Table</span>
+    </nav>
+    <h1>Interactive Periodic Table of Elements: Chemistry & Atomic Trends</h1>
+    <p>Explore chemical element properties, electron configurations, atomic mass, oxidation states, and periodic classification (s, p, d, f blocks).</p>
   </header>
 
   <main>
-
     <div class="pt-container">
       <div class="pt-legend">
         <button class="legend-btn nonmetal" data-type="nonmetal">
@@ -939,7 +1126,7 @@
 
       <div class="periodic-table" id="periodic-table">
         <!-- Spacer for Row 8 to separate main table from inner transition metals -->
-        <div style="grid-column: 1 / -1; grid-row: 8; height: 20px;"></div>
+        <div class="pt-spacer" style="grid-column: 1 / -1; grid-row: 8; height: 20px;"></div>
         <!-- Elements injected via JS -->
       </div>
     </div>
@@ -954,12 +1141,63 @@
       </div>
     </div>
 
+    <!-- Comprehensive Educational Article for Periodic Table -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: #0d1326; backdrop-filter: blur(12px); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.5); border: 1px solid rgba(77, 208, 225, 0.2); font-family: 'Poppins', sans-serif; line-height: 1.8; color: #e2e8f0;">
+      <h2 style="font-size: 1.8rem; color: #ffffff; margin-bottom: 16px; font-weight: 700;">Modern Periodic Law: Atomic Structure and Periodic Trends</h2>
+      <p style="margin-bottom: 20px;">
+        The Periodic Table of Elements is the foundational framework of modern chemistry. Formulated originally by Dmitri Mendeleev in 1869 and refined by Henry Moseley, the <strong style="color:#ffffff;">Modern Periodic Law</strong> states that the physical and chemical properties of elements are periodic functions of their <strong style="color:#ffffff;">atomic numbers (\(Z\))</strong>.
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #4DD0E1; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. Subatomic Architecture & Orbital Block Classification</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Atomic Number (\(Z\)) & Mass Number (\(A\)):</strong> The atomic number determines the total number of protons in an element's nucleus (defining its identity). The mass number (\(A\)) represents the sum of protons and neutrons (\(N = A - Z\)).</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">s-Block Elements (Groups 1 & 2):</strong> Comprises Alkali Metals and Alkaline Earth Metals (plus H & He) where outer valence electrons occupy spherical <em>s</em> orbitals. Highly reactive and electropositive.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">p-Block Elements (Groups 13 to 18):</strong> Includes metals, metalloids, halogens, and noble gases filling dumbbell-shaped <em>p</em> orbitals, displaying diverse chemical bonding behaviors.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">d-Block Elements (Groups 3 to 12):</strong> Transition metals characterized by partially filled <em>d</em> subshells, variable oxidation states, catalytic activity, and colorful complex ion formation.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">f-Block Elements (Lanthanides & Actinides):</strong> Inner transition elements filling deep <em>f</em> subshells, including rare-earth metals and radioactive transuranium elements.</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #4DD0E1; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. Key Periodic Trends Across Periods and Groups</h3>
+      <table class="edu-table">
+        <thead>
+          <tr style="background: #141c36; color: #4DD0E1; text-align: left;">
+            <th style="padding: 10px 8px; border: 1px solid rgba(77, 208, 225, 0.25); width: 28%;">Property</th>
+            <th style="padding: 10px 8px; border: 1px solid rgba(77, 208, 225, 0.25); width: 36%;">Across Period (L to R)</th>
+            <th style="padding: 10px 8px; border: 1px solid rgba(77, 208, 225, 0.25); width: 36%;">Down Group (Top to Bottom)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);"><strong>Atomic Radius</strong></td>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);">Decreases (higher nuclear charge \(Z_{eff}\))</td>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);">Increases (addition of quantum shells)</td>
+          </tr>
+          <tr style="background: rgba(255, 255, 255, 0.03);">
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);"><strong>Ionization Energy</strong></td>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);">Increases (electrons held more tightly)</td>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);">Decreases (electron shielding effect)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);"><strong>Electronegativity</strong></td>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);">Increases (peaks at Halogens, Fluorine = 4.0)</td>
+            <td style="padding: 8px; border: 1px solid rgba(255,255,255,0.1);">Decreases</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size: 1.4rem; color: #4DD0E1; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Frequently Asked Questions (Chemistry)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: rgba(77, 208, 225, 0.08); border-radius: 8px; border-left: 4px solid #4DD0E1;">
+          <strong style="color: #ffffff; font-size: 1.05rem;">Q1: Why are Noble Gases chemically unreactive (inert)?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">Noble gases (Group 18) possess completely filled valence electron octets (\(ns^2 np^6\)), conferring exceptionally high ionization energy, zero electron affinity, and chemical stability.</p>
+        </div>
+      </div>
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/periodic-table.js" defer></script>
   <div id="zoom-controls-placeholder"></div>
 </body>
-
 </html>

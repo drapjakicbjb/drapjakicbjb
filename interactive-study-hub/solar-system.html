@@ -295,6 +295,10 @@
   </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <style>
     /* Specific styles for Solar System */
     body {
@@ -305,7 +309,7 @@
     }
 
     .solar-header {
-      padding: 20px 24px 40px;
+      padding: 165px 24px 30px;
       text-align: center;
       position: relative;
       z-index: 10;
@@ -325,21 +329,40 @@
     }
 
     .back-btn {
-      position: absolute;
-      top: 60px;
-      left: 24px;
-      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
       color: white;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
       text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 500;
       transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      margin: 0 auto 16px;
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: 10;
+      white-space: nowrap;
+      touch-action: manipulation;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .solar-header { padding: 175px 16px 30px; }
     }
 
     .back-btn:hover {
       background: var(--saffron);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
 
     .solar-viewer {
@@ -567,6 +590,120 @@
       color: rgba(255, 255, 255, 0.8);
       font-size: 0.95rem;
     }
+
+    /* Dark Glass Formula Card Design System for Solar System Theme */
+    .formula-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-left: 5px solid #ff9d00;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      color: #e2e8f0;
+      backdrop-filter: blur(8px);
+    }
+    .formula-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .formula-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .formula-badge {
+      background: rgba(255, 157, 0, 0.2);
+      color: #ffb74d;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 157, 0, 0.3);
+    }
+    .formula-display {
+      background: rgba(10, 15, 30, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+      overflow-x: auto;
+    }
+    .formula-vars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .formula-var-item {
+      background: rgba(10, 15, 30, 0.6);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .formula-var-item strong {
+      color: #ff9d00;
+    }
+    .formula-example {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 157, 0, 0.4);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+    .formula-example-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #ffb74d;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (max-width: 600px) {
+      .formula-card {
+        padding: 14px 10px;
+        margin: 16px 0;
+      }
+      .formula-card-title {
+        font-size: 1rem;
+      }
+      .formula-display {
+        font-size: 0.88rem;
+        padding: 10px 8px;
+        overflow-x: auto;
+      }
+      .formula-vars {
+        grid-template-columns: 1fr;
+      }
+      .formula-example {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+      }
+      .katex-display {
+        margin: 0.4em 0 !important;
+        font-size: 0.85em;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+    }
   </style>
 </head>
 
@@ -586,16 +723,21 @@
 
 
 
+  <div id="header-placeholder"></div>
+
   <header class="solar-header">
-    <a href="/study"
-      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
-      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
-    <h1>Solar System</h1>
-    <p>Click on any celestial body to discover more information about it.</p>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Solar System</span>
+    </nav>
+    <h1>3D Interactive Solar System: Planetary Orbits & Astronomy Lab</h1>
+    <p>Explore Keplerian orbital motion, planetary scale sizes, surface gravity, revolution periods, and physical characteristics of celestial bodies in our Solar System.</p>
   </header>
 
   <main>
-
     <div class="solar-viewer">
       <div id="solar-system-container">
         <!-- Sun and Planets injected via JS -->
@@ -610,11 +752,68 @@
       </div>
     </div>
 
+    <!-- Comprehensive Educational Article for Astronomy & Solar System -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: rgba(13, 27, 42, 0.85); backdrop-filter: blur(12px); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.4); border: 1px solid rgba(255, 255, 255, 0.15); font-family: 'Poppins', sans-serif; line-height: 1.8; color: #e2e8f0;">
+      <h2 style="font-size: 1.8rem; color: #ffffff; margin-bottom: 16px; font-weight: 700;">Astronomy & Astrophysics: Structure and Motion of the Solar System</h2>
+      <p style="margin-bottom: 20px;">
+        Our Solar System formed approximately 4.6 billion years ago from the gravitational collapse of a giant interstellar molecular cloud. Located in the Orion Arm of the Milky Way galaxy, the Solar System is gravitationally anchored by the <strong style="color:#ffffff;">Sun (Sol)</strong>, a G-type main-sequence star containing 99.86% of the solar system's total system mass.
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #ff9d00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. Kepler's Three Laws of Planetary Motion</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">First Law (Law of Ellipses):</strong> The orbit of every planet is an ellipse with the Sun located at one of the two foci. This means planetary distance from the Sun fluctuates continuously between perihelion (closest point) and aphelion (farthest point).</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Second Law (Law of Equal Areas):</strong> A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time. Consequently, planets travel faster when closer to the Sun and slower when farther away.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Third Law (Law of Periods):</strong> The square of a planet's orbital period (\(T^2\)) is directly proportional to the cube of the semi-major axis of its orbit (\(a^3\)). Planets orbiting farther from the Sun take exponentially longer to complete one orbit.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Universal Gravitation & Orbital Speed:</strong> Sir Isaac Newton demonstrated that the gravitational pull between the Sun and planets provides the exact centripetal force required to maintain stable planetary orbits (\(v = \sqrt{GM/r}\)).</li>
+      </ul>
+
+      <!-- Kepler's Law Formula Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-square-root-variable" style="color:#ff9d00;"></i> Kepler's Third Law & Gravitational Speed</div>
+          <span class="formula-badge">Orbital Mechanics</span>
+        </div>
+        <div class="formula-display">
+          $$T^2 = \left(\frac{4\pi^2}{GM}\right) a^3$$
+          $$v = \sqrt{\frac{GM}{r}}$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>\(T\)</strong> = Orbital Period in seconds</div>
+          <div class="formula-var-item"><strong>\(a\)</strong> = Semi-Major Axis / Orbital Radius (\(\text{m}\))</div>
+          <div class="formula-var-item"><strong>\(G\)</strong> = Gravitational Constant (\(6.674 \times 10^{-11} \text{ m}^3\text{kg}^{-1}\text{s}^{-2}\))</div>
+          <div class="formula-var-item"><strong>\(M\)</strong> = Solar Mass (\(1.989 \times 10^{30} \text{ kg}\))</div>
+        </div>
+        <div class="formula-example">
+          <div class="formula-example-title"><i class="fas fa-lightbulb"></i> Step-by-Step Worked Example:</div>
+          For Earth orbiting at \(r = 1\text{ AU} \approx 1.496 \times 10^{11}\text{ m}\):
+          $$v = \sqrt{\frac{(6.674 \times 10^{-11}) \times (1.989 \times 10^{30})}{1.496 \times 10^{11}}}$$
+          $$\implies v \approx 29,780\text{ m/s} \approx 29.8\text{ km/s}$$
+          This confirms Earth's orbital speed of approximately <strong>29.8 km/s</strong> around the Sun.
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.4rem; color: #ff9d00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. Classification of Planets</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Inner Terrestrial Planets (Mercury, Venus, Earth, Mars):</strong> Characterized by dense, rocky crusts, metallic nickel-iron cores, high average density, and few or no natural satellites.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Outer Gas & Ice Giants (Jupiter, Saturn, Uranus, Neptune):</strong> Massive planets located beyond the Asteroid Belt composed predominantly of hydrogen, helium, water, ammonia, and methane, surrounded by extensive ring systems and dozens of natural moons.</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #ff9d00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Frequently Asked Questions (Astronomy)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border-left: 4px solid #ff6b00;">
+          <strong style="color: #ffffff; font-size: 1.05rem;">Q1: What defines an Astronomical Unit (AU)?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">An Astronomical Unit (1 AU) is defined as the mean distance between Earth and the Sun, approximately equal to 149,597,870.7 kilometers (92.95 million miles).</p>
+        </div>
+        <div style="margin-bottom: 16px; padding: 16px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border-left: 4px solid #ff6b00;">
+          <strong style="color: #ffffff; font-size: 1.05rem;">Q2: Why was Pluto reclassified as a Dwarf Planet by the IAU in 2006?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">According to International Astronomical Union criteria, a planet must: (1) orbit the Sun, (2) possess sufficient mass for hydrostatic equilibrium (round shape), and (3) clear the neighborhood around its orbit. Pluto failed the third criterion as its orbit overlaps with Kuiper Belt objects.</p>
+        </div>
+      </div>
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/solar-system.js" defer></script>
 </body>
-
 </html>

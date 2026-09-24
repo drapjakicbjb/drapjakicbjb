@@ -300,10 +300,39 @@
         padding-top: 10px
       }
     }
+
+    /* Responsive Non-Scrolling Fit-to-Screen Table */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+    .edu-table th, .edu-table td {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    @media (max-width: 600px) {
+      .edu-article {
+        padding: 16px 10px !important;
+        margin: 20px 4px !important;
+      }
+      .edu-table {
+        font-size: 0.76rem !important;
+      }
+      .edu-table th, .edu-table td {
+        padding: 6px 4px !important;
+      }
+    }
   </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
-
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <link rel="stylesheet" href="/styles/plant-anatomy.min.css">
 </head>
 
@@ -312,20 +341,23 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <!-- <div id="header-placeholder"></div> -->
+  <div id="header-placeholder"></div>
   <div id="zoom-controls-placeholder"></div>
   <div id="scrollbar-placeholder"></div>
 
   <header class="sim-header">
-    <a href="/study"
-      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
-      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
-    <h1>Plant Anatomy: Xylem & Phloem</h1>
-    <p>Hover over the cross-section of the plant stem to learn about its specialized tissues.</p>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Plant Anatomy</span>
+    </nav>
+    <h1>Plant Anatomy: Microscopic Stem & Vascular Structure</h1>
+    <p>Explore the microscopic organization of plant stems, vascular bundles, xylem vessels, phloem sieve tubes, and cambium layers.</p>
   </header>
 
   <main>
-
     <section class="sim-app-container">
       <div class="sim-viewer">
         <canvas id="pa-canvas" width="800" height="600"></canvas>
@@ -340,11 +372,78 @@
       </div>
     </section>
 
+    <!-- Rich Educational Article & Guide for Study & AdSense Quality -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(27, 94, 32, 0.08); border: 1px solid #c8e6c9; font-family: 'Poppins', sans-serif; line-height: 1.8; color: #2d3748;">
+      <h2 style="font-size: 1.8rem; color: #1b5e20; margin-bottom: 16px; font-weight: 700;">Understanding Plant Vascular Anatomy: Xylem, Phloem, and Tissue Layers</h2>
+      <p style="margin-bottom: 20px;">
+        Vascular plants (tracheophytes) have developed specialized complex tissues that facilitate the long-distance transport of water, essential mineral nutrients, and photosynthetic sugars throughout the plant body. The structural arrangement of these tissues in plant stems provides both biomechanical support and fluid conductivity essential for plant survival across diverse terrestrial environments.
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #2e7d32; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. Key Vascular Tissues and Functions</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong>Epidermis & Cuticle:</strong> The outermost protective cell layer covered by a waxy cuticle that minimizes transpirational water loss and acts as a mechanical barrier against pathogens.</li>
+        <li style="margin-bottom: 12px;"><strong>Cortex:</strong> Ground tissue located beneath the epidermis, composed primarily of parenchyma and collenchyma cells that provide structural elasticity and store starch deposits.</li>
+        <li style="margin-bottom: 12px;"><strong>Xylem Vessels & Tracheids:</strong> Hollow, lignified dead cells responsible for the unidirectional (basal to apical) transport of water and dissolved inorganic ions via transpirational pull and root pressure.</li>
+        <li style="margin-bottom: 12px;"><strong>Phloem Sieve Tubes & Companion Cells:</strong> Living vascular tissue that conducts organic nutrients, predominantly sucrose produced during photosynthesis, from source organs (leaves) to metabolic sinks (roots, fruits, and buds) via translocation.</li>
+        <li style="margin-bottom: 12px;"><strong>Vascular Cambium:</strong> A lateral meristematic tissue positioned between the xylem and phloem in dicotyledonous stems, responsible for secondary growth and stem thickening.</li>
+        <li style="margin-bottom: 12px;"><strong>Pith (Medulla):</strong> Central region composed of spongy parenchyma cells that store nutrient reserves and maintain stem turgor.</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #2e7d32; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. How to Use the Interactive Plant Anatomy Simulator</h3>
+      <ol style="padding-left: 20px; margin-bottom: 24px;">
+        <li style="margin-bottom: 10px;"><strong>Interactive Cross-Section:</strong> Move your mouse cursor or tap on different tissue zones within the 2D Stem Cross-Section diagram.</li>
+        <li style="margin-bottom: 10px;"><strong>Tissue Identification:</strong> Observe how highlighted rings indicate specific cellular zones—outer epidermis, cortical parenchyma, vascular cambium ring, xylem vessels, and central pith.</li>
+        <li style="margin-bottom: 10px;"><strong>Detailed Inspection:</strong> Read the dynamically updated info panel for physiological details, cell wall characteristics, and transport mechanisms.</li>
+      </ol>
+
+      <h3 style="font-size: 1.4rem; color: #2e7d32; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Differences Between Dicot and Monocot Stem Cross-Sections</h3>
+      <table class="edu-table">
+        <thead>
+          <tr style="background: #1b5e20; color: #ffffff; text-align: left;">
+            <th style="padding: 10px 8px; border: 1px solid #c8e6c9; width: 28%;">Feature</th>
+            <th style="padding: 10px 8px; border: 1px solid #c8e6c9; width: 36%;">Dicot Stem</th>
+            <th style="padding: 10px 8px; border: 1px solid #c8e6c9; width: 36%;">Monocot Stem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;"><strong>Vascular Bundles</strong></td>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;">Arranged in a distinct concentric ring</td>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;">Scattered throughout ground tissue</td>
+          </tr>
+          <tr style="background: #f1f8e9;">
+            <td style="padding: 8px; border: 1px solid #c8e6c9;"><strong>Vascular Cambium</strong></td>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;">Present (Open bundles, secondary growth)</td>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;">Absent (Closed bundles, no secondary growth)</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;"><strong>Pith Region</strong></td>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;">Well-defined central parenchyma pith</td>
+            <td style="padding: 8px; border: 1px solid #c8e6c9;">Undifferentiated ground tissue</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size: 1.4rem; color: #2e7d32; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">4. Frequently Asked Questions (Botany & Anatomy)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: #f1f8e9; border-radius: 8px; border-left: 4px solid #1b5e20;">
+          <strong style="color: #1b5e20; font-size: 1.05rem;">Q1: What drives the upward movement of water in xylem vessels?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">Water movement in xylem is primarily driven by the Cohesion-Tension Theory. Transpiration from leaf stomata generates negative pressure (tension), pulling cohesive water molecules upward through continuous xylem columns.</p>
+        </div>
+        <div style="margin-bottom: 16px; padding: 16px; background: #f1f8e9; border-radius: 8px; border-left: 4px solid #1b5e20;">
+          <strong style="color: #1b5e20; font-size: 1.05rem;">Q2: Why are xylem cells dead at maturity while phloem cells remain living?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">Xylem cells lose their protoplasm at maturity to create hollow, low-resistance tubes capable of withstanding high negative pressure. Phloem sieve cells require active metabolic energy (ATP) provided by adjacent companion cells to load and translocate sugars.</p>
+        </div>
+        <div style="margin-bottom: 16px; padding: 16px; background: #f1f8e9; border-radius: 8px; border-left: 4px solid #1b5e20;">
+          <strong style="color: #1b5e20; font-size: 1.05rem;">Q3: What is the main structural function of lignin in plant stem tissue?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">Lignin is a complex organic polymer deposited in cell walls that imparts rigidity, mechanical strength, and waterproof properties, enabling stems to grow upright against gravity.</p>
+        </div>
+      </div>
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/plant-anatomy.js" defer></script>
 </body>
-
 </html>

@@ -296,6 +296,10 @@
   </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <style>
     * {
       margin: 0;
@@ -315,7 +319,7 @@
     .sim-header {
       background: linear-gradient(180deg, #08010e, #040710);
       border-bottom: 1px solid rgba(100, 80, 200, 0.15);
-      padding: 60px 24px 16px;
+      padding: 165px 24px 20px;
       text-align: center;
       position: relative
     }
@@ -336,22 +340,40 @@
     }
 
     .back-btn {
-      position: absolute;
-      top: 88px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.05);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
       color: #aab;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.85rem;
-      transition: all .3s
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all .3s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      margin: 0 auto 16px;
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: 10;
+      white-space: nowrap;
+      touch-action: manipulation;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .sim-header { padding: 175px 16px 20px; }
     }
 
     .back-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     }
 
     .sim-wrap {
@@ -371,7 +393,7 @@
       box-shadow: 0 0 80px rgba(0, 0, 40, 0.4) inset, 0 8px 40px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       position: relative;
-      min-height: 480px
+      min-height: auto;
     }
 
     #heart-canvas {
@@ -631,11 +653,30 @@
 
     @media(max-width:1020px) {
       .sim-wrap {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .canvas-card {
+        min-height: 0;
       }
     }
 
     @media(max-width:600px) {
+      .sim-wrap {
+        padding: 0 10px;
+        margin: 10px auto;
+        gap: 12px;
+      }
+
+      .canvas-card {
+        min-height: 0;
+        border-radius: 12px;
+      }
+
+      #heart-canvas {
+        max-height: 55vh;
+      }
+
       .sim-header h1 {
         font-size: 1.5rem
       }
@@ -653,12 +694,16 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- <div id="header-placeholder"></div> -->
+  <div id="header-placeholder"></div>
 
   <header class="sim-header">
-    <a href="/study"
-      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
-      class="back-btn"><i class="fas fa-arrow-left"></i> Back to Study Hub</a>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Heart Simulator</span>
+    </nav>
     <h1>Human Heart Cross-Section Simulator</h1>
     <p>Coronal cross-section · Blood flow · Valve dynamics · Cardiac anatomy</p>
   </header>
@@ -760,21 +805,52 @@
           <div class="leg-row">
             <div class="leg-color" style="background:linear-gradient(90deg,#8b7000,#c4a200)"></div>Valve leaflets
           </div>
-          <div class="leg-row" style="border:none">
-            <div class="leg-color" style="background:linear-gradient(90deg,#2a2a5a,#3a3a7a)"></div>Pericardium (outer
-            sac)
-          </div>
-        </div>
-
       </div>
     </div>
 
+    <!-- Comprehensive Educational Article for Human Heart Simulator -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: #080d1a; backdrop-filter: blur(12px); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.5); border: 1px solid rgba(255, 255, 255, 0.12); font-family: 'Poppins', sans-serif; line-height: 1.8; color: #e2e8f0;">
+      <h2 style="font-size: 1.8rem; color: #ff6060; margin-bottom: 16px; font-weight: 700;">Human Cardiovascular Physiology: Heart Chambers, Cardiac Cycle & Blood Circulation</h2>
+      <p style="margin-bottom: 20px;">
+        The human heart is a hollow, muscular organ located in the thoracic cavity within the mediastinum. Operating continuously as a double-action pressure pump, the heart beats approximately 100,000 times per day, pumping over 7,200 liters of blood through an extensive network of blood vessels to deliver oxygen and nutrients to tissues while removing metabolic waste products.
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #ff4f4f; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. Four Chambers & Atrioventricular Valves</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Right Atrium (RA):</strong> Receives deoxygenated systemic venous return from the Superior Vena Cava (SVC) and Inferior Vena Cava (IVC).</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Right Ventricle (RV):</strong> Pumps deoxygenated blood through the Tricuspid Valve and Pulmonary Semilunar Valve into the Pulmonary Artery leading to the lungs.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Left Atrium (LA):</strong> Receives oxygen-rich blood returned from the lungs via four Pulmonary Veins.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Left Ventricle (LV):</strong> Thick-walled muscular chamber that contracts forcefully to pump oxygenated blood through the Mitral (Bicuspid) Valve and Aortic Semilunar Valve into the systemic Aorta.</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #ff4f4f; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. Phases of the Cardiac Cycle & Electrical Conduction System</h3>
+      <p style="margin-bottom: 16px;">
+        The rhythmic contraction of the heart is driven by an intrinsic electrical conduction system operating in synchronized sequence:
+      </p>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Sinoatrial (SA) Node Pacemaker:</strong> Located in the right atrium wall, the SA node generates spontaneous electrical action potentials at 60–100 beats per minute, causing both atria to contract (Atrial Systole).</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Atrioventricular (AV) Node Delay:</strong> The impulse pauses briefly (~0.1 seconds) at the AV node to allow full ventricular filling before ventricular contraction begins.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Bundle of His & Purkinje Fibers:</strong> Action potentials travel rapidly down the interventricular septum through the left and right bundle branches, spreading through Purkinje fibers to trigger coordinated bottom-up Ventricular Systole.</li>
+        <li style="margin-bottom: 12px;"><strong style="color:#ffffff;">Systole vs. Diastole:</strong> During <em>Systole</em>, the ventricles contract forcefully to eject blood into the aorta and pulmonary artery. During <em>Diastole</em>, the heart muscle relaxes, allowing the chambers to fill with blood for the next cardiac cycle.</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #ff4f4f; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Frequently Asked Questions (Cardiology)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: rgba(255, 79, 79, 0.08); border-radius: 8px; border-left: 4px solid #ff4f4f;">
+          <strong style="color: #ffffff; font-size: 1.05rem;">Q1: What causes the characteristic 'LUB-DUB' heart sounds heard through a stethoscope?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">The first heart sound ('LUB', S1) is produced by the closure of the Atrioventricular (Tricuspid and Mitral) valves at the onset of ventricular systole. The second heart sound ('DUB', S2) is produced by the sudden closure of the Semilunar (Aortic and Pulmonary) valves at the beginning of ventricular diastole.</p>
+        </div>
+        <div style="margin-bottom: 16px; padding: 16px; background: rgba(255, 79, 79, 0.08); border-radius: 8px; border-left: 4px solid #ff4f4f;">
+          <strong style="color: #ffffff; font-size: 1.05rem;">Q2: What is the primary natural pacemaker of the heart?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem; color: #cbd5e1;">The Sinoatrial (SA) Node, located in the upper wall of the right atrium, generates spontaneous electrical impulses (action potentials) that spread rapidly across the atrial myocardium to initiate contraction.</p>
+        </div>
+      </div>
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/heart-simulator.js" defer></script>
   <div id="zoom-controls-placeholder"></div>
 </body>
-
 </html>

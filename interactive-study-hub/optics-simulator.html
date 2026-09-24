@@ -74,6 +74,10 @@
   <noscript>
     <link rel="stylesheet" href="../styles/fontawesome.min.css" />
   </noscript>
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <style>
     *,
     *::before,
@@ -303,7 +307,7 @@
     }
 
     .optics-header {
-      padding: 40px 24px 20px;
+      padding: 165px 24px 30px;
       text-align: center;
       position: relative;
       z-index: 10;
@@ -324,22 +328,40 @@
     }
 
     .back-btn {
-      position: absolute;
-      top: 90px;
-      left: 24px;
-      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
       color: white;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
       text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 500;
       transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      margin: 0 auto 16px;
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: 10;
+      white-space: nowrap;
+      touch-action: manipulation;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .optics-header { padding: 175px 16px 30px; }
     }
 
     .back-btn:hover {
       background: var(--saffron);
       color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
 
     .optics-app-container {
@@ -403,19 +425,88 @@
       margin-bottom: 8px;
     }
 
-    .control-group label span.value {
-      color: var(--saffron);
+    .control-input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .control-group input[type="range"] {
-      width: 100%;
+    .control-input-row input[type="range"] {
+      flex: 1;
       accent-color: var(--saffron);
+    }
+
+    .num-input-wrap {
+      display: flex;
+      align-items: center;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 4px 8px;
+      width: 100px;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .num-input-wrap input[type="number"] {
+      width: 65px;
+      border: none;
+      background: transparent;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ff6b00;
+      outline: none;
+      text-align: right;
+    }
+
+    .num-input-wrap input[type="number"]::-webkit-inner-spin-button,
+    .num-input-wrap input[type="number"]::-webkit-outer-spin-button {
+      opacity: 0.7;
+    }
+
+    .num-input-wrap span.unit {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0d1b2a;
+      margin-left: 3px;
     }
 
     .toggle-group {
       display: flex;
       gap: 10px;
       margin-bottom: 25px;
+    }
+
+    .ray-toggle-group {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .ray-btn {
+      flex: 1;
+      padding: 7px 4px;
+      border: 1px solid #e0e6ed;
+      background: #f8fbff;
+      color: #475569;
+      font-size: 0.76rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .ray-btn.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+      box-shadow: 0 2px 8px rgba(13, 27, 42, 0.2);
     }
 
     .toggle-btn {
@@ -476,6 +567,157 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Responsive Non-Scrolling Fit-to-Screen Table */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+    .edu-table th, .edu-table td {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+    @media (max-width: 600px) {
+      .edu-article {
+        padding: 16px 10px !important;
+        margin: 20px 4px !important;
+      }
+      .edu-table {
+        font-size: 0.76rem !important;
+      }
+      .edu-table th, .edu-table td {
+        padding: 6px 4px !important;
+      }
+      .formula-card {
+        padding: 14px 10px !important;
+        margin: 16px 0 !important;
+      }
+      .formula-card-title {
+        font-size: 0.95rem !important;
+      }
+      .formula-badge {
+        font-size: 0.65rem !important;
+        padding: 2px 6px !important;
+      }
+      .formula-display {
+        font-size: 0.88rem !important;
+        padding: 10px 6px !important;
+        margin-bottom: 12px !important;
+        overflow-x: auto !important;
+        max-width: 100% !important;
+      }
+      .formula-vars {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+      }
+      .formula-var-item {
+        font-size: 0.8rem !important;
+        padding: 6px 8px !important;
+      }
+      .formula-example {
+        font-size: 0.8rem !important;
+        padding: 10px 10px !important;
+        word-break: break-word !important;
+      }
+      .katex-display {
+        font-size: 0.85em !important;
+        margin: 0.3em 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+      }
+    }
+
+    /* Standard Formula Box Design System for Readability */
+    .formula-card {
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-left: 5px solid #ff6b00;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .formula-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ffedd5;
+    }
+    .formula-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .formula-badge {
+      background: #ffedd5;
+      color: #c2410c;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .formula-display {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 16px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    .formula-vars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .formula-var-item {
+      background: #ffffff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #fed7aa;
+      font-size: 0.88rem;
+    }
+    .formula-var-item strong {
+      color: #ff6b00;
+    }
+    .formula-example {
+      background: #fff7ed;
+      border: 1px dashed #fdba74;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      color: #7c2d12;
+      line-height: 1.7;
+      word-break: break-word;
+      overflow-x: auto;
+    }
+    .formula-example-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #c2410c;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
   </style>
 </head>
 
@@ -485,20 +727,21 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- <div id="header-placeholder"></div> -->
-
-
+  <div id="header-placeholder"></div>
 
   <header class="optics-header">
-    <a href="/study"
-      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
-      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
-    <h1>Optics Simulator</h1>
-    <p>Explore light refraction, real and virtual images, and focal points using interactive ray tracing.</p>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Optics Simulator</span>
+    </nav>
+    <h1>Interactive Geometrical Optics: Lens Formula & Ray Diagram Simulator</h1>
+    <p>Simulate light ray refraction through Convex and Concave thin lenses, calculate image distance (v), magnification (m), and image characteristics in real time.</p>
   </header>
 
   <main>
-
     <section class="optics-app-container">
       <div class="optics-viewer">
         <canvas id="optics-canvas" width="800" height="500"></canvas>
@@ -507,43 +750,176 @@
       <div class="optics-panel">
         <h3><i class="fas fa-sliders"></i> Simulation Controls</h3>
 
-
         <div class="toggle-group">
           <button class="toggle-btn active" id="btn-convex">Convex</button>
           <button class="toggle-btn" id="btn-concave">Concave</button>
         </div>
 
         <div class="control-group">
-          <label><span>Focal Length (f)</span> <span><span class="value" id="val-focal">100</span> cm</span></label>
-          <input type="range" id="range-focal" min="40" max="250" value="100" step="1">
+          <label for="input-focal"><span>Focal Length (f)</span></label>
+          <div class="control-input-row">
+            <input type="range" id="range-focal" min="0.10" max="10.00" value="1.00" step="0.05">
+            <div class="num-input-wrap">
+              <input type="number" id="input-focal" min="0.05" max="50.00" value="1.00" step="0.05" inputmode="decimal">
+              <span class="unit">m</span>
+            </div>
+          </div>
         </div>
 
         <div class="control-group">
-          <label><span>Object Distance (u)</span> <span><span class="value" id="val-dist">150</span> cm</span></label>
-          <input type="range" id="range-dist" min="20" max="400" value="150" step="1">
+          <label for="input-dist"><span>Object Distance (u)</span></label>
+          <div class="control-input-row">
+            <input type="range" id="range-dist" min="0.10" max="20.00" value="1.50" step="0.1">
+            <div class="num-input-wrap">
+              <input type="number" id="input-dist" min="0.05" max="50.00" value="1.50" step="0.1" inputmode="decimal">
+              <span class="unit">m</span>
+            </div>
+          </div>
         </div>
 
         <div class="control-group">
-          <label><span>Object Height (h)</span> <span><span class="value" id="val-height">50</span> cm</span></label>
-          <input type="range" id="range-height" min="10" max="150" value="50" step="1">
+          <label for="input-height"><span>Object Height (h)</span></label>
+          <div class="control-input-row">
+            <input type="range" id="range-height" min="0.05" max="10.00" value="0.50" step="0.05">
+            <div class="num-input-wrap">
+              <input type="number" id="input-height" min="0.01" max="20.00" value="0.50" step="0.05" inputmode="decimal">
+              <span class="unit">m</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label><span>Ray Display Mode</span></label>
+          <div class="ray-toggle-group">
+            <button class="ray-btn active" id="btn-ray-all" data-ray="all"><i class="fas fa-layer-group"></i> Both Rays</button>
+            <button class="ray-btn" id="btn-ray-1" data-ray="1"><i class="fas fa-minus"></i> Ray 1</button>
+            <button class="ray-btn" id="btn-ray-2" data-ray="2"><i class="fas fa-arrow-trend-up"></i> Ray 2</button>
+          </div>
         </div>
 
         <div class="readout-box">
           <h3 style="border-bottom:none; margin-bottom:10px; font-size:1.1rem;"><i class="fas fa-calculator"></i>
             Results</h3>
-          <div class="readout-item"><span>Image Distance (v)</span> <span><span id="res-v">0</span> cm</span></div>
-          <div class="readout-item"><span>Magnification (m)</span> <span id="res-m">0</span></div>
-          <div class="readout-item"><span>Image Height (h')</span> <span><span id="res-h">0</span> cm</span></div>
+          <div class="readout-item"><span>Image Distance (v)</span> <span><span id="res-v">+0.00</span> m</span></div>
+          <div class="readout-item"><span>Magnification (m)</span> <span id="res-m">0.00</span></div>
+          <div class="readout-item"><span>Image Height (h')</span> <span><span id="res-h">0.00</span> m</span></div>
           <div class="readout-item"><span>Nature</span> <strong id="res-nature">Real</strong></div>
         </div>
       </div>
     </section>
-    <script src="../js/main.js" defer></script>
+
+    <!-- Comprehensive Educational Article for Optics Simulator -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; font-family: 'Poppins', sans-serif; line-height: 1.8; color: #2d3748;">
+      <h2 style="font-size: 1.8rem; color: #0d1b2a; margin-bottom: 16px; font-weight: 700;">Fundamentals of Geometrical Optics: Thin Lens Refraction & Ray Tracing</h2>
+      <p style="margin-bottom: 20px;">
+        Geometrical optics studies the propagation of light in terms of rays. When light passes from one transparent optical medium (such as air) into a spherical glass lens, it undergoes refraction (bending) at both spherical interfaces according to Snell's Law (\(n_1 \sin \theta_1 = n_2 \sin \theta_2\)). The geometry of thin lenses allows us to predict image formation using fundamental optical equations and Cartesian sign conventions.
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. The Thin Lens Formula & Sign Conventions</h3>
+      
+      <!-- Thin Lens Equation Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-square-root-variable" style="color:#ff6b00;"></i> The Thin Lens Equation</div>
+          <span class="formula-badge">Gaussian Optics</span>
+        </div>
+        <div class="formula-display">
+          $$\frac{1}{f} = \frac{1}{v} - \frac{1}{u}$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>\(f\)</strong> = Focal Length (cm / m)</div>
+          <div class="formula-var-item"><strong>\(v\)</strong> = Image Distance from Optical Center</div>
+          <div class="formula-var-item"><strong>\(u\)</strong> = Object Distance from Optical Center</div>
+          <div class="formula-var-item"><strong>Sign Convention</strong>: Convex (\(f > 0\)), Concave (\(f < 0\))</div>
+        </div>
+        <div class="formula-example">
+          <div class="formula-example-title"><i class="fas fa-lightbulb"></i> Step-by-Step Worked Example:</div>
+          Given a <strong>Convex Lens</strong> with focal length \(f = +1.00\text{ m}\) (\(+100\text{ cm}\)) and an object placed at distance \(u = -1.50\text{ m}\) (\(-150\text{ cm}\)):
+          $$\frac{1}{v} = \frac{1}{1.00} + \frac{1}{-1.50} = \frac{3 - 2}{3.00} = \frac{1}{3.00}$$
+          $$\implies v = +3.00\text{ m}$$
+          The positive sign of \(v\) indicates a <strong>Real, Inverted Image</strong> formed at \(3.00\text{ m}\) behind the lens.
+        </div>
+      </div>
+
+      <!-- Linear Magnification & Power Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-expand-alt" style="color:#ff6b00;"></i> Linear Magnification & Dioptric Lens Power</div>
+          <span class="formula-badge">Optical Ratios</span>
+        </div>
+        <div class="formula-display">
+          $$m = \frac{v}{u} = \frac{h'}{h} \qquad \text{and} \qquad P = \frac{1}{f\text{ (m)}}$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>\(m\)</strong> = Linear Magnification</div>
+          <div class="formula-var-item"><strong>\(h'\)</strong> = Image Height</div>
+          <div class="formula-var-item"><strong>\(h\)</strong> = Object Height</div>
+          <div class="formula-var-item"><strong>\(P\)</strong> = Dioptric Power in Diopters (\(\text{D}\))</div>
+        </div>
+        <div class="formula-example">
+          <div class="formula-example-title"><i class="fas fa-calculator"></i> Calculation:</div>
+          Using values from above (\(v = +3.00\text{ m}\), \(u = -1.50\text{ m}\), object height \(h = 0.50\text{ m}\)):
+          $$m = \frac{+3.00}{-1.50} = -2.000 \implies h' = -2.000 \times 0.50\text{ m} = -1.00\text{ m}$$
+          The magnification \(m = -2.000\) confirms an inverted image twice the size of the object.
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. Three Principal Rays for Image Construction</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong>Parallel Ray:</strong> A ray incident parallel to the principal axis refracts through the principal focus (\(F_2\)) on the opposite side of a convex lens (or appears to diverge from \(F_1\) in a concave lens).</li>
+        <li style="margin-bottom: 12px;"><strong>Optical Center Ray:</strong> A ray passing directly through the optical center (\(O\)) passes straight through without suffering any net angular deviation.</li>
+        <li style="margin-bottom: 12px;"><strong>Focal Ray:</strong> A ray passing through the first principal focus (\(F_1\)) emerges parallel to the principal axis after refraction.</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Image Nature Summary Table</h3>
+      <table class="edu-table">
+        <thead>
+          <tr style="background: #0d1b2a; color: #ffffff; text-align: left;">
+            <th style="padding: 10px 8px; border: 1px solid #cbd5e1; width: 30%;">Object Position</th>
+            <th style="padding: 10px 8px; border: 1px solid #cbd5e1; width: 35%;">Image Position</th>
+            <th style="padding: 10px 8px; border: 1px solid #cbd5e1; width: 35%;">Image Nature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Beyond 2F (\(u > 2f\))</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Between F and 2F</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Diminished, Inverted, Real</td>
+          </tr>
+          <tr style="background: #f8fbff;">
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">At 2F (\(u = 2f\))</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">At 2F</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Same size, Inverted, Real</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Between F and 2F</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Beyond 2F</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Magnified, Inverted, Real</td>
+          </tr>
+          <tr style="background: #f8fbff;">
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Between F & Center (\(u < f\))</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Same side as object</td>
+            <td style="padding: 8px; border: 1px solid #e2e8f0;">Magnified, Erect, Virtual</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">4. Frequently Asked Questions (Optics & Lenses)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: #fff7ed; border-radius: 8px; border-left: 4px solid #ff6b00;">
+          <strong style="color: #c2410c; font-size: 1.05rem;">Q1: What is Dioptric Power of a Lens?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">Power (\(P\)) is defined as the reciprocal of focal length expressed in meters (\(P = 1/f\)). The SI unit of lens power is the Diopter (\(D\)). Convex lenses have positive power, while concave lenses have negative power.</p>
+        </div>
+        <div style="margin-bottom: 16px; padding: 16px; background: #fff7ed; border-radius: 8px; border-left: 4px solid #ff6b00;">
+          <strong style="color: #c2410c; font-size: 1.05rem;">Q2: What is the key difference between a real image and a virtual image?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">A real image is formed by actual intersection of light rays and can be projected onto a screen. A virtual image is formed when light rays only appear to diverge from a focal point, and it cannot be caught on a physical screen.</p>
+        </div>
+      </div>
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/optics-simulator.js" defer></script>
 </body>
-
 </html>

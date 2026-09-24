@@ -72,6 +72,10 @@
   <noscript>
     <link rel="stylesheet" href="../styles/fontawesome.min.css" />
   </noscript>
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <style>
     *,
     *::before,
@@ -301,7 +305,7 @@
     }
 
     .sim-header {
-      padding: 40px 24px 20px;
+      padding: 165px 24px 30px;
       text-align: center;
       position: relative;
       z-index: 10;
@@ -322,23 +326,40 @@
     }
 
     .back-btn {
-      position: absolute;
-      top: 80px;
-      left: 24px;
-      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
       color: white;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
       text-decoration: none;
       font-size: 0.9rem;
+      font-weight: 500;
       transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.3);
+      margin: 0 auto 16px;
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: 10;
+      white-space: nowrap;
+      touch-action: manipulation;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .sim-header { padding: 175px 16px 30px; }
     }
 
     .back-btn:hover {
       background: white;
       color: #bf360c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
 
     .sim-app-container {
@@ -486,10 +507,138 @@
       background: #d32f2f;
     }
 
+    /* Mobile Responsive */
     @media (max-width: 900px) {
       .sim-app-container {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Standard Formula Box Design System for Readability */
+    .formula-card {
+      background: #fdfbf7;
+      border: 1px solid #fed7aa;
+      border-left: 5px solid #bf360c;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .formula-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ffedd5;
+    }
+    .formula-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #bf360c;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .formula-badge {
+      background: #ffedd5;
+      color: #9a3412;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .formula-display {
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #bf360c;
+      margin-bottom: 16px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    .formula-vars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .formula-var-item {
+      background: #ffffff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #fed7aa;
+      font-size: 0.88rem;
+    }
+    .formula-var-item strong {
+      color: #c2410c;
+    }
+    .formula-example {
+      background: #fff7ed;
+      border: 1px dashed #fdba74;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      color: #7c2d12;
+      line-height: 1.7;
+      word-break: break-word;
+      overflow-x: auto;
+    }
+    @media (max-width: 600px) {
+      .formula-card {
+        padding: 14px 10px !important;
+        margin: 16px 0 !important;
+      }
+      .formula-card-title {
+        font-size: 0.95rem !important;
+      }
+      .formula-badge {
+        font-size: 0.65rem !important;
+        padding: 2px 6px !important;
+      }
+      .formula-display {
+        font-size: 0.88rem !important;
+        padding: 10px 6px !important;
+        margin-bottom: 12px !important;
+        overflow-x: auto !important;
+        max-width: 100% !important;
+      }
+      .formula-vars {
+        grid-template-columns: 1fr !important;
+        gap: 6px !important;
+      }
+      .formula-var-item {
+        font-size: 0.8rem !important;
+        padding: 6px 8px !important;
+      }
+      .formula-example {
+        font-size: 0.8rem !important;
+        padding: 10px 10px !important;
+        word-break: break-word !important;
+      }
+      .katex-display {
+        font-size: 0.85em !important;
+        margin: 0.3em 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+      }
+    }
+    .formula-example-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #c2410c;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
   </style>
 </head>
@@ -500,18 +649,21 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- <div id="header-placeholder"></div> -->
+  <div id="header-placeholder"></div>
 
   <header class="sim-header">
-    <a href="/study"
-      onclick="if(document.referrer && (document.referrer.includes('study.html') || document.referrer.includes('study'))) { history.back(); return false; }"
-      class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
-    <h1>Pendulum Energy Lab</h1>
-    <p>Adjust parameters and watch the conservation of energy in action.</p>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Pendulum Simulator</span>
+    </nav>
+    <h1>Simple Harmonic Motion: Pendulum & Energy Conservation Lab</h1>
+    <p>Simulate simple pendulum dynamics, investigate the period equation T = 2π√(L/g), and track continuous kinetic vs. potential energy exchange.</p>
   </header>
 
   <main>
-
     <section class="sim-app-container">
       <div class="sim-viewer">
         <canvas id="pen-canvas" width="600" height="500"></canvas>
@@ -563,11 +715,88 @@
       </div>
     </section>
 
+    <!-- Comprehensive Educational Article for Pendulum Physics -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(191, 54, 12, 0.08); border: 1px solid #fed7aa; font-family: 'Poppins', sans-serif; line-height: 1.8; color: #2d3748;">
+      <h2 style="font-size: 1.8rem; color: #bf360c; margin-bottom: 16px; font-weight: 700;">Physics of Simple Harmonic Motion: The Simple Pendulum</h2>
+      <p style="margin-bottom: 20px;">
+        A simple pendulum consists of a point mass (the bob) suspended from a frictionless pivot by a light, inextensible string of length <em>L</em>. When displaced from its central equilibrium position by a small initial angle <em>θ</em> and released, gravitational force provides a restoring torque that pulls the pendulum bob back toward equilibrium, initiating periodic oscillatory motion known as <strong>Simple Harmonic Motion (SHM)</strong>.
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #d84315; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. Key Equations Governing Pendulum Motion</h3>
+      
+      <!-- Pendulum Period Formula Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-clock" style="color:#bf360c;"></i> Period of Oscillation (T)</div>
+          <span class="formula-badge">SHM Dynamics</span>
+        </div>
+        <div class="formula-display">
+          $$T = 2\pi \sqrt{\frac{L}{g}} \quad \text{and} \quad f = \frac{1}{T} = \frac{1}{2\pi} \sqrt{\frac{g}{L}}$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>\(T\)</strong> = Time Period in seconds (\(\text{s}\))</div>
+          <div class="formula-var-item"><strong>\(L\)</strong> = String Length in meters (\(\text{m}\))</div>
+          <div class="formula-var-item"><strong>\(g\)</strong> = Gravity acceleration (\(9.8\text{ m/s}^2\))</div>
+          <div class="formula-var-item"><strong>\(f\)</strong> = Frequency in Hertz (\(\text{Hz}\))</div>
+        </div>
+        <div class="formula-example">
+          <div class="formula-example-title"><i class="fas fa-lightbulb"></i> Step-by-Step Worked Example:</div>
+          For a pendulum with length \(L = 10\text{ m}\) under Earth gravity (\(g = 9.8\text{ m/s}^2\)):
+          $$T = 2\pi \sqrt{\frac{10}{9.8}} \approx 6.283 \times 1.010 = 6.346\text{ s}$$
+          Notice that period \(T\) depends ONLY on length \(L\) and gravity \(g\)—bob mass \(m\) plays zero role!
+        </div>
+      </div>
+
+      <!-- Pendulum Energy Conservation Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-bolt" style="color:#bf360c;"></i> Conservation of Mechanical Energy</div>
+          <span class="formula-badge">Energy Balance</span>
+        </div>
+        <div class="formula-display">
+          $$E_{\text{total}} = PE + KE = mgh + \frac{1}{2}mv^2 = \text{constant}$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>\(PE\)</strong> = Potential Energy (\(mgh\)) in Joules</div>
+          <div class="formula-var-item"><strong>\(KE\)</strong> = Kinetic Energy (\(\frac{1}{2}mv^2\)) in Joules</div>
+          <div class="formula-var-item"><strong>\(m\)</strong> = Bob Mass in kg</div>
+          <div class="formula-var-item"><strong>\(h\)</strong> = Height above minimum point</div>
+        </div>
+        <div class="formula-example">
+          <div class="formula-example-title"><i class="fas fa-calculator"></i> Calculation:</div>
+          At maximum height (\(h_{\text{max}}\)), \(KE = 0 \implies E_{\text{total}} = mgh_{\text{max}}\). As the bob passes through vertical equilibrium (\(h = 0\)), \(PE = 0 \implies v_{\text{max}} = \sqrt{2gh_{\text{max}}}\).
+        </div>
+      </div>
+
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong>Independence of Mass:</strong> Notice that mass (<em>m</em>) does NOT appear in the period equation. Provided air resistance is neglected, a 1 kg bob and a 50 kg bob oscillate with the exact same period.</li>
+        <li style="margin-bottom: 12px;"><strong>Conservation of Mechanical Energy:</strong> At maximum angular displacement (amplitude), velocity is zero and mechanical energy exists entirely as <strong>Gravitational Potential Energy (PE = mgh)</strong>. As the bob swings through the bottom equilibrium point, height <em>h</em> reaches zero and potential energy converts completely into <strong>Kinetic Energy (KE = ½ mv²)</strong>.</li>
+        <li style="margin-bottom: 12px;"><strong>Total Mechanical Energy:</strong> \(E_{total} = PE + KE = \text{constant}\).</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #d84315; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. Interactive Lab Experiments to Try</h3>
+      <ol style="padding-left: 20px; margin-bottom: 24px;">
+        <li style="margin-bottom: 10px;"><strong>Varying Length:</strong> Double the string length (L) from 5m to 10m and observe how period length increases by a factor of \(\sqrt{2} \approx 1.414\).</li>
+        <li style="margin-bottom: 10px;"><strong>Extraterrestrial Gravity:</strong> Lower gravity (g) to 1.6 m/s² (Moon's gravity) to see how slow pendulum swings become in low-gravity environments.</li>
+        <li style="margin-bottom: 10px;"><strong>Real-Time Energy Bar:</strong> Monitor the PE vs KE bar chart under the simulator as potential energy peaks at the ends and kinetic energy peaks at the vertical midpoint.</li>
+      </ol>
+
+      <h3 style="font-size: 1.4rem; color: #d84315; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Frequently Asked Questions (Physics & SHM)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: #fbe9e7; border-radius: 8px; border-left: 4px solid #bf360c;">
+          <strong style="color: #bf360c; font-size: 1.05rem;">Q1: Why does the small-angle approximation (sin θ ≈ θ) apply to simple pendulums?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">For angles less than 15° (approx. 0.26 radians), sin(θ) differs from θ in radians by less than 1%. This linearity makes the restoring force directly proportional to displacement, fulfilling the strict criteria for pure Simple Harmonic Motion.</p>
+        </div>
+        <div style="margin-bottom: 16px; padding: 16px; background: #fbe9e7; border-radius: 8px; border-left: 4px solid #bf360c;">
+          <strong style="color: #bf360c; font-size: 1.05rem;">Q2: What is a Foucault Pendulum?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">A Foucault Pendulum is a large, free-swinging pendulum designed to demonstrate the Earth's diurnal rotation. As Earth rotates beneath the pendulum, the plane of oscillation appears to rotate slowly over several hours.</p>
+        </div>
+      </div>
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/pendulum-simulator.js" defer></script>
 </body>
-
 </html>

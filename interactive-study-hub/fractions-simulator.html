@@ -82,13 +82,22 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 </style>
   <link rel="preload" href="../styles/main.min.css" as="style" />
   <link rel="stylesheet" href="../styles/main.min.css" />
+  <link rel="stylesheet" href="../styles/fontawesome.min.css" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="../styles/fontawesome.min.css" />
+  </noscript>
+  <!-- KaTeX CSS & JS for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
   <style>
     body { background: #f8fbff; color: var(--navy); overflow: auto ; }
-    .sim-header { padding: 40px 24px 40px; text-align: center; position: relative; z-index: 10; background: var(--navy); color: white; }
+    .sim-header { padding: 165px 24px 30px; text-align: center; position: relative; z-index: 10; background: var(--navy); color: white; }
     .sim-header h1 { font-size: 2.5rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
     .sim-header p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 10px auto; }
-    .back-btn { position: absolute; top: 70px; left: 24px; background: rgba(255,255,255,0.1); color: white; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; backdrop-filter: blur(5px); }
-    .back-btn:hover { background: var(--saffron); color: white; }
+    .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(255, 255, 255, 0.12); color: white; padding: 8px 18px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.25); margin: 0 auto 16px; position: relative; top: auto; left: auto; z-index: 10; white-space: nowrap; touch-action: manipulation; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+    @media (max-width: 768px) { .sim-header { padding: 175px 16px 30px; } }
+    .back-btn:hover { background: var(--saffron); color: white; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
     .sim-app-container { max-width: 1200px; margin: 40px auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 350px; gap: 30px; align-items: start; }
     .sim-viewer { background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 20px; text-align: center; }
     canvas { width: 100%; max-width: 600px; height: auto; background: #fafcff; border-radius: var(--radius-md); }
@@ -107,6 +116,116 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
     .toggle-btn { flex: 1; padding: 10px; border: 1px solid #e0e6ed; background: #f8fbff; color: var(--text-medium); font-weight: 600; border-radius: var(--radius-md); cursor: pointer; transition: all 0.3s; }
     .toggle-btn.active { background: var(--navy); color: white; border-color: var(--navy); box-shadow: 0 4px 10px rgba(13,27,42,0.2); }
     @media (max-width: 900px) { .sim-app-container { grid-template-columns: 1fr; } }
+
+    /* Standard Formula Box Design System for Readability */
+    .formula-card {
+      background: #ffffff;
+      border: 1px solid #fed7aa;
+      border-left: 5px solid #ff6b00;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .formula-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ffedd5;
+    }
+    .formula-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .formula-badge {
+      background: #ffedd5;
+      color: #c2410c;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .formula-display {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 16px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      overflow-x: auto;
+    }
+    .formula-vars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .formula-var-item {
+      background: #ffffff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #fed7aa;
+      font-size: 0.9rem;
+    }
+    .formula-var-item strong {
+      color: #ff6b00;
+    }
+    .formula-example {
+      background: #fff7ed;
+      border: 1px dashed #fdba74;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.92rem;
+      color: #7c2d12;
+      line-height: 1.7;
+    }
+    .formula-example-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #c2410c;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (max-width: 600px) {
+      .formula-card {
+        padding: 14px 10px;
+        margin: 16px 0;
+      }
+      .formula-card-title {
+        font-size: 1rem;
+      }
+      .formula-display {
+        font-size: 0.88rem;
+        padding: 10px 8px;
+        overflow-x: auto;
+      }
+      .formula-vars {
+        grid-template-columns: 1fr;
+      }
+      .formula-example {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+      }
+      .katex-display {
+        margin: 0.4em 0 !important;
+        font-size: 0.85em;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+    }
   </style>
 </head>
 
@@ -116,50 +235,119 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- <div id="header-placeholder"></div> -->
+  <div id="header-placeholder"></div>
 
   <header class="sim-header">
-    <a href="/study" onclick="if(document.referrer && document.referrer.includes('study')) { history.back(); return false; }" class="back-btn"><i class="fas fa-arrow-left"></i> <span>Back to Study Hub</span></a>
-    <h1>Fractions Visualizer</h1>
-    <p>Interactive tool to visually understand fractions, decimals, and percentages.</p>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <a href="/study">Study Hub</a>
+      <span>/</span>
+      <span aria-current="page">Fractions Visualizer</span>
+    </nav>
+    <h1>Interactive Fractions Visualizer: Pie & Bar Models</h1>
+    <p>Visualize numerical ratios, proper/improper fractions, equivalent fractions, decimal conversions, and percentage representations in real time.</p>
   </header>
 
   <main>
+    <section class="sim-app-container">
+      <div class="sim-viewer">
+        <canvas id="frac-canvas" width="600" height="700"></canvas>
+      </div>
 
-  <section class="sim-app-container">
-    <div class="sim-viewer">
-      <canvas id="frac-canvas" width="600" height="700"></canvas>
-    </div>
+      <div class="sim-panel">
+        <h3><i class="fas fa-chart-pie"></i> Fraction Controls</h3>
+        
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="btn-pie">Pie Chart</button>
+          <button class="toggle-btn" id="btn-bar">Bar Chart</button>
+        </div>
 
-    <div class="sim-panel">
-      <h3><i class="fas fa-chart-pie"></i> Fraction Controls</h3>
+        <div class="control-group">
+          <label><span>Numerator (Top)</span> <span class="value" id="val-num">3</span></label>
+          <input type="range" id="range-num" min="0" max="200" value="3" step="1">
+        </div>
+
+        <div class="control-group">
+          <label><span>Denominator (Bottom)</span> <span class="value" id="val-den">8</span></label>
+          <input type="range" id="range-den" min="1" max="200" value="8" step="1">
+        </div>
+
+        <div class="readout-box">
+          <h3 style="border-bottom:none; margin-bottom:10px;"><i class="fas fa-equals"></i> Equivalents</h3>
+          <div class="readout-item"><span>Decimal</span> <span class="res-val" id="res-dec">0.375</span></div>
+          <div class="readout-item"><span>Percentage</span> <span class="res-val" id="res-per">37.5%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive Educational Article for Fractions Visualizer -->
+    <article class="edu-article" style="max-width: 1000px; margin: 40px auto; padding: 30px; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; font-family: 'Poppins', sans-serif; line-height: 1.8; color: #2d3748;">
+      <h2 style="font-size: 1.8rem; color: #0d1b2a; margin-bottom: 16px; font-weight: 700;">Mathematical Foundations of Fractions: Ratios, Decimals & Percentages</h2>
+      <p style="margin-bottom: 20px;">
+        A fraction represents a part of a whole or, more generally, any number of equal parts. Expressed in the standard form <em>a/b</em>, the integer above the fraction bar is called the <strong>Numerator</strong> (indicating how many parts are taken), and the non-zero integer below is the <strong>Denominator</strong> (indicating the total number of equal parts dividing the unit whole).
+      </p>
+
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">1. Types of Mathematical Fractions</h3>
+      <ul style="padding-left: 20px; margin-bottom: 24px; list-style-type: disc;">
+        <li style="margin-bottom: 12px;"><strong>Proper Fraction:</strong> Numerator is strictly less than denominator (\(a < b\)), representing a value less than 1 (e.g., \(3/8 = 0.375\)).</li>
+        <li style="margin-bottom: 12px;"><strong>Improper Fraction:</strong> Numerator is greater than or equal to denominator (\(a \ge b\)), representing a value greater than or equal to 1 (e.g., \(9/4 = 2.25\)).</li>
+        <li style="margin-bottom: 12px;"><strong>Mixed Number:</strong> Combination of a whole integer and a proper fraction (e.g., \(2 \frac{1}{4}\)).</li>
+      </ul>
+
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">2. Converting Fractions to Decimals and Percentages</h3>
       
-      <div class="toggle-group">
-        <button class="toggle-btn active" id="btn-pie">Pie Chart</button>
-        <button class="toggle-btn" id="btn-bar">Bar Chart</button>
+      <!-- Fraction Conversion Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-percent" style="color:#ff6b00;"></i> Decimal & Percentage Equivalents</div>
+          <span class="formula-badge">Fraction Transformations</span>
+        </div>
+        <div class="formula-display">
+          $$\text{Decimal} = \frac{a}{b} = a \div b$$
+          $$\text{Percentage} = \left(\frac{a}{b}\right) \times 100\%$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>\(a\)</strong> = Numerator (parts taken)</div>
+          <div class="formula-var-item"><strong>\(b\)</strong> = Denominator (total equal parts)</div>
+          <div class="formula-var-item"><strong>Condition</strong>: Denominator \(b \ne 0\)</div>
+        </div>
+        <div class="formula-example">
+          <div class="formula-example-title"><i class="fas fa-lightbulb"></i> Worked Example:</div>
+          For fraction \(\frac{3}{8}\):
+          $$\text{Decimal} = 3 \div 8 = 0.375$$
+          $$\text{Percentage} = 0.375 \times 100\% = 37.5\%$$
+        </div>
       </div>
 
-      <div class="control-group">
-        <label><span>Numerator (Top)</span> <span class="value" id="val-num">3</span></label>
-        <input type="range" id="range-num" min="0" max="200" value="3" step="1">
+      <!-- Fraction Operations Card -->
+      <div class="formula-card">
+        <div class="formula-card-header">
+          <div class="formula-card-title"><i class="fas fa-calculator" style="color:#ff6b00;"></i> Fundamental Fraction Arithmetic</div>
+          <span class="formula-badge">Arithmetic Rules</span>
+        </div>
+        <div class="formula-display">
+          $$\frac{a}{b} \pm \frac{c}{d} = \frac{ad \pm bc}{bd}$$
+          $$\frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd} \quad \text{and} \quad \frac{a}{b} \div \frac{c}{d} = \frac{ad}{bc}$$
+        </div>
+        <div class="formula-vars">
+          <div class="formula-var-item"><strong>Addition / Subtraction</strong>: Find common denominator (\(bd\))</div>
+          <div class="formula-var-item"><strong>Multiplication</strong>: Multiply top by top, bottom by bottom</div>
+          <div class="formula-var-item"><strong>Division</strong>: Multiply by reciprocal of second fraction</div>
+        </div>
       </div>
 
-      <div class="control-group">
-        <label><span>Denominator (Bottom)</span> <span class="value" id="val-den">8</span></label>
-        <input type="range" id="range-den" min="1" max="200" value="8" step="1">
+      <h3 style="font-size: 1.4rem; color: #ff6b00; margin-top: 28px; margin-bottom: 12px; font-weight: 600;">3. Frequently Asked Questions (Mathematics)</h3>
+      <div style="margin-top: 16px;">
+        <div style="margin-bottom: 16px; padding: 16px; background: #fff7ed; border-radius: 8px; border-left: 4px solid #ff6b00;">
+          <strong style="color: #c2410c; font-size: 1.05rem;">Q1: What are Equivalent Fractions?</strong>
+          <p style="margin-top: 6px; font-size: 0.95rem;">Equivalent fractions represent the same proportion of a whole despite having different numerators and denominators (e.g., \(1/2 = 2/4 = 4/8 = 50\%\)). They are generated by multiplying or dividing both numerator and denominator by the same non-zero integer.</p>
+        </div>
       </div>
-
-      <div class="readout-box">
-        <h3 style="border-bottom:none; margin-bottom:10px;"><i class="fas fa-equals"></i> Equivalents</h3>
-        <div class="readout-item"><span>Decimal</span> <span class="res-val" id="res-dec">0.375</span></div>
-        <div class="readout-item"><span>Percentage</span> <span class="res-val" id="res-per">37.5%</span></div>
-      </div>
-    </div>
-  </section>
-
+    </article>
   </main>
 
-  <!-- <div id="footer-placeholder"></div> -->
+  <div id="footer-placeholder"></div>
   <script src="../js/main.js" defer></script>
   <script src="../js/fractions-simulator.js" defer></script>
   <div id="zoom-controls-placeholder"></div>

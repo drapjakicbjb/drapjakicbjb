@@ -505,9 +505,11 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 
   <!-- Hero Section -->
   <header class="notice-hero">
-    <div class="back-btn-container">
-      <a href="/linkhub" onclick="if(document.referrer) { history.back(); return false; }" class="back-link-btn"><i class="fas fa-arrow-left"></i> Back</a>
-    </div>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <span aria-current="page">Notice Board</span>
+    </nav>
     <h1>Official Notice Board</h1>
     <p>Stay updated with the latest academic circulars, exam notifications, and announcements from Dr. A.P.J. Abdul Kalam Inter College.</p>
   </header>

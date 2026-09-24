@@ -54,7 +54,7 @@
   <link rel="stylesheet" href="games.css" />
 </head>
 
-<body>
+<body class="gaming-theme-page">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVJV2RMB"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -63,16 +63,8 @@
   <!-- Header Placeholder dynamically populated by js/main.js -->
   <div id="header-placeholder"></div>
 
-  <main class="learning-games-portal" id="gamesPortalMain">
-    <!-- Floating Background Educational Icons -->
-    <div class="portal-bg-graphics" aria-hidden="true">
-      <i class="fas fa-puzzle-piece portal-bg-icon p-icon-1"></i>
-      <i class="fas fa-brain portal-bg-icon p-icon-2"></i>
-      <i class="fas fa-atom portal-bg-icon p-icon-3"></i>
-      <i class="fas fa-shapes portal-bg-icon p-icon-4"></i>
-      <i class="fas fa-chess-knight portal-bg-icon p-icon-5"></i>
-    </div>
-
+  <!-- Hero Header Section with Dark Background for Header Text Visibility -->
+  <header class="games-header-hero">
     <div class="portal-container">
       <!-- Breadcrumbs -->
       <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
@@ -84,19 +76,32 @@
       <!-- Hero Banner -->
       <div class="portal-hero">
         <div class="portal-badge">
-          <i class="fas fa-gamepad"></i> Fun Learning &amp; Intelligence Zone
+          <i class="fas fa-gamepad"></i> ⚡ FUN LEARNING &amp; INTELLIGENCE ARENA
         </div>
-        <h1>Learn. Think. Play. <span>Improve.</span></h1>
+        <h1>LEARN. PLAY. <span>LEVEL UP!</span></h1>
         <p class="portal-subtitle">
           Interactive educational challenges engineered to develop sharp memory, mental calculation, logical reasoning, and vocabulary.
         </p>
       </div>
+    </div>
+  </header>
 
+  <main class="learning-games-portal" id="gamesPortalMain">
+    <!-- Floating Background Educational Icons -->
+    <div class="portal-bg-graphics" aria-hidden="true">
+      <i class="fas fa-gamepad portal-bg-icon p-icon-1"></i>
+      <i class="fas fa-brain portal-bg-icon p-icon-2"></i>
+      <i class="fas fa-atom portal-bg-icon p-icon-3"></i>
+      <i class="fas fa-trophy portal-bg-icon p-icon-4"></i>
+      <i class="fas fa-dice-d20 portal-bg-icon p-icon-5"></i>
+    </div>
+
+    <div class="portal-container">
       <!-- Top Control Bar: Class Selector, Academic Tier & Quick Stats -->
       <div class="portal-top-bar">
         <div class="class-picker-wrap">
           <label for="classLevelSelect" class="class-picker-label">
-            <i class="fas fa-user-graduate" style="color:var(--game-primary);"></i> Select Your Class:
+            <i class="fas fa-gamepad" style="color:var(--game-primary);"></i> Select Class Level:
           </label>
           <select id="classLevelSelect" class="class-select-custom" aria-label="Select your class">
             <option value="nursery">Nursery</option>
@@ -131,17 +136,17 @@
       <!-- Daily Challenge Card -->
       <div class="daily-challenge-card">
         <div class="daily-content">
-          <h3><i class="fas fa-star" style="color:#FBBF24;"></i> Today’s Daily Challenge</h3>
+          <h3><i class="fas fa-meteor" style="color:#FBBF24;"></i> Today’s Daily Mission</h3>
           <p>Sharpen your cognitive skills with today's multi-subject lightning round (Math, Science, Logic &amp; GK).</p>
           <div class="daily-tags">
-            <span class="daily-tag">🧠 5 Mixed Questions</span>
+            <span class="daily-tag">⚡ 5 Speed Questions</span>
             <span class="daily-tag">⏱️ 3 Minutes</span>
-            <span class="daily-tag">🏆 +50 Points</span>
+            <span class="daily-tag">🏆 +50 XP Reward</span>
           </div>
         </div>
         <div>
           <button id="btnStartDailyChallenge" class="btn-daily-challenge" type="button">
-            <i class="fas fa-play-circle"></i> Start Today's Challenge
+            <i class="fas fa-play"></i> Launch Mission
           </button>
         </div>
       </div>

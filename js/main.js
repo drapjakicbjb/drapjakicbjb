@@ -68,6 +68,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     return prefix;
   }
 
+  function processComponentHTML(data, prefix) {
+    if (!data) return '';
+    if (prefix) {
+      return data
+        .replace(/src="\/assets\//g, `src="${prefix}assets/`)
+        .replace(/src="assets\//g, `src="${prefix}assets/`);
+    }
+    return data;
+  }
+
   async function loadComponents() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     const footerPlaceholder = document.getElementById('footer-placeholder');
@@ -79,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       loadTask.push(
         fetch(pathPrefix + 'components/header.html')
           .then(response => response.ok ? response.text() : '')
-          .then(data => { if (data) headerPlaceholder.innerHTML = data; })
+          .then(data => { if (data) headerPlaceholder.innerHTML = processComponentHTML(data, pathPrefix); })
           .catch(err => console.warn('Header component load error:', err))
       );
     }
@@ -88,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       loadTask.push(
         fetch(pathPrefix + 'components/footer.html')
           .then(response => response.ok ? response.text() : '')
-          .then(data => { if (data) footerPlaceholder.innerHTML = data; })
+          .then(data => { if (data) footerPlaceholder.innerHTML = processComponentHTML(data, pathPrefix); })
           .catch(err => console.warn('Footer component load error:', err))
       );
     }

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('pen-canvas');
+    const canvas = document.getElementById('pen-canvas') || document.getElementById('pendulum-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 

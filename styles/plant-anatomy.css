@@ -5,7 +5,7 @@ body {
 }
 
 .sim-header { 
-    padding: 30px 24px 40px; 
+    padding: 165px 24px 40px; 
     text-align: center; 
     position: relative; 
     z-index: 10; 
@@ -29,23 +29,40 @@ body {
 }
 
 .back-btn { 
-    position: absolute; 
-    top: 70px; 
-    left: 24px; 
-    background: rgba(255,255,255,0.1); 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12); 
     color: white; 
-    padding: 8px 16px; 
+    padding: 8px 18px; 
     border-radius: 50px; 
     text-decoration: none; 
     font-size: 0.9rem; 
+    font-weight: 500;
     transition: all 0.3s ease; 
-    backdrop-filter: blur(5px); 
-    border: 1px solid rgba(255,255,255,0.3); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    margin: 0 auto 16px;
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 10;
+    white-space: nowrap;
+    touch-action: manipulation;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .sim-header { padding: 175px 16px 40px; }
 }
 
 .back-btn:hover { 
     background: white; 
     color: #1b5e20; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .sim-app-container { 

@@ -476,9 +476,11 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
 
   <!-- Hero Header -->
   <header class="holiday-hero">
-    <div class="back-btn-container">
-      <a href="/linkhub" onclick="if(document.referrer) { history.back(); return false; }" class="back-link-btn"><i class="fas fa-arrow-left"></i> Back</a>
-    </div>
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <span aria-current="page">Holidays Calendar</span>
+    </nav>
     <h1>Academic Leaves &amp; Holidays</h1>
     <p>Holiday list and seasonal break calendar for the academic session 2026-27. Plan your studies and activities ahead.</p>
   </header>
