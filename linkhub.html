@@ -215,6 +215,28 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       transform: translateX(5px);
     }
   </style>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://drapjakicbjb.ac.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Link Hub",
+        "item": "https://drapjakicbjb.ac.in/linkhub"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -234,6 +256,11 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
   <div id="header-placeholder"></div>
 
   <header class="link-hub-hero">
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <span aria-current="page">Link Hub</span>
+    </nav>
     <h1>Link Hub</h1>
     <p>Central Access to All School Portals & Digital Resources</p>
     <div class="interactive-cta-container">

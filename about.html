@@ -148,6 +148,28 @@
   </style>
   <link rel="preload" href="styles/main.min.css" as="style" />
   <link rel="stylesheet" href="styles/main.min.css" />
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://drapjakicbjb.ac.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://drapjakicbjb.ac.in/about"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -158,6 +180,11 @@
   <div id="header-placeholder"></div>
 
   <header class="page-header">
+    <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <span>/</span>
+      <span aria-current="page">About Us</span>
+    </nav>
     <h1>About Our Institution</h1>
     <p>Empowering students with holistic education, scientific inquiry, and ethical leadership since 2008.</p>
   </header>

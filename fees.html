@@ -694,6 +694,28 @@
       }
     }
   </style>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://drapjakicbjb.ac.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Fee Structure",
+        "item": "https://drapjakicbjb.ac.in/fees"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -709,6 +731,11 @@
     <!-- Hero Section -->
     <section class="fees-hero">
       <div class="container">
+        <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/"><i class="fas fa-home"></i> Home</a>
+          <span>/</span>
+          <span aria-current="page">Fee Structure</span>
+        </nav>
         <h1>School Fee Structure</h1>
         <p>Session 2026-2027 — Transparent and structured educational charges for all academic wings and media options.
         </p>

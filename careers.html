@@ -680,6 +680,26 @@
     "description": "All-inclusive career guidance portal featuring dropdown guides for 120+ degree courses, competitive exams, salary prospects, and job roles across all academic & vocational streams."
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://drapjakicbjb.ac.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Careers",
+        "item": "https://drapjakicbjb.ac.in/careers"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -694,6 +714,11 @@
   <main>
     <!-- Hero Header -->
     <header class="careers-hero">
+      <nav class="portal-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <span>/</span>
+        <span aria-current="page">Careers</span>
+      </nav>
       <h1>All-Inclusive Career <span>Opportunities & Guidance</span></h1>
       <p>Explore every single degree program, national entrance exam, government commission, specialized trade, and global career path. Click any category dropdown below to expand exhaustive details.</p>
 
