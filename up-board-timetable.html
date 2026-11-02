@@ -46,6 +46,7 @@
   <title>UP Board Exam Time Table 2026-27 | Class 10th & 12th Date Sheet | Dr. A.P.J. Abdul Kalam Inter College</title>
   <meta name="description" content="Official UPMSP UP Board Exam Time Table 2026-27 for Class 10 (High School) & Class 12 (Intermediate). Check complete subject-wise exam dates, morning & evening shift timings, syllabus code, guidelines & download official date sheet PDF." />
   <meta name="keywords" content="UP Board exam time table, UP board date sheet 2026 27, UPMSP class 10 time table, UPMSP class 12 time table, High School exam date sheet, Intermediate board exam schedule, UP board basti, Dr APJ Abdul Kalam Inter College exam schedule, upmsp edu in date sheet" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://drapjakicbjb.ac.in/up-board-timetable" />
 
   <!-- Open Graph / Facebook -->
@@ -138,7 +139,7 @@
                   radial-gradient(circle at 10% 80%, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
                   linear-gradient(135deg, var(--secondary-dark) 0%, #0B192C 60%, #152238 100%);
       color: #FFFFFF;
-      padding: 145px 24px 55px;
+      padding: 180px 24px 60px;
       position: relative;
       overflow: hidden;
       text-align: center;
@@ -164,13 +165,14 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 6px 16px;
+      padding: 7px 18px;
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 22px;
+      margin-top: 10px;
+      margin-bottom: 24px;
       backdrop-filter: blur(8px);
     }
     .portal-breadcrumbs a { color: rgba(255, 255, 255, 0.85); text-decoration: none; transition: var(--transition); }
@@ -1413,13 +1415,15 @@
     /* Media Queries for full device responsiveness */
     @media screen and (max-width: 992px) {
       .support-callout-grid { grid-template-columns: 1fr; }
-      .timetable-hero { padding: 135px 20px 50px; }
+      .timetable-hero { padding: 168px 20px 55px; }
     }
 
     @media screen and (max-width: 768px) {
       .timetable-table-card { display: none; }
       .mobile-cards-grid { display: grid; }
       .timetable-wrapper { margin: 24px auto 60px; padding: 0 16px; }
+      .timetable-hero { padding: 160px 16px 50px; }
+      .portal-breadcrumbs { margin-top: 6px; margin-bottom: 20px; font-size: 0.8rem; padding: 6px 14px; }
       .class-view-selector-wrap { padding: 18px 16px; border-radius: var(--radius-lg); margin-bottom: 20px; }
       .class-selector-header-box { margin-bottom: 14px; }
       .class-selector-cards { grid-template-columns: 1fr; gap: 12px; }
@@ -1446,6 +1450,8 @@
     }
 
     @media screen and (max-width: 480px) {
+      .timetable-hero { padding: 154px 14px 45px; }
+      .portal-breadcrumbs { margin-top: 4px; margin-bottom: 18px; font-size: 0.76rem; padding: 5px 12px; }
       .timetable-wrapper { padding: 0 12px; margin-top: 18px; margin-bottom: 50px; }
       .class-view-selector-wrap { padding: 14px 12px; margin-bottom: 16px; border-radius: 16px; }
       .class-selector-heading { font-size: 1.15rem; }
@@ -1488,10 +1494,19 @@
       #header-placeholder,
       #footer-placeholder,
       #zoom-controls-placeholder,
+      .zoom-controls-wrapper,
       #scrollTop,
+      #scrollTop.visible,
       #scrollbar-placeholder,
+      #scrollbar-placeholder *,
       .floating-controls,
+      .floating-controls *,
+      .floating-btn,
+      .whatsapp-btn-float,
       .timetable-hero,
+      .hero-glow-circle,
+      .hero-glow-1,
+      .hero-glow-2,
       .class-view-selector-wrap,
       .active-class-banner,
       .controls-panel,
@@ -1501,6 +1516,7 @@
       .no-timetable-results,
       .guidelines-section,
       .support-callout-grid,
+      .support-card::after,
       .faq-accordion-wrap,
       .toast-notification,
       .chat-bubble,
@@ -1508,6 +1524,11 @@
       #chatbot-toggler,
       footer {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        background: none !important;
+        box-shadow: none !important;
       }
 
       /* Full width layout reset */
@@ -1530,12 +1551,20 @@
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 14px !important;
+        gap: 16px !important;
         margin-bottom: 8px !important;
       }
-      .print-school-logo i {
-        font-size: 26pt !important;
-        color: #000000 !important;
+      .print-school-logo {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+      }
+      .print-school-logo-img {
+        width: 65px !important;
+        height: 65px !important;
+        object-fit: contain !important;
+        display: block !important;
       }
       .print-school-name {
         font-size: 15pt !important;
@@ -1699,6 +1728,7 @@
     "@graph": [
       {
         "@type": "BreadcrumbList",
+        "name": "UP Board Exam Time Table",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -1826,7 +1856,7 @@
     <div class="print-official-header" id="printOfficialHeader">
       <div class="print-header-top">
         <div class="print-school-logo">
-          <i class="fas fa-graduation-cap"></i>
+          <img src="/assets/images/new_logo.webp" alt="Dr. A.P.J. Abdul Kalam Inter College Logo" class="print-school-logo-img" width="65" height="65" />
         </div>
         <div class="print-school-info">
           <h1 class="print-school-name">Dr. A.P.J. Abdul Kalam Inter College</h1>
@@ -2991,12 +3021,25 @@
         // 3. Ensure banner and print letterhead are synchronized
         updateActiveBanner();
 
-        // 4. Trigger print
+        // 4. Force hide floating buttons before print
+        const scrollBtn = document.getElementById('scrollTop');
+        if (scrollBtn) {
+          scrollBtn.classList.remove('visible');
+          scrollBtn.style.setProperty('display', 'none', 'important');
+        }
+        const scrollbarHolder = document.getElementById('scrollbar-placeholder');
+        if (scrollbarHolder) {
+          scrollbarHolder.style.setProperty('display', 'none', 'important');
+        }
+
+        // 5. Trigger print
         window.print();
 
-        // 5. Restore document title after print dialog closes
+        // 6. Restore document title and floating buttons after print dialog closes
         setTimeout(() => {
           document.title = originalTitle;
+          if (scrollbarHolder) scrollbarHolder.style.display = '';
+          if (scrollBtn) scrollBtn.style.display = '';
         }, 1200);
       } catch (e) {
         console.error('Print failed:', e);
@@ -3004,6 +3047,26 @@
         window.print();
       }
     }
+
+    // Print event listeners to guarantee floating orange buttons are removed during print
+    window.addEventListener('beforeprint', () => {
+      const scrollBtn = document.getElementById('scrollTop');
+      if (scrollBtn) {
+        scrollBtn.classList.remove('visible');
+        scrollBtn.style.setProperty('display', 'none', 'important');
+      }
+      const scrollbarHolder = document.getElementById('scrollbar-placeholder');
+      if (scrollbarHolder) {
+        scrollbarHolder.style.setProperty('display', 'none', 'important');
+      }
+    });
+
+    window.addEventListener('afterprint', () => {
+      const scrollBtn = document.getElementById('scrollTop');
+      if (scrollBtn) scrollBtn.style.display = '';
+      const scrollbarHolder = document.getElementById('scrollbar-placeholder');
+      if (scrollbarHolder) scrollbarHolder.style.display = '';
+    });
 
     // Web Share API or Clipboard Copy with Exact Filter State
     async function shareTimeTable() {

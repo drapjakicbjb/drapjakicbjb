@@ -3647,3 +3647,15 @@ textarea,
 .portal-breadcrumbs span {
     opacity: .85
 }
+
+@media print {
+    #scrollTop,
+    #scrollTop.visible,
+    #scrollbar-placeholder,
+    .floating-controls,
+    .zoom-controls-wrapper {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}

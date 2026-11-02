@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -55,6 +55,7 @@
   <meta name="twitter:description" content="Discover college streams: Science (PCM/PCB/PCMB), Agriculture, Commerce, Arts, Home Science, and Vocational NSQF streams for High School and Intermediate students." />
   <meta name="twitter:image" content="https://drapjakicbjb.ac.in/assets/images/logo.webp" />
   <link rel="icon" type="image/x-icon" href="assets/images/logo.ico" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://drapjakicbjb.ac.in/streams" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -454,6 +455,67 @@
       margin-top: auto;
     }
 
+        /* Career Quicklinks inside Stream Cards */
+    .stream-career-quicklinks {
+      margin: 14px 0 16px;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .quicklinks-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .stream-career-chips-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .stream-career-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: white;
+      color: var(--navy);
+      padding: 5px 11px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid #cbd5e1;
+      transition: all 0.2s ease;
+    }
+
+    .stream-career-chip:hover {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(13, 27, 42, 0.15);
+    }
+
+    .stream-career-chip i {
+      font-size: 0.72rem;
+      color: var(--saffron);
+    }
+
+    .stream-career-chip:hover i {
+      color: #ffd166;
+    }
     .btn-explore-career:hover {
       background: var(--saffron);
       color: white;
@@ -592,6 +654,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "name": "Academic Streams",
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -701,8 +764,16 @@
               <span class="subject-chip">General Hindi</span>
               <span class="subject-chip">English</span>
             </div>
-            <a href="/careers#science-pcm" class="btn-explore-career">
-              <span>View Career Opportunities</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=science-pcm&career=career-pcm-cs-ai" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> B.Tech AI & CS</a>
+                <a href="/careers?stream=science-pcm&career=career-pcm-aviation-defense" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> NDA / Pilot</a>
+                <a href="/careers?stream=science-pcm&career=career-pcm-merchant-navy" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Merchant Navy</a>
+              </div>
+            </div>
+            <a href="/careers?stream=science-pcm" class="btn-explore-career">
+              <span>Explore All PCM Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -723,8 +794,16 @@
               <span class="subject-chip">General Hindi</span>
               <span class="subject-chip">English</span>
             </div>
-            <a href="/careers#science-pcb" class="btn-explore-career">
-              <span>View Career Opportunities</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=science-pcb&career=career-pcb-medical-neet" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> MBBS / NEET</a>
+                <a href="/careers?stream=science-pcb&career=career-pcb-pharmacy-clinical" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> B.Pharm / Pharma</a>
+                <a href="/careers?stream=science-pcb&career=career-pcb-nursing-healthcare" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> B.Sc Nursing</a>
+              </div>
+            </div>
+            <a href="/careers?stream=science-pcb" class="btn-explore-career">
+              <span>Explore All PCB Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -745,8 +824,15 @@
               <span class="subject-chip">Biology</span>
               <span class="subject-chip">Hindi & English</span>
             </div>
-            <a href="/careers#pcmb" class="btn-explore-career">
-              <span>View Dual Pathways</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=pcmb&career=career-pcmb-biomedical" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Biomedical Engg</a>
+                <a href="/careers?stream=pcmb&career=career-pcmb-bioinformatics" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Bioinformatics</a>
+              </div>
+            </div>
+            <a href="/careers?stream=pcmb" class="btn-explore-career">
+              <span>Explore PCMB Dual Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -767,8 +853,16 @@
               <span class="subject-chip">Animal Husbandry</span>
               <span class="subject-chip">Hindi & English</span>
             </div>
-            <a href="/careers#agri" class="btn-explore-career">
-              <span>View Agri Careers</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=agri&career=career-agri-icar-degree" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> B.Sc (Hons) Agri</a>
+                <a href="/careers?stream=agri&career=career-agri-tech-drone" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> AgriTech & Drones</a>
+                <a href="/careers?stream=agri&career=career-agri-business-mgmt" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> NABARD / Banking</a>
+              </div>
+            </div>
+            <a href="/careers?stream=agri" class="btn-explore-career">
+              <span>Explore All Agri Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -789,8 +883,16 @@
               <span class="subject-chip">Business Math / IT</span>
               <span class="subject-chip">Hindi & English</span>
             </div>
-            <a href="/careers#commerce" class="btn-explore-career">
-              <span>View Career Opportunities</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=commerce&career=career-commerce-ca-cma-cs" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> CA / CS / CMA</a>
+                <a href="/careers?stream=commerce&career=career-commerce-management-bba" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> IIM IPM / MBA</a>
+                <a href="/careers?stream=commerce&career=career-commerce-banking-fintech" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> FinTech & Banking</a>
+              </div>
+            </div>
+            <a href="/careers?stream=commerce" class="btn-explore-career">
+              <span>Explore Commerce Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -811,8 +913,16 @@
               <span class="subject-chip">Economics / Civics</span>
               <span class="subject-chip">Hindi & English</span>
             </div>
-            <a href="/careers#arts" class="btn-explore-career">
-              <span>View Career Opportunities</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=arts&career=career-arts-civil-services" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> UPSC IAS / PCS</a>
+                <a href="/careers?stream=arts&career=career-arts-law-judiciary" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Law & Judiciary</a>
+                <a href="/careers?stream=arts&career=career-arts-journalism-media" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Digital Journalism</a>
+              </div>
+            </div>
+            <a href="/careers?stream=arts" class="btn-explore-career">
+              <span>Explore Arts Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -833,8 +943,15 @@
               <span class="subject-chip">Hindi</span>
               <span class="subject-chip">English</span>
             </div>
-            <a href="/careers#vocational" class="btn-explore-career">
-              <span>View Skill Careers</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=vocational&career=career-voc-it-cyber" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> B.Voc Cybersecurity</a>
+                <a href="/careers?stream=vocational&career=career-voc-solar-ev" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Solar & EV Tech</a>
+              </div>
+            </div>
+            <a href="/careers?stream=vocational" class="btn-explore-career">
+              <span>Explore Vocational Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -855,8 +972,15 @@
               <span class="subject-chip">Resource Mgmt</span>
               <span class="subject-chip">Hindi & English</span>
             </div>
-            <a href="/careers#homescience" class="btn-explore-career">
-              <span>View Nutrition Careers</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Career Pathways:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=homescience&career=career-hs-clinical-nutrition" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Clinical Nutrition (RD)</a>
+                <a href="/careers?stream=homescience&career=career-hs-interior-styling" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Interior Architecture</a>
+              </div>
+            </div>
+            <a href="/careers?stream=homescience" class="btn-explore-career">
+              <span>Explore Home Science Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -888,8 +1012,15 @@
               <span class="subject-chip">Hindi</span>
               <span class="subject-chip">English</span>
             </div>
-            <a href="/careers#highschool" class="btn-explore-career">
-              <span>View Onward Pathways</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Pathways Post 10th:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=highschool&career=career-hs-polytechnic" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> JEECUP Polytechnic</a>
+                <a href="/careers?stream=highschool&career=career-hs-iti-trades" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> ITI Trades</a>
+              </div>
+            </div>
+            <a href="/careers?stream=highschool" class="btn-explore-career">
+              <span>Explore 10th Pass Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -910,8 +1041,15 @@
               <span class="subject-chip">Hindi</span>
               <span class="subject-chip">English</span>
             </div>
-            <a href="/careers#highschool" class="btn-explore-career">
-              <span>View Onward Pathways</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Pathways Post 10th:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=commerce" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Senior Commerce Track</a>
+                <a href="/careers?stream=highschool&career=career-hs-polytechnic" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Commercial Diplomas</a>
+              </div>
+            </div>
+            <a href="/careers?stream=highschool" class="btn-explore-career">
+              <span>Explore 10th Pass Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -932,8 +1070,15 @@
               <span class="subject-chip">Hindi</span>
               <span class="subject-chip">English</span>
             </div>
-            <a href="/careers#highschool" class="btn-explore-career">
-              <span>View Onward Pathways</span>
+                        <div class="stream-career-quicklinks">
+              <span class="quicklinks-label"><i class="fas fa-compass"></i> Popular Pathways Post 10th:</span>
+              <div class="stream-career-chips-group">
+                <a href="/careers?stream=arts" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Senior Humanities Track</a>
+                <a href="/careers?stream=highschool&career=career-hs-armed-forces" class="stream-career-chip"><i class="fas fa-external-link-alt"></i> Agniveer Forces</a>
+              </div>
+            </div>
+            <a href="/careers?stream=highschool" class="btn-explore-career">
+              <span>Explore 10th Pass Pathways</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -977,8 +1122,28 @@
       const subjectChips = document.querySelectorAll('.subject-chip');
 
       let currentFilter = 'all';
+      let searchTimer = null;
 
-      function performSearch() {
+      // Update URL with current filter and search
+      function updateStreamsUrl() {
+        const url = new URL(window.location);
+        if (currentFilter && currentFilter !== 'all') {
+          url.searchParams.set('filter', currentFilter);
+        } else {
+          url.searchParams.delete('filter');
+        }
+
+        const query = searchInput ? searchInput.value.trim() : '';
+        if (query) {
+          url.searchParams.set('search', query);
+        } else {
+          url.searchParams.delete('search');
+        }
+
+        window.history.replaceState({ filter: currentFilter, search: query }, '', url.toString());
+      }
+
+      function performSearch(shouldUpdateUrl = true) {
         const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
         
         // Show/hide clear button
@@ -1064,17 +1229,22 @@
             statusBar.textContent = `Found ${visibleCount} of ${totalCards} streams`;
           }
         }
+
+        if (shouldUpdateUrl) {
+          if (searchTimer) clearTimeout(searchTimer);
+          searchTimer = setTimeout(updateStreamsUrl, 300);
+        }
       }
 
       // Input event listener
       if (searchInput) {
-        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('input', () => performSearch(true));
         
         // Keydown Esc handler
         searchInput.addEventListener('keydown', function(e) {
           if (e.key === 'Escape') {
             searchInput.value = '';
-            performSearch();
+            performSearch(true);
           }
         });
       }
@@ -1085,7 +1255,7 @@
           if (searchInput) {
             searchInput.value = '';
             searchInput.focus();
-            performSearch();
+            performSearch(true);
           }
         });
       }
@@ -1100,7 +1270,7 @@
             } else {
               searchInput.value = val;
             }
-            performSearch();
+            performSearch(true);
           }
         });
       });
@@ -1111,7 +1281,7 @@
           const subjectName = this.textContent.trim();
           if (searchInput) {
             searchInput.value = subjectName;
-            performSearch();
+            performSearch(true);
             window.scrollTo({ top: 120, behavior: 'smooth' });
           }
         });
@@ -1123,7 +1293,7 @@
           filterTabs.forEach(t => t.classList.remove('active'));
           this.classList.add('active');
           currentFilter = this.dataset.filter || 'all';
-          performSearch();
+          performSearch(true);
         });
       });
 
@@ -1135,7 +1305,7 @@
           filterTabs.forEach(t => t.classList.remove('active'));
           const allTab = document.querySelector('.filter-tab[data-filter="all"]');
           if (allTab) allTab.classList.add('active');
-          performSearch();
+          performSearch(true);
         });
       }
 
@@ -1153,6 +1323,31 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      // Deep Linking on Load
+      function initStreamsFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filterParam = urlParams.get('filter');
+        const searchParam = urlParams.get('search');
+
+        if (filterParam) {
+          const targetTab = Array.from(filterTabs).find(t => t.dataset.filter === filterParam);
+          if (targetTab) {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            targetTab.classList.add('active');
+            currentFilter = filterParam;
+          }
+        }
+
+        if (searchParam && searchInput) {
+          searchInput.value = searchParam;
+        }
+
+        performSearch(false);
+      }
+
+      window.addEventListener('popstate', initStreamsFromUrl);
+      initStreamsFromUrl();
     });
   </script>
 </body>
