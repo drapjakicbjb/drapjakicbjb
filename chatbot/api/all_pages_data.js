@@ -127,10 +127,18 @@ window.KalamAllPagesData = {
       url: "/noticeboard",
       title: "Official School Noticeboard",
       recentNotices: [
+        { title: "UP Board Examination Time Table (Date Sheet) 2026-27 Announced", date: "November 02, 2026", details: "UPMSP Class 10 & 12 Board examination date sheet released. Morning shift (8:30-11:45 AM) & Evening shift (2:00-5:15 PM). Detailed schedule available at /up-board-timetable." },
         { title: " विद्यालय के समय में बदलाव के सम्बन्ध में", date: "July 11, 2026", details: "दिनाँक 13 जुलाई 2026 से विद्यालय का समय प्रातः 9:30 बजे से 2:30 बजे तक रहेगा। छात्र पानी की बोतल व लंच बॉक्स साथ लाएं।" },
         { title: "UP Board Registration for Class 9 and 11 (Session 2026-27)", date: "July 09, 2026", details: "Registration active for UP Board Class 9 and 11. Submit documents before 05 August 2026 (TC/Marksheet, Aadhaar, Photo)." },
         { title: "Admissions Open for Academic Session 2026-27", date: "March 10, 2026", details: "Registrations open for Nursery to Class 11 at school counter." }
       ]
+    },
+
+    upBoardTimetable: {
+      url: "/up-board-timetable",
+      title: "UP Board Exam Time Table (Date Sheet)",
+      details: "Official UPMSP High School (Class 10th) and Intermediate (Class 12th) board examination schedule. Morning Shift: 08:30 AM to 11:45 AM. Evening Shift: 02:00 PM to 05:15 PM. Includes printable date sheet and guidelines.",
+      keyDates: "Class 10 & 12 exams begin in mid-February. Admit cards distributed at school office 10-15 days prior."
     },
 
     careers: {

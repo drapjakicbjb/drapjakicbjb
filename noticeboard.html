@@ -671,8 +671,9 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
           <p>${n.content}</p>
           ${n.fileUrl ? `
             <div class="notice-action">
-              <a href="${n.fileUrl}" class="btn-download-notice" target="_blank">
-                <i class="fas fa-file-pdf"></i> Download Circular
+              <a href="${n.fileUrl}" class="btn-download-notice" ${n.fileUrl.endsWith('.pdf') ? 'target="_blank" rel="noopener"' : ''}>
+                <i class="${n.fileUrl.includes('timetable') ? 'fas fa-calendar-check' : (n.fileUrl.endsWith('.pdf') ? 'fas fa-file-pdf' : 'fas fa-arrow-right')}"></i> 
+                ${n.fileUrl.includes('timetable') ? 'View UP Board Time Table' : (n.fileUrl.endsWith('.pdf') ? 'Download Circular' : 'View Details')}
               </a>
             </div>
           ` : ''}

@@ -1,5 +1,14 @@
 const NOTICES = [
   {
+    id: 4,
+    title: "UP Board Examination Time Table (Date Sheet) 2026-27 Announced",
+    date: "November 02, 2026",
+    category: "examination",
+    isImportant: true,
+    fileUrl: "/up-board-timetable",
+    content: "उत्तर प्रदेश माध्यमिक शिक्षा परिषद (UPMSP) द्वारा हाईस्कूल (Class 10th) एवं इण्टरमीडिएट (Class 12th) बोर्ड परीक्षा की आधिकारिक समय-सारणी (Date Sheet) जारी कर दी गई है। छात्र-छात्राएं कक्षा 10वीं व 12वीं का टाइम टेबल अलग-अलग (Separate) देखने हेतु नीचे दिए गए बटन पर क्लिक करें।<br><br><b>परीक्षा पाली:</b> प्रातः पाली (8:30 AM - 11:45 AM) एवं सायं पाली (2:00 PM - 5:15 PM)<br><br><a href='/up-board-timetable' class='btn-notice-inline' style='display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:8px 18px;background:linear-gradient(135deg,#ff6b00,#ff8c42);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:0.88rem;box-shadow:0 2px 8px rgba(255,107,0,0.3);'><i class='fas fa-calendar-alt'></i> View Separate Time Table</a>"
+  },
+  {
     id: 3,
     title: "विद्यालय के समय में बदलाव के सम्बन्ध में",
     date: "July 11, 2026",

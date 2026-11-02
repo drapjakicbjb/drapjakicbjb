@@ -215,6 +215,7 @@ window.KalamChatbotKB = {
   noticeboard: {
     pageUrl: "/noticeboard",
     recentAlerts: [
+      "UP Board Examination Time Table (Date Sheet) 2026-27 Announced. Check /up-board-timetable for dates and shift timings.",
       "Admissions for 2026-27 session are currently closed.",
       "Monthly Assessment / Quarterly Exams schedule released on Notice Board.",
       "UP Board exam preparation classes and extra guidance sessions active for Class 10 & 12.",
@@ -253,6 +254,7 @@ window.KalamChatbotKB = {
     streams: "/streams",
     holidays: "/holidays",
     noticeboard: "/noticeboard",
+    timetable: "/up-board-timetable",
     careers: "/careers",
     studyHub: "/study",
     linkhub: "/linkhub",
