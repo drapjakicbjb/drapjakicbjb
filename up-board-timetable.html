@@ -1824,7 +1824,7 @@
             <i class="fas fa-stopwatch"></i> Countdown to UP Board Exams 2027
           </div>
           <span class="countdown-status-badge">
-            <i class="fas fa-circle" style="font-size: 0.55rem; vertical-align: middle;"></i> Starting 18 Feb
+            <i class="fas fa-circle" style="font-size: 0.55rem; vertical-align: middle;"></i> Starting 05 Feb
           </span>
         </div>
         <div class="countdown-grid">
@@ -1898,7 +1898,7 @@
               <span class="class-tab-timing"><i class="fas fa-sun"></i> 08:30 AM – 11:45 AM</span>
             </div>
             <h3 class="class-tab-title">Class 10th Time Table</h3>
-            <p class="class-tab-desc">10 Papers • Morning Shift • OMR Pattern</p>
+            <p class="class-tab-desc">Full Schedule • Morning Shift • OMR Pattern</p>
           </div>
           <div class="class-tab-indicator">
             <i class="fas fa-check"></i>
@@ -2243,207 +2243,76 @@
 
   <!-- Interactive Timetable Data & Filtering Logic -->
   <script>
-    // Authentic UPMSP Board Exam Date Sheet Data
+    // Authentic UPMSP Board Exam Date Sheet Data (Session 2026-27)
+    // Source: Official UPMSP Vigyapti (05.02.2027 to 24.02.2027)
     const TIMETABLE_DATA = [
+      // Day 1: 05 Feb 2027 (Friday)
       {
         id: 1,
-        date: "18 Feb 2027",
-        dateRaw: "2027-02-18",
-        day: "Thursday",
+        date: "05 Feb 2027",
+        dateRaw: "2027-02-05",
+        day: "Friday",
         shift: "morning",
         shiftText: "Morning (8:30 – 11:45 AM)",
         classNum: "10",
-        subjectHindi: "प्रारम्भिक हिन्दी / हिन्दी",
+        subjectHindi: "हिन्दी / प्रारम्भिक हिन्दी",
         subjectEnglish: "Hindi / Elementary Hindi",
         paperCode: "901",
         stream: "common",
-        streamText: "All Streams",
-        notes: "First 15 minutes strictly for reading question paper."
+        streamText: "All Students",
+        notes: "Compulsory opening paper. First 15 minutes exclusively for reading question paper (20 OMR MCQs + 50 marks descriptive)."
       },
       {
         id: 2,
-        date: "18 Feb 2027",
-        dateRaw: "2027-02-18",
-        day: "Thursday",
+        date: "05 Feb 2027",
+        dateRaw: "2027-02-05",
+        day: "Friday",
         shift: "evening",
         shiftText: "Evening (2:00 – 5:15 PM)",
         classNum: "12",
-        subjectHindi: "सामान्य हिन्दी / हिन्दी",
-        subjectEnglish: "General Hindi / Hindi",
-        paperCode: "102",
+        subjectHindi: "हिन्दी / सामान्य हिन्दी",
+        subjectEnglish: "Hindi / General Hindi",
+        paperCode: "101 / 102",
         stream: "common",
         streamText: "All Streams",
-        notes: "Common compulsory paper for all streams."
+        notes: "Compulsory Hindi examination for Science, Commerce & Arts stream students."
       },
+
+      // Day 2: 08 Feb 2027 (Monday)
       {
         id: 3,
-        date: "20 Feb 2027",
-        dateRaw: "2027-02-20",
-        day: "Saturday",
-        shift: "morning",
-        shiftText: "Morning (8:30 – 11:45 AM)",
-        classNum: "10",
-        subjectHindi: "गणित (Mathematics)",
-        subjectEnglish: "Mathematics",
-        paperCode: "928",
-        stream: "common",
-        streamText: "All Students",
-        notes: "Carry geometry box (ruler, compass, protractor)."
-      },
-      {
-        id: 4,
-        date: "20 Feb 2027",
-        dateRaw: "2027-02-20",
-        day: "Saturday",
-        shift: "evening",
-        shiftText: "Evening (2:00 – 5:15 PM)",
-        classNum: "12",
-        subjectHindi: "नागरिक शास्त्र / व्यवसाय अध्ययन",
-        subjectEnglish: "Civics / Business Studies",
-        paperCode: "114 / 130",
-        stream: "arts",
-        streamText: "Arts & Commerce",
-        notes: "Separate question papers for Arts and Commerce students."
-      },
-      {
-        id: 5,
-        date: "23 Feb 2027",
-        dateRaw: "2027-02-23",
-        day: "Tuesday",
-        shift: "morning",
-        shiftText: "Morning (8:30 – 11:45 AM)",
-        classNum: "10",
-        subjectHindi: "संस्कृत (Sanskrit)",
-        subjectEnglish: "Sanskrit",
-        paperCode: "905",
-        stream: "common",
-        streamText: "Elective",
-        notes: "For students with Sanskrit language option."
-      },
-      {
-        id: 6,
-        date: "23 Feb 2027",
-        dateRaw: "2027-02-23",
-        day: "Tuesday",
-        shift: "evening",
-        shiftText: "Evening (2:00 – 5:15 PM)",
-        classNum: "12",
-        subjectHindi: "अर्थशास्त्र / चित्रकला",
-        subjectEnglish: "Economics / Drawing (Design)",
-        paperCode: "115 / 139",
-        stream: "arts",
-        streamText: "Arts & Commerce",
-        notes: "Economics theory for Arts/Commerce candidates."
-      },
-      {
-        id: 7,
-        date: "24 Feb 2027",
-        dateRaw: "2027-02-24",
-        day: "Wednesday",
-        shift: "morning",
-        shiftText: "Morning (8:30 – 11:45 AM)",
-        classNum: "10",
-        subjectHindi: "गृह विज्ञान (केवल बालिकाओं हेतु)",
-        subjectEnglish: "Home Science (For Girls)",
-        paperCode: "904",
-        stream: "common",
-        streamText: "High School",
-        notes: "Compulsory for enrolled girl candidates."
-      },
-      {
-        id: 8,
-        date: "24 Feb 2027",
-        dateRaw: "2027-02-24",
-        day: "Wednesday",
-        shift: "evening",
-        shiftText: "Evening (2:00 – 5:15 PM)",
-        classNum: "12",
-        subjectHindi: "भूगोल / बहीखाता तथा लेखाशास्त्र",
-        subjectEnglish: "Geography / Accountancy",
-        paperCode: "116 / 131",
-        stream: "commerce",
-        streamText: "Commerce & Arts",
-        notes: "Accountancy paper for Commerce stream."
-      },
-      {
-        id: 9,
-        date: "25 Feb 2027",
-        dateRaw: "2027-02-25",
-        day: "Thursday",
-        shift: "morning",
-        shiftText: "Morning (8:30 – 11:45 AM)",
-        classNum: "10",
-        subjectHindi: "वाणिज्य (Commerce)",
-        subjectEnglish: "Commerce",
-        paperCode: "916",
-        stream: "common",
-        streamText: "High School",
-        notes: "For students opting for High School Commerce."
-      },
-      {
-        id: 10,
-        date: "25 Feb 2027",
-        dateRaw: "2027-02-25",
-        day: "Thursday",
-        shift: "evening",
-        shiftText: "Evening (2:00 – 5:15 PM)",
-        classNum: "12",
-        subjectHindi: "भौतिक विज्ञान / मनोविज्ञान",
-        subjectEnglish: "Physics / Psychology",
-        paperCode: "151 / 112",
-        stream: "science",
-        streamText: "Science & Arts",
-        notes: "Physics Paper (Theory 70 Marks) for Science stream."
-      },
-      {
-        id: 11,
-        date: "26 Feb 2027",
-        dateRaw: "2027-02-26",
-        day: "Friday",
-        shift: "morning",
-        shiftText: "Morning (8:30 – 11:45 AM)",
-        classNum: "10",
-        subjectHindi: "विज्ञान (Science)",
-        subjectEnglish: "Science (Physics, Chem, Bio)",
-        paperCode: "931",
-        stream: "common",
-        streamText: "All Students",
-        notes: "20 OMR MCQs + descriptive sections (Physics/Chem/Bio)."
-      },
-      {
-        id: 12,
-        date: "26 Feb 2027",
-        dateRaw: "2027-02-26",
-        day: "Friday",
-        shift: "evening",
-        shiftText: "Evening (2:00 – 5:15 PM)",
-        classNum: "12",
-        subjectHindi: "इतिहास (History)",
-        subjectEnglish: "History",
-        paperCode: "117",
-        stream: "arts",
-        streamText: "Arts Stream",
-        notes: "Ancient, Medieval, and Modern Indian History."
-      },
-      {
-        id: 13,
-        date: "01 Mar 2027",
-        dateRaw: "2027-03-01",
+        date: "08 Feb 2027",
+        dateRaw: "2027-02-08",
         day: "Monday",
         shift: "morning",
         shiftText: "Morning (8:30 – 11:45 AM)",
         classNum: "10",
-        subjectHindi: "अंग्रेजी (English)",
-        subjectEnglish: "English",
-        paperCode: "917",
+        subjectHindi: "सामाजिक विज्ञान (Social Science)",
+        subjectEnglish: "Social Science (Hist, Geog, Civ, Eco)",
+        paperCode: "932",
         stream: "common",
         streamText: "All Students",
-        notes: "Reading comprehension, grammar, writing & literature."
+        notes: "20 OMR MCQs + descriptive section and map-pointing work (India physical/political maps provided)."
       },
       {
-        id: 14,
-        date: "01 Mar 2027",
-        dateRaw: "2027-03-01",
+        id: 4,
+        date: "08 Feb 2027",
+        dateRaw: "2027-02-08",
+        day: "Monday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "व्यावसायिक शिक्षा वर्ग (काष्ठ शिल्प, सिलाई, खाद्य संरक्षण आदि) — प्रथम प्रश्नपत्र",
+        subjectEnglish: "Vocational Stream — Paper I",
+        paperCode: "160",
+        stream: "commerce",
+        streamText: "Vocational Stream",
+        notes: "For enrolled Vocational Stream Class 12 candidates."
+      },
+      {
+        id: 5,
+        date: "08 Feb 2027",
+        dateRaw: "2027-02-08",
         day: "Monday",
         shift: "evening",
         shiftText: "Evening (2:00 – 5:15 PM)",
@@ -2453,58 +2322,169 @@
         paperCode: "104",
         stream: "common",
         streamText: "All Streams",
-        notes: "Compulsory English examination for all Class 12 candidates."
+        notes: "Compulsory English paper for Science, Commerce & Arts (Reading, Grammar, Writing & Literature)."
       },
+
+      // Day 3: 09 Feb 2027 (Tuesday)
       {
-        id: 15,
-        date: "02 Mar 2027",
-        dateRaw: "2027-03-02",
+        id: 6,
+        date: "09 Feb 2027",
+        dateRaw: "2027-02-09",
         day: "Tuesday",
         shift: "morning",
         shiftText: "Morning (8:30 – 11:45 AM)",
         classNum: "10",
-        subjectHindi: "चित्रकला (Drawing / Art)",
-        subjectEnglish: "Drawing & Art",
-        paperCode: "934",
+        subjectHindi: "एन०सी०सी० (NCC)",
+        subjectEnglish: "National Cadet Corps (NCC)",
+        paperCode: "924",
         stream: "common",
-        streamText: "High School",
-        notes: "Bring drawing board, color pencils, water colors."
+        streamText: "Elective",
+        notes: "For NCC enrolled High School candidates."
       },
       {
-        id: 16,
-        date: "02 Mar 2027",
-        dateRaw: "2027-03-02",
+        id: 7,
+        date: "09 Feb 2027",
+        dateRaw: "2027-02-09",
+        day: "Tuesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "कृषि शस्य विज्ञान (एग्रोनामी) — प्रथम व षष्ठम् प्रश्नपत्र",
+        subjectEnglish: "Agronomy — Paper I & VI",
+        paperCode: "161",
+        stream: "science",
+        streamText: "Agriculture",
+        notes: "For Agriculture Group Part 1 & Part 2 candidates."
+      },
+      {
+        id: 8,
+        date: "09 Feb 2027",
+        dateRaw: "2027-02-09",
+        day: "Tuesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "10",
+        subjectHindi: "मानव विज्ञान (Human Science)",
+        subjectEnglish: "Anthropology / Human Science",
+        paperCode: "923",
+        stream: "common",
+        streamText: "Elective",
+        notes: "High School elective paper."
+      },
+      {
+        id: 9,
+        date: "09 Feb 2027",
+        dateRaw: "2027-02-09",
         day: "Tuesday",
         shift: "evening",
         shiftText: "Evening (2:00 – 5:15 PM)",
         classNum: "12",
-        subjectHindi: "रसायन विज्ञान / समाजशास्त्र",
-        subjectEnglish: "Chemistry / Sociology",
-        paperCode: "152 / 118",
-        stream: "science",
-        streamText: "Science & Arts",
-        notes: "Chemistry Theory (70 Marks) for Science stream."
+        subjectHindi: "नागरिक शास्त्र (Civics / Political Science)",
+        subjectEnglish: "Civics / Political Science",
+        paperCode: "114",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Core Civics theory examination for Arts stream candidates."
       },
+
+      // Day 4: 10 Feb 2027 (Wednesday)
       {
-        id: 17,
-        date: "03 Mar 2027",
-        dateRaw: "2027-03-03",
+        id: 10,
+        date: "10 Feb 2027",
+        dateRaw: "2027-02-10",
         day: "Wednesday",
         shift: "morning",
         shiftText: "Morning (8:30 – 11:45 AM)",
         classNum: "10",
-        subjectHindi: "कंप्यूटर (Computer)",
-        subjectEnglish: "Computer Applications",
-        paperCode: "933",
+        subjectHindi: "अंग्रेजी (English)",
+        subjectEnglish: "English",
+        paperCode: "917",
         stream: "common",
-        streamText: "Elective",
-        notes: "Theory examination in Computer Basics & Logic."
+        streamText: "All Students",
+        notes: "20 OMR MCQs + Section B descriptive (Unseen passages, letter/essay, grammar, poetry & prose)."
       },
       {
-        id: 18,
-        date: "03 Mar 2027",
-        dateRaw: "2027-03-03",
+        id: 11,
+        date: "10 Feb 2027",
+        dateRaw: "2027-02-10",
         day: "Wednesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "व्यावसायिक शिक्षा वर्ग — द्वितीय प्रश्नपत्र",
+        subjectEnglish: "Vocational Stream — Paper II",
+        paperCode: "162",
+        stream: "commerce",
+        streamText: "Vocational Stream",
+        notes: "For enrolled Vocational candidates."
+      },
+      {
+        id: 12,
+        date: "10 Feb 2027",
+        dateRaw: "2027-02-10",
+        day: "Wednesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "10",
+        subjectHindi: "व्यावसायिक विषय (इलेक्ट्रीशियन, हेल्थकेयर, ऑटोमोबाइल, आईटी, खुदरा व्यापार आदि)",
+        subjectEnglish: "Vocational Trades (Electrician, Healthcare, IT, Retail)",
+        paperCode: "940-950",
+        stream: "common",
+        streamText: "Vocational",
+        notes: "High School skill/vocational trades theory."
+      },
+      {
+        id: 13,
+        date: "10 Feb 2027",
+        dateRaw: "2027-02-10",
+        day: "Wednesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "इतिहास (History)",
+        subjectEnglish: "History",
+        paperCode: "117",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Ancient, Medieval & Modern Indian History for Arts stream."
+      },
+
+      // Day 5: 12 Feb 2027 (Friday)
+      {
+        id: 14,
+        date: "12 Feb 2027",
+        dateRaw: "2027-02-12",
+        day: "Friday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "गृह विज्ञान (केवल बालिकाओं हेतु / बालकों हेतु)",
+        subjectEnglish: "Home Science (For Girls / Non-compulsory Boys)",
+        paperCode: "904",
+        stream: "common",
+        streamText: "High School",
+        notes: "20 OMR MCQs + descriptive sections in food, health, home economics and child care."
+      },
+      {
+        id: 15,
+        date: "12 Feb 2027",
+        dateRaw: "2027-02-12",
+        day: "Friday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "व्यावसायिक शिक्षा वर्ग — तृतीय प्रश्नपत्र",
+        subjectEnglish: "Vocational Stream — Paper III",
+        paperCode: "163",
+        stream: "commerce",
+        streamText: "Vocational Stream",
+        notes: "Vocational Group Paper III."
+      },
+      {
+        id: 16,
+        date: "12 Feb 2027",
+        dateRaw: "2027-02-12",
+        day: "Friday",
         shift: "evening",
         shiftText: "Evening (2:00 – 5:15 PM)",
         classNum: "12",
@@ -2513,39 +2493,525 @@
         paperCode: "153 / 154",
         stream: "science",
         streamText: "Science Stream",
-        notes: "Biology for PCB students; Mathematics for PCM candidates."
+        notes: "Biology for PCB candidates (70 theory + 30 practical); Mathematics for PCM candidates (100 theory marks)."
+      },
+
+      // Day 6: 13 Feb 2027 (Saturday)
+      {
+        id: 17,
+        date: "13 Feb 2027",
+        dateRaw: "2027-02-13",
+        day: "Saturday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "गणित (Mathematics)",
+        subjectEnglish: "Mathematics",
+        paperCode: "928",
+        stream: "common",
+        streamText: "All Students",
+        notes: "20 OMR MCQs + 50 marks descriptive. Bring transparent geometry instruments (ruler, compass, protractor)."
+      },
+      {
+        id: 18,
+        date: "13 Feb 2027",
+        dateRaw: "2027-02-13",
+        day: "Saturday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "शस्य विज्ञान (व्यावसायिक) / कृषि वनस्पति विज्ञान / कृषि अर्थशास्त्र",
+        subjectEnglish: "Agricultural Botany / Agricultural Economics",
+        paperCode: "164",
+        stream: "science",
+        streamText: "Agriculture",
+        notes: "Agriculture group specialized paper."
       },
       {
         id: 19,
-        date: "05 Mar 2027",
-        dateRaw: "2027-03-05",
+        date: "13 Feb 2027",
+        dateRaw: "2027-02-13",
+        day: "Saturday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "अर्थशास्त्र (Economics)",
+        subjectEnglish: "Economics",
+        paperCode: "115",
+        stream: "commerce",
+        streamText: "Arts & Commerce",
+        notes: "Micro & Macro Economics theory for Arts and Commerce stream students."
+      },
+
+      // Day 7: 15 Feb 2027 (Monday)
+      {
+        id: 20,
+        date: "15 Feb 2027",
+        dateRaw: "2027-02-15",
+        day: "Monday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "संस्कृत (Sanskrit)",
+        subjectEnglish: "Sanskrit",
+        paperCode: "905",
+        stream: "common",
+        streamText: "Elective",
+        notes: "20 OMR MCQs + Sanskrit grammar, shloka translation and composition."
+      },
+      {
+        id: 21,
+        date: "15 Feb 2027",
+        dateRaw: "2027-02-15",
+        day: "Monday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "संगीत गायन / संगीत वादन / नृत्यकला",
+        subjectEnglish: "Vocal Music / Instrumental / Dance",
+        paperCode: "121",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Fine Arts and Music theory paper."
+      },
+      {
+        id: 22,
+        date: "15 Feb 2027",
+        dateRaw: "2027-02-15",
+        day: "Monday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "रसायन विज्ञान / समाज शास्त्र",
+        subjectEnglish: "Chemistry / Sociology",
+        paperCode: "152 / 118",
+        stream: "science",
+        streamText: "Science & Arts",
+        notes: "Chemistry Theory (70 Marks) for Science stream; Sociology (100 Marks) for Arts candidates."
+      },
+
+      // Day 8: 16 Feb 2027 (Tuesday)
+      {
+        id: 23,
+        date: "16 Feb 2027",
+        dateRaw: "2027-02-16",
+        day: "Tuesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "क्षेत्रीय भाषाएं (गुजराती, पंजाबी, बांग्ला, मराठी, उड़िया आदि)",
+        subjectEnglish: "Regional Languages (Gujarati, Punjabi, Bengali, Marathi)",
+        paperCode: "902 / 903",
+        stream: "common",
+        streamText: "Languages",
+        notes: "For students opting for regional languages."
+      },
+      {
+        id: 24,
+        date: "16 Feb 2027",
+        dateRaw: "2027-02-16",
+        day: "Tuesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "कृषि भौतिकी एवं जलवायु विज्ञान / कृषि जन्तु विज्ञान",
+        subjectEnglish: "Agricultural Physics & Climatology / Agricultural Zoology",
+        paperCode: "165",
+        stream: "science",
+        streamText: "Agriculture",
+        notes: "Agriculture group Paper III & VIII."
+      },
+      {
+        id: 25,
+        date: "16 Feb 2027",
+        dateRaw: "2027-02-16",
+        day: "Tuesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "भूगोल (Geography)",
+        subjectEnglish: "Geography",
+        paperCode: "116",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Physical & Human Geography theory examination (70 Marks theory + 30 Marks practical)."
+      },
+
+      // Day 9: 17 Feb 2027 (Wednesday)
+      {
+        id: 26,
+        date: "17 Feb 2027",
+        dateRaw: "2027-02-17",
+        day: "Wednesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "विज्ञान (Science — भौतिकी, रसायन, जीव विज्ञान)",
+        subjectEnglish: "Science (Physics, Chemistry, Biology)",
+        paperCode: "931",
+        stream: "common",
+        streamText: "All Students",
+        notes: "20 OMR MCQs + Section B descriptive Physics, Chemistry & Biology (Diagrams and chemical reactions)."
+      },
+      {
+        id: 27,
+        date: "17 Feb 2027",
+        dateRaw: "2027-02-17",
+        day: "Wednesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "व्यावसायिक शिक्षा वर्ग — चतुर्थ प्रश्नपत्र",
+        subjectEnglish: "Vocational Stream — Paper IV",
+        paperCode: "166",
+        stream: "commerce",
+        streamText: "Vocational Stream",
+        notes: "Vocational Group Paper IV."
+      },
+      {
+        id: 28,
+        date: "17 Feb 2027",
+        dateRaw: "2027-02-17",
+        day: "Wednesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "10",
+        subjectHindi: "संगीत वादन (Music Instrumental)",
+        subjectEnglish: "Instrumental Music",
+        paperCode: "926",
+        stream: "common",
+        streamText: "Elective",
+        notes: "Music Instrumental elective paper."
+      },
+      {
+        id: 29,
+        date: "17 Feb 2027",
+        dateRaw: "2027-02-17",
+        day: "Wednesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "भौतिक विज्ञान / सैन्य विज्ञान",
+        subjectEnglish: "Physics / Military Science",
+        paperCode: "151 / 112",
+        stream: "science",
+        streamText: "Science & Arts",
+        notes: "Physics Theory (70 Marks) for Science stream candidates; Military Science for Arts."
+      },
+
+      // Day 10: 18 Feb 2027 (Thursday)
+      {
+        id: 30,
+        date: "18 Feb 2027",
+        dateRaw: "2027-02-18",
+        day: "Thursday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "कम्प्यूटर (Computer Applications)",
+        subjectEnglish: "Computer Applications",
+        paperCode: "933",
+        stream: "common",
+        streamText: "Elective",
+        notes: "20 OMR MCQs + Computer Hardware, OS, Programming Logic & Networking descriptive questions."
+      },
+      {
+        id: 31,
+        date: "18 Feb 2027",
+        dateRaw: "2027-02-18",
+        day: "Thursday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "कृषि अभियंत्रण / कृषि पशुपालन तथा पशु चिकित्सा विज्ञान",
+        subjectEnglish: "Agricultural Engineering / Animal Husbandry & Vet Science",
+        paperCode: "167",
+        stream: "science",
+        streamText: "Agriculture",
+        notes: "Agriculture group Paper IV & IX."
+      },
+      {
+        id: 32,
+        date: "18 Feb 2027",
+        dateRaw: "2027-02-18",
+        day: "Thursday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "10",
+        subjectHindi: "सिलाई (Tailoring)",
+        subjectEnglish: "Tailoring & Garment Craft",
+        paperCode: "927",
+        stream: "common",
+        streamText: "Vocational",
+        notes: "High School tailoring craft theory."
+      },
+      {
+        id: 33,
+        date: "18 Feb 2027",
+        dateRaw: "2027-02-18",
+        day: "Thursday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "चित्रकला आलेखन / चित्रकला प्राविधिक / रंजनकला",
+        subjectEnglish: "Drawing & Painting (Design / Technical)",
+        paperCode: "139",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Bring drawing board, geometry instruments, and water colors."
+      },
+
+      // Day 11: 19 Feb 2027 (Friday)
+      {
+        id: 34,
+        date: "19 Feb 2027",
+        dateRaw: "2027-02-19",
         day: "Friday",
         shift: "morning",
         shiftText: "Morning (8:30 – 11:45 AM)",
         classNum: "10",
-        subjectHindi: "सामाजिक विज्ञान (Social Science)",
-        subjectEnglish: "Social Science (Hist, Geog, Civ, Eco)",
-        paperCode: "932",
+        subjectHindi: "वाणिज्य (Commerce)",
+        subjectEnglish: "Commerce & Accountancy",
+        paperCode: "916",
         stream: "common",
-        streamText: "All Students",
-        notes: "Final exam for Class 10. Map work sheets provided."
+        streamText: "High School",
+        notes: "20 OMR MCQs + Commerce principles, bookkeeping and trade correspondence."
       },
       {
-        id: 20,
-        date: "05 Mar 2027",
-        dateRaw: "2027-03-05",
+        id: 35,
+        date: "19 Feb 2027",
+        dateRaw: "2027-02-19",
+        day: "Friday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "व्यावसायिक शिक्षा वर्ग — पंचम प्रश्नपत्र",
+        subjectEnglish: "Vocational Stream — Paper V",
+        paperCode: "168",
+        stream: "commerce",
+        streamText: "Vocational Stream",
+        notes: "Vocational Group Paper V."
+      },
+      {
+        id: 36,
+        date: "19 Feb 2027",
+        dateRaw: "2027-02-19",
         day: "Friday",
         shift: "evening",
         shiftText: "Evening (2:00 – 5:15 PM)",
         classNum: "12",
-        subjectHindi: "संस्कृत / कंप्यूटर",
-        subjectEnglish: "Sanskrit / Computer Science",
-        paperCode: "106 / 147",
+        subjectHindi: "मानव विज्ञान (Anthropology)",
+        subjectEnglish: "Anthropology",
+        paperCode: "119",
         stream: "arts",
-        streamText: "Arts & Science",
-        notes: "Concluding examination for Intermediate candidates."
+        streamText: "Arts Stream",
+        notes: "Arts stream elective examination."
+      },
+
+      // Day 12: 20 Feb 2027 (Saturday)
+      {
+        id: 37,
+        date: "20 Feb 2027",
+        dateRaw: "2027-02-20",
+        day: "Saturday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "उर्दू (Urdu)",
+        subjectEnglish: "Urdu",
+        paperCode: "903",
+        stream: "common",
+        streamText: "Language",
+        notes: "20 OMR MCQs + Urdu literature, poetry and grammar."
+      },
+      {
+        id: 38,
+        date: "20 Feb 2027",
+        dateRaw: "2027-02-20",
+        day: "Saturday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "उर्दू / गुजराती / पंजाबी / बंगला / मराठी / अन्य भाषाएं",
+        subjectEnglish: "Urdu / Gujarati / Punjabi / Bengali / Other Languages",
+        paperCode: "103",
+        stream: "arts",
+        streamText: "Languages",
+        notes: "Language elective paper for Intermediate."
+      },
+      {
+        id: 39,
+        date: "20 Feb 2027",
+        dateRaw: "2027-02-20",
+        day: "Saturday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "मनोविज्ञान / शिक्षाशास्त्र / तर्कशास्त्र",
+        subjectEnglish: "Psychology / Pedagogy (Education) / Logic",
+        paperCode: "111 / 112",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Theory examination for Arts candidates."
+      },
+
+      // Day 13: 22 Feb 2027 (Monday)
+      {
+        id: 40,
+        date: "22 Feb 2027",
+        dateRaw: "2027-02-22",
+        day: "Monday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "चित्रकला / रंजनकला (Drawing & Art)",
+        subjectEnglish: "Drawing & Art / Ranjankala",
+        paperCode: "934",
+        stream: "common",
+        streamText: "All Students",
+        notes: "Drawing sheets provided by the center. Carry drawing board, water colors, poster colors, and pencils."
+      },
+      {
+        id: 41,
+        date: "22 Feb 2027",
+        dateRaw: "2027-02-22",
+        day: "Monday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "सामान्य आधारित विषय (व्यावसायिक) / कृषि गणित व सांख्यिकी / कृषि रसायन",
+        subjectEnglish: "General Foundation Course / Agricultural Math & Chemistry",
+        paperCode: "169",
+        stream: "commerce",
+        streamText: "Vocational & Agri",
+        notes: "Paper V & X for Agriculture/Vocational groups."
+      },
+      {
+        id: 42,
+        date: "22 Feb 2027",
+        dateRaw: "2027-02-22",
+        day: "Monday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "व्यवसाय अध्ययन / गृह विज्ञान",
+        subjectEnglish: "Business Studies / Home Science",
+        paperCode: "130 / 113",
+        stream: "commerce",
+        streamText: "Commerce & Arts",
+        notes: "Business Studies for Commerce stream; Home Science theory (70 Marks) for Arts candidates."
+      },
+
+      // Day 14: 23 Feb 2027 (Tuesday)
+      {
+        id: 43,
+        date: "23 Feb 2027",
+        dateRaw: "2027-02-23",
+        day: "Tuesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "संगीत गायन (Music Vocal)",
+        subjectEnglish: "Vocal Music",
+        paperCode: "925",
+        stream: "common",
+        streamText: "Elective",
+        notes: "Vocal music elective examination."
+      },
+      {
+        id: 44,
+        date: "23 Feb 2027",
+        dateRaw: "2027-02-23",
+        day: "Tuesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "लेखाशास्त्र (बहीखाता तथा लेखाशास्त्र) / एन०सी०सी०",
+        subjectEnglish: "Accountancy (Bookkeeping) / NCC",
+        paperCode: "131 / 124",
+        stream: "commerce",
+        streamText: "Commerce Stream",
+        notes: "Accountancy paper for Commerce stream candidates; NCC theory for enrolled cadets."
+      },
+      {
+        id: 45,
+        date: "23 Feb 2027",
+        dateRaw: "2027-02-23",
+        day: "Tuesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "10",
+        subjectHindi: "पालि, अरबी, फारसी",
+        subjectEnglish: "Pali, Arabic, Persian",
+        paperCode: "906-908",
+        stream: "common",
+        streamText: "Languages",
+        notes: "Classical languages paper for High School."
+      },
+      {
+        id: 46,
+        date: "23 Feb 2027",
+        dateRaw: "2027-02-23",
+        day: "Tuesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "पालि, अरबी, फारसी",
+        subjectEnglish: "Pali, Arabic, Persian",
+        paperCode: "107-109",
+        stream: "arts",
+        streamText: "Languages",
+        notes: "Classical languages paper for Intermediate."
+      },
+
+      // Day 15: 24 Feb 2027 (Wednesday)
+      {
+        id: 47,
+        date: "24 Feb 2027",
+        dateRaw: "2027-02-24",
+        day: "Wednesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "10",
+        subjectHindi: "कृषि (Agriculture)",
+        subjectEnglish: "Agriculture",
+        paperCode: "915",
+        stream: "common",
+        streamText: "Elective",
+        notes: "Concluding examination for Class 10 High School candidates."
+      },
+      {
+        id: 48,
+        date: "24 Feb 2027",
+        dateRaw: "2027-02-24",
+        day: "Wednesday",
+        shift: "morning",
+        shiftText: "Morning (8:30 – 11:45 AM)",
+        classNum: "12",
+        subjectHindi: "कम्प्यूटर (Computer Science)",
+        subjectEnglish: "Computer Science",
+        paperCode: "147",
+        stream: "science",
+        streamText: "Science & Arts",
+        notes: "Computer Science theory (60 theory + 40 practical marks)."
+      },
+      {
+        id: 49,
+        date: "24 Feb 2027",
+        dateRaw: "2027-02-24",
+        day: "Wednesday",
+        shift: "evening",
+        shiftText: "Evening (2:00 – 5:15 PM)",
+        classNum: "12",
+        subjectHindi: "संस्कृत (Sanskrit)",
+        subjectEnglish: "Sanskrit",
+        paperCode: "106",
+        stream: "arts",
+        streamText: "Arts Stream",
+        notes: "Concluding examination for Class 12 Intermediate candidates."
       }
     ];
+
 
     // Current State - Default to Class 10th so 10th and 12th are viewed separately!
     let activeClass = '10';
@@ -2660,13 +3126,15 @@
 
       if (!banner) return;
 
+      const currentCount = TIMETABLE_DATA.filter(i => activeClass === 'all' || i.classNum === activeClass).length;
+
       if (activeClass === '10') {
         banner.className = 'active-class-banner theme-10';
         badgeEl.innerText = 'High School';
         badgeEl.className = 'class-tab-badge badge-10';
         titleEl.innerText = 'Class 10th (High School) Examination Schedule 2026-27';
         subtitleEl.innerHTML = '<i class="fas fa-sun" style="color:#D97706;"></i> <strong>Morning Shift: 08:30 AM – 11:45 AM</strong> • 20 OMR MCQs + Descriptive Section • First 15 minutes for reading question paper';
-        papersCountEl.innerText = '10 Papers';
+        papersCountEl.innerText = `${currentCount} Papers`;
 
         if (printBadge) printBadge.innerText = 'Class: 10th (High School)';
         if (printHeadline) printHeadline.innerText = 'UP Board High School (Class 10) Examination 2027 — Official Date Sheet';
@@ -2677,7 +3145,7 @@
         badgeEl.className = 'class-tab-badge badge-12';
         titleEl.innerText = 'Class 12th (Intermediate) Examination Schedule 2026-27';
         subtitleEl.innerHTML = '<i class="fas fa-moon" style="color:#7C3AED;"></i> <strong>Evening Shift: 02:00 PM – 05:15 PM</strong> (Morning shift for select papers) • Science, Commerce & Arts streams';
-        papersCountEl.innerText = '10 Papers';
+        papersCountEl.innerText = `${currentCount} Papers`;
 
         if (printBadge) printBadge.innerText = 'Class: 12th (Intermediate)';
         if (printHeadline) printHeadline.innerText = 'UP Board Intermediate (Class 12) Examination 2027 — Official Date Sheet';
@@ -2688,7 +3156,7 @@
         badgeEl.className = 'class-tab-badge';
         titleEl.innerText = 'UP Board High School & Intermediate Combined Schedule 2026-27';
         subtitleEl.innerHTML = 'Showing all Class 10th and Class 12th board papers in chronological order';
-        papersCountEl.innerText = '20 Papers';
+        papersCountEl.innerText = `${currentCount} Papers`;
 
         if (printBadge) printBadge.innerText = 'Class: 10th & 12th Combined';
         if (printHeadline) printHeadline.innerText = 'UP Board High School & Intermediate Examination 2027 — Combined Date Sheet';
@@ -3150,7 +3618,7 @@
     // Live Countdown Timer
     function initCountdown() {
       // First examination commencement date
-      const targetDate = new Date('February 18, 2027 08:30:00').getTime();
+      const targetDate = new Date('February 05, 2027 08:30:00').getTime();
 
       function updateClock() {
         const now = new Date().getTime();
