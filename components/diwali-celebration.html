@@ -1,0 +1,96 @@
+<!-- ==========================================================================
+     ROYAL DIWALI CELEBRATION COMPONENT TEMPLATE
+     Dr. A.P.J. Abdul Kalam Inter College, Belwariya Jungle, Basti (U.P.)
+     ========================================================================== -->
+
+<!-- 1. FLOATING GIFTBOX (BOTTOM CENTER PEDESTAL) -->
+<div id="diwali-gift-wrapper" aria-label="Diwali Celebration Gift Box">
+  <div class="diwali-box-container" id="diwali-box-trigger" title="Click to open your Diwali celebration surprise!">
+    <div class="diwali-gift-badge">
+      <span class="sparkle-icon">✨</span>
+      <span>Open</span>
+      <span class="sparkle-icon">🪔</span>
+    </div>
+    <button type="button" class="diwali-close-btn" id="diwali-gift-close-btn" title="Minimize to side" aria-label="Minimize gift box">×</button>
+    <div class="diwali-gift-3d" id="diwali-gift-model">
+      <div class="diwali-box-light-beam"></div>
+      <div class="diwali-box-lid" id="diwali-box-lid">
+        <div class="diwali-box-bow">
+          <div class="diwali-bow-left"></div>
+          <div class="diwali-bow-right"></div>
+          <div class="diwali-bow-center"></div>
+        </div>
+      </div>
+      <div class="diwali-box-body"></div>
+      <div class="diwali-aura"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. MINIMIZED SIDE DOCK BADGE (BOTTOM LEFT) -->
+<div id="diwali-minimized-dock" role="button" tabindex="0" title="Click to open Diwali Celebration Gift Box">
+  <span class="diwali-dock-icon">🪔</span>
+  <span class="diwali-dock-text">Diwali Wishes</span>
+  <span class="diwali-dock-badge">OPEN</span>
+</div>
+
+<!-- 3. FULLSCREEN OVERLAY WITH UNOBSTRUCTED SKY & BOTTOM DOCKED WISHES -->
+<div id="diwali-celebration-overlay">
+  <canvas id="diwali-canvas"></canvas>
+
+  <!-- Prominent Top Controls Bar (Always Visible at Top of Overlay) -->
+  <div class="diwali-overlay-top-bar">
+    <div class="diwali-festive-badge-top">
+      <span class="sparkle-icon">✨</span>
+      <span>महा दीपोत्सव महोत्सव</span>
+      <span class="sparkle-icon">🪔</span>
+    </div>
+
+    <div class="diwali-top-right-group">
+      <button type="button" class="diwali-top-icon-btn" id="diwali-sound-btn" title="Toggle realistic sound" aria-label="Toggle sound">
+        <i class="fas fa-volume-up"></i>
+      </button>
+      <button type="button" class="diwali-top-icon-btn btn-close" id="diwali-top-close-btn" title="Close celebration" aria-label="Close celebration">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Compact Royal Wishes Card (Docked above bottom giftbox) -->
+  <div class="diwali-modal-card" id="diwali-modal-card">
+    <span class="diwali-corner-ornament diwali-corner-tl"></span>
+    <span class="diwali-corner-ornament diwali-corner-tr"></span>
+    <span class="diwali-corner-ornament diwali-corner-bl"></span>
+    <span class="diwali-corner-ornament diwali-corner-br"></span>
+
+    <div class="diwali-sanskrit-shloka">॥ ॐ असतो मा सद्गमय । तमसो मा ज्योतिर्गमय ॥</div>
+
+    <div class="diwali-arch-motif">
+      <span class="diwali-arch-line"></span>
+      <span class="diwali-diya-glow diya-small">🪔</span>
+      <span class="diwali-diya-glow">✨</span>
+      <span class="diwali-diya-glow diya-small">🪔</span>
+      <span class="diwali-arch-line"></span>
+    </div>
+
+    <div class="diwali-festive-herald">दीपोत्सव की हार्दिक शुभकामनाएँ</div>
+    <h1 class="diwali-english-title">Happy Diwali</h1>
+
+    <div class="diwali-school-crest">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Dr. A.P.J. Abdul Kalam Inter College</span>
+    </div>
+
+    <p class="diwali-greeting-text">
+      May the divine lights of Deepavali illuminate your path with eternal wisdom, supreme knowledge, and joyous prosperity. Wishing our students, teachers, parents, and patrons a luminous, blessed Diwali.
+    </p>
+
+    <!-- Final Launch Action Grid -->
+    <div class="diwali-actions-grid">
+      <button type="button" class="diwali-btn diwali-btn-minimize" id="diwali-modal-minimize">
+        <i class="fas fa-compress-alt"></i>
+        <span>Minimize to Side</span>
+      </button>
+    </div>
+  </div>
+</div>
