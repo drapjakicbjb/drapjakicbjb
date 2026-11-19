@@ -1,0 +1,325 @@
+/* ==========================================================================
+   DR. A.P.J. ABDUL KALAM INTER COLLEGE - GLOBAL OVERLAYS STYLESHEET
+   1. Cookie & Tracking Consent Overlay Banner
+   2. Winter Breeze Seasonal Overlay (Winter in India • शीत ऋतु आगमन)
+   ========================================================================== */
+
+/* ─── 1. COOKIE & TRACKING CONSENT OVERLAY BANNER ─── */
+.kalam-cookie-banner {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translate(-50%, 140%);
+  width: min(1080px, calc(100% - 32px));
+  z-index: 999992;
+  background: rgba(13, 27, 42, 0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 107, 0, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 107, 0, 0.15);
+  padding: 16px 22px;
+  color: #F8FAFC;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  opacity: 0;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.kalam-cookie-banner.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.kalam-cookie-banner.hide {
+  transform: translate(-50%, 140%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kalam-cookie-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.kalam-cookie-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.kalam-cookie-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.22) 0%, rgba(255, 140, 66, 0.12) 100%);
+  border: 1px solid rgba(255, 107, 0, 0.45);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF8C42;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.kalam-cookie-text {
+  flex: 1;
+}
+
+.kalam-cookie-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 3px 0;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kalam-cookie-title .kalam-cookie-tag {
+  background: rgba(255, 107, 0, 0.2);
+  border: 1px solid rgba(255, 107, 0, 0.4);
+  color: #FF8C42;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.kalam-cookie-desc {
+  font-size: 0.84rem;
+  color: #CBD5E1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.kalam-cookie-link {
+  color: #FF8C42;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.kalam-cookie-link:hover {
+  color: #FFB74D;
+}
+
+.kalam-cookie-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.kalam-cookie-btn-accept {
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8C42 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.35);
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.kalam-cookie-btn-accept:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 107, 0, 0.5);
+  background: linear-gradient(135deg, #E65100 0%, #FF6B00 100%);
+}
+
+.kalam-cookie-btn-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94A3B8;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.kalam-cookie-btn-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  transform: scale(1.08);
+}
+
+/* Adjust floating controls when cookie banner is active */
+body.kalam-cookie-active .kalam-chat-launcher-wrapper,
+body.kalam-cookie-active .kalam-chat-toggle-btn,
+body.kalam-cookie-active .chat-restore-tab {
+  bottom: 105px !important;
+}
+
+body.kalam-cookie-active .floating-controls,
+body.kalam-cookie-active .wa-restore-tab {
+  bottom: 85px !important;
+}
+
+@media (max-width: 768px) {
+  .kalam-cookie-banner {
+    bottom: 12px;
+    width: calc(100% - 20px);
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+  .kalam-cookie-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .kalam-cookie-content {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .kalam-cookie-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 1.05rem;
+  }
+  .kalam-cookie-title {
+    font-size: 0.9rem;
+  }
+  .kalam-cookie-desc {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+  .kalam-cookie-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .kalam-cookie-btn-accept {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 18px;
+    font-size: 0.82rem;
+  }
+  body.kalam-cookie-active .kalam-chat-launcher-wrapper,
+  body.kalam-cookie-active .kalam-chat-toggle-btn,
+  body.kalam-cookie-active .chat-restore-tab {
+    bottom: 175px !important;
+  }
+  body.kalam-cookie-active .floating-controls,
+  body.kalam-cookie-active .wa-restore-tab {
+    bottom: 160px !important;
+  }
+}
+
+
+/* ─── 2. WINTER BREEZE ATMOSPHERIC OVERLAY & ELEMENT SNOW CAPS ─── */
+.winter-breeze-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  display: block;
+  pointer-events: none !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s ease;
+  overflow: hidden;
+}
+
+.winter-breeze-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.winter-breeze-overlay.fading-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.6s ease, visibility 1.6s ease;
+  pointer-events: none !important;
+}
+
+/* Translucent Cold Frost Vignette along screen edges */
+.winter-frost-vignette {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  box-shadow: inset 0 0 110px rgba(186, 230, 253, 0.28), inset 0 0 45px rgba(147, 197, 253, 0.15);
+  pointer-events: none !important;
+}
+
+.winter-frost-vignette::before,
+.winter-frost-vignette::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.winter-frost-vignette::before {
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at top left, rgba(224, 242, 254, 0.38) 0%, rgba(186, 230, 253, 0.12) 50%, transparent 80%);
+}
+
+.winter-frost-vignette::after {
+  bottom: 0;
+  right: 0;
+  background: radial-gradient(circle at bottom right, rgba(224, 242, 254, 0.38) 0%, rgba(186, 230, 253, 0.12) 50%, transparent 80%);
+}
+
+/* Cold Mist Flowing Waves across screen */
+.winter-mist-layer {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(224, 242, 254, 0.03) 25%,
+    rgba(186, 230, 253, 0.07) 50%,
+    rgba(224, 242, 254, 0.03) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: winterMistDrift 16s linear infinite;
+  pointer-events: none !important;
+}
+
+@keyframes winterMistDrift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: -200% 0%; }
+}
+
+/* Fullscreen Canvas for Wind Gusts and Snow / Frost Particles */
+.winter-breeze-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winter-mist-layer {
+    animation: none;
+  }
+}

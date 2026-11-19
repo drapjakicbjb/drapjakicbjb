@@ -1,10 +1,12 @@
-const CACHE_NAME = 'apj-school-cache-v24';
+const CACHE_NAME = 'apj-school-cache-v32';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './styles/main.min.css',
+  './styles/overlays.css',
   './styles/fontawesome.min.css',
   './js/main.js',
+  './js/overlays.js',
   './games/index.html',
   './games/games.css',
   './games/games.js',
@@ -55,6 +57,11 @@ self.addEventListener('activate', (event) => {
 
 // Fetch Event - Handle Caching Strategies
 self.addEventListener('fetch', (event) => {
+  // Only handle standard GET requests (prevents Cache API errors on POST/API requests)
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
   const url = new URL(event.request.url);
 
   // Strategy 1: Network-First (or Stale-While-Revalidate) for notices and dynamic/page files.
@@ -144,7 +151,7 @@ self.addEventListener('fetch', (event) => {
   // Default: Network with cache fallback
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      return response || fetch(event.request).catch(() => caches.match('./index.html'));
     })
   );
 });
