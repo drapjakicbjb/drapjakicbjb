@@ -1,0 +1,521 @@
+/* ==========================================================================
+   3D BUTTON ARCHITECTURE - DR. A.P.J. ABDUL KALAM INTER COLLEGE
+   High-definition tactile elements with physical bevels, depth & push feedback.
+   ========================================================================== */
+
+/* 1. Universal 3D Dynamics for Interactive Buttons */
+button:not(.nav-link):not(.dropdown-toggle):not(.navbar-toggler):not(.carousel-dot):not(.splide__pagination__page):not(.splide__arrow):not(.no-3d),
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.btn,
+[class*="btn-"]:not(.btn-text) {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1),
+              box-shadow 0.15s ease,
+              background 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+/* Physical Mechanical Press Reaction on Click / Mobile Tap */
+button:not(.nav-link):not(.dropdown-toggle):not(.navbar-toggler):not(.carousel-dot):not(.splide__pagination__page):not(.splide__arrow):not(.no-3d):active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+.btn:active,
+[class*="btn-"]:not(.btn-text):active {
+  transform: translateY(3px) !important;
+}
+
+/* 2. Primary Saffron 3D Buttons */
+.btn-primary:not(.hero-buttons .btn-primary),
+.btn-admission-primary,
+.btn-submit,
+.btn-cta-primary,
+.btn-action-primary,
+.btn-banner-action,
+.btn-explore-career,
+.btn-study,
+.btn-interactive-hub,
+.btn-play-game,
+.btn-start-game-cta,
+.btn-daily-challenge,
+.btn-next-question,
+.btn-wa-subscribe,
+#scrollTop {
+  background: linear-gradient(180deg, #FF8C38 0%, #FF6B00 65%, #E65100 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 
+    0 5px 0 #B84000,
+    0 6px 1px rgba(0, 0, 0, 0.18),
+    0 12px 24px rgba(255, 107, 0, 0.35),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18) !important;
+}
+
+.btn-primary:not(.hero-buttons .btn-primary):hover,
+.btn-admission-primary:hover,
+.btn-submit:hover,
+.btn-cta-primary:hover,
+.btn-action-primary:hover,
+.btn-banner-action:hover,
+.btn-explore-career:hover,
+.btn-study:hover,
+.btn-interactive-hub:hover,
+.btn-play-game:hover,
+.btn-start-game-cta:hover,
+.btn-daily-challenge:hover,
+.btn-next-question:hover,
+.btn-wa-subscribe:hover,
+#scrollTop.visible:hover {
+  background: linear-gradient(180deg, #FFA052 0%, #FF7714 65%, #EE5800 100%) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 7px 0 #9E3700,
+    0 8px 2px rgba(0, 0, 0, 0.22),
+    0 16px 30px rgba(255, 107, 0, 0.5),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.btn-primary:not(.hero-buttons .btn-primary):active,
+.btn-admission-primary:active,
+.btn-submit:active,
+.btn-cta-primary:active,
+.btn-action-primary:active,
+.btn-banner-action:active,
+.btn-explore-career:active,
+.btn-study:active,
+.btn-interactive-hub:active,
+.btn-play-game:active,
+.btn-start-game-cta:active,
+.btn-daily-challenge:active,
+.btn-next-question:active,
+.btn-wa-subscribe:active,
+#scrollTop.visible:active {
+  transform: translateY(4px) !important;
+  box-shadow: 
+    0 1px 0 #9E3700,
+    0 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 3. Hero White 3D Button */
+.hero-buttons .btn-primary {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%) !important;
+  color: var(--navy, #0D1B2A) !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 
+    0 5px 0 #CBD5E1,
+    0 6px 1px rgba(0, 0, 0, 0.15),
+    0 12px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: linear-gradient(180deg, #FF8C38 0%, #FF6B00 100%) !important;
+  color: #FFFFFF !important;
+  border-color: #FFA04D !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 7px 0 #B84000,
+    0 8px 2px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(255, 107, 0, 0.4),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.hero-buttons .btn-primary:active {
+  transform: translateY(4px) !important;
+  box-shadow: 
+    0 1px 0 #CBD5E1,
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* 4. Hero Secondary & Glass Outline 3D Buttons */
+.btn-secondary,
+.btn-admission-outline {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+    0 5px 0 rgba(13, 27, 42, 0.5),
+    0 6px 1px rgba(0, 0, 0, 0.25),
+    0 12px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-secondary:hover,
+.btn-admission-outline:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 100%) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 7px 0 rgba(13, 27, 42, 0.6),
+    0 8px 2px rgba(0, 0, 0, 0.3),
+    0 16px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.btn-secondary:active,
+.btn-admission-outline:active {
+  transform: translateY(4px) !important;
+  box-shadow: 
+    0 1px 0 rgba(13, 27, 42, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 5. Light/Outline Action Buttons */
+.btn-cta-secondary,
+.btn-action-secondary,
+.btn-card-link,
+.btn-card-copy,
+.btn-toggle-all,
+.btn-download-notice {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%) !important;
+  color: var(--navy, #0D1B2A) !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: 
+    0 4px 0 #CBD5E1,
+    0 5px 1px rgba(0, 0, 0, 0.08),
+    0 8px 18px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 #FFFFFF !important;
+}
+
+.btn-cta-secondary:hover,
+.btn-action-secondary:hover,
+.btn-card-link:hover,
+.btn-card-copy:hover,
+.btn-toggle-all:hover,
+.btn-download-notice:hover {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%) !important;
+  border-color: var(--saffron, #FF6B00) !important;
+  color: var(--saffron, #FF6B00) !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 0 #FFA04D,
+    0 7px 2px rgba(255, 107, 0, 0.2),
+    0 12px 22px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 #FFFFFF !important;
+}
+
+.btn-cta-secondary:active,
+.btn-action-secondary:active,
+.btn-card-link:active,
+.btn-card-copy:active,
+.btn-toggle-all:active,
+.btn-download-notice:active {
+  transform: translateY(3px) !important;
+  box-shadow: 
+    0 1px 0 #CBD5E1,
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 2px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 6. Filter Tabs, Pills & Category Keycaps */
+.filter-btn,
+.filter-pill,
+.filter-tab,
+.filter-item-btn,
+.back-link-btn,
+.back-btn {
+  box-shadow: 
+    0 3px 0 #CBD5E1,
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.filter-btn:hover,
+.filter-pill:hover,
+.filter-tab:hover,
+.filter-item-btn:hover,
+.back-link-btn:hover,
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 0 #CBD5E1,
+    0 6px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.filter-btn.active,
+.filter-pill.active,
+.filter-tab.active,
+.filter-item-btn.active {
+  background: linear-gradient(180deg, #FF7A1A 0%, #FF6B00 100%) !important;
+  color: #FFFFFF !important;
+  border-color: #E65100 !important;
+  transform: translateY(2px) !important;
+  box-shadow: 
+    0 1px 0 #B84000,
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 2px 5px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 7. WhatsApp 3D Elements */
+.whatsapp-btn-float {
+  background: linear-gradient(180deg, #2ED86A 0%, #25D366 65%, #1EAE53 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 5px 0 #128C3E,
+    0 6px 1px rgba(0, 0, 0, 0.2),
+    0 14px 32px rgba(37, 211, 102, 0.42),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.whatsapp-btn-float:hover {
+  background: linear-gradient(180deg, #38E676 0%, #29E06D 65%, #20BA59 100%) !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 8px 0 #0E7031,
+    0 9px 2px rgba(0, 0, 0, 0.25),
+    0 18px 36px rgba(37, 211, 102, 0.55),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.whatsapp-btn-float:active {
+  transform: translateY(3px) scale(0.99) !important;
+  box-shadow: 
+    0 1px 0 #0E7031,
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.wa-restore-tab {
+  background: linear-gradient(180deg, #182C40 0%, #0D1B2A 100%) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(37, 211, 102, 0.5) !important;
+  box-shadow: 
+    0 4px 0 #050B11,
+    0 6px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.wa-restore-tab:hover {
+  background: linear-gradient(180deg, #2ED86A 0%, #25D366 100%) !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 6px 0 #128C3E,
+    0 8px 20px rgba(37, 211, 102, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.btn-wa-link {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%) !important;
+  color: #075E54 !important;
+  border: 1px solid rgba(37, 211, 102, 0.3) !important;
+  box-shadow: 
+    0 4px 0 #86EFAC,
+    0 5px 1px rgba(0, 0, 0, 0.12),
+    0 10px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1.5px 0 #FFFFFF !important;
+}
+
+.btn-wa-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 0 #4ADE80,
+    0 7px 2px rgba(0, 0, 0, 0.18),
+    0 14px 25px rgba(37, 211, 102, 0.35) !important;
+}
+
+.btn-wa-link:active {
+  transform: translateY(3px) !important;
+  box-shadow: 
+    0 1px 0 #4ADE80,
+    0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 8. Chatbot 3D Elements & Rock-Solid Minimized Tab */
+.kalam-chat-toggle-btn {
+  background: linear-gradient(180deg, #FF8C38 0%, #FF6B00 60%, #E65100 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 6px 0 #B84000,
+    0 8px 2px rgba(0, 0, 0, 0.2),
+    0 14px 30px rgba(255, 107, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18) !important;
+}
+
+.kalam-chat-toggle-btn:hover {
+  background: linear-gradient(180deg, #FFA052 0%, #FF7714 60%, #EE5800 100%) !important;
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 
+    0 9px 0 #9E3700,
+    0 10px 2px rgba(0, 0, 0, 0.25),
+    0 18px 36px rgba(255, 107, 0, 0.55),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.65) !important;
+}
+
+.kalam-chat-toggle-btn:active {
+  transform: scale(0.98) translateY(3px) !important;
+  box-shadow: 
+    0 2px 0 #9E3700,
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Chatbot Minimized Restore Tab (Guaranteed Fixed Screen View) */
+.chat-restore-tab,
+#kalam-chat-restore-tab {
+  position: fixed !important;
+  bottom: 25px !important;
+  right: 25px !important;
+  z-index: 999999 !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px !important;
+  background: linear-gradient(180deg, #182C40 0%, #0D1B2A 100%) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 107, 0, 0.6) !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  cursor: pointer !important;
+  box-shadow: 
+    0 4px 0 #050B11,
+    0 6px 18px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.85);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.chat-restore-tab.is-visible,
+#kalam-chat-restore-tab.is-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.chat-restore-tab:hover,
+#kalam-chat-restore-tab:hover {
+  background: linear-gradient(180deg, #FF8C38 0%, #FF6B00 100%) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 
+    0 6px 0 #B84000,
+    0 8px 20px rgba(255, 107, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.chat-restore-tab:active,
+#kalam-chat-restore-tab:active {
+  transform: translateY(3px) scale(0.98) !important;
+  box-shadow: 
+    0 1px 0 #B84000,
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 9. Floating Cross & Minimize Buttons */
+.floating-widget-close-btn,
+.kalam-chat-minimize-btn {
+  border-radius: 50% !important;
+  background: linear-gradient(180deg, #1E3A5F 0%, #0D1B2A 100%) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 
+    0 3px 0 #050B11,
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+.floating-widget-close-btn:hover,
+.kalam-chat-minimize-btn:hover {
+  background: linear-gradient(180deg, #F87171 0%, #EF4444 100%) !important;
+  transform: translateY(-2px) scale(1.1) !important;
+  box-shadow: 
+    0 4px 0 #991B1B,
+    0 6px 12px rgba(239, 68, 68, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.floating-widget-close-btn:active,
+.kalam-chat-minimize-btn:active {
+  transform: translateY(2px) scale(1.02) !important;
+  box-shadow: 
+    0 1px 0 #991B1B,
+    0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 10. Zoom Controls & Micro Buttons */
+.zoom-action-btn {
+  box-shadow: 
+    0 3px 0 rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.zoom-action-btn:hover {
+  transform: translateY(-2px) scale(1.08) !important;
+  box-shadow: 
+    0 5px 0 #B84000,
+    0 6px 12px rgba(255, 107, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.zoom-action-btn:active {
+  transform: translateY(2px) scale(0.98) !important;
+  box-shadow: 
+    0 1px 0 #B84000,
+    0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.btn-copy-code {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%) !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: 
+    0 2px 0 #CBD5E1,
+    0 3px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 #FFFFFF !important;
+}
+
+.btn-copy-code:hover {
+  color: #FF6B00 !important;
+  border-color: #FFA04D !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 0 #FFA04D, 0 4px 8px rgba(255, 107, 0, 0.2) !important;
+}
+
+.btn-copy-code:active {
+  transform: translateY(2px) !important;
+  box-shadow: 0 0 0 transparent !important;
+}
+
+/* Mobile Adjustments for Minimized Elements */
+@media (max-width: 768px) {
+  .chat-restore-tab,
+  #kalam-chat-restore-tab {
+    bottom: 15px !important;
+    right: 15px !important;
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+  }
+}

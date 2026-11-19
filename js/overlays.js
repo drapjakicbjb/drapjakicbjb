@@ -152,8 +152,21 @@
   /* ───────────────────────────────────────────────────────────
      2. WINTER BREEZE ATMOSPHERIC OVERLAY
      ─────────────────────────────────────────────────────────── */
+  const BREEZE_SESSION_KEY = 'kalam_winter_breeze_shown';
+
   function initWinterBreeze() {
-    // Every time someone opens the site, trigger the gentle winter breeze
+    // Show only once per visit/session (not on every page switch).
+    // When the user closes the site and reopens it, sessionStorage is cleared,
+    // so the breeze greets them again on their fresh visit.
+    try {
+      if (sessionStorage.getItem(BREEZE_SESSION_KEY) === 'true') {
+        return; // Already shown during this browsing session
+      }
+      sessionStorage.setItem(BREEZE_SESSION_KEY, 'true');
+    } catch (e) {
+      // Graceful fallback if sessionStorage is restricted
+    }
+
     setTimeout(() => {
       showWinterBreezeOverlay();
     }, 450);

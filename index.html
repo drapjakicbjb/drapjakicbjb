@@ -413,7 +413,7 @@
 
       <div class="hero-content">
         <div class="hero-logo-wrapper">
-          <img class="hero-logo" src="assets/images/logo.webp" alt="School Logo" />
+          <img class="hero-logo" src="assets/images/logo.webp" alt="School Logo" width="160" height="160" fetchpriority="high" />
           <div class="hero-logo-ring"></div>
         </div>
 
@@ -531,7 +531,7 @@
         <div class="about-grid">
           <div class="about-left-column fade-left">
             <div class="about-image-wrapper">
-              <img class="about-image" src="assets/images/about.webp" alt="School Building" width="1200" height="554" />
+              <img class="about-image" src="assets/images/about.webp" alt="School Building" width="1200" height="554" loading="lazy" decoding="async" />
               <div class="about-badge">
                 <span class="num">15+</span>
                 <span class="txt">Years of<br>Excellence</span>
@@ -630,7 +630,7 @@
         </div>
         <div class="manager-grid fade-up">
           <div class="manager-img-wrap">
-            <img class="manager-img" src="assets/images/Manager.webp" alt="School Manager" width="600" height="593" />
+            <img class="manager-img" src="assets/images/Manager.webp" alt="School Manager" width="600" height="593" loading="lazy" decoding="async" />
           </div>
           <div>
             <p class="manager-quote">
@@ -887,40 +887,25 @@
 
         <div class="gallery-grid">
           <div class="gallery-item fade-up delay-1">
-            <img src="assets/images/gallery-1.webp" alt="Classroom Learning" width="640" height="640" />
+            <img src="assets/images/gallery-1.webp" alt="Classroom Learning" width="640" height="640" loading="lazy" decoding="async" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Classroom Learning</span>
             </div>
           </div>
           <div class="gallery-item fade-up delay-2">
-            <img src="assets/images/campus.webp" alt="Play Ground" width="1600" height="1200" />
+            <img src="assets/images/campus.webp" alt="Play Ground" width="1600" height="1200" loading="lazy" decoding="async" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Play Ground</span>
             </div>
           </div>
           <div class="gallery-item fade-up delay-3">
-            <img src="assets/images/gallery-3.webp" alt="Science Laboratory" width="640" height="640" />
+            <img src="assets/images/gallery-3.webp" alt="Science Laboratory" width="640" height="640" loading="lazy" decoding="async" />
             <div class="gallery-overlay">
               <i class="fas fa-search-plus"></i>
               <span>Science Lab</span>
             </div>
-            <!-- </div>
-        <div class="gallery-item fade-up delay-1">
-          <img src="assets/images/gallery-5.webp" alt="Annual Function" />
-          <div class="gallery-overlay">
-            <i class="fas fa-search-plus"></i>
-            <span>Annual Function</span>
-          </div>
-        </div>
-        <div class="gallery-item fade-up delay-2">
-          <img src="assets/images/gallery-6.webp" alt="Morning Assembly" />
-          <div class="gallery-overlay">
-            <i class="fas fa-search-plus"></i>
-            <span>Morning Assembly</span>
-          </div>
-        </div> -->
           </div>
         </div>
     </section>
@@ -1026,14 +1011,6 @@
       </div>
     </section>
 
-    <!-- <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/images/logo.webp" alt="School Logo" />
-            <div class="footer-logo-text"> -->
-
   </main>
 
   <div id="footer-placeholder"></div>
@@ -1054,6 +1031,7 @@
           item.className = 'notice-list-item';
           if (n.isImportant) item.classList.add('important');
 
+          const cleanSnippet = n.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 120);
           item.innerHTML = `
             <div class="notice-item-meta">
               <span class="notice-item-date"><i class="far fa-calendar-alt"></i> ${n.date}</span>
@@ -1061,7 +1039,7 @@
               ${n.isImportant ? '<span class="item-important-badge">Important</span>' : ''}
             </div>
             <h3>${n.title}</h3>
-            <p>${n.content.substring(0, 120)}...</p>
+            <p>${cleanSnippet}...</p>
           `;
           container.appendChild(item);
         });

@@ -390,7 +390,7 @@ button, input, select, textarea {
   flex-grow: 1;
 }
 
-/* Button System */
+/* 3D Button System */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -402,42 +402,99 @@ button, input, select, textarea {
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.15s ease, background 0.2s ease;
   white-space: nowrap;
   user-select: none;
   min-height: 44px;
+  position: relative;
+  touch-action: manipulation;
+}
+
+.btn:active {
+  transform: translateY(3px) !important;
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background: linear-gradient(180deg, #0A3266 0%, var(--primary) 100%);
   color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 0 #00132A,
+    0 5px 1px rgba(0, 0, 0, 0.18),
+    0 10px 20px rgba(0, 33, 71, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
+  background: linear-gradient(180deg, #104285 0%, var(--primary-hover) 100%);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 33, 71, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 0 #000B1A,
+    0 7px 2px rgba(0, 0, 0, 0.25),
+    0 14px 25px rgba(0, 33, 71, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(3px) !important;
+  box-shadow: 
+    0 1px 0 #00132A,
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
 .btn-secondary {
-  background-color: var(--secondary);
+  background: linear-gradient(180deg, #FF8C38 0%, var(--secondary) 100%);
   color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 0 #B84000,
+    0 5px 1px rgba(0, 0, 0, 0.18),
+    0 10px 20px rgba(255, 107, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .btn-secondary:hover {
-  background-color: var(--secondary-hover);
+  background: linear-gradient(180deg, #FFA052 0%, var(--secondary-hover) 100%);
   color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 0 #9E3700,
+    0 7px 2px rgba(0, 0, 0, 0.22),
+    0 14px 25px rgba(255, 107, 0, 0.4);
+}
+
+.btn-secondary:active {
+  transform: translateY(3px) !important;
+  box-shadow: 
+    0 1px 0 #9E3700,
+    0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .btn-outline {
-  background-color: transparent;
-  border-color: var(--border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid var(--border);
   color: var(--text);
+  box-shadow: 
+    0 3px 0 #CBD5E1,
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 #FFFFFF;
 }
 
 .btn-outline:hover {
-  background-color: var(--surface-alt);
-  border-color: var(--text-light);
+  background: #FFFFFF;
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 0 #94A3B8,
+    0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline:active {
+  transform: translateY(2px) !important;
+  box-shadow: 0 1px 0 #CBD5E1 !important;
 }
 
 .btn-danger-ghost {

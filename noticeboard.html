@@ -691,7 +691,7 @@ img{max-width:100%;height:auto;display:block}a{text-decoration:none;color:inheri
       });
       // Find the button with onclick containing the category
       const targetBtn = Array.from(document.querySelectorAll('.filter-item-btn')).find(btn => 
-        btn.getAttribute('onclick').includes(`'${category}'`)
+        (btn.getAttribute('onclick') || '').includes(`'${category}'`)
       );
       if (targetBtn) targetBtn.classList.add('active');
 

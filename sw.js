@@ -1,8 +1,9 @@
-const CACHE_NAME = 'apj-school-cache-v32';
+const CACHE_NAME = 'apj-school-cache-v3.6';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './styles/main.min.css',
+  './styles/3d-buttons.css',
   './styles/overlays.css',
   './styles/fontawesome.min.css',
   './js/main.js',

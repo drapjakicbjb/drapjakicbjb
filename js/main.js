@@ -54,6 +54,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Immediately load AI Chatbot Widget
   loadChatbotWidget();
 
+  // Immediately load Overlays Module (Cookie Consent + Winter Breeze Overlay)
+  loadOverlaysModule();
+
   /* ─── 0. COMPONENT & CHATBOT LOADER ──────────────── */
   function getPathPrefix() {
     let prefix = '';
@@ -72,6 +75,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!data) return '';
     if (prefix) {
       return data
+        .replace(/href="\/styles\//g, `href="${prefix}styles/`)
+        .replace(/href="styles\//g, `href="${prefix}styles/`)
         .replace(/src="\/assets\//g, `src="${prefix}assets/`)
         .replace(/src="assets\//g, `src="${prefix}assets/`);
     }
@@ -204,6 +209,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadNextScript(0);
   }
 
+  /* ─── 0.2 OVERLAYS MODULE LOADER (Cookie Consent + Winter Breeze) ─── */
+  function loadOverlaysModule() {
+    const pathPrefix = getPathPrefix();
+
+    // Load overlay CSS
+    if (!document.querySelector('link[href*="styles/overlays.css"]')) {
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = pathPrefix + 'styles/overlays.css';
+      document.head.appendChild(cssLink);
+    }
+
+    // Load overlay JS
+    if (!document.querySelector('script[src*="js/overlays.js"]')) {
+      const script = document.createElement('script');
+      script.src = pathPrefix + 'js/overlays.js';
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+  }
+
   /* ─── 1. LOADER ─────────────────────────────────── */
   const loader = document.getElementById('loader');
   let loaderHidden = false;
@@ -271,6 +297,44 @@ document.addEventListener('DOMContentLoaded', async () => {
       scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+    }
+
+    // Floating WhatsApp Minimize & Restore
+    const waWrapper = document.getElementById('floating-wa-wrapper');
+    const waCloseBtn = document.getElementById('wa-minimize-btn');
+    const waRestoreTab = document.getElementById('wa-restore-tab');
+    if (waWrapper && waCloseBtn && waRestoreTab) {
+      function minimizeWA(save) {
+        waWrapper.classList.add('is-minimized');
+        waRestoreTab.classList.add('is-visible');
+        if (save) {
+          try { sessionStorage.setItem('kalam_wa_floating_minimized', 'true'); } catch (e) {}
+        }
+      }
+
+      function restoreWA() {
+        waWrapper.classList.remove('is-minimized');
+        waRestoreTab.classList.remove('is-visible');
+        try { sessionStorage.removeItem('kalam_wa_floating_minimized'); } catch (e) {}
+      }
+
+      waCloseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        minimizeWA(true);
+      });
+
+      waRestoreTab.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        restoreWA();
+      });
+
+      try {
+        if (sessionStorage.getItem('kalam_wa_floating_minimized') === 'true') {
+          minimizeWA(false);
+        }
+      } catch (e) {}
     }
 
 
@@ -615,7 +679,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const banner = document.createElement('div');
     banner.className = 'form-banner';
     const isSuccess = type === 'success';
-    banner.style.min.cssText = `
+    banner.style.cssText = `
       display:flex;align-items:center;gap:10px;
       padding:14px 20px;border-radius:12px;margin-bottom:20px;
       font-size:0.9rem;font-weight:600;
@@ -687,7 +751,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
       const overlay = document.createElement('div');
-      overlay.style.min.cssText = `
+      overlay.style.cssText = `
         position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;
         display:flex;align-items:center;justify-content:center;
         cursor:pointer;padding:20px;animation:fadeIn 0.3s ease;
@@ -697,7 +761,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.head.appendChild(style);
       const image = document.createElement('img');
       image.src = img.src;
-      image.style.min.cssText = `max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.8);animation:fadeIn 0.3s ease;`;
+      image.style.cssText = `max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.8);animation:fadeIn 0.3s ease;`;
       overlay.appendChild(image);
       document.body.appendChild(overlay);
       overlay.addEventListener('click', () => { overlay.remove(); style.remove(); });

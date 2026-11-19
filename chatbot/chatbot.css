@@ -19,31 +19,66 @@
   --kalam-chat-font: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
-/* Floating Launcher Button */
-.kalam-chat-toggle-btn {
+/* Floating Launcher Container */
+.kalam-chat-launcher-wrapper {
   position: fixed;
   bottom: 25px;
   right: 25px;
   width: 62px;
   height: 62px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--kalam-chat-saffron) 0%, #E65100 100%);
-  color: #FFFFFF;
-  border: none;
-  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.45);
-  cursor: pointer;
   z-index: 999995;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, visibility 0.3s, bottom 0.3s ease;
+}
+
+.kalam-chat-launcher-wrapper.is-minimized {
+  transform: scale(0.4) translateY(30px);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Floating Launcher Button (3D Tactile Orb) */
+.kalam-chat-toggle-btn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FF8C38 0%, var(--kalam-chat-saffron) 60%, #E65100 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 6px 0 #B84000,
+    0 8px 2px rgba(0, 0, 0, 0.2),
+    0 14px 30px rgba(255, 107, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.15s ease, background 0.2s ease;
   outline: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 .kalam-chat-toggle-btn:hover {
-  transform: scale(1.08) translateY(-3px);
-  box-shadow: 0 12px 30px rgba(255, 107, 0, 0.6);
+  background: linear-gradient(180deg, #FFA052 0%, #FF7714 60%, #EE5800 100%);
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 
+    0 9px 0 #9E3700,
+    0 10px 2px rgba(0, 0, 0, 0.25),
+    0 18px 36px rgba(255, 107, 0, 0.55),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.65);
+}
+
+.kalam-chat-toggle-btn:active {
+  transform: scale(0.98) translateY(3px) !important;
+  box-shadow: 
+    0 2px 0 #9E3700,
+    0 4px 8px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
 }
 
 .kalam-chat-toggle-btn .badge-pulse {
@@ -64,6 +99,149 @@
   border-radius: 50%;
   background: rgba(34, 197, 94, 0.5);
   animation: kalamPulseRing 2s infinite;
+}
+
+/* Chatbot Minimize (Cross) Button (3D Coin) */
+.kalam-chat-minimize-btn {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #1E3A5F 0%, var(--kalam-chat-navy) 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 3px 0 #050B11,
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  line-height: 1;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.15s ease;
+}
+
+.kalam-chat-minimize-btn:hover {
+  background: linear-gradient(180deg, #F87171 0%, #EF4444 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 
+    0 4px 0 #991B1B,
+    0 6px 12px rgba(239, 68, 68, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.kalam-chat-minimize-btn:active {
+  transform: translateY(2px) scale(1.02) !important;
+  box-shadow: 
+    0 1px 0 #991B1B,
+    0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+.kalam-chat-minimize-btn:focus-visible {
+  outline: 2px solid var(--kalam-chat-saffron);
+  outline-offset: 2px;
+}
+
+/* Restore Tab when Chatbot is Minimized */
+/* Minimized Restore Tab (Guaranteed Fixed Screen View) */
+.chat-restore-tab,
+#kalam-chat-restore-tab {
+  position: fixed !important;
+  bottom: 25px !important;
+  right: 25px !important;
+  z-index: 999999 !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px !important;
+  background: linear-gradient(180deg, #182C40 0%, #0D1B2A 100%) !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 107, 0, 0.6) !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  font-family: var(--kalam-chat-font), system-ui, sans-serif !important;
+  cursor: pointer !important;
+  box-shadow: 
+    0 4px 0 #050B11,
+    0 6px 18px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  transform: translateY(20px) scale(0.85);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.chat-restore-tab.is-visible,
+#kalam-chat-restore-tab.is-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.chat-restore-tab:hover,
+#kalam-chat-restore-tab:hover {
+  background: linear-gradient(180deg, #FF8C38 0%, #FF6B00 100%) !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 
+    0 6px 0 #B84000,
+    0 8px 20px rgba(255, 107, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.chat-restore-tab:active,
+#kalam-chat-restore-tab:active {
+  transform: translateY(3px) scale(0.98) !important;
+  box-shadow: 
+    0 1px 0 #B84000,
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.chat-restore-tab i.fa-robot {
+  font-size: 13px;
+  color: var(--kalam-chat-saffron-light);
+  transition: color 0.2s ease;
+}
+
+.chat-restore-tab:hover i.fa-robot {
+  color: #FFFFFF;
+}
+
+.chat-restore-tab .restore-arrow {
+  font-size: 10px;
+  opacity: 0.75;
+  transition: transform 0.2s ease;
+}
+
+.chat-restore-tab:hover .restore-arrow {
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+body.kalam-cookie-active .kalam-chat-launcher-wrapper,
+body.kalam-cookie-active .chat-restore-tab {
+  bottom: 105px !important;
+}
+
+@media (max-width: 768px) {
+  body.kalam-cookie-active .kalam-chat-launcher-wrapper,
+  body.kalam-cookie-active .chat-restore-tab {
+    bottom: 175px !important;
+  }
 }
 
 @keyframes kalamPulseRing {
@@ -425,22 +603,40 @@
 }
 
 .kalam-chip {
-  background: #F1F5F9;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
   color: var(--kalam-chat-text-dark);
-  border: 1px solid #E2E8F0;
-  padding: 5px 12px;
+  border: 1px solid #CBD5E1;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 0.76rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  box-shadow: 
+    0 2.5px 0 #CBD5E1,
+    0 3px 6px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 #FFFFFF;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.2s ease, border-color 0.2s ease;
   flex-shrink: 0;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 .kalam-chip:hover {
-  background: var(--kalam-chat-navy);
+  background: linear-gradient(180deg, #1E3A5F 0%, var(--kalam-chat-navy) 100%);
   color: #FFFFFF;
   border-color: var(--kalam-chat-navy);
+  transform: translateY(-1.5px);
+  box-shadow: 
+    0 4px 0 #050B11,
+    0 5px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.kalam-chip:active {
+  transform: translateY(2px) !important;
+  box-shadow: 
+    0 0.5px 0 #CBD5E1,
+    0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Typing Indicator */
@@ -493,23 +689,43 @@
 }
 
 .kalam-chat-send-btn {
-  background: linear-gradient(135deg, var(--kalam-chat-saffron) 0%, #E65100 100%);
+  background: linear-gradient(180deg, #FF8C38 0%, var(--kalam-chat-saffron) 60%, #E65100 100%);
   color: #FFFFFF;
-  border: none;
-  width: 40px;
-  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 0.95rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+  box-shadow: 
+    0 4px 0 #B84000,
+    0 5px 2px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(255, 107, 0, 0.35),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45);
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1), box-shadow 0.15s ease, background 0.2s ease;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 .kalam-chat-send-btn:hover {
-  transform: scale(1.05);
+  background: linear-gradient(180deg, #FFA052 0%, #FF7714 60%, #EE5800 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 6px 0 #9E3700,
+    0 7px 2px rgba(0, 0, 0, 0.2),
+    0 12px 22px rgba(255, 107, 0, 0.45),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.6);
+}
+
+.kalam-chat-send-btn:active {
+  transform: translateY(2px) scale(0.98) !important;
+  box-shadow: 
+    0 1px 0 #9E3700,
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .kalam-chat-voice-btn {
@@ -541,11 +757,29 @@
     width: calc(100vw - 30px);
     height: calc(100vh - 110px);
   }
-  .kalam-chat-toggle-btn {
+  .kalam-chat-launcher-wrapper {
     bottom: 15px;
     right: 15px;
     width: 56px;
     height: 56px;
+  }
+  .kalam-chat-toggle-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.4rem;
+  }
+  .kalam-chat-minimize-btn {
+    top: -4px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+  .chat-restore-tab {
+    bottom: 12px;
+    right: 15px;
+    padding: 5px 10px;
+    font-size: 11px;
   }
   .kalam-chat-tooltip {
     display: none;

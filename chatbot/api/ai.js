@@ -404,10 +404,12 @@ Instructions:
   }
 
   function formatMarkdownToHTML(text) {
-    let html = text
+    if (!text) return '';
+    let safe = escapeHtml(text);
+    let html = safe
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/`(.*?)`/g, '<code>$1</code>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\n\n/g, '</p><p>')
       .replace(/\n/g, '<br>');
     return `<p>${html}</p>`;

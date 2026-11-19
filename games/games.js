@@ -346,6 +346,57 @@
     currentGame: null,
     gameState: {},
     timerInterval: null,
+    _usedQuestionsMap: {},
+
+    getUnrepeatedQuestions(poolKey, rawQuestions, count = 5) {
+      if (!this._usedQuestionsMap) {
+        this._usedQuestionsMap = {};
+      }
+      if (!this._usedQuestionsMap[poolKey]) {
+        this._usedQuestionsMap[poolKey] = new Set();
+      }
+      const usedSet = this._usedQuestionsMap[poolKey];
+
+      const getQKey = (q) => {
+        if (!q) return '';
+        if (q.question) return q.question;
+        if (q.word) return q.word;
+        if (q.sequence) return q.sequence.join('-');
+        if (q.items) return q.items.join('-');
+        return JSON.stringify(q);
+      };
+
+      let available = rawQuestions.filter(q => !usedSet.has(getQKey(q)));
+
+      // If available pool has fewer than count questions left, reset so cycle repeats seamlessly
+      if (available.length < count) {
+        usedSet.clear();
+        available = [...rawQuestions];
+      }
+
+      // Shuffle available pool and pick requested count
+      const picked = shuffleArray(available).slice(0, count);
+      picked.forEach(q => usedSet.add(getQKey(q)));
+
+      // Return deep copies with jumbled options/items so answer positions vary every time
+      return picked.map(q => {
+        const copy = JSON.parse(JSON.stringify(q));
+        if (Array.isArray(copy.options)) {
+          copy.options = shuffleArray(copy.options);
+        }
+        if (Array.isArray(copy.items)) {
+          copy.items = shuffleArray(copy.items);
+        }
+        return copy;
+      });
+    },
+
+    handleQuizOptionIndex(idx, btnId) {
+      const q = this.gameState.currentData;
+      if (!q) return;
+      const selectedOption = (q.options && q.options[idx]) || (q.items && q.items[idx]);
+      this.handleQuizAnswer(selectedOption, btnId);
+    },
 
     openGame(gameId) {
       SoundSystem.playClick();
@@ -728,7 +779,7 @@
       `;
       q.options.forEach((opt, idx) => {
         html += `
-          <button class="btn-option-choice" id="opt_${idx}" onclick="window.GameEngine.handleQuizAnswer('${opt}', 'opt_${idx}')">
+          <button class="btn-option-choice" id="opt_${idx}" onclick="window.GameEngine.handleQuizOptionIndex(${idx}, 'opt_${idx}')">
             ${opt}
           </button>
         `;
@@ -745,7 +796,7 @@
     // 3. WORD WIZARD ENGINE
     initWordWizard(tier) {
       const raw = window.GAME_DATA.words[tier] || window.GAME_DATA.words.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('words_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderStandardQuizQuestion();
@@ -754,7 +805,7 @@
     // 4. PATTERN MASTER ENGINE
     initPatternMaster(tier) {
       const raw = window.GAME_DATA.patterns[tier] || window.GAME_DATA.patterns.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('patterns_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderPatternQuestion();
@@ -779,7 +830,7 @@
       let optsHtml = `<div class="quiz-options-list">`;
       q.options.forEach((opt, idx) => {
         optsHtml += `
-          <button class="quiz-option-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizAnswer('${opt}', 'opt_${idx}')">
+          <button class="quiz-option-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizOptionIndex(${idx}, 'opt_${idx}')">
             <span class="quiz-option-marker">${String.fromCharCode(65 + idx)}</span>
             <span>${opt}</span>
           </button>
@@ -801,7 +852,7 @@
     // 5. SCIENCE CHALLENGE ENGINE
     initScienceChallenge(tier) {
       const raw = window.GAME_DATA.science[tier] || window.GAME_DATA.science.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('science_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderStandardQuizQuestion();
@@ -810,7 +861,7 @@
     // 6. GK EXPLORER ENGINE
     initGkExplorer(tier) {
       const raw = window.GAME_DATA.gk[tier] || window.GAME_DATA.gk.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('gk_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderStandardQuizQuestion();
@@ -819,7 +870,7 @@
     // 7. ODD ONE OUT ENGINE
     initOddOneOut(tier) {
       const raw = window.GAME_DATA.oddOneOut[tier] || window.GAME_DATA.oddOneOut.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('oddOneOut_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderOddOneOutQuestion();
@@ -838,7 +889,7 @@
       `;
       q.items.forEach((item, idx) => {
         html += `
-          <button class="odd-item-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizAnswer('${item}', 'opt_${idx}')">
+          <button class="odd-item-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizOptionIndex(${idx}, 'opt_${idx}')">
             ${item}
           </button>
         `;
@@ -860,7 +911,7 @@
     // 9. WORD SCRAMBLE ENGINE
     initWordScramble(tier) {
       const raw = window.GAME_DATA.scramble[tier] || window.GAME_DATA.scramble.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('scramble_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderScrambleQuestion();
@@ -1053,7 +1104,7 @@
     // 11. LOGIC QUEST ENGINE
     initLogicQuest(tier) {
       const raw = window.GAME_DATA.logic[tier] || window.GAME_DATA.logic.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('logic_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderStandardQuizQuestion();
@@ -1065,8 +1116,15 @@
       const readingUnit = raw[0] || raw;
       this.gameState.readingPassage = readingUnit.passage;
       this.gameState.readingTitle = readingUnit.title;
-      this.gameState.questions = readingUnit.questions;
-      this.gameState.totalQuestions = readingUnit.questions.length;
+      // Jumble questions and options for reading unit
+      this.gameState.questions = shuffleArray(readingUnit.questions).map(q => {
+        const copy = JSON.parse(JSON.stringify(q));
+        if (Array.isArray(copy.options)) {
+          copy.options = shuffleArray(copy.options);
+        }
+        return copy;
+      });
+      this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderReadingDetectiveQuestion();
     },
@@ -1080,7 +1138,7 @@
       let optsHtml = `<div class="quiz-options-list">`;
       q.options.forEach((opt, idx) => {
         optsHtml += `
-          <button class="quiz-option-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizAnswer('${opt}', 'opt_${idx}')">
+          <button class="quiz-option-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizOptionIndex(${idx}, 'opt_${idx}')">
             <span class="quiz-option-marker">${String.fromCharCode(65 + idx)}</span>
             <span>${opt}</span>
           </button>
@@ -1107,7 +1165,7 @@
     // 13. GEOGRAPHY EXPLORER ENGINE
     initGeographyExplorer(tier) {
       const raw = window.GAME_DATA.geography[tier] || window.GAME_DATA.geography.junior;
-      this.gameState.questions = shuffleArray(raw).slice(0, 5);
+      this.gameState.questions = this.getUnrepeatedQuestions('geography_' + tier, raw, 5);
       this.gameState.totalQuestions = this.gameState.questions.length;
       this.gameState.questionIndex = 0;
       this.renderStandardQuizQuestion();
@@ -1116,8 +1174,10 @@
     // 14. BRAIN TRAINER ENGINE (Mixed Multi-Skill)
     initBrainTrainer(tier) {
       const mathQ = this.generateMathQuestions(tier, 2);
-      const scienceQ = shuffleArray(window.GAME_DATA.science[tier] || window.GAME_DATA.science.junior).slice(0, 2);
-      const logicQ = shuffleArray(window.GAME_DATA.logic[tier] || window.GAME_DATA.logic.junior).slice(0, 2);
+      const rawSci = window.GAME_DATA.science[tier] || window.GAME_DATA.science.junior;
+      const scienceQ = this.getUnrepeatedQuestions('science_' + tier, rawSci, 2);
+      const rawLog = window.GAME_DATA.logic[tier] || window.GAME_DATA.logic.junior;
+      const logicQ = this.getUnrepeatedQuestions('logic_' + tier, rawLog, 2);
 
       this.gameState.questions = shuffleArray([...mathQ, ...scienceQ, ...logicQ]);
       this.gameState.totalQuestions = this.gameState.questions.length;
@@ -1135,7 +1195,7 @@
       let optsHtml = `<div class="quiz-options-list">`;
       q.options.forEach((opt, idx) => {
         optsHtml += `
-          <button class="quiz-option-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizAnswer('${opt}', 'opt_${idx}')">
+          <button class="quiz-option-btn" id="opt_${idx}" onclick="window.GameEngine.handleQuizOptionIndex(${idx}, 'opt_${idx}')">
             <span class="quiz-option-marker">${String.fromCharCode(65 + idx)}</span>
             <span>${opt}</span>
           </button>
@@ -1302,6 +1362,7 @@
     startGameplay: () => GameRunner.startGameplay(),
     handleMemoryCardClick: (id) => GameRunner.handleMemoryCardClick(id),
     handleQuizAnswer: (opt, btnId) => GameRunner.handleQuizAnswer(opt, btnId),
+    handleQuizOptionIndex: (idx, btnId) => GameRunner.handleQuizOptionIndex(idx, btnId),
     handleSmartChipClick: (id, side) => GameRunner.handleSmartChipClick(id, side),
     submitScrambleWord: () => GameRunner.submitScrambleWord(),
     nextQuestion: () => GameRunner.nextQuestion(),

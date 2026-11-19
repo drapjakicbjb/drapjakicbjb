@@ -50,7 +50,7 @@ function renderNewFooterComponent() {
           <span>Grade<span style="color: var(--accent);">Calc</span></span>
         </a>
         <span style="color: #334155; display: inline-block;">|</span>
-        <p style="font-size: 0.875rem; color: #cbd5e1; margin: 0;">© <span id="currentYear">${currentYear}</span> Dr. A.P.J. Abdul Kalam Inter College (<a href="https://drapjakicbjb.ac.in" target="_blank" style="color: #fbbf24; text-decoration: none;">drapjakicbjb.ac.in</a>). All rights reserved.</p>
+        <p style="font-size: 0.875rem; color: #cbd5e1; margin: 0;">© <span id="currentYear">${currentYear}</span> Dr. A.P.J. Abdul Kalam Inter College (<a href="https://drapjakicbjb.ac.in" target="_blank" rel="noopener noreferrer" style="color: #fbbf24; text-decoration: none;">drapjakicbjb.ac.in</a>). All rights reserved.</p>
       </div>
 
       <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap;">

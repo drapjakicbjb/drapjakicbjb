@@ -1,3 +1,14 @@
+# Disable directory browsing
+Options -Indexes
+
+# Enable Gzip / Deflate Compression for massive load time reduction
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml application/xhtml+xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml font/ttf font/otf
+</IfModule>
+
 <IfModule mod_expires.c>
   ExpiresActive On
 
@@ -28,8 +39,15 @@
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
-# Cache-Control headers fallback
+# Cache-Control headers and Security Headers
 <IfModule mod_headers.c>
+  # Security Headers
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set X-XSS-Protection "1; mode=block"
+
   # 1 Year cache for images and fonts
   <FilesMatch "\.(ico|jpe?g|png|gif|webp|svg|woff2?|ttf)$">
     Header set Cache-Control "max-age=31536000, public, no-transform"
@@ -56,6 +74,12 @@
 <Files "api-catalog">
   ForceType application/linkset+json
 </Files>
+
+# Protect hidden sensitive files while allowing .well-known
+<FilesMatch "^\.(?!well-known)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
 
 # Clean URLs & SSL configuration
 <IfModule mod_rewrite.c>
@@ -88,5 +112,3 @@
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
-
-

@@ -36,6 +36,11 @@
   }
 
   function createChatDOM() {
+    // Floating Launcher Container
+    const launcherWrapper = document.createElement('div');
+    launcherWrapper.id = 'kalam-chat-launcher-wrapper';
+    launcherWrapper.className = 'kalam-chat-launcher-wrapper';
+
     // Floating Launcher Button
     const toggleBtn = document.createElement('button');
     toggleBtn.id = 'kalam-chat-toggle';
@@ -44,6 +49,31 @@
     toggleBtn.innerHTML = `
       <i class="fas fa-comment-dots"></i>
       <span class="badge-pulse"></span>
+    `;
+
+    // Cross Button on Chatbot Launcher
+    const minimizeBtn = document.createElement('button');
+    minimizeBtn.id = 'kalam-chat-minimize-btn';
+    minimizeBtn.className = 'floating-widget-close-btn kalam-chat-minimize-btn';
+    minimizeBtn.setAttribute('type', 'button');
+    minimizeBtn.setAttribute('title', 'Minimize Chatbot');
+    minimizeBtn.setAttribute('aria-label', 'Minimize Chatbot');
+    minimizeBtn.innerHTML = `<i class="fas fa-times"></i>`;
+
+    launcherWrapper.appendChild(toggleBtn);
+    launcherWrapper.appendChild(minimizeBtn);
+
+    // Restore Tab when Chatbot is Minimized
+    const restoreTab = document.createElement('button');
+    restoreTab.id = 'kalam-chat-restore-tab';
+    restoreTab.className = 'floating-restore-tab chat-restore-tab';
+    restoreTab.setAttribute('type', 'button');
+    restoreTab.setAttribute('title', 'Restore BodhSakhā AI');
+    restoreTab.setAttribute('aria-label', 'Restore BodhSakhā AI');
+    restoreTab.innerHTML = `
+      <i class="fas fa-robot"></i>
+      <span class="restore-text">BodhSakhā AI</span>
+      <i class="fas fa-chevron-up restore-arrow"></i>
     `;
 
     // Tooltip with Desktop Dismiss Option
@@ -113,7 +143,8 @@
       </div>
     `;
 
-    document.body.appendChild(toggleBtn);
+    document.body.appendChild(launcherWrapper);
+    document.body.appendChild(restoreTab);
     document.body.appendChild(tooltip);
     document.body.appendChild(chatWindow);
   }
@@ -140,6 +171,56 @@
         localStorage.setItem('kalam_hide_tooltip', 'true');
       });
     }
+
+    // Chatbot Minimize / Restore functionality
+    const launcherWrapper = document.getElementById('kalam-chat-launcher-wrapper');
+    const minimizeBtn = document.getElementById('kalam-chat-minimize-btn');
+    const restoreTab = document.getElementById('kalam-chat-restore-tab');
+
+    function minimizeChatbot(save = true) {
+      if (launcherWrapper) launcherWrapper.classList.add('is-minimized');
+      if (tooltip) {
+        tooltip.style.display = 'none';
+        tooltip.classList.add('kalam-chat-hidden');
+      }
+      if (restoreTab) restoreTab.classList.add('is-visible');
+      const chatWindow = document.getElementById('kalam-chat-window');
+      if (chatWindow && state.isOpen) {
+        state.isOpen = false;
+        chatWindow.classList.remove('active');
+      }
+      if (save) {
+        try { sessionStorage.setItem('kalam_chatbot_minimized', 'true'); } catch (e) {}
+      }
+    }
+
+    function restoreChatbot() {
+      if (launcherWrapper) launcherWrapper.classList.remove('is-minimized');
+      if (restoreTab) restoreTab.classList.remove('is-visible');
+      try { sessionStorage.removeItem('kalam_chatbot_minimized'); } catch (e) {}
+    }
+
+    if (minimizeBtn) {
+      minimizeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        minimizeChatbot(true);
+      });
+    }
+
+    if (restoreTab) {
+      restoreTab.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        restoreChatbot();
+      });
+    }
+
+    try {
+      if (sessionStorage.getItem('kalam_chatbot_minimized') === 'true') {
+        minimizeChatbot(false);
+      }
+    } catch (e) {}
 
     // Toggle Chat Window
     toggleBtn.addEventListener('click', () => {
@@ -191,8 +272,8 @@
     const text = inputField.value.trim();
     if (!text || state.isTyping) return;
 
-    // Add user message
-    addMessage(text, 'user');
+    // Add user message (sanitized)
+    addMessage(escapeHtml(text), 'user', text);
     inputField.value = '';
 
     // Show typing indicator
@@ -216,8 +297,9 @@
   }
 
   function addMessage(htmlContent, sender, plainText = '') {
+    const safeHtml = sender === 'user' ? escapeHtml(plainText || htmlContent) : htmlContent;
     const msgObj = {
-      html: htmlContent,
+      html: safeHtml,
       sender: sender,
       plainText: plainText || htmlContent,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -234,11 +316,12 @@
     row.className = `kalam-msg-row ${msgObj.sender}`;
 
     const icon = msgObj.sender === 'user' ? `<i class="fas fa-user"></i>` : `<i class="fas fa-robot"></i>`;
+    const bubbleContent = msgObj.sender === 'user' ? escapeHtml(msgObj.plainText || msgObj.html) : msgObj.html;
 
     row.innerHTML = `
       <div class="kalam-msg-avatar">${icon}</div>
       <div class="kalam-msg-content">
-        <div class="kalam-msg-bubble">${msgObj.html}</div>
+        <div class="kalam-msg-bubble">${bubbleContent}</div>
         <span class="kalam-msg-time">${msgObj.timestamp}</span>
       </div>
     `;
@@ -593,7 +676,7 @@
         <li><strong>UDISE (इंटर कॉलेज):</strong> ${codes.udiseInterCollege}</li>
       </ul>
       <a href="tel:${info.phone}" class="kalam-chat-action-btn"><i class="fas fa-phone-alt"></i> अभी कॉल करें</a>
-      <a href="https://wa.me/919454242284" target="_blank" class="kalam-chat-action-btn"><i class="fab fa-whatsapp"></i> व्हाट्सएप चैट</a>`;
+      <a href="https://wa.me/919454242284" target="_blank" rel="noopener noreferrer" class="kalam-chat-action-btn"><i class="fab fa-whatsapp"></i> व्हाट्सएप चैट</a>`;
 
       return { html: content, text: `संपर्क विवरण: डॉ ए.पी.जे. अब्दुल कलाम इंटर कॉलेज, बेलवरिया जंगल, बस्ती। फोन: +91 9648904085.` };
     } else if (lang === 'hinglish') {
@@ -607,7 +690,7 @@
         <li><strong>School Code:</strong> ${codes.collegeCode} (UDISE: ${codes.udiseInterCollege})</li>
       </ul>
       <a href="tel:${info.phone}" class="kalam-chat-action-btn"><i class="fas fa-phone-alt"></i> Call Office</a>
-      <a href="https://wa.me/919454242284" target="_blank" class="kalam-chat-action-btn"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>`;
+      <a href="https://wa.me/919454242284" target="_blank" rel="noopener noreferrer" class="kalam-chat-action-btn"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>`;
 
       return { html: content, text: `School contact details: Address Belwariya Jungle Basti. Phone +91 9648904085.` };
     } else {

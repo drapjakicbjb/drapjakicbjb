@@ -2,11 +2,21 @@
 
 <!-- Floating Action Buttons -->
 <div class="floating-controls">
-  <a href="https://whatsapp.com/channel/0029ValVXTv5q08k3bcxT10R" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp-btn-float" aria-label="WhatsApp Channel">
-    <span style="position: relative; display: inline-flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem; margin-right: 2px;">
-      <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
-      <i class="fas fa-bullhorn" style="position: absolute; font-size: 0.55rem; bottom: -3px; right: -4px; background: #25D366; color: white; width: 12px; height: 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px #25D366;"></i>
-    </span>
-    <span class="btn-text">WhatsApp Channel</span>
-  </a>
+  <div class="floating-wa-wrapper" id="floating-wa-wrapper">
+    <a href="https://whatsapp.com/channel/0029ValVXTv5q08k3bcxT10R" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp-btn-float" aria-label="WhatsApp Channel">
+      <span style="position: relative; display: inline-flex; align-items: center; justify-content: center; width: 1.2rem; height: 1.2rem; margin-right: 2px;">
+        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
+        <i class="fas fa-bullhorn" style="position: absolute; font-size: 0.55rem; bottom: -3px; right: -4px; background: #25D366; color: white; width: 12px; height: 12px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px #25D366;"></i>
+      </span>
+      <span class="btn-text">WhatsApp Channel</span>
+    </a>
+    <button type="button" class="floating-widget-close-btn wa-close-btn" id="wa-minimize-btn" title="Minimize WhatsApp" aria-label="Minimize WhatsApp button">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <button type="button" class="floating-restore-tab wa-restore-tab" id="wa-restore-tab" title="Restore WhatsApp Channel button" aria-label="Restore WhatsApp Channel button">
+    <i class="fab fa-whatsapp"></i>
+    <span class="restore-text">WhatsApp</span>
+    <i class="fas fa-chevron-up restore-arrow"></i>
+  </button>
 </div>
