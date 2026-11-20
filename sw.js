@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apj-school-cache-v3.6';
+const CACHE_NAME = 'apj-school-cache-v3.7';
 const STATIC_ASSETS = [
   './',
   './index.html',
